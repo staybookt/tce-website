@@ -3,6 +3,9 @@ import TrustBar from '@/components/TrustBar';
 import ServiceCard from '@/components/ServiceCard';
 import ReviewCard from '@/components/ReviewCard';
 import QuoteForm from '@/components/QuoteForm';
+import CostEstimator from '@/components/CostEstimator';
+import FounderStory from '@/components/FounderStory';
+import RecentWork from '@/components/RecentWork';
 import { client } from '@/data/client';
 import Link from 'next/link';
 
@@ -63,7 +66,7 @@ export default function Home() {
           <div className="text-center mb-16 animate-on-scroll">
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">How It Works</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-[-0.03em]">
-              Three steps. <span className="gradient-text">That's it.</span>
+              Three steps. <span className="gradient-text">That’s it.</span>
             </h2>
           </div>
 
@@ -216,32 +219,17 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Quote form — full width */}
-          <div className="bg-white rounded-3xl shadow-xl shadow-navy/[0.08] p-8 md:p-12 border border-gray-200 animate-on-scroll">
-            <div className="grid lg:grid-cols-2 gap-10 items-start">
-              <div>
-                <h3 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Get a Free Quote</h3>
-                <p className="text-gray-500 text-base mb-6 leading-relaxed">
-                  Tell us about your project and we&apos;ll get back to you within 2 hours during business hours. No obligation, no pressure.
+          {/* Interactive Cost Estimator */}
+          <div className="bg-navy-dark rounded-3xl p-8 md:p-12 border border-white/[0.06] animate-on-scroll relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gold/[0.04] rounded-full blur-[100px]" />
+            <div className="relative">
+              <div className="mb-8">
+                <h3 className="text-3xl font-bold text-white mb-3 tracking-tight">What&apos;s this going to cost?</h3>
+                <p className="text-white/50 text-base leading-relaxed max-w-lg">
+                  Pick your service and scope to get a ballpark range. These are real numbers based on what we typically charge in York Region.
                 </p>
-                <div className="space-y-4">
-                  {[
-                    'Free on-site assessment for larger jobs',
-                    'Written quote before any work starts',
-                    'No hidden fees or surprise charges',
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
-                        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-600 text-sm">{item}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
-              <QuoteForm />
+              <CostEstimator />
             </div>
           </div>
         </div>
@@ -278,22 +266,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Photo Break 2 — Interior, bottom-aligned text ═══ */}
-      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1920&q=80"
-          alt="Modern home interior with professional lighting"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/20 to-transparent" />
-        <div className="absolute inset-0 flex items-end">
-          <div className="max-w-7xl mx-auto px-4 w-full pb-16 animate-on-scroll">
-            <h2 className="text-3xl md:text-5xl font-bold text-white max-w-lg tracking-[-0.02em] leading-[1.1] text-shadow-heavy">
-              From pot lights to full rewires, we make homes shine.
-            </h2>
-          </div>
-        </div>
-      </section>
+      {/* ═══ Founder Story ═══ */}
+      <FounderStory />
+
+      {/* ═══ Recent Work Feed ═══ */}
+      <RecentWork />
 
       {/* ═══ Service Areas ═══ */}
       <section className="py-24 md:py-32 bg-white">
