@@ -35,6 +35,55 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How It Works — Apple-style numbered steps */}
+      <section className="py-24 md:py-32 bg-gray-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, var(--navy) 1px, transparent 0)`,
+          backgroundSize: '40px 40px',
+        }} />
+        <div className="max-w-7xl mx-auto px-4 relative">
+          <div className="text-center mb-20 animate-on-scroll">
+            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">How It Works</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+              Three steps to{' '}
+              <span className="gradient-text">getting it done.</span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12 stagger-children">
+            {[
+              {
+                step: '01',
+                title: 'Call or Request a Quote',
+                desc: 'Tell us what you need. We ask a few questions to understand the scope and give you an honest answer on what it will take.',
+              },
+              {
+                step: '02',
+                title: 'On-Site Assessment & Quote',
+                desc: 'We come to you, look at the job, and give you a clear written quote. No surprises, no pressure. You decide if you want to move forward.',
+              },
+              {
+                step: '03',
+                title: 'Work Done Right',
+                desc: 'We show up on time, do the work to code, clean up when we\'re done, and handle the ESA inspection. You get a safe, finished job.',
+              },
+            ].map((item, i) => (
+              <div key={i} className="relative text-center md:text-left">
+                <div className="text-7xl md:text-8xl font-black text-navy/[0.04] leading-none mb-4 select-none">{item.step}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 -mt-8 relative">{item.title}</h3>
+                <p className="text-gray-500 text-[15px] leading-relaxed">{item.desc}</p>
+                {i < 2 && (
+                  <div className="hidden md:block absolute top-10 -right-6 w-12">
+                    <svg viewBox="0 0 48 24" className="w-full text-gold/30" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M0 12h40m-8-8l8 8-8 8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Photo Break - Full bleed */}
       <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <img
@@ -206,6 +255,35 @@ export default function Home() {
               >
                 {area.name}
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Promise */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="max-w-4xl mx-auto px-4 text-center animate-on-scroll">
+          <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center mx-auto mb-8">
+            <svg viewBox="0 0 24 24" className="w-10 h-10 text-gold" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+            Our promise to you.
+          </h2>
+          <p className="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto mb-12">
+            If you're not happy with the work, we come back and make it right at no extra charge. Every job is ESA inspected, every quote is honoured, and every jobsite is left clean. That's not a policy. It's how we've kept customers coming back for {client.yearsInBusiness}+ years.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {[
+              { label: 'Written Quote', desc: 'Before any work starts' },
+              { label: 'ESA Inspected', desc: 'Every job, every time' },
+              { label: 'Satisfaction Guaranteed', desc: 'We make it right' },
+            ].map((item, i) => (
+              <div key={i} className="bg-gray-50 rounded-2xl p-6">
+                <p className="text-gold font-bold text-sm uppercase tracking-wider mb-1">{item.label}</p>
+                <p className="text-gray-500 text-sm">{item.desc}</p>
+              </div>
             ))}
           </div>
         </div>
