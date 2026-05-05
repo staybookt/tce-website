@@ -146,86 +146,102 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Why Choose Us — Bento layout ═══ */}
-      <section className="py-24 md:py-32 mesh-gradient relative">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-5 gap-16 items-start">
-            {/* Left column: heading + large feature */}
-            <div className="lg:col-span-2 animate-on-scroll">
-              <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Why Top Choice</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-[-0.03em] leading-[1.05]">
-                We treat your home
-                <br />
-                <span className="gradient-text">like it's ours.</span>
-              </h2>
-              <p className="text-gray-500 text-base leading-relaxed mb-10">
-                Upfront pricing. Clean jobsites. Licensed, inspected, guaranteed. The bar should be higher in this industry, and we set it.
-              </p>
+      {/* ═══ Why Choose Us — Bold layout ═══ */}
+      <section className="py-24 md:py-32 bg-gray-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, var(--navy) 1px, transparent 0)`,
+          backgroundSize: '32px 32px',
+        }} />
+        <div className="max-w-7xl mx-auto px-4 relative">
+          {/* Section header — centered */}
+          <div className="text-center mb-16 animate-on-scroll">
+            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Why Top Choice</p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-[-0.03em] leading-[1.05]">
+              We treat your home
+              <br />
+              <span className="gradient-text">like it&apos;s ours.</span>
+            </h2>
+            <p className="text-gray-500 text-lg max-w-xl mx-auto mt-6 leading-relaxed">
+              Upfront pricing. Clean jobsites. Licensed, inspected, guaranteed. The bar should be higher in this industry, and we set it.
+            </p>
+          </div>
 
-              {/* Featured bento card */}
-              <div className="rounded-3xl bg-navy-dark text-white p-8 md:p-10 border border-white/[0.06] shadow-xl">
-                <div className="w-14 h-14 rounded-2xl bg-gold/15 border border-gold/25 flex items-center justify-center mb-6">
-                  <svg viewBox="0 0 24 24" className="w-7 h-7 text-gold" fill="none" stroke="currentColor" strokeWidth="1.5">
+          {/* Feature cards — 4 column grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12 stagger-children">
+            {[
+              {
+                title: 'ESA Licensed',
+                desc: 'Every job meets or exceeds the Ontario Electrical Safety Code. Permits pulled, inspections passed.',
+                icon: (
+                  <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
+                ),
+              },
+              {
+                title: 'Clean Jobsite',
+                desc: 'Drop cloths down, debris cleaned up, and your home looks better when we leave. Every time.',
+                icon: (
+                  <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Upfront Pricing',
+                desc: 'No surprise charges. We quote upfront and stick to it. If something changes, you hear about it first.',
+                icon: (
+                  <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+              },
+              {
+                title: '24/7 Emergency',
+                desc: 'Electrical problems don&apos;t wait for business hours. Neither do we. Same-day service across York Region.',
+                icon: (
+                  <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+              },
+            ].map((item, i) => (
+              <div key={i} className="bg-navy-dark rounded-2xl p-8 border border-white/[0.06] hover:border-gold/30 transition-all duration-500 group">
+                <div className="w-14 h-14 rounded-xl bg-gold/15 border border-gold/25 flex items-center justify-center mb-6 text-gold group-hover:bg-gold/25 transition-colors duration-500">
+                  {item.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3">ESA Licensed & Inspected</h3>
-                <p className="text-white/75 text-sm leading-relaxed">
-                  Every job meets or exceeds the Ontario Electrical Safety Code. We pull permits, pass inspections, and stand behind every connection.
+                <h3 className="font-bold text-white text-lg mb-3 tracking-tight">{item.title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Quote form — full width */}
+          <div className="bg-white rounded-3xl shadow-xl shadow-navy/[0.08] p-8 md:p-12 border border-gray-200 animate-on-scroll">
+            <div className="grid lg:grid-cols-2 gap-10 items-start">
+              <div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Get a Free Quote</h3>
+                <p className="text-gray-500 text-base mb-6 leading-relaxed">
+                  Tell us about your project and we&apos;ll get back to you within 2 hours during business hours. No obligation, no pressure.
                 </p>
-              </div>
-            </div>
-
-            {/* Right column: feature cards + form */}
-            <div className="lg:col-span-3 grid sm:grid-cols-3 gap-3 stagger-children">
-              {[
-                {
-                  title: 'Clean Jobsite, Every Time',
-                  desc: 'Drop cloths down, debris cleaned up, and your home looks better when we leave.',
-                  icon: (
-                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  ),
-                },
-                {
-                  title: 'Straight Talk on Pricing',
-                  desc: 'No surprise charges. We quote upfront and stick to it. If something changes, you hear about it first.',
-                  icon: (
-                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  ),
-                },
-                {
-                  title: '24/7 Emergency Response',
-                  desc: 'Electrical problems don\'t wait for business hours. Neither do we. Same-day service across York Region.',
-                  icon: (
-                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  ),
-                },
-              ].map((item, i) => (
-                <div key={i} className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-lg hover:border-gold/20 hover:-translate-y-1 transition-all duration-500">
-                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5 text-gold">
-                    {item.icon}
-                  </div>
-                  <h3 className="font-bold text-gray-900 text-base mb-2 tracking-tight">{item.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-
-              {/* Quote form card */}
-              <div className="sm:col-span-3">
-                <div className="gradient-border">
-                  <div className="gradient-border-inner p-8 md:p-10">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">Get a Free Quote</h3>
-                    <p className="text-gray-500 text-sm mb-8">We respond within 2 hours during business hours.</p>
-                    <QuoteForm />
-                  </div>
+                <div className="space-y-4">
+                  {[
+                    'Free on-site assessment for larger jobs',
+                    'Written quote before any work starts',
+                    'No hidden fees or surprise charges',
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-gold" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className="text-gray-600 text-sm">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
+              <QuoteForm />
             </div>
           </div>
         </div>
@@ -308,28 +324,31 @@ export default function Home() {
       </section>
 
       {/* ═══ Our Promise ═══ */}
-      <section className="py-24 md:py-32 bg-gray-50">
-        <div className="max-w-3xl mx-auto px-4 text-center animate-on-scroll">
-          <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-10">
+      <section className="py-24 md:py-32 bg-navy-dark relative overflow-hidden">
+        <div className="absolute inset-0 mesh-gradient opacity-50" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+
+        <div className="max-w-4xl mx-auto px-4 text-center relative animate-on-scroll">
+          <div className="w-16 h-16 rounded-2xl bg-gold/15 border border-gold/25 flex items-center justify-center mx-auto mb-10">
             <svg viewBox="0 0 24 24" className="w-8 h-8 text-gold" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 tracking-[-0.03em]">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-[-0.03em]">
             Our promise to you.
           </h2>
-          <p className="text-gray-500 text-lg leading-relaxed mb-16">
-            If you're not happy with the work, we come back and make it right at no extra charge. Every job is ESA inspected, every quote is honoured, and every jobsite is left clean. That's not a policy. It's how we've kept customers coming back for {client.yearsInBusiness}+ years.
+          <p className="text-white/60 text-lg leading-relaxed mb-16 max-w-2xl mx-auto">
+            If you&apos;re not happy with the work, we come back and make it right at no extra charge. Every job is ESA inspected, every quote is honoured, and every jobsite is left clean. That&apos;s not a policy. It&apos;s how we&apos;ve kept customers coming back for {client.yearsInBusiness}+ years.
           </p>
-          <div className="grid sm:grid-cols-3 gap-4 stagger-children">
+          <div className="grid sm:grid-cols-3 gap-5 stagger-children">
             {[
               { label: 'Written Quote', desc: 'Before any work starts' },
               { label: 'ESA Inspected', desc: 'Every job, every time' },
               { label: 'Satisfaction Guaranteed', desc: 'We make it right' },
             ].map((item, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-md hover:border-gold/20 transition-all duration-500">
+              <div key={i} className="bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] rounded-2xl p-8 hover:bg-white/[0.1] transition-all duration-500">
                 <p className="text-gold font-bold text-sm uppercase tracking-widest mb-2">{item.label}</p>
-                <p className="text-gray-500 text-sm">{item.desc}</p>
+                <p className="text-white/60 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
