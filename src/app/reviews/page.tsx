@@ -11,54 +11,123 @@ export const metadata: Metadata = {
 export default function ReviewsPage() {
   return (
     <>
-      <section className="bg-navy-dark py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <p className="text-gold font-medium text-sm uppercase tracking-wider mb-2">Reviews</p>
-          <h1 className="text-4xl font-bold text-white mb-4">What Our Customers Say</h1>
-          <p className="text-white/70 max-w-2xl text-lg">
-            We don't ask for reviews unless we're confident in the work. Here's what homeowners across York Region have to say.
-          </p>
+      {/* Hero — immersive */}
+      <section className="relative min-h-[50vh] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1920&q=80"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 hero-gradient" />
+          <div className="absolute inset-0 grain" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
+          <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Testimonials</p>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+              What Our Customers{' '}
+              <span className="gradient-text">Say</span>
+            </h1>
+            <p className="text-white/60 max-w-xl text-lg leading-relaxed">
+              We don't ask for reviews unless we're confident in the work. Here's what homeowners across York Region have to say.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Reviews Grid */}
+      <section className="py-24 md:py-32 bg-gray-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, var(--navy) 1px, transparent 0)`,
+          backgroundSize: '40px 40px',
+        }} />
+
+        <div className="max-w-7xl mx-auto px-4 relative">
+          {/* Aggregate rating */}
+          <div className="text-center mb-16 animate-on-scroll">
+            <div className="inline-flex items-center gap-2 bg-white rounded-full px-6 py-3 shadow-sm mb-6">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-gray-900 font-bold">5.0</span>
+              <span className="text-gray-400 text-sm">from {client.reviews.length} reviews</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
             {client.reviews.map((review, i) => (
               <ReviewCard key={i} {...review} />
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Google Review CTA */}
-          <div className="mt-12 bg-white rounded-xl p-8 text-center max-w-2xl mx-auto">
-            <h2 className="text-xl font-bold text-gray-900 mb-3">Had a good experience?</h2>
-            <p className="text-gray-600 mb-6">
-              If you're a past customer, we'd appreciate a Google review. It helps other homeowners in York Region find a licensed electrician they can trust.
-            </p>
-            {client.googleBusinessUrl ? (
-              <a
-                href={client.googleBusinessUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-gold hover:bg-gold-dark text-navy-dark font-bold px-8 py-3 rounded transition-colors"
-              >
-                Leave a Google Review
-              </a>
-            ) : (
-              <p className="text-gray-400 text-sm italic">Google Business Profile coming soon.</p>
-            )}
+      {/* Google Review CTA — premium card */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className="animate-on-scroll">
+            <div className="bg-gray-50 rounded-3xl p-12 text-center relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold/0 via-gold to-gold/0" />
+              <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                </svg>
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Had a good experience?</h2>
+              <p className="text-gray-500 text-lg mb-8 max-w-md mx-auto">
+                If you're a past customer, a Google review helps other homeowners in York Region find a licensed electrician they can trust.
+              </p>
+              {client.googleBusinessUrl ? (
+                <a
+                  href={client.googleBusinessUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-premium inline-block bg-gold hover:bg-gold-dark text-navy-dark font-bold px-10 py-4 rounded-lg text-lg transition-all duration-300 shadow-lg shadow-gold/20"
+                >
+                  Leave a Google Review
+                </a>
+              ) : (
+                <p className="text-gray-400 text-sm italic">Google Business Profile coming soon.</p>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-12 bg-navy text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold mb-4">Ready to see why people keep calling us back?</h2>
+      {/* CTA — immersive */}
+      <section className="relative py-32 md:py-40 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-navy-dark/90" />
+          <div className="absolute inset-0 grain" />
+        </div>
+        <div className="relative max-w-3xl mx-auto px-4 text-center animate-on-scroll">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+            See why people keep calling us back.
+          </h2>
+          <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
+            Same-day service, fair prices, and work that's done right the first time.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={`tel:${client.phone}`} className="bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-3 rounded transition-colors">
+            <a
+              href={`tel:${client.phone}`}
+              className="glass hover:bg-white/10 text-white font-bold px-10 py-4 rounded-lg text-lg transition-all duration-300"
+            >
               Call {client.phone}
             </a>
-            <Link href="/contact" className="bg-gold hover:bg-gold-dark text-navy-dark font-bold px-8 py-3 rounded transition-colors">
+            <Link
+              href="/contact"
+              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold px-10 py-4 rounded-lg text-lg transition-all duration-300 shadow-lg shadow-gold/20"
+            >
               Get a Free Quote
             </Link>
           </div>

@@ -38,84 +38,118 @@ export default async function ServicePage({ params }: Props) {
     <>
       <SchemaMarkup type="Service" serviceName={service.name} serviceDescription={service.shortDescription} />
 
-      {/* Hero */}
-      <section className="bg-navy-dark py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-sm text-white/60 mb-4">
-            <Link href="/" className="hover:text-gold">Home</Link>
-            <span>/</span>
-            <Link href="/services" className="hover:text-gold">Services</Link>
-            <span>/</span>
-            <span className="text-gold">{service.name}</span>
+      {/* Hero — immersive */}
+      <section className="relative min-h-[50vh] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 hero-gradient" />
+          <div className="absolute inset-0 grain" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
+          <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+            {/* Breadcrumb */}
+            <div className="flex items-center gap-2 text-sm text-white/40 mb-6">
+              <Link href="/" className="hover:text-gold transition-colors">Home</Link>
+              <span>/</span>
+              <Link href="/services" className="hover:text-gold transition-colors">Services</Link>
+              <span>/</span>
+              <span className="text-gold">{service.name}</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+              {content.headline}
+            </h1>
+            <p className="text-white/60 max-w-xl text-lg leading-relaxed">{service.shortDescription}</p>
           </div>
-          <h1 className="text-4xl font-bold text-white mb-4">{content.headline}</h1>
-          <p className="text-white/70 max-w-2xl text-lg">{service.shortDescription}</p>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-16">
+      <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid lg:grid-cols-3 gap-16">
             {/* Main content */}
-            <div className="lg:col-span-2 space-y-10">
+            <div className="lg:col-span-2 space-y-16">
               {/* Intro */}
-              <div>
-                <p className="text-gray-700 text-lg leading-relaxed">{content.intro}</p>
+              <div className="animate-on-scroll">
+                <p className="text-gray-600 text-lg leading-relaxed">{content.intro}</p>
               </div>
 
               {/* What to expect */}
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">What to Expect</h2>
-                <p className="text-gray-700 leading-relaxed">{content.whatToExpect}</p>
+              <div className="animate-on-scroll">
+                <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">What to Expect</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
+                  The process, <span className="gradient-text">start to finish.</span>
+                </h2>
+                <p className="text-gray-600 leading-relaxed text-[17px]">{content.whatToExpect}</p>
               </div>
 
               {/* Common problems */}
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Common Reasons People Call Us</h2>
-                <ul className="space-y-3">
+              <div className="animate-on-scroll">
+                <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Common Issues</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
+                  Reasons people call us.
+                </h2>
+                <div className="grid sm:grid-cols-2 gap-4">
                   {content.problems.map((problem, i) => (
-                    <li key={i} className="flex gap-3 items-start">
-                      <svg viewBox="0 0 24 24" className="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                      </svg>
-                      <span className="text-gray-700">{problem}</span>
-                    </li>
+                    <div key={i} className="flex gap-4 items-start bg-gray-50 rounded-xl p-5 group hover:bg-gold/5 transition-colors duration-300">
+                      <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-gold" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700 text-[15px] leading-relaxed">{problem}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
 
               {/* Why hire a pro */}
-              <div className="bg-navy/5 rounded-xl p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-3">Why Hire a Licensed Electrician</h2>
-                <p className="text-gray-700 leading-relaxed">{content.whyPro}</p>
+              <div className="animate-on-scroll">
+                <div className="bg-navy-dark rounded-2xl p-10 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
+                  <div className="relative">
+                    <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Why It Matters</p>
+                    <h2 className="text-2xl font-bold text-white mb-4">Why Hire a Licensed Electrician</h2>
+                    <p className="text-white/60 leading-relaxed">{content.whyPro}</p>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Sidebar */}
             <div className="space-y-6">
               {/* Quote form */}
-              <div className="bg-white rounded-xl shadow-lg p-6 sticky top-24">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Get a Free Quote</h3>
-                <p className="text-gray-500 text-sm mb-4">for {service.name}</p>
-                <QuoteForm />
-              </div>
+              <div className="sticky top-28">
+                <div className="bg-white rounded-3xl shadow-2xl shadow-navy/10 p-8 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Get a Free Quote</h3>
+                  <p className="text-gray-400 text-sm mb-6">for {service.name}</p>
+                  <QuoteForm />
+                </div>
 
-              {/* Other services */}
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Other Services</h3>
-                <ul className="space-y-3">
-                  {otherServices.map((s) => (
-                    <li key={s.slug}>
-                      <Link href={`/services/${s.slug}`} className="text-navy hover:text-gold text-sm font-medium transition-colors flex items-center gap-2">
-                        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
-                        {s.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                {/* Other services */}
+                <div className="mt-6 bg-gray-50 rounded-2xl p-6">
+                  <p className="text-gold font-semibold text-xs uppercase tracking-[0.2em] mb-4">Other Services</p>
+                  <ul className="space-y-3">
+                    {otherServices.map((s) => (
+                      <li key={s.slug}>
+                        <Link
+                          href={`/services/${s.slug}`}
+                          className="text-gray-700 hover:text-gold text-sm font-medium transition-colors flex items-center gap-3 group"
+                        >
+                          <svg viewBox="0 0 24 24" className="w-4 h-4 text-gray-300 group-hover:text-gold transition-colors" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                          </svg>
+                          {s.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -123,18 +157,35 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* CTA */}
-      <section className="py-12 bg-navy text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold mb-4">Need {service.name.toLowerCase()}?</h2>
-          <p className="text-white/70 mb-6">
+      <section className="relative py-32 md:py-40 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-navy-dark/90" />
+          <div className="absolute inset-0 grain" />
+        </div>
+        <div className="relative max-w-3xl mx-auto px-4 text-center animate-on-scroll">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+            Need {service.name.toLowerCase()}?
+          </h2>
+          <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
             Call us for a free, no-obligation quote. We serve Newmarket, Aurora, and all of York Region.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={`tel:${client.phone}`} className="bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-3 rounded transition-colors">
+            <a
+              href={`tel:${client.phone}`}
+              className="glass hover:bg-white/10 text-white font-bold px-10 py-4 rounded-lg text-lg transition-all duration-300"
+            >
               Call {client.phone}
             </a>
-            <Link href="/contact" className="bg-gold hover:bg-gold-dark text-navy-dark font-bold px-8 py-3 rounded transition-colors">
-              Request a Quote Online
+            <Link
+              href="/contact"
+              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold px-10 py-4 rounded-lg text-lg transition-all duration-300 shadow-lg shadow-gold/20"
+            >
+              Request a Quote
             </Link>
           </div>
         </div>

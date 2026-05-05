@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { client } from '@/data/client';
 import QuoteForm from '@/components/QuoteForm';
 
@@ -10,91 +11,118 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="bg-navy-dark py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <p className="text-gold font-medium text-sm uppercase tracking-wider mb-2">Contact Us</p>
-          <h1 className="text-4xl font-bold text-white mb-4">Get in Touch</h1>
-          <p className="text-white/70 max-w-2xl text-lg">
-            Whether you need a quote, have a question, or need emergency service, we're here.
-          </p>
+      {/* Hero — immersive */}
+      <section className="relative min-h-[50vh] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 hero-gradient" />
+          <div className="absolute inset-0 grain" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
+          <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Contact Us</p>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+              Let's Get{' '}
+              <span className="gradient-text">Started</span>
+            </h1>
+            <p className="text-white/60 max-w-xl text-lg leading-relaxed">
+              Whether you need a quote, have a question, or need emergency service, we're here.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="py-16">
+      {/* Contact Content */}
+      <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
-                <div className="space-y-6">
-                  <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-lg bg-navy/10 flex items-center justify-center shrink-0">
-                      <svg viewBox="0 0 24 24" className="w-5 h-5 text-navy" fill="none" stroke="currentColor" strokeWidth="2">
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Contact Info — left side */}
+            <div className="animate-on-scroll slide-left">
+              <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Get in Touch</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 tracking-tight leading-tight">
+                We respond{' '}
+                <span className="gradient-text">within 2 hours.</span>
+              </h2>
+
+              <div className="space-y-6 mb-12">
+                {[
+                  {
+                    icon: (
+                      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
                         <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">Phone</p>
-                      <a href={`tel:${client.phone}`} className="text-navy hover:text-gold text-lg font-bold transition-colors">
-                        {client.phone}
-                      </a>
-                      <p className="text-sm text-gray-500 mt-1">{client.hours.emergency}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-lg bg-navy/10 flex items-center justify-center shrink-0">
-                      <svg viewBox="0 0 24 24" className="w-5 h-5 text-navy" fill="none" stroke="currentColor" strokeWidth="2">
+                    ),
+                    label: 'Phone',
+                    value: client.phone,
+                    href: `tel:${client.phone}`,
+                    sub: client.hours.emergency,
+                  },
+                  {
+                    icon: (
+                      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
                         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">Email</p>
-                      <a href={`mailto:${client.email}`} className="text-navy hover:text-gold transition-colors">
-                        {client.email}
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-lg bg-navy/10 flex items-center justify-center shrink-0">
-                      <svg viewBox="0 0 24 24" className="w-5 h-5 text-navy" fill="none" stroke="currentColor" strokeWidth="2">
+                    ),
+                    label: 'Email',
+                    value: client.email,
+                    href: `mailto:${client.email}`,
+                    sub: 'We reply same-day during business hours',
+                  },
+                  {
+                    icon: (
+                      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                         <circle cx="12" cy="10" r="3" />
                       </svg>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">Service Area</p>
-                      <p className="text-gray-600">{client.address}</p>
-                      <p className="text-sm text-gray-500 mt-1">
-                        Serving {client.areas.map(a => a.name).join(', ')}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-lg bg-navy/10 flex items-center justify-center shrink-0">
-                      <svg viewBox="0 0 24 24" className="w-5 h-5 text-navy" fill="none" stroke="currentColor" strokeWidth="2">
+                    ),
+                    label: 'Service Area',
+                    value: client.address,
+                    sub: `Serving ${client.areas.slice(0, 4).map(a => a.name).join(', ')}, and more`,
+                  },
+                  {
+                    icon: (
+                      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
                         <circle cx="12" cy="12" r="10" />
                         <polyline points="12 6 12 12 16 14" />
                       </svg>
+                    ),
+                    label: 'Hours',
+                    value: client.hours.regular,
+                    sub: client.hours.emergency,
+                    subGold: true,
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-5 group">
+                    <div className="w-12 h-12 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 text-navy group-hover:bg-gold/10 group-hover:text-gold group-hover:border-gold/20 transition-all duration-300">
+                      {item.icon}
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900 mb-1">Hours</p>
-                      <p className="text-gray-600">{client.hours.regular}</p>
-                      <p className="text-gold font-medium text-sm mt-1">{client.hours.emergency}</p>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{item.label}</p>
+                      {item.href ? (
+                        <a href={item.href} className="text-gray-900 font-bold text-lg hover:text-gold transition-colors">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-gray-900 font-bold text-lg">{item.value}</p>
+                      )}
+                      {item.sub && (
+                        <p className={`text-sm mt-0.5 ${item.subGold ? 'text-gold font-medium' : 'text-gray-400'}`}>{item.sub}</p>
+                      )}
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
 
               {/* Payment methods */}
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="font-semibold text-gray-900 mb-3">Payment Methods</h3>
+              <div className="bg-gray-50 rounded-2xl p-6">
+                <p className="text-xs text-gray-400 uppercase tracking-wider mb-3">Payment Methods</p>
                 <div className="flex flex-wrap gap-2">
                   {client.paymentMethods.map((method) => (
-                    <span key={method} className="bg-white border border-gray-200 px-3 py-1.5 rounded text-sm text-gray-700">
+                    <span key={method} className="bg-white border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-700 font-medium">
                       {method}
                     </span>
                   ))}
@@ -102,15 +130,41 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Form */}
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-2">Request a Free Quote</h2>
-              <p className="text-gray-500 text-sm mb-6">
-                Tell us about your project. We'll get back to you within 2 hours during business hours.
-              </p>
-              <QuoteForm />
+            {/* Quote Form — elevated card */}
+            <div className="animate-on-scroll slide-right">
+              <div className="bg-white rounded-3xl shadow-2xl shadow-navy/10 p-10 relative overflow-hidden sticky top-28">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Request a Free Quote</h3>
+                <p className="text-gray-400 mb-8">Tell us about your project. No obligation, no pressure.</p>
+                <QuoteForm />
+              </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Emergency CTA */}
+      <section className="py-24 md:py-32 bg-navy-dark relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-red/10 rounded-full blur-3xl" />
+        <div className="max-w-4xl mx-auto px-4 text-center relative animate-on-scroll">
+          <div className="w-16 h-16 rounded-2xl bg-red/10 flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-red" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </div>
+          <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Electrical Emergency?</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+            Don't wait. Call now.
+          </h2>
+          <p className="text-white/40 text-lg mb-10 max-w-lg mx-auto">
+            Sparking outlets, burning smells, power outages, tripped breakers that won't reset. We're available 24/7 for emergencies across York Region.
+          </p>
+          <a
+            href={`tel:${client.phone}`}
+            className="btn-premium inline-block bg-gold hover:bg-gold-dark text-navy-dark font-bold px-12 py-5 rounded-lg text-xl transition-all duration-300 shadow-lg shadow-gold/20"
+          >
+            Call {client.phone}
+          </a>
         </div>
       </section>
     </>
