@@ -15,24 +15,31 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const area = client.areas.find((a) => a.slug === slug);
+  const area = client.areas.find((a) => a.slug === slug) as any;
   if (!area) return {};
   return {
     title: `Electrician in ${area.name}, ON`,
-    description: `${client.name} provides licensed electrical services in ${area.name}, Ontario. Panel upgrades, EV chargers, wiring, landscape lighting. ESA licensed, fully insured. Call ${client.phone}.`,
+    description: `${client.name} provides licensed electrical services in ${area.name}, Ontario. ${area.topServices ? area.topServices.slice(0, 3).join(', ') + ', and more.' : 'Panel upgrades, EV chargers, wiring, landscape lighting.'} ESA licensed, fully insured. Call ${client.phone}.`,
   };
 }
 
 export default async function AreaPage({ params }: Props) {
   const { slug } = await params;
-  const area = client.areas.find((a) => a.slug === slug);
+  const area = client.areas.find((a) => a.slug === slug) as any;
   if (!area) notFound();
 
   const nearbyAreas = client.areas.filter((a) => a.slug !== slug).slice(0, 5);
+  const topServiceNames = area.topServices || [];
+  const topServices = topServiceNames
+    .map((name: string) => client.services.find((s) => s.name === name))
+    .filter(Boolean);
+  const otherServices = client.services.filter(
+    (s) => !topServiceNames.includes(s.name)
+  ).slice(0, 4);
 
   return (
     <>
-      {/* Hero — immersive */}
+      {/* Hero */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -45,7 +52,6 @@ export default async function AreaPage({ params }: Props) {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-sm text-white/40 mb-6">
               <Link href="/" className="hover:text-gold transition-colors">Home</Link>
               <span>/</span>
@@ -69,7 +75,7 @@ export default async function AreaPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-16">
             <div className="lg:col-span-2 space-y-16">
-              {/* Intro */}
+              {/* Intro with unique area content */}
               <div className="animate-on-scroll">
                 <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Local Service</p>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
@@ -77,19 +83,38 @@ export default async function AreaPage({ params }: Props) {
                   <span className="gradient-text">{area.name}.</span>
                 </h2>
                 <div className="space-y-5 text-gray-600 leading-relaxed text-[17px]">
+                  {area.description ? (
+                    <p>{area.description}</p>
+                  ) : (
+                    <p>
+                      {client.name} has been serving {area.name} and the broader {area.region} area for over {client.yearsInBusiness} years.
+                      When you call us, you're getting a local electrician who knows the area, understands the housing stock,
+                      and can be at your door the same day for most jobs.
+                    </p>
+                  )}
                   <p>
-                    {client.name} has been serving {area.name} and the broader {area.region} area for over {client.yearsInBusiness} years.
-                    When you call us, you're getting a local electrician who knows the area, understands the housing stock,
-                    and can be at your door the same day for most jobs.
-                  </p>
-                  <p>
-                    We handle everything from a single outlet repair to a full house rewire. Every job comes with an ESA permit
-                    where required, a clean jobsite, and a clear quote before any work starts. No surprises.
+                    Every job comes with an ESA permit where required, a clean jobsite, and a clear quote before any work starts. No surprises, no upselling, no hidden charges.
                   </p>
                 </div>
               </div>
 
-              {/* Why choose us — premium cards */}
+              {/* Popular services in this area */}
+              {topServices.length > 0 && (
+                <div className="animate-on-scroll">
+                  <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Most Requested</p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
+                    Popular in{' '}
+                    <span className="gradient-text">{area.name}.</span>
+                  </h2>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
+                    {topServices.map((service: any) => (
+                      <ServiceCard key={service.slug} {...service} />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Why choose us */}
               <div className="animate-on-scroll">
                 <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Why Us</p>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
@@ -118,16 +143,28 @@ export default async function AreaPage({ params }: Props) {
                 </div>
               </div>
 
-              {/* Services in this area */}
+              {/* All services list */}
               <div className="animate-on-scroll">
-                <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Available Services</p>
+                <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Full Service List</p>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
-                  Services in{' '}
+                  All services in{' '}
                   <span className="gradient-text">{area.name}.</span>
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children">
                   {client.services.map((service) => (
-                    <ServiceCard key={service.slug} {...service} />
+                    <Link
+                      key={service.slug}
+                      href={`/services/${service.slug}`}
+                      className="flex items-center gap-4 bg-gray-50 rounded-xl p-5 group hover:bg-gold/5 transition-colors duration-300"
+                    >
+                      <svg viewBox="0 0 24 24" className="w-5 h-5 text-gray-300 group-hover:text-gold transition-colors shrink-0" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                      </svg>
+                      <div>
+                        <p className="font-semibold text-gray-900 text-sm group-hover:text-gold transition-colors">{service.name}</p>
+                        <p className="text-gray-400 text-xs mt-0.5">{service.shortDescription}</p>
+                      </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -143,7 +180,6 @@ export default async function AreaPage({ params }: Props) {
                   <QuoteForm />
                 </div>
 
-                {/* Nearby areas */}
                 <div className="mt-6 bg-gray-50 rounded-2xl p-6">
                   <p className="text-gold font-semibold text-xs uppercase tracking-[0.2em] mb-4">Nearby Areas</p>
                   <ul className="space-y-3">

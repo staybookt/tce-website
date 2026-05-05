@@ -296,3 +296,48 @@ a[href^="tel:"] {
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
 }
+
+/* FAQ accordion */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::marker {
+  display: none;
+  content: '';
+}
+
+details[open] summary {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Form focus transitions */
+input:focus,
+select:focus,
+textarea:focus {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Select dropdown arrow fix */
+select {
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+/* Timeline urgency selector */
+.urgency-btn {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Smooth step counter transitions */
+@keyframes countIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
