@@ -8,7 +8,7 @@ const services = [
     id: 'panel-upgrade',
     name: 'Panel Upgrade',
     icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
       </svg>
     ),
@@ -22,7 +22,7 @@ const services = [
     id: 'ev-charger',
     name: 'EV Charger',
     icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5H18V15H4.5v-4.5zM3.75 18h15A2.25 2.25 0 0021 15.75v-6a2.25 2.25 0 00-2.25-2.25h-15A2.25 2.25 0 001.5 9.75v6A2.25 2.25 0 003.75 18z" />
       </svg>
     ),
@@ -36,7 +36,7 @@ const services = [
     id: 'pot-lights',
     name: 'Pot Lights',
     icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
       </svg>
     ),
@@ -50,7 +50,7 @@ const services = [
     id: 'knob-tube',
     name: 'Knob & Tube Removal',
     icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
     ),
@@ -64,7 +64,7 @@ const services = [
     id: 'landscape-lighting',
     name: 'Landscape Lighting',
     icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
       </svg>
     ),
@@ -78,7 +78,7 @@ const services = [
     id: 'generator',
     name: 'Generator Install',
     icon: (
-      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
       </svg>
     ),
@@ -98,9 +98,8 @@ export default function CostEstimator() {
 
   return (
     <div className="space-y-8">
-      {/* Step 1: Pick service */}
       <div>
-        <p className="text-sm font-semibold text-gold uppercase tracking-[0.15em] mb-4">
+        <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">
           Step 1 — What do you need?
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -111,17 +110,13 @@ export default function CostEstimator() {
                 setSelectedService(service.id);
                 setSelectedOption(null);
               }}
-              className={`flex items-center gap-3 p-4 rounded-xl border text-left transition-all duration-300 ${
+              className={`flex items-center gap-3 p-4 rounded-xl border text-left transition-all duration-200 ${
                 selectedService === service.id
-                  ? 'bg-gold/10 border-gold/40 text-white'
-                  : 'bg-white/[0.04] border-white/[0.08] text-white/60 hover:bg-white/[0.08] hover:border-white/[0.15]'
+                  ? 'bg-blue-50 border-blue-300 text-blue-700'
+                  : 'bg-slate-50 border-gray-200 text-gray-600 hover:bg-slate-100 hover:border-gray-300'
               }`}
             >
-              <div
-                className={`shrink-0 transition-colors duration-300 ${
-                  selectedService === service.id ? 'text-gold' : 'text-white/40'
-                }`}
-              >
+              <div className={`shrink-0 ${selectedService === service.id ? 'text-blue-600' : 'text-gray-400'}`}>
                 {service.icon}
               </div>
               <span className="text-sm font-medium">{service.name}</span>
@@ -130,10 +125,9 @@ export default function CostEstimator() {
         </div>
       </div>
 
-      {/* Step 2: Pick scope */}
       {activeService && (
-        <div style={{ animation: 'fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-          <p className="text-sm font-semibold text-gold uppercase tracking-[0.15em] mb-4">
+        <div>
+          <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">
             Step 2 — What&apos;s the scope?
           </p>
           <div className="space-y-3">
@@ -141,16 +135,16 @@ export default function CostEstimator() {
               <button
                 key={i}
                 onClick={() => setSelectedOption(i)}
-                className={`w-full flex items-center justify-between p-5 rounded-xl border text-left transition-all duration-300 ${
+                className={`w-full flex items-center justify-between p-5 rounded-xl border text-left transition-all duration-200 ${
                   selectedOption === i
-                    ? 'bg-gold/10 border-gold/40'
-                    : 'bg-white/[0.04] border-white/[0.08] hover:bg-white/[0.08] hover:border-white/[0.15]'
+                    ? 'bg-blue-50 border-blue-300'
+                    : 'bg-slate-50 border-gray-200 hover:bg-slate-100 hover:border-gray-300'
                 }`}
               >
-                <span className={`text-sm font-medium ${selectedOption === i ? 'text-white' : 'text-white/60'}`}>
+                <span className={`text-sm font-medium ${selectedOption === i ? 'text-blue-700' : 'text-gray-600'}`}>
                   {option.label}
                 </span>
-                <span className={`text-sm font-semibold tabular-nums ${selectedOption === i ? 'text-gold' : 'text-white/30'}`}>
+                <span className={`text-sm font-semibold tabular-nums ${selectedOption === i ? 'text-blue-600' : 'text-gray-400'}`}>
                   ${option.low.toLocaleString()} – ${option.high.toLocaleString()}
                 </span>
               </button>
@@ -159,35 +153,31 @@ export default function CostEstimator() {
         </div>
       )}
 
-      {/* Result */}
       {activeService && selectedOption !== null && (
-        <div
-          className="bg-gradient-to-br from-gold/15 to-gold/5 border border-gold/30 rounded-2xl p-8"
-          style={{ animation: 'fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)' }}
-        >
+        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
             <div>
-              <p className="text-white/50 text-xs uppercase tracking-wider mb-1">Estimated Range</p>
-              <p className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              <p className="text-blue-600 text-xs uppercase tracking-wider font-semibold mb-1">Estimated Range</p>
+              <p className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
                 ${activeService.options[selectedOption].low.toLocaleString()}
-                <span className="text-white/40 mx-2">–</span>
+                <span className="text-gray-300 mx-2">–</span>
                 ${activeService.options[selectedOption].high.toLocaleString()}
               </p>
             </div>
-            <p className="text-white/40 text-xs leading-relaxed max-w-[200px]">
-              Based on typical jobs in York Region. Your actual quote may vary based on site conditions.
+            <p className="text-gray-500 text-xs leading-relaxed max-w-[200px]">
+              Based on typical jobs in York Region. Your actual quote may vary.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/contact"
-              className="bg-gold hover:bg-gold-dark text-white font-bold px-8 py-3.5 rounded-xl text-sm transition-all duration-300 text-center shadow-lg shadow-gold/20"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-xl text-sm transition-all duration-200 text-center"
             >
               Get Your Exact Quote
             </Link>
             <a
               href="tel:(905) 555-0123"
-              className="bg-white/[0.08] hover:bg-white/[0.12] text-white font-semibold px-8 py-3.5 rounded-xl text-sm transition-all duration-300 text-center border border-white/[0.1]"
+              className="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-8 py-3.5 rounded-xl text-sm transition-all duration-200 text-center border border-gray-200"
             >
               Call Now
             </a>
