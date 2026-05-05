@@ -1,15 +1,23 @@
 export const serviceContent: Record<string, {
   headline: string;
   intro: string;
+  processHeading: string;
+  processSubheading: string;
   whatToExpect: string;
+  issuesHeading: string;
   problems: string[];
   whyPro: string;
+  pricingNote: string;
+  faqs: { q: string; a: string }[];
   metaDescription: string;
 }> = {
   'panel-upgrades': {
     headline: 'Panel Upgrades in York Region',
     intro: `If your home still runs on a 60 or 100 amp panel, you're probably already feeling it. Breakers tripping when you run the dryer and microwave at the same time. Lights dimming when the AC kicks in. An older panel can't keep up with how much power a modern home actually uses. A panel upgrade brings your home's electrical system up to current code and gives you the capacity to run everything you need without worrying about overloading.`,
+    processHeading: 'How a panel upgrade works.',
+    processSubheading: 'From Assessment to Inspection',
     whatToExpect: `We start with a full assessment of your current panel and your home's electrical load. If an upgrade makes sense, we'll walk you through the options, pull the ESA permit, and schedule the work. The upgrade itself typically takes a full day. We handle everything from disconnecting the old panel to wiring the new one, labeling every circuit, and scheduling the ESA inspection. When we leave, your panel is up to code, your breakers are labeled, and your home can handle whatever you plug in.`,
+    issuesHeading: 'Signs your panel needs attention.',
     problems: [
       'Breakers tripping frequently',
       'Fuse panel (screw-in fuses instead of breakers)',
@@ -21,12 +29,22 @@ export const serviceContent: Record<string, {
       'Federal Pacific or Zinsco panel (known safety hazards)',
     ],
     whyPro: `Panel work involves your home's main electrical feed. It's not a YouTube project. An improperly wired panel is a fire hazard, and in Ontario, panel work requires an ESA permit and inspection. We're licensed, we pull permits, and we get it right the first time.`,
+    pricingNote: 'Most residential panel upgrades (100A to 200A) run between $2,500 and $4,500 depending on the existing wiring and what needs to be brought up to code. We quote the exact price before starting.',
+    faqs: [
+      { q: 'How much does a panel upgrade cost in Ontario?', a: 'A typical 100A to 200A upgrade runs $2,500 to $4,500. The price depends on your existing wiring, the distance from the meter to the panel, and whether any circuits need to be reworked. We provide an exact quote before any work starts.' },
+      { q: 'How long does a panel upgrade take?', a: 'Most residential panel upgrades are completed in one day. Your power will be off for several hours during the swap. We schedule the ESA inspection and handle that separately.' },
+      { q: 'Do I need a permit for a panel upgrade?', a: 'Yes. In Ontario, all panel work requires an ESA (Electrical Safety Authority) permit and inspection. We pull the permit and schedule the inspection as part of every job.' },
+      { q: 'Will my insurance company require a panel upgrade?', a: 'Many insurance companies require upgrades for homes with Federal Pacific, Zinsco, or fuse panels. Some won\'t insure at all until the panel is replaced. If your insurer has flagged your panel, we can handle the upgrade and provide documentation.' },
+    ],
     metaDescription: 'ESA licensed panel upgrades in Newmarket, Aurora, and York Region. 100 to 200 amp upgrades, fuse panel replacements, and more. Free quotes.',
   },
   'ev-charger-installation': {
     headline: 'EV Charger Installation in York Region',
     intro: `Charging your electric vehicle at home is the single biggest convenience of owning one. No more gas stations, no more public charger hunting. A Level 2 home charger gives you a full charge overnight, every night. We install all major brands and handle the entire process from panel assessment to final hookup.`,
+    processHeading: 'From panel check to first charge.',
+    processSubheading: 'The Installation Process',
     whatToExpect: `We'll check your electrical panel to make sure it can handle the additional 40-50 amp load. If your panel needs an upgrade, we'll quote that too so there are no surprises. We install a dedicated 240V circuit from your panel to your garage or driveway, mount the charger, and test everything. Most installations take half a day. We handle the ESA permit and inspection.`,
+    issuesHeading: 'Why homeowners upgrade to Level 2.',
     problems: [
       'Level 1 charging is too slow (8+ hours for a partial charge)',
       'Need a dedicated circuit for the charger',
@@ -36,12 +54,22 @@ export const serviceContent: Record<string, {
       'Looking to install chargers at a commercial property',
     ],
     whyPro: `EV charger installation requires a dedicated high-amperage circuit. Done wrong, it's a fire risk. We size the circuit correctly, use the right wire gauge, and make sure your panel can handle the load. ESA permit and inspection included.`,
+    pricingNote: 'A standard Level 2 charger installation (charger not included) typically runs $800 to $1,800 depending on the distance from your panel to the charging location and whether your panel needs an upgrade.',
+    faqs: [
+      { q: 'Can my panel handle an EV charger?', a: 'It depends on your current panel capacity and load. A Level 2 charger draws 40-50 amps, which is significant. We assess your panel first and let you know if an upgrade is needed before quoting the charger install.' },
+      { q: 'What\'s the difference between Level 1 and Level 2 charging?', a: 'Level 1 uses a standard 120V outlet and adds about 5-8 km of range per hour. Level 2 uses a 240V dedicated circuit and adds 30-50 km per hour. For most EV owners, Level 2 means a full charge overnight.' },
+      { q: 'Do you install Tesla Wall Connectors?', a: 'Yes. We install all major brands including Tesla Wall Connector, ChargePoint, Grizzl-E, and FLO. We can also help you choose if you\'re not sure which charger is right for your vehicle.' },
+      { q: 'Can I install a charger outside?', a: 'Absolutely. We use outdoor-rated chargers and weatherproof wiring for driveway or carport installations. The charger and all connections are rated for Canadian winters.' },
+    ],
     metaDescription: 'Professional EV charger installation in Newmarket and York Region. Level 2 home chargers, all brands. ESA licensed electrician. Free quotes.',
   },
   'landscape-lighting': {
     headline: 'Landscape Lighting in York Region',
     intro: `Good landscape lighting does two things at once. It makes your property look great after dark, and it makes it safer. Path lights, accent lighting on architectural features, uplighting on trees, security lighting around entries. Done right, it transforms how your home feels at night. Done wrong, it looks like a runway.`,
+    processHeading: 'Designed for your property.',
+    processSubheading: 'Our Design Process',
     whatToExpect: `We start with a walkthrough of your property to understand what you want to highlight and what areas need better light for safety. We'll put together a layout and give you a clear quote before any work starts. Installation includes trenching for underground wiring, setting fixtures, connecting to a dedicated circuit with a timer or smart controller, and testing everything at night to make sure the light levels are right.`,
+    issuesHeading: 'Common reasons to add outdoor lighting.',
     problems: [
       'Dark walkways and entry points',
       'Want to highlight landscaping or architectural features',
@@ -51,12 +79,21 @@ export const serviceContent: Record<string, {
       'Need lighting for outdoor entertaining areas',
     ],
     whyPro: `Low-voltage landscape lighting is relatively safe to DIY, but the results show. Professional installation means proper wire sizing, weatherproof connections, and a layout designed by someone who understands how light works outdoors. We also tie everything to a controller so you're not walking outside to flip switches.`,
+    pricingNote: 'Landscape lighting projects typically range from $2,000 to $6,000 depending on the number of fixtures, property size, and whether smart controls are included. We provide a detailed quote after the property walkthrough.',
+    faqs: [
+      { q: 'How much does landscape lighting cost?', a: 'Most residential projects fall between $2,000 and $6,000. A simple path lighting setup might be closer to $1,500. A full property design with accent lighting, uplighting, and smart controls can go higher. We quote after a walkthrough.' },
+      { q: 'Can I control the lights from my phone?', a: 'Yes. We install smart controllers that work with your phone, set schedules, and adjust brightness. Some systems integrate with Google Home or Alexa as well.' },
+      { q: 'What kind of bulbs do you use?', a: 'All LED. They last 25,000+ hours, use a fraction of the energy, and produce better quality light than halogen. We help you choose the right color temperature for the look you want.' },
+    ],
     metaDescription: 'Professional landscape lighting design and installation in York Region. Path lights, accent lighting, security lighting. ESA licensed. Free quotes.',
   },
   'pot-light-installation': {
     headline: 'Pot Light Installation in York Region',
     intro: `Pot lights are one of the fastest ways to modernize a room. They're clean, they disappear into the ceiling, and they put light exactly where you need it. Whether you're finishing a basement, renovating a kitchen, or just tired of the old dome light in the living room, recessed lighting makes the space feel bigger and brighter.`,
+    processHeading: 'Layout, install, cleanup.',
+    processSubheading: 'What the Job Looks Like',
     whatToExpect: `We'll look at the room, talk about how you use the space, and recommend a layout. Then we cut the holes, run the wiring, and install the fixtures. If you're going with LED (and you should, the energy savings are significant), we'll help you choose the right color temperature for the room. Most rooms take a few hours. We patch, we clean up, and we leave you with dimmable, energy-efficient lighting.`,
+    issuesHeading: 'When pot lights make sense.',
     problems: [
       'Outdated ceiling fixtures that don\'t provide enough light',
       'Want to modernize a kitchen, bathroom, or living room',
@@ -66,12 +103,22 @@ export const serviceContent: Record<string, {
       'Need task lighting over counters or workspaces',
     ],
     whyPro: `Cutting holes in your ceiling and running wire through your walls is permanent. If the spacing is off, the holes are too big, or the wiring isn't done right, it shows. We've installed thousands of pot lights and we get the layout right the first time.`,
+    pricingNote: 'Pot light installation typically costs $150 to $250 per light installed, depending on ceiling access and existing wiring. A typical kitchen with 6 lights runs $900 to $1,500. We quote the full job upfront.',
+    faqs: [
+      { q: 'How many pot lights do I need?', a: 'It depends on the room size and ceiling height. A general rule is one light per 25 square feet, but kitchens and workspaces need more. We recommend a layout based on your specific room.' },
+      { q: 'Should I get 4-inch or 6-inch pot lights?', a: '6-inch is standard for general lighting. 4-inch works better as accent or task lighting. For most rooms, we recommend 6-inch LED with a slim profile.' },
+      { q: 'Can I put pot lights in an insulated ceiling?', a: 'Yes, but you need IC-rated (insulation contact) fixtures. We always use IC-rated housings when insulation is present. It\'s a code requirement and a fire safety issue.' },
+      { q: 'What color temperature should I choose?', a: '3000K (warm white) is the most popular for living spaces. 4000K (neutral) works well in kitchens and bathrooms. 2700K gives a warmer, cozier feel. We bring samples so you can see the difference.' },
+    ],
     metaDescription: 'Pot light installation in Newmarket, Aurora, and York Region. LED recessed lighting for kitchens, basements, and living rooms. Free quotes.',
   },
   'knob-and-tube-removal': {
     headline: 'Knob & Tube Removal in York Region',
     intro: `If your home was built before 1950, there's a good chance it still has knob-and-tube wiring somewhere. It was the standard for decades, but it's not compatible with modern electrical loads, it can't be insulated over, and most insurance companies won't cover a home that still has it. Removing it is a big job, but it's one of the best investments you can make in an older home.`,
+    processHeading: 'A room-by-room approach.',
+    processSubheading: 'How We Handle It',
     whatToExpect: `We inspect the entire home to identify all knob-and-tube circuits. Then we put together a plan to replace them with modern NMD-90 wiring, circuit by circuit. The scope depends on the size of the home and how accessible the wiring is. We pull ESA permits, do the work room by room to minimize disruption, and schedule the inspection. When we're done, you can insulate your walls, your insurance company will be happy, and your home is safer.`,
+    issuesHeading: 'Why K&T wiring needs to go.',
     problems: [
       'Insurance company won\'t insure or is charging a premium',
       'Can\'t add insulation because of knob-and-tube in walls',
@@ -81,12 +128,22 @@ export const serviceContent: Record<string, {
       'Visible deterioration on exposed wiring in attic or basement',
     ],
     whyPro: `Knob-and-tube removal is not a weekend project. It involves working with live circuits, opening walls, and replacing wiring throughout the home. This is work that requires a licensed electrician, an ESA permit, and a proper inspection. Cutting corners on this job puts your family at risk.`,
+    pricingNote: 'K&T removal typically costs $8,000 to $15,000 for a full house, depending on size, accessibility, and how much wiring needs replacement. Partial removal (one floor or a few circuits) can be less. We provide a detailed breakdown after inspection.',
+    faqs: [
+      { q: 'How much does knob-and-tube removal cost?', a: 'A full house K&T removal typically runs $8,000 to $15,000 depending on the size of the home and accessibility. A partial removal (attic only, or a few circuits) can be $3,000 to $6,000. We inspect first and give you an exact quote.' },
+      { q: 'Will I need to open my walls?', a: 'In most cases, some wall access is needed. We try to fish wire through existing paths where possible to minimize patching. We\'ll tell you upfront what kind of wall work to expect.' },
+      { q: 'Can I insulate over knob-and-tube wiring?', a: 'No. The Ontario Building Code prohibits insulation in contact with K&T wiring because it can cause overheating. Once the K&T is removed, you can insulate freely.' },
+      { q: 'Will my insurance drop me if I have K&T?', a: 'Many insurers in Ontario won\'t write new policies for homes with active K&T wiring. Some will insure but charge higher premiums. Removing it resolves the issue and we provide documentation for your insurer.' },
+    ],
     metaDescription: 'Safe knob and tube wiring removal in York Region. ESA licensed, fully insured. Insurance-compliant rewiring for older homes. Free quotes.',
   },
   'residential-wiring': {
     headline: 'Residential Wiring in York Region',
     intro: `Whether you're building new, adding a room, or renovating the kitchen, the wiring behind the walls matters. It's the part you'll never see, but it determines whether your home is safe, whether your circuits can handle the load, and whether everything works the way it should for the next 30 years.`,
+    processHeading: 'Built into your timeline.',
+    processSubheading: 'Working With Your Contractor',
     whatToExpect: `For new construction or additions, we work with your builder or contractor to rough in all the wiring before the drywall goes up. We place outlets, switches, and fixtures exactly where you want them. For renovations, we assess the existing wiring, bring anything up to code that needs it, and add new circuits as needed. We pull all permits and schedule ESA inspections.`,
+    issuesHeading: 'Projects that need an electrician.',
     problems: [
       'Building a new home or addition',
       'Major renovation (kitchen, bathroom, basement)',
@@ -96,12 +153,21 @@ export const serviceContent: Record<string, {
       'Adding a hot tub, sauna, or workshop',
     ],
     whyPro: `The wiring in your walls is there for decades. If it's not done right, you deal with tripping breakers, insufficient outlets, and potential safety hazards for years. We wire homes to exceed code, not just meet it.`,
+    pricingNote: 'Residential wiring costs vary widely by scope. A basement finish might run $3,000 to $5,000 for electrical. A full new-build rough-in could be $10,000 to $20,000+. We quote per project after reviewing the plans or walking the space.',
+    faqs: [
+      { q: 'How many outlets do I need per room?', a: 'The Ontario Electrical Code requires outlets every 1.8 metres (6 feet) along walls in living areas. Kitchens require dedicated circuits for countertop outlets. We typically recommend going beyond minimum code for convenience.' },
+      { q: 'Do I need a permit for a renovation?', a: 'If the work involves new wiring, moving circuits, or adding outlets, yes. We pull all necessary ESA permits and schedule inspections as part of the job.' },
+      { q: 'Can you work with my general contractor?', a: 'Absolutely. We coordinate timing with your GC to rough in wiring at the right stage, before drywall goes up. We\'re used to working within renovation timelines.' },
+    ],
     metaDescription: 'Residential electrical wiring in Newmarket and York Region. New builds, renovations, additions. ESA licensed electrician. Free quotes.',
   },
   'commercial-electrical': {
     headline: 'Commercial Electrical in York Region',
     intro: `Your business can't afford electrical problems. A tripped breaker during business hours means lost revenue. Bad lighting means a worse experience for customers and employees. We handle commercial electrical for offices, retail spaces, restaurants, and light industrial. Same quality, same reliability, same people as our residential work.`,
+    processHeading: 'Minimal disruption to your business.',
+    processSubheading: 'How We Work Commercially',
     whatToExpect: `We'll assess your space, understand your needs, and put together a scope of work. We're flexible on scheduling because we know downtime costs money. For new buildouts, we work with your general contractor. For service calls, we prioritize getting your business back up and running.`,
+    issuesHeading: 'Commercial jobs we handle.',
     problems: [
       'Tenant buildout or new office setup',
       'Lighting upgrades (LED retrofit)',
@@ -111,12 +177,21 @@ export const serviceContent: Record<string, {
       'Sign installation and wiring',
     ],
     whyPro: `Commercial electrical has its own code requirements, and mistakes are expensive. We handle permits, inspections, and coordinate with other trades to keep your project on schedule.`,
+    pricingNote: 'Commercial projects are quoted per scope. A simple LED retrofit might be $2,000 to $5,000. A full tenant buildout electrical package depends on square footage and requirements. We provide detailed quotes after a site visit.',
+    faqs: [
+      { q: 'Can you work after business hours?', a: 'Yes. We schedule commercial work around your business hours whenever possible. Evening and weekend work is available for projects that can\'t interrupt operations.' },
+      { q: 'Do you handle fire alarm and emergency lighting?', a: 'Yes. We install, test, and maintain emergency lighting, exit signs, and fire alarm wiring to meet Ontario Fire Code requirements.' },
+      { q: 'Can you do an LED retrofit on our existing fixtures?', a: 'In most cases, yes. We can retrofit existing fluorescent fixtures with LED tubes or replace fixtures entirely. LED retrofits typically cut lighting energy costs by 50-70%.' },
+    ],
     metaDescription: 'Commercial electrical services in York Region. Office buildouts, LED upgrades, equipment circuits. ESA licensed. Minimal downtime. Free quotes.',
   },
   'generator-installation': {
     headline: 'Generator Installation in York Region',
     intro: `Power outages in York Region are more common than people think, especially during winter storms and summer heat waves. A whole-home generator kicks in automatically when the power goes out. Your furnace keeps running, your fridge stays cold, your sump pump keeps working. No candles, no extension cords from the neighbor, no worrying about frozen pipes.`,
+    processHeading: 'Automatic protection, professionally installed.',
+    processSubheading: 'The Setup',
     whatToExpect: `We help you choose the right size generator based on what you want to keep running during an outage. We install a transfer switch at your panel, run the gas line (or coordinate with a gas fitter), set the generator on a concrete pad outside, and test the automatic switchover. When the power goes out, the generator starts within seconds. When it comes back, it shuts off on its own.`,
+    issuesHeading: 'When a generator makes sense.',
     problems: [
       'Frequent power outages in your area',
       'Sump pump stops during outages (flooding risk)',
@@ -126,6 +201,13 @@ export const serviceContent: Record<string, {
       'Tired of dealing with portable generators',
     ],
     whyPro: `Generator installation involves high-voltage connections to your panel and either natural gas or propane fuel lines. The transfer switch has to be wired correctly or you risk back-feeding the grid, which is dangerous for utility workers and illegal. This is licensed electrician work, period.`,
+    pricingNote: 'A whole-home generator (installed) typically runs $8,000 to $15,000 depending on size and fuel type. A partial-home setup covering essentials can be $5,000 to $8,000. The generator unit itself is usually 40-50% of the cost.',
+    faqs: [
+      { q: 'What size generator do I need?', a: 'It depends on what you want to power. A 10kW generator covers essentials (furnace, fridge, sump pump, lights). A 20kW+ unit can power your entire home including AC. We do a load calculation to size it right.' },
+      { q: 'Does the generator start automatically?', a: 'Yes. The automatic transfer switch detects the outage and starts the generator within 10-30 seconds. When power is restored, it switches back and shuts down on its own.' },
+      { q: 'What fuel does it use?', a: 'Most whole-home generators run on natural gas (connected to your existing gas line) or propane. Natural gas is the most convenient since you never need to refuel. We coordinate with a gas fitter for the gas connection.' },
+      { q: 'How loud is a whole-home generator?', a: 'Modern generators run at about 65-70 decibels, similar to a normal conversation. They\'re significantly quieter than portable generators.' },
+    ],
     metaDescription: 'Whole-home generator installation in York Region. Automatic backup power for your home. ESA licensed, all permits handled. Free quotes.',
   },
 };

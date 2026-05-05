@@ -88,16 +88,46 @@ export const client = {
 
   // Service Areas
   areas: [
-    { slug: "newmarket", name: "Newmarket", region: "York Region", isPrimary: true },
-    { slug: "aurora", name: "Aurora", region: "York Region", isPrimary: true },
-    { slug: "east-gwillimbury", name: "East Gwillimbury", region: "York Region", isPrimary: false },
-    { slug: "bradford", name: "Bradford", region: "Simcoe County", isPrimary: false },
-    { slug: "keswick", name: "Keswick", region: "York Region", isPrimary: false },
-    { slug: "stouffville", name: "Stouffville", region: "York Region", isPrimary: false },
-    { slug: "king-city", name: "King City", region: "York Region", isPrimary: false },
-    { slug: "richmond-hill", name: "Richmond Hill", region: "York Region", isPrimary: false },
-    { slug: "markham", name: "Markham", region: "York Region", isPrimary: false },
-    { slug: "vaughan", name: "Vaughan", region: "York Region", isPrimary: false },
+    { slug: "newmarket", name: "Newmarket", region: "York Region", isPrimary: true,
+      description: "Our home base. We know Newmarket's housing stock inside and out, from the older homes along Main Street South that still have knob-and-tube, to the newer builds in Bristol and Glenway that need EV charger circuits. Most of our emergency calls come from Newmarket, and we can usually be on-site within 30 minutes.",
+      topServices: ["Panel Upgrades", "Knob & Tube Removal", "Pot Light Installation"],
+    },
+    { slug: "aurora", name: "Aurora", region: "York Region", isPrimary: true,
+      description: "Aurora has some of the highest EV adoption rates in York Region, and we've installed more Level 2 chargers here than anywhere else. We also do a lot of landscape lighting work in Aurora's established neighbourhoods, where homeowners are investing in curb appeal.",
+      topServices: ["EV Charger Installation", "Landscape Lighting", "Panel Upgrades"],
+    },
+    { slug: "east-gwillimbury", name: "East Gwillimbury", region: "York Region", isPrimary: false,
+      description: "East Gwillimbury is growing fast. Between the new subdivisions in Holland Landing and the older rural properties in Mount Albert, we handle everything from new-build rough-ins to upgrading panels in century homes that were never designed for modern electrical loads.",
+      topServices: ["Residential Wiring", "Panel Upgrades", "Generator Installation"],
+    },
+    { slug: "bradford", name: "Bradford", region: "Simcoe County", isPrimary: false,
+      description: "We cross the York Region line into Bradford regularly. It's a quick drive from our base in Newmarket, and Bradford's mix of new construction and agricultural properties means we see a wide range of work here, from barn power feeds to whole-house generators for properties that lose power during ice storms.",
+      topServices: ["Generator Installation", "Residential Wiring", "Commercial Electrical"],
+    },
+    { slug: "keswick", name: "Keswick", region: "York Region", isPrimary: false,
+      description: "Keswick's lakefront properties along Lake Simcoe have unique electrical needs. We handle dock lighting, outdoor entertainment areas, and the seasonal panel loads that come with cottages being converted to year-round homes. Storm-related power issues are common here, and we respond quickly.",
+      topServices: ["Landscape Lighting", "Generator Installation", "Panel Upgrades"],
+    },
+    { slug: "stouffville", name: "Stouffville", region: "York Region", isPrimary: false,
+      description: "Stouffville's blend of historic downtown buildings and rapidly expanding residential neighbourhoods keeps us busy. We do a lot of pot light retrofits in the older homes along Main Street and panel upgrades in the new developments that aren't wired for the owner's planned hot tub or EV charger.",
+      topServices: ["Pot Light Installation", "Panel Upgrades", "EV Charger Installation"],
+    },
+    { slug: "king-city", name: "King City", region: "York Region", isPrimary: false,
+      description: "King City's estate properties often need specialized electrical work. Large homes, heated driveways, extensive landscape lighting systems, multi-zone HVAC circuits, and detached workshops that need their own sub-panels. We're comfortable with the scale of work that King City properties require.",
+      topServices: ["Landscape Lighting", "Panel Upgrades", "Residential Wiring"],
+    },
+    { slug: "richmond-hill", name: "Richmond Hill", region: "York Region", isPrimary: false,
+      description: "Richmond Hill is one of our busiest service areas. Between the commercial electrical work along Yonge Street, the residential upgrades in the established neighbourhoods around Elgin Mills, and the new builds going up around Bayview, we're in Richmond Hill multiple times a week.",
+      topServices: ["Commercial Electrical", "Pot Light Installation", "EV Charger Installation"],
+    },
+    { slug: "markham", name: "Markham", region: "York Region", isPrimary: false,
+      description: "Markham's tech-forward homeowners are early adopters. EV chargers, smart home wiring, home office circuits with dedicated 20-amp outlets for workstations. We also handle a lot of commercial electrical work for the small businesses and offices along Highway 7 and in the Markham Innovation Exchange area.",
+      topServices: ["EV Charger Installation", "Commercial Electrical", "Residential Wiring"],
+    },
+    { slug: "vaughan", name: "Vaughan", region: "York Region", isPrimary: false,
+      description: "Vaughan is the southern edge of our service area, and we're there regularly. Between the commercial work in the Vaughan Metropolitan Centre, the residential projects in Kleinburg and Woodbridge, and the new developments along Major Mackenzie, Vaughan keeps us as busy as any of our closer-to-home areas.",
+      topServices: ["Commercial Electrical", "Panel Upgrades", "Pot Light Installation"],
+    },
   ],
 
   // Reviews (placeholder — will pull from Google once GBP is set up)
@@ -170,5 +200,5 @@ export const client = {
 
 export type Client = typeof client;
 export type Service = (typeof client.services)[number];
-export type Area = (typeof client.areas)[number];
+export type Area = (typeof client.areas)[number] & { description?: string; topServices?: string[] };
 export type Review = (typeof client.reviews)[number];
