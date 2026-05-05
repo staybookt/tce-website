@@ -366,7 +366,7 @@ export default function Home() {
             </a>
             <Link
               href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold px-10 py-4 rounded-xl text-base transition-all duration-300 shadow-lg shadow-gold/20 hover:scale-[1.02]"
+              className="btn-premium bg-gold hover:bg-gold-dark text-white font-bold px-10 py-4 rounded-xl text-base transition-all duration-300 shadow-lg shadow-gold/20 hover:scale-[1.02]"
             >
               Get a Free Quote
             </Link>

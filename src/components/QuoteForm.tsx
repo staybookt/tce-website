@@ -167,7 +167,7 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
       <button
         type="submit"
         disabled={submitting}
-        className="w-full btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-gold/20 hover:shadow-gold/40 disabled:opacity-60 disabled:cursor-not-allowed text-sm"
+        className="w-full btn-premium bg-gold hover:bg-gold-dark text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-gold/20 hover:shadow-gold/40 disabled:opacity-60 disabled:cursor-not-allowed text-sm"
       >
         {submitting ? (
           <span className="flex items-center justify-center gap-2">
