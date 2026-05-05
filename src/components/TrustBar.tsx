@@ -41,23 +41,22 @@ export default function TrustBar() {
   ];
 
   return (
-    <div className="relative bg-navy-dark border-b border-white/[0.05]">
-      <div className="absolute inset-0 bg-gradient-to-r from-navy-dark via-navy to-navy-dark" />
-      <div className="relative max-w-7xl mx-auto px-4">
+    <div className="bg-slate-50 border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4">
           {items.map((item, i) => (
             <div
               key={i}
               className={`flex items-center justify-center gap-4 py-6 px-4 ${
-                i < items.length - 1 ? 'md:border-r md:border-white/[0.06]' : ''
+                i < items.length - 1 ? 'md:border-r md:border-gray-200' : ''
               }`}
             >
-              <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
                 {item.icon}
               </div>
               <div>
-                <p className="text-white font-bold text-sm tracking-tight">{item.value}</p>
-                <p className="text-white/35 text-xs tracking-wide">{item.detail}</p>
+                <p className="text-gray-900 font-bold text-sm tracking-tight">{item.value}</p>
+                <p className="text-gray-400 text-xs tracking-wide">{item.detail}</p>
               </div>
             </div>
           ))}
