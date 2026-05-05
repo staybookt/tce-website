@@ -12,44 +12,68 @@ export default function Home() {
       <HeroBanner />
       <TrustBar />
 
-      {/* Services Section */}
-      <section className="py-24 md:py-32 bg-white">
+      {/* ═══ Services — Bento Grid with featured cards ═══ */}
+      <section className="py-28 md:py-36 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16 animate-on-scroll">
+          <div className="max-w-2xl mb-16 animate-on-scroll">
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">What We Do</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-              Electrical Services for{' '}
-              <span className="gradient-text">Homes &amp; Businesses</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-[-0.03em] leading-[1.05]">
+              Every electrical service
+              <br />
+              <span className="gradient-text">your home needs.</span>
             </h2>
-            <p className="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
-              From a single outlet to a full rewire, we handle residential and light commercial
-              electrical work across York Region.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
-            {client.services.map((service) => (
+          {/* Bento grid: 2 featured + 6 standard */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 stagger-children">
+            {client.services.slice(0, 2).map((service) => (
+              <ServiceCard key={service.slug} {...service} featured />
+            ))}
+            {client.services.slice(2).map((service) => (
               <ServiceCard key={service.slug} {...service} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works — Apple-style numbered steps */}
-      <section className="py-24 md:py-32 bg-gray-50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, var(--navy) 1px, transparent 0)`,
-          backgroundSize: '40px 40px',
-        }} />
+      {/* ═══ Stats Counter — Full-width, Apple numbers ═══ */}
+      <section className="py-24 md:py-28 bg-navy-dark relative overflow-hidden">
+        <div className="absolute inset-0 mesh-gradient opacity-50" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
         <div className="max-w-7xl mx-auto px-4 relative">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 animate-on-scroll">
+            {[
+              { number: `${client.yearsInBusiness}+`, label: 'Years in Business', sublabel: 'Serving York Region' },
+              { number: '5.0', label: 'Google Rating', sublabel: 'From Verified Reviews' },
+              { number: '24/7', label: 'Always Available', sublabel: 'Emergency Response' },
+              { number: '100%', label: 'ESA Compliant', sublabel: 'Every Single Job' },
+            ].map((stat, i) => (
+              <div key={i} className="text-center md:text-left">
+                <p className="text-5xl md:text-6xl lg:text-7xl font-bold text-white ticker-number mb-3">{stat.number}</p>
+                <p className="text-white/80 font-semibold text-sm tracking-tight">{stat.label}</p>
+                <p className="text-white/30 text-xs mt-1">{stat.sublabel}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ How It Works — Horizontal timeline ═══ */}
+      <section className="py-28 md:py-36 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20 animate-on-scroll">
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">How It Works</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-              Three steps to{' '}
-              <span className="gradient-text">getting it done.</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-[-0.03em]">
+              Three steps. <span className="gradient-text">That's it.</span>
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12 stagger-children">
+
+          <div className="grid md:grid-cols-3 gap-6 md:gap-0 relative stagger-children">
+            {/* Connecting line behind steps */}
+            <div className="hidden md:block absolute top-[52px] left-[16.67%] right-[16.67%] h-[2px] bg-gradient-to-r from-gold/40 via-gold/20 to-gold/40" />
+
             {[
               {
                 step: '01',
@@ -59,199 +83,225 @@ export default function Home() {
               {
                 step: '02',
                 title: 'On-Site Assessment & Quote',
-                desc: 'We come to you, look at the job, and give you a clear written quote. No surprises, no pressure. You decide if you want to move forward.',
+                desc: 'We come to you, look at the job, and give you a clear written quote. No surprises, no pressure. You decide.',
               },
               {
                 step: '03',
                 title: 'Work Done Right',
-                desc: 'We show up on time, do the work to code, clean up when we\'re done, and handle the ESA inspection. You get a safe, finished job.',
+                desc: 'We show up on time, do the work to code, clean up, and handle the ESA inspection. You get a safe, finished job.',
               },
             ].map((item, i) => (
-              <div key={i} className="relative text-center md:text-left">
-                <div className="text-7xl md:text-8xl font-black text-navy/[0.04] leading-none mb-4 select-none">{item.step}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 -mt-8 relative">{item.title}</h3>
-                <p className="text-gray-500 text-[15px] leading-relaxed">{item.desc}</p>
-                {i < 2 && (
-                  <div className="hidden md:block absolute top-10 -right-6 w-12">
-                    <svg viewBox="0 0 48 24" className="w-full text-gold/30" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M0 12h40m-8-8l8 8-8 8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                )}
+              <div key={i} className="relative text-center px-4 md:px-8">
+                {/* Step circle */}
+                <div className="w-[104px] h-[104px] rounded-full bg-gray-50 border-2 border-gray-100 flex items-center justify-center mx-auto mb-8 relative z-10">
+                  <span className="text-3xl font-bold text-gold tracking-tight">{item.step}</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">{item.title}</h3>
+                <p className="text-gray-400 text-[15px] leading-relaxed max-w-xs mx-auto">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Photo Break - Full bleed */}
-      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+      {/* ═══ Photo Break — Asymmetric hero with overlapping card ═══ */}
+      <section className="relative min-h-[70vh] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
           alt="Electrical work in progress"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover absolute inset-0"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/90 via-navy-dark/60 to-transparent" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="max-w-7xl mx-auto px-4 w-full animate-on-scroll slide-left">
-            <p className="text-gold text-sm uppercase tracking-[0.2em] font-semibold mb-4">Quality Workmanship</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight max-w-lg mb-4 tracking-tight text-shadow-heavy">
-              Every connection matters.
-            </h2>
-            <p className="text-white/60 max-w-md text-lg">
-              ESA licensed. Every permit pulled. Every circuit tested. No shortcuts.
-            </p>
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/95 via-navy-dark/70 to-navy-dark/30" />
+        <div className="absolute inset-0 grain" />
+
+        <div className="relative max-w-7xl mx-auto px-4 py-32 md:py-40 flex items-center min-h-[70vh]">
+          <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
+            <div className="animate-on-scroll slide-left">
+              <p className="text-gold text-sm uppercase tracking-[0.25em] font-semibold mb-6">Quality Workmanship</p>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-[-0.03em] mb-6">
+                Every connection
+                <br />
+                <span className="text-white/40">matters.</span>
+              </h2>
+              <p className="text-white/40 text-lg leading-relaxed max-w-md">
+                ESA licensed. Every permit pulled. Every circuit tested. No shortcuts, no compromises, no exceptions.
+              </p>
+            </div>
+
+            {/* Floating stat card */}
+            <div className="hidden lg:block animate-on-scroll slide-right">
+              <div className="frosted-card rounded-3xl p-10 max-w-sm ml-auto bg-white/[0.08] backdrop-blur-xl border border-white/[0.1]">
+                <div className="space-y-6">
+                  {[
+                    { label: 'ESA Licensed', value: client.licenseNumber },
+                    { label: 'Years Active', value: `${client.yearsInBusiness}+` },
+                    { label: 'Coverage', value: 'All York Region' },
+                  ].map((item, i) => (
+                    <div key={i} className="flex justify-between items-center py-3 border-b border-white/[0.06] last:border-0">
+                      <span className="text-white/40 text-sm">{item.label}</span>
+                      <span className="text-white font-bold text-sm">{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us - Stripe style */}
-      <section className="py-24 md:py-32 bg-gray-50 relative overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, var(--navy) 1px, transparent 0)`,
-          backgroundSize: '40px 40px',
-        }} />
-
-        <div className="max-w-7xl mx-auto px-4 relative">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-on-scroll slide-left">
+      {/* ═══ Why Choose Us — Bento layout, not a list ═══ */}
+      <section className="py-28 md:py-36 mesh-gradient relative">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-5 gap-16 items-start">
+            {/* Left column: heading + large feature */}
+            <div className="lg:col-span-2 animate-on-scroll">
               <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Why Top Choice</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 tracking-tight leading-tight">
-                We treat your home{' '}
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-[-0.03em] leading-[1.05]">
+                We treat your home
+                <br />
                 <span className="gradient-text">like it's ours.</span>
               </h2>
-              <div className="space-y-8">
-                {[
-                  {
-                    title: 'ESA Licensed & Inspected',
-                    desc: 'Every job meets or exceeds the Ontario Electrical Safety Code. We pull permits, pass inspections, and stand behind the work.',
-                    icon: (
-                      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                    ),
-                  },
-                  {
-                    title: 'Clean Jobsite, Every Time',
-                    desc: 'Drop cloths down, debris cleaned up, and your home looks better when we leave. We take this seriously.',
-                    icon: (
-                      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    ),
-                  },
-                  {
-                    title: 'Straight Talk on Pricing',
-                    desc: 'No surprise charges. We quote upfront and stick to it. If something changes, you hear about it first.',
-                    icon: (
-                      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    ),
-                  },
-                  {
-                    title: '24/7 Emergency Response',
-                    desc: 'Electrical problems don\'t wait for business hours. Neither do we. Same-day service across York Region.',
-                    icon: (
-                      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    ),
-                  },
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-5 group">
-                    <div className="w-12 h-12 rounded-2xl bg-white shadow-sm border border-gray-100 flex items-center justify-center shrink-0 text-gold group-hover:bg-gold group-hover:text-white transition-all duration-300">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 text-lg mb-1">{item.title}</h3>
-                      <p className="text-gray-500 leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
+              <p className="text-gray-400 text-base leading-relaxed mb-10">
+                Upfront pricing. Clean jobsites. Licensed, inspected, guaranteed. The bar should be higher in this industry, and we set it.
+              </p>
+
+              {/* Featured bento card */}
+              <div className="bento-card bg-navy-dark text-white p-8 md:p-10">
+                <div className="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mb-6">
+                  <svg viewBox="0 0 24 24" className="w-7 h-7 text-gold" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-2">ESA Licensed & Inspected</h3>
+                <p className="text-white/40 text-sm leading-relaxed">
+                  Every job meets or exceeds the Ontario Electrical Safety Code. We pull permits, pass inspections, and stand behind every connection.
+                </p>
               </div>
             </div>
 
-            {/* Quote form - elevated card */}
-            <div className="animate-on-scroll slide-right">
-              <div className="bg-white rounded-3xl shadow-2xl shadow-navy/10 p-10 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Get a Free Quote</h3>
-                <p className="text-gray-400 mb-8">We respond within 2 hours during business hours.</p>
-                <QuoteForm />
+            {/* Right column: 3 cards in grid */}
+            <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4 stagger-children">
+              {[
+                {
+                  title: 'Clean Jobsite, Every Time',
+                  desc: 'Drop cloths down, debris cleaned up, and your home looks better when we leave.',
+                  icon: (
+                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: 'Straight Talk on Pricing',
+                  desc: 'No surprise charges. We quote upfront and stick to it. If something changes, you hear about it first.',
+                  icon: (
+                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: '24/7 Emergency Response',
+                  desc: 'Electrical problems don\'t wait for business hours. Neither do we. Same-day service across York Region.',
+                  icon: (
+                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  ),
+                },
+              ].map((item, i) => (
+                <div key={i} className={`bento-card ${i === 2 ? 'sm:col-span-2' : ''}`}>
+                  <div className="w-12 h-12 rounded-xl bg-white border border-gray-100 flex items-center justify-center mb-5 text-gold shadow-sm">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-lg mb-2 tracking-tight">{item.title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+
+              {/* Quote form card */}
+              <div className="sm:col-span-2">
+                <div className="gradient-border">
+                  <div className="gradient-border-inner p-8 md:p-10">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">Get a Free Quote</h3>
+                    <p className="text-gray-400 text-sm mb-8">We respond within 2 hours during business hours.</p>
+                    <QuoteForm />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Reviews - dark section */}
-      <section className="py-24 md:py-32 bg-navy-dark relative overflow-hidden">
-        {/* Background gradient orbs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-navy-light/20 rounded-full blur-3xl" />
+      {/* ═══ Reviews — Dark section with scroll strip ═══ */}
+      <section className="py-28 md:py-36 bg-navy-dark relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-navy-light/10 rounded-full blur-[100px]" />
 
         <div className="max-w-7xl mx-auto px-4 relative">
-          <div className="text-center mb-16 animate-on-scroll">
-            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Testimonials</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-              Trusted by Homeowners{' '}
-              <span className="gradient-text">Across York Region</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children">
-            {client.reviews.slice(0, 3).map((review, i) => (
-              <ReviewCard key={i} {...review} />
-            ))}
-          </div>
-
-          <div className="text-center mt-12 animate-on-scroll">
-            <Link href="/reviews" className="inline-flex items-center gap-2 text-gold hover:text-gold-light font-semibold transition-colors">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 animate-on-scroll">
+            <div>
+              <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Testimonials</p>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em]">
+                Trusted by
+                <br />
+                <span className="text-white/30">homeowners.</span>
+              </h2>
+            </div>
+            <Link href="/reviews" className="inline-flex items-center gap-2 text-gold hover:text-gold-light font-semibold transition-colors shrink-0">
               Read All Reviews
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
           </div>
+
+          <div className="scroll-strip md:grid md:grid-cols-3 md:gap-6 stagger-children">
+            {client.reviews.slice(0, 3).map((review, i) => (
+              <ReviewCard key={i} {...review} />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Photo Break 2 - Interior shot */}
-      <section className="relative h-[40vh] md:h-[50vh] overflow-hidden">
+      {/* ═══ Photo Break 2 — Interior, bottom-aligned text ═══ */}
+      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1920&q=80"
           alt="Modern home interior with professional lighting"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 via-navy-dark/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/20 to-transparent" />
         <div className="absolute inset-0 flex items-end">
           <div className="max-w-7xl mx-auto px-4 w-full pb-16 animate-on-scroll">
-            <p className="text-gold text-sm uppercase tracking-[0.2em] font-semibold mb-3">Modern Living</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white max-w-lg tracking-tight text-shadow-heavy">
+            <h2 className="text-3xl md:text-5xl font-bold text-white max-w-lg tracking-[-0.02em] leading-[1.1] text-shadow-heavy">
               From pot lights to full rewires, we make homes shine.
             </h2>
           </div>
         </div>
       </section>
 
-      {/* Service Areas - Clean, Stripe-inspired */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16 animate-on-scroll">
+      {/* ═══ Service Areas — Minimal, Apple-style pill grid ═══ */}
+      <section className="py-28 md:py-36 bg-white">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <div className="animate-on-scroll">
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Where We Work</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-              Proudly Serving{' '}
-              <span className="gradient-text">York Region</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-[-0.03em]">
+              Proudly serving
+              <br />
+              <span className="gradient-text">York Region.</span>
             </h2>
+            <p className="text-gray-400 text-lg max-w-lg mx-auto mb-14">
+              Licensed electrical service for every community in the region. Local crew, fast response.
+            </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-3 mb-12 stagger-children">
+          <div className="flex flex-wrap justify-center gap-3 stagger-children">
             {client.areas.map((area) => (
               <Link
                 key={area.slug}
                 href={`/areas/${area.slug}`}
-                className="group bg-gray-50 hover:bg-navy text-gray-700 hover:text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-navy hover:shadow-lg hover:shadow-navy/20"
+                className="group bg-gray-50 hover:bg-navy text-gray-600 hover:text-white px-7 py-3.5 rounded-full text-sm font-medium transition-all duration-400 border border-gray-100 hover:border-navy hover:shadow-xl hover:shadow-navy/15 hover:scale-105"
               >
                 {area.name}
               </Link>
@@ -260,65 +310,66 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Promise */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center animate-on-scroll">
-          <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center mx-auto mb-8">
-            <svg viewBox="0 0 24 24" className="w-10 h-10 text-gold" fill="none" stroke="currentColor" strokeWidth="1.5">
+      {/* ═══ Our Promise — Centered, editorial feel ═══ */}
+      <section className="py-28 md:py-36 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 text-center animate-on-scroll">
+          <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-10">
+            <svg viewBox="0 0 24 24" className="w-8 h-8 text-gold" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 tracking-[-0.03em]">
             Our promise to you.
           </h2>
-          <p className="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto mb-12">
+          <p className="text-gray-400 text-lg leading-relaxed mb-16">
             If you're not happy with the work, we come back and make it right at no extra charge. Every job is ESA inspected, every quote is honoured, and every jobsite is left clean. That's not a policy. It's how we've kept customers coming back for {client.yearsInBusiness}+ years.
           </p>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-3 gap-4">
             {[
               { label: 'Written Quote', desc: 'Before any work starts' },
               { label: 'ESA Inspected', desc: 'Every job, every time' },
               { label: 'Satisfaction Guaranteed', desc: 'We make it right' },
             ].map((item, i) => (
-              <div key={i} className="bg-gray-50 rounded-2xl p-6">
-                <p className="text-gold font-bold text-sm uppercase tracking-wider mb-1">{item.label}</p>
-                <p className="text-gray-500 text-sm">{item.desc}</p>
+              <div key={i} className="bg-white rounded-2xl p-8 shadow-sm">
+                <p className="text-gold font-bold text-sm uppercase tracking-widest mb-2">{item.label}</p>
+                <p className="text-gray-400 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA - Immersive */}
-      <section className="relative py-32 md:py-40 overflow-hidden">
+      {/* ═══ Final CTA — Immersive, dramatic ═══ */}
+      <section className="relative py-36 md:py-48 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
             alt=""
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-navy-dark/90" />
+          <div className="absolute inset-0 bg-navy-dark/92" />
           <div className="absolute inset-0 grain" />
         </div>
 
         <div className="relative max-w-3xl mx-auto px-4 text-center animate-on-scroll">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Ready to get started?
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-[-0.03em] leading-[0.95]">
+            Ready to
+            <br />
+            get started?
           </h2>
-          <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
+          <p className="text-white/35 text-lg mb-12 max-w-md mx-auto">
             Whether it's a small repair or a major project, we're here to help.
-            Call us directly or request a free, no-obligation quote.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`tel:${client.phone}`}
-              className="glass hover:bg-white/10 text-white font-bold px-10 py-4 rounded-lg text-lg transition-all duration-300"
+              className="glass hover:bg-white/10 text-white font-bold px-12 py-5 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02]"
             >
               Call {client.phone}
             </a>
             <Link
               href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold px-10 py-4 rounded-lg text-lg transition-all duration-300 shadow-lg shadow-gold/20"
+              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold px-12 py-5 rounded-xl text-lg transition-all duration-300 shadow-lg shadow-gold/25 hover:scale-[1.02]"
             >
               Get a Free Quote
             </Link>

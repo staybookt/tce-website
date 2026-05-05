@@ -341,3 +341,163 @@ select {
     transform: scale(1);
   }
 }
+
+/* ─── Apple-tier Design System ─── */
+
+/* Bento grid card */
+.bento-card {
+  background: var(--gray-50);
+  border-radius: 24px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+  background: var(--white);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(212, 168, 67, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Horizontal scroll strip */
+.scroll-strip {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 1rem;
+}
+
+.scroll-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-strip > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* Stat counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stat-animated {
+  animation: countUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Timeline connector */
+.timeline-line {
+  position: relative;
+}
+
+.timeline-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold) 0%, rgba(212, 168, 67, 0.2) 100%);
+  z-index: 0;
+}
+
+/* Subtle mesh gradient background */
+.mesh-gradient {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(212, 168, 67, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(27, 58, 92, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(42, 85, 128, 0.03) 0%, transparent 50%);
+}
+
+/* Large quote mark */
+.quote-mark::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 120px;
+  line-height: 1;
+  font-family: Georgia, serif;
+  color: rgba(212, 168, 67, 0.08);
+  pointer-events: none;
+}
+
+/* Reveal line animation */
+@keyframes revealLine {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.reveal-line {
+  position: relative;
+  display: inline-block;
+}
+
+.reveal-line::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+  animation: revealLine 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  width: 0;
+}
+
+/* Number ticker styling */
+.ticker-number {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+/* Frosted card */
+.frosted-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+}
+
+/* Service card featured */
+.service-featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+@media (max-width: 768px) {
+  .service-featured {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+/* Marquee / infinite scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+
+/* Gradient border card */
+.gradient-border {
+  position: relative;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(212, 168, 67, 0.3), rgba(27, 58, 92, 0.1), rgba(212, 168, 67, 0.3));
+}
+
+.gradient-border-inner {
+  border-radius: 23px;
+  background: var(--white);
+}
