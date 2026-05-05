@@ -38,7 +38,28 @@ export default async function ServicePage({ params }: Props) {
     <>
       <SchemaMarkup type="Service" serviceName={service.name} serviceDescription={service.shortDescription} />
 
-      {/* Hero — immersive */}
+      {/* FAQ Schema */}
+      {content.faqs && content.faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: content.faqs.map((faq) => ({
+                '@type': 'Question',
+                name: faq.q,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: faq.a,
+                },
+              })),
+            }),
+          }}
+        />
+      )}
+
+      {/* Hero */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -51,7 +72,6 @@ export default async function ServicePage({ params }: Props) {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-sm text-white/40 mb-6">
               <Link href="/" className="hover:text-gold transition-colors">Home</Link>
               <span>/</span>
@@ -71,18 +91,36 @@ export default async function ServicePage({ params }: Props) {
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-16">
-            {/* Main content */}
             <div className="lg:col-span-2 space-y-16">
               {/* Intro */}
               <div className="animate-on-scroll">
                 <p className="text-gray-600 text-lg leading-relaxed">{content.intro}</p>
               </div>
 
-              {/* What to expect */}
+              {/* Pricing guidance */}
+              {content.pricingNote && (
+                <div className="animate-on-scroll">
+                  <div className="bg-gold/5 border border-gold/20 rounded-2xl p-8">
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" className="w-5 h-5 text-gold" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-gold-dark font-bold text-sm uppercase tracking-wider mb-2">Pricing Guide</p>
+                        <p className="text-gray-700 text-[15px] leading-relaxed">{content.pricingNote}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Process */}
               <div className="animate-on-scroll">
-                <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">What to Expect</p>
+                <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">{content.processSubheading}</p>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
-                  The process, <span className="gradient-text">start to finish.</span>
+                  <span className="gradient-text">{content.processHeading}</span>
                 </h2>
                 <p className="text-gray-600 leading-relaxed text-[17px]">{content.whatToExpect}</p>
               </div>
@@ -91,7 +129,7 @@ export default async function ServicePage({ params }: Props) {
               <div className="animate-on-scroll">
                 <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Common Issues</p>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
-                  Reasons people call us.
+                  {content.issuesHeading}
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {content.problems.map((problem, i) => (
@@ -118,20 +156,44 @@ export default async function ServicePage({ params }: Props) {
                   </div>
                 </div>
               </div>
+
+              {/* FAQ Section */}
+              {content.faqs && content.faqs.length > 0 && (
+                <div className="animate-on-scroll">
+                  <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Common Questions</p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
+                    Frequently asked about{' '}
+                    <span className="gradient-text">{service.name.toLowerCase()}.</span>
+                  </h2>
+                  <div className="space-y-4">
+                    {content.faqs.map((faq, i) => (
+                      <details key={i} className="group bg-gray-50 rounded-xl overflow-hidden">
+                        <summary className="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-gray-100 transition-colors">
+                          <span className="font-semibold text-gray-900 text-[15px] pr-4">{faq.q}</span>
+                          <svg className="w-5 h-5 text-gray-400 shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+                          </svg>
+                        </summary>
+                        <div className="px-6 pb-6 -mt-2">
+                          <p className="text-gray-600 text-[15px] leading-relaxed">{faq.a}</p>
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Sidebar */}
             <div className="space-y-6">
-              {/* Quote form */}
               <div className="sticky top-28">
                 <div className="bg-white rounded-3xl shadow-2xl shadow-navy/10 p-8 relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Get a Free Quote</h3>
                   <p className="text-gray-400 text-sm mb-6">for {service.name}</p>
-                  <QuoteForm />
+                  <QuoteForm preselectedService={service.name} />
                 </div>
 
-                {/* Other services */}
                 <div className="mt-6 bg-gray-50 rounded-2xl p-6">
                   <p className="text-gold font-semibold text-xs uppercase tracking-[0.2em] mb-4">Other Services</p>
                   <ul className="space-y-3">
