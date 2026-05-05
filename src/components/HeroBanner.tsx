@@ -40,21 +40,21 @@ export default function HeroBanner() {
             <span className="gradient-text">Every Time.</span>
           </h1>
 
-          <p className="text-white/50 text-lg md:text-xl mb-12 leading-relaxed max-w-lg">
+          <p className="text-white/45 text-lg md:text-xl mb-10 leading-relaxed max-w-lg">
             Licensed, insured, and trusted by homeowners across Newmarket, Aurora, and York Region
             for {client.yearsInBusiness}+ years.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold text-lg px-12 py-5 rounded-xl transition-all duration-300 text-center shadow-lg shadow-gold/25 hover:shadow-gold/40 hover:scale-[1.02]"
+              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-gold/20 hover:shadow-gold/35 hover:scale-[1.02]"
             >
               Get a Free Quote
             </Link>
             <a
               href={`tel:${client.phone}`}
-              className="glass hover:bg-white/10 text-white font-bold text-lg px-12 py-5 rounded-xl transition-all duration-300 text-center hover:scale-[1.02]"
+              className="glass hover:bg-white/10 text-white font-semibold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center hover:scale-[1.02]"
             >
               Call {client.phone}
             </a>

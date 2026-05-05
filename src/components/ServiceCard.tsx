@@ -14,7 +14,7 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
     return (
       <Link
         href={`/services/${slug}`}
-        className="group block relative rounded-3xl overflow-hidden bg-navy-dark min-h-[320px] md:min-h-[400px] md:col-span-2 md:row-span-2"
+        className="group block relative rounded-2xl overflow-hidden bg-navy-dark min-h-[280px] md:min-h-[340px] md:col-span-2"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-dark to-navy-dark/95 group-hover:from-navy-light group-hover:via-navy group-hover:to-navy-dark transition-all duration-700" />
         <div className="absolute top-0 right-0 w-64 h-64 bg-gold/[0.06] rounded-full blur-[80px] group-hover:bg-gold/[0.12] transition-all duration-700" />
@@ -38,7 +38,7 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
   return (
     <Link
       href={`/services/${slug}`}
-      className="group block bg-gray-50 hover:bg-white rounded-2xl p-7 transition-all duration-500 hover:shadow-xl hover:shadow-navy/[0.06] hover:-translate-y-1"
+      className="group block bg-gray-50 hover:bg-white rounded-2xl p-7 border border-transparent hover:border-gray-100 transition-all duration-500 hover:shadow-lg hover:shadow-navy/[0.04] hover:-translate-y-1"
     >
       <div className="w-12 h-12 rounded-xl bg-white group-hover:bg-gold/10 border border-gray-100 group-hover:border-gold/20 flex items-center justify-center mb-5 transition-all duration-500">
         <ServiceIcon icon={icon} className="w-6 h-6 text-navy/60 group-hover:text-gold transition-colors duration-500" />

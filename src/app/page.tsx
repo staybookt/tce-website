@@ -12,10 +12,10 @@ export default function Home() {
       <HeroBanner />
       <TrustBar />
 
-      {/* ═══ Services — Bento Grid with featured cards ═══ */}
-      <section className="py-28 md:py-36 bg-white">
+      {/* ═══ Services — Bento Grid ═══ */}
+      <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="max-w-2xl mb-16 animate-on-scroll">
+          <div className="max-w-2xl mb-14 animate-on-scroll">
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">What We Do</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-[-0.03em] leading-[1.05]">
               Every electrical service
@@ -24,8 +24,7 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Bento grid: 1 featured spanning 2 cols + remaining in grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 stagger-children">
             <ServiceCard key={client.services[0].slug} {...client.services[0]} featured />
             {client.services.slice(1).map((service) => (
               <ServiceCard key={service.slug} {...service} />
@@ -59,12 +58,12 @@ export default function Home() {
       </section>
 
       {/* ═══ How It Works — Horizontal timeline ═══ */}
-      <section className="py-28 md:py-36 bg-white relative overflow-hidden">
+      <section className="py-24 md:py-32 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-20 animate-on-scroll">
+          <div className="text-center mb-16 animate-on-scroll">
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">How It Works</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-[-0.03em]">
-              Three steps. <span className="gradient-text">That's it.</span>
+              Three steps. <span className="gradient-text">That&apos;s it.</span>
             </h2>
           </div>
 
@@ -147,8 +146,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Why Choose Us — Bento layout, not a list ═══ */}
-      <section className="py-28 md:py-36 mesh-gradient relative">
+      {/* ═══ Why Choose Us — Bento layout ═══ */}
+      <section className="py-24 md:py-32 mesh-gradient relative">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-5 gap-16 items-start">
             {/* Left column: heading + large feature */}
@@ -157,7 +156,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-[-0.03em] leading-[1.05]">
                 We treat your home
                 <br />
-                <span className="gradient-text">like it's ours.</span>
+                <span className="gradient-text">like it&apos;s ours.</span>
               </h2>
               <p className="text-gray-400 text-base leading-relaxed mb-10">
                 Upfront pricing. Clean jobsites. Licensed, inspected, guaranteed. The bar should be higher in this industry, and we set it.
@@ -170,15 +169,15 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-2">ESA Licensed & Inspected</h3>
+                <h3 className="text-xl font-bold mb-2">ESA Licensed &amp; Inspected</h3>
                 <p className="text-white/40 text-sm leading-relaxed">
                   Every job meets or exceeds the Ontario Electrical Safety Code. We pull permits, pass inspections, and stand behind every connection.
                 </p>
               </div>
             </div>
 
-            {/* Right column: 3 cards in grid */}
-            <div className="lg:col-span-3 grid sm:grid-cols-3 gap-4 stagger-children">
+            {/* Right column: feature cards + form */}
+            <div className="lg:col-span-3 grid sm:grid-cols-3 gap-3 stagger-children">
               {[
                 {
                   title: 'Clean Jobsite, Every Time',
@@ -232,8 +231,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Reviews — Dark section with scroll strip ═══ */}
-      <section className="py-28 md:py-36 bg-navy-dark relative overflow-hidden">
+      {/* ═══ Reviews — Dark section ═══ */}
+      <section className="py-24 md:py-32 bg-navy-dark relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/[0.03] rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-navy-light/10 rounded-full blur-[100px]" />
 
@@ -280,8 +279,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Service Areas — Minimal, Apple-style pill grid ═══ */}
-      <section className="py-28 md:py-36 bg-white">
+      {/* ═══ Service Areas ═══ */}
+      <section className="py-24 md:py-32 bg-white">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <div className="animate-on-scroll">
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Where We Work</p>
@@ -308,8 +307,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Our Promise — Centered, editorial feel ═══ */}
-      <section className="py-28 md:py-36 bg-gray-50">
+      {/* ═══ Our Promise ═══ */}
+      <section className="py-24 md:py-32 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4 text-center animate-on-scroll">
           <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-10">
             <svg viewBox="0 0 24 24" className="w-8 h-8 text-gold" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -320,7 +319,7 @@ export default function Home() {
             Our promise to you.
           </h2>
           <p className="text-gray-400 text-lg leading-relaxed mb-16">
-            If you're not happy with the work, we come back and make it right at no extra charge. Every job is ESA inspected, every quote is honoured, and every jobsite is left clean. That's not a policy. It's how we've kept customers coming back for {client.yearsInBusiness}+ years.
+            If you&apos;re not happy with the work, we come back and make it right at no extra charge. Every job is ESA inspected, every quote is honoured, and every jobsite is left clean. That&apos;s not a policy. It&apos;s how we&apos;ve kept customers coming back for {client.yearsInBusiness}+ years.
           </p>
           <div className="grid sm:grid-cols-3 gap-4 stagger-children">
             {[
@@ -337,8 +336,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Final CTA — Immersive, dramatic ═══ */}
-      <section className="relative py-36 md:py-48 overflow-hidden">
+      {/* ═══ Final CTA ═══ */}
+      <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
@@ -350,24 +349,24 @@ export default function Home() {
         </div>
 
         <div className="relative max-w-3xl mx-auto px-4 text-center animate-on-scroll">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-[-0.03em] leading-[0.95]">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-[-0.03em] leading-[0.95]">
             Ready to
             <br />
             get started?
           </h2>
-          <p className="text-white/35 text-lg mb-12 max-w-md mx-auto">
-            Whether it's a small repair or a major project, we're here to help.
+          <p className="text-white/35 text-lg mb-10 max-w-md mx-auto">
+            Whether it&apos;s a small repair or a major project, we&apos;re here to help.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href={`tel:${client.phone}`}
-              className="glass hover:bg-white/10 text-white font-bold px-12 py-5 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02]"
+              className="glass hover:bg-white/10 text-white font-semibold px-10 py-4 rounded-xl text-base transition-all duration-300 hover:scale-[1.02]"
             >
               Call {client.phone}
             </a>
             <Link
               href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold px-12 py-5 rounded-xl text-lg transition-all duration-300 shadow-lg shadow-gold/25 hover:scale-[1.02]"
+              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold px-10 py-4 rounded-xl text-base transition-all duration-300 shadow-lg shadow-gold/20 hover:scale-[1.02]"
             >
               Get a Free Quote
             </Link>
