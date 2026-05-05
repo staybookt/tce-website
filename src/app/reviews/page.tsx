@@ -55,7 +55,7 @@ export default function ReviewsPage() {
                 ))}
               </div>
               <span className="text-gray-900 font-bold">5.0</span>
-              <span className="text-gray-400 text-sm">from {client.reviews.length} reviews</span>
+              <span className="text-gray-500 text-sm">from {client.reviews.length} reviews</span>
             </div>
           </div>
 

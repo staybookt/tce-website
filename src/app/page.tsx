@@ -50,7 +50,7 @@ export default function Home() {
               <div key={i} className="text-center">
                 <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-white ticker-number mb-2">{stat.number}</p>
                 <p className="text-white/70 font-semibold text-sm tracking-tight">{stat.label}</p>
-                <p className="text-white/30 text-xs mt-1">{stat.sublabel}</p>
+                <p className="text-white/50 text-xs mt-1">{stat.sublabel}</p>
               </div>
             ))}
           </div>
@@ -69,7 +69,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-0 relative stagger-children">
             {/* Connecting line behind steps */}
-            <div className="hidden md:block absolute top-[48px] left-[16.67%] right-[16.67%] h-[1px] bg-gradient-to-r from-gold/30 via-gold/15 to-gold/30" />
+            <div className="hidden md:block absolute top-[48px] left-[16.67%] right-[16.67%] h-[2px] bg-gradient-to-r from-gold/40 via-gold/20 to-gold/40" />
 
             {[
               {
@@ -90,11 +90,11 @@ export default function Home() {
             ].map((item, i) => (
               <div key={i} className="relative text-center px-4 md:px-8">
                 {/* Step circle */}
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white border border-gray-100 shadow-sm flex items-center justify-center mx-auto mb-8 relative z-10">
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center mx-auto mb-8 relative z-10">
                   <span className="text-2xl md:text-3xl font-bold text-gold tracking-tight">{item.step}</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">{item.title}</h3>
-                <p className="text-gray-400 text-[15px] leading-relaxed max-w-xs mx-auto">{item.desc}</p>
+                <p className="text-gray-500 text-[15px] leading-relaxed max-w-xs mx-auto">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -118,9 +118,9 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-[-0.03em] mb-6">
                 Every connection
                 <br />
-                <span className="text-white/40">matters.</span>
+                <span className="text-white/50">matters.</span>
               </h2>
-              <p className="text-white/40 text-lg leading-relaxed max-w-md">
+              <p className="text-white/60 text-lg leading-relaxed max-w-md">
                 ESA licensed. Every permit pulled. Every circuit tested. No shortcuts, no compromises, no exceptions.
               </p>
             </div>
@@ -135,7 +135,7 @@ export default function Home() {
                     { label: 'Coverage', value: 'All York Region' },
                   ].map((item, i) => (
                     <div key={i} className="flex justify-between items-center py-3 border-b border-white/[0.06] last:border-0">
-                      <span className="text-white/40 text-sm">{item.label}</span>
+                      <span className="text-white/60 text-sm">{item.label}</span>
                       <span className="text-white font-bold text-sm">{item.value}</span>
                     </div>
                   ))}
@@ -158,7 +158,7 @@ export default function Home() {
                 <br />
                 <span className="gradient-text">like it's ours.</span>
               </h2>
-              <p className="text-gray-400 text-base leading-relaxed mb-10">
+              <p className="text-gray-500 text-base leading-relaxed mb-10">
                 Upfront pricing. Clean jobsites. Licensed, inspected, guaranteed. The bar should be higher in this industry, and we set it.
               </p>
 
@@ -170,7 +170,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2">ESA Licensed & Inspected</h3>
-                <p className="text-white/40 text-sm leading-relaxed">
+                <p className="text-white/60 text-sm leading-relaxed">
                   Every job meets or exceeds the Ontario Electrical Safety Code. We pull permits, pass inspections, and stand behind every connection.
                 </p>
               </div>
@@ -212,7 +212,7 @@ export default function Home() {
                     {item.icon}
                   </div>
                   <h3 className="font-bold text-gray-900 text-lg mb-2 tracking-tight">{item.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
 
@@ -221,7 +221,7 @@ export default function Home() {
                 <div className="gradient-border">
                   <div className="gradient-border-inner p-8 md:p-10">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">Get a Free Quote</h3>
-                    <p className="text-gray-400 text-sm mb-8">We respond within 2 hours during business hours.</p>
+                    <p className="text-gray-500 text-sm mb-8">We respond within 2 hours during business hours.</p>
                     <QuoteForm />
                   </div>
                 </div>
@@ -243,7 +243,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[-0.03em]">
                 Trusted by
                 <br />
-                <span className="text-white/30">homeowners.</span>
+                <span className="text-white/50">homeowners.</span>
               </h2>
             </div>
             <Link href="/reviews" className="inline-flex items-center gap-2 text-gold hover:text-gold-light font-semibold transition-colors shrink-0">
@@ -289,7 +289,7 @@ export default function Home() {
               <br />
               <span className="gradient-text">York Region.</span>
             </h2>
-            <p className="text-gray-400 text-lg max-w-lg mx-auto mb-14">
+            <p className="text-gray-500 text-lg max-w-lg mx-auto mb-14">
               Licensed electrical service for every community in the region. Local crew, fast response.
             </p>
           </div>
@@ -318,7 +318,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 tracking-[-0.03em]">
             Our promise to you.
           </h2>
-          <p className="text-gray-400 text-lg leading-relaxed mb-16">
+          <p className="text-gray-500 text-lg leading-relaxed mb-16">
             If you're not happy with the work, we come back and make it right at no extra charge. Every job is ESA inspected, every quote is honoured, and every jobsite is left clean. That's not a policy. It's how we've kept customers coming back for {client.yearsInBusiness}+ years.
           </p>
           <div className="grid sm:grid-cols-3 gap-4 stagger-children">
@@ -329,7 +329,7 @@ export default function Home() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-md hover:border-gold/20 transition-all duration-500">
                 <p className="text-gold font-bold text-sm uppercase tracking-widest mb-2">{item.label}</p>
-                <p className="text-gray-400 text-sm">{item.desc}</p>
+                <p className="text-gray-500 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -354,7 +354,7 @@ export default function Home() {
             <br />
             get started?
           </h2>
-          <p className="text-white/35 text-lg mb-10 max-w-md mx-auto">
+          <p className="text-white/60 text-lg mb-10 max-w-md mx-auto">
             Whether it&apos;s a small repair or a major project, we&apos;re here to help.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

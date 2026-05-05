@@ -32,7 +32,7 @@ export default function ReviewCard({ name, location, rating, text, service }: Re
           </div>
           <div>
             <p className="font-semibold text-sm text-white">{name}</p>
-            <p className="text-xs text-white/30">{location}</p>
+            <p className="text-xs text-white/50">{location}</p>
           </div>
         </div>
         {service && (

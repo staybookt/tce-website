@@ -196,7 +196,7 @@ export default function AboutPage() {
                 </div>
                 <p className="text-gold text-xs uppercase tracking-[0.2em] font-semibold mb-2">{item.label}</p>
                 <p className="text-white font-bold text-lg mb-1">{item.value}</p>
-                <p className="text-white/40 text-sm">{item.sub}</p>
+                <p className="text-white/60 text-sm">{item.sub}</p>
               </div>
             ))}
           </div>

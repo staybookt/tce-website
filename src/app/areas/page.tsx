@@ -59,7 +59,7 @@ export default function AreasPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 group-hover:text-navy transition-colors">{area.name}</h3>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider">{area.region}</p>
+                    <p className="text-xs text-gray-500 uppercase tracking-wider">{area.region}</p>
                   </div>
                 </div>
                 <p className="text-gray-500 text-[15px] leading-relaxed mb-4">

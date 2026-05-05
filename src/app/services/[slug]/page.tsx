@@ -190,7 +190,7 @@ export default async function ServicePage({ params }: Props) {
                 <div className="bg-white rounded-3xl shadow-2xl shadow-navy/10 p-8 relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Get a Free Quote</h3>
-                  <p className="text-gray-400 text-sm mb-6">for {service.name}</p>
+                  <p className="text-gray-500 text-sm mb-6">for {service.name}</p>
                   <QuoteForm preselectedService={service.name} />
                 </div>
 

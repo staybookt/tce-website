@@ -101,7 +101,7 @@ export default function ContactPage() {
                       {item.icon}
                     </div>
                     <div>
-                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{item.label}</p>
+                      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{item.label}</p>
                       {item.href ? (
                         <a href={item.href} className="text-gray-900 font-bold text-lg hover:text-gold transition-colors">
                           {item.value}
@@ -110,7 +110,7 @@ export default function ContactPage() {
                         <p className="text-gray-900 font-bold text-lg">{item.value}</p>
                       )}
                       {item.sub && (
-                        <p className={`text-sm mt-0.5 ${item.subGold ? 'text-gold font-medium' : 'text-gray-400'}`}>{item.sub}</p>
+                        <p className={`text-sm mt-0.5 ${item.subGold ? 'text-gold font-medium' : 'text-gray-500'}`}>{item.sub}</p>
                       )}
                     </div>
                   </div>
@@ -119,7 +119,7 @@ export default function ContactPage() {
 
               {/* Payment methods */}
               <div className="bg-gray-50 rounded-2xl p-6">
-                <p className="text-xs text-gray-400 uppercase tracking-wider mb-3">Payment Methods</p>
+                <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">Payment Methods</p>
                 <div className="flex flex-wrap gap-2">
                   {client.paymentMethods.map((method) => (
                     <span key={method} className="bg-white border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-700 font-medium">
@@ -135,7 +135,7 @@ export default function ContactPage() {
               <div className="bg-white rounded-3xl shadow-2xl shadow-navy/10 p-10 relative overflow-hidden sticky top-28">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Request a Free Quote</h3>
-                <p className="text-gray-400 mb-8">Tell us about your project. No obligation, no pressure.</p>
+                <p className="text-gray-500 mb-8">Tell us about your project. No obligation, no pressure.</p>
                 <QuoteForm />
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function ContactPage() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
             Don't wait. Call now.
           </h2>
-          <p className="text-white/40 text-lg mb-10 max-w-lg mx-auto">
+          <p className="text-white/60 text-lg mb-10 max-w-lg mx-auto">
             Sparking outlets, burning smells, power outages, tripped breakers that won't reset. We're available 24/7 for emergencies across York Region.
           </p>
           <a

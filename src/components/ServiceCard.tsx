@@ -74,7 +74,7 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
       {/* Content */}
       <div className="p-5">
         <h3 className="text-base font-bold text-gray-900 mb-1.5 group-hover:text-navy transition-colors duration-300 tracking-tight">{name}</h3>
-        <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-2">{shortDescription}</p>
+        <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">{shortDescription}</p>
         <div className="flex items-center gap-2 text-gold/70 group-hover:text-gold font-semibold text-xs uppercase tracking-wider transition-colors">
           <span>View Service</span>
           <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

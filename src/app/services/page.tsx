@@ -87,7 +87,7 @@ export default function ServicesPage() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
             Tell us what you need.
           </h2>
-          <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
+          <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto">
             Give us a call and describe what you're dealing with. Free quote, no obligation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
