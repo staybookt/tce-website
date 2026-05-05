@@ -127,16 +127,16 @@ export default function Home() {
 
             {/* Floating stat card */}
             <div className="hidden lg:block animate-on-scroll slide-right">
-              <div className="frosted-card rounded-3xl p-10 max-w-sm ml-auto bg-white/[0.08] backdrop-blur-xl border border-white/[0.1]">
-                <div className="space-y-6">
+              <div className="rounded-3xl p-10 max-w-sm ml-auto bg-white/[0.12] backdrop-blur-2xl border border-white/[0.18] shadow-2xl shadow-black/20">
+                <div className="space-y-4">
                   {[
                     { label: 'ESA Licensed', value: client.licenseNumber },
                     { label: 'Years Active', value: `${client.yearsInBusiness}+` },
                     { label: 'Coverage', value: 'All York Region' },
                   ].map((item, i) => (
-                    <div key={i} className="flex justify-between items-center py-3 border-b border-white/[0.06] last:border-0">
-                      <span className="text-white/60 text-sm">{item.label}</span>
-                      <span className="text-white font-bold text-sm">{item.value}</span>
+                    <div key={i} className="flex justify-between items-center py-4 border-b border-white/[0.12] last:border-0">
+                      <span className="text-white/70 text-sm font-medium">{item.label}</span>
+                      <span className="text-white font-bold text-base">{item.value}</span>
                     </div>
                   ))}
                 </div>
@@ -163,14 +163,14 @@ export default function Home() {
               </p>
 
               {/* Featured bento card */}
-              <div className="bento-card bg-navy-dark text-white p-8 md:p-10">
-                <div className="w-14 h-14 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mb-6">
+              <div className="rounded-3xl bg-navy-dark text-white p-8 md:p-10 border border-white/[0.06] shadow-xl">
+                <div className="w-14 h-14 rounded-2xl bg-gold/15 border border-gold/25 flex items-center justify-center mb-6">
                   <svg viewBox="0 0 24 24" className="w-7 h-7 text-gold" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-2">ESA Licensed & Inspected</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
+                <h3 className="text-xl font-bold mb-3">ESA Licensed & Inspected</h3>
+                <p className="text-white/75 text-sm leading-relaxed">
                   Every job meets or exceeds the Ontario Electrical Safety Code. We pull permits, pass inspections, and stand behind every connection.
                 </p>
               </div>
@@ -207,11 +207,11 @@ export default function Home() {
                   ),
                 },
               ].map((item, i) => (
-                <div key={i} className="bento-card">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-gray-100 flex items-center justify-center mb-5 text-gold shadow-sm">
+                <div key={i} className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-lg hover:border-gold/20 hover:-translate-y-1 transition-all duration-500">
+                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5 text-gold">
                     {item.icon}
                   </div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-2 tracking-tight">{item.title}</h3>
+                  <h3 className="font-bold text-gray-900 text-base mb-2 tracking-tight">{item.title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
