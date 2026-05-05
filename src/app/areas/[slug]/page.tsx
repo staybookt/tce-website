@@ -231,7 +231,7 @@ export default async function AreaPage({ params }: Props) {
             </a>
             <Link
               href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold px-10 py-4 rounded-lg text-lg transition-all duration-300 shadow-lg shadow-gold/20"
+              className="btn-premium bg-gold hover:bg-gold-dark text-white font-bold px-10 py-4 rounded-xl text-lg transition-all duration-300 shadow-lg shadow-gold/20"
             >
               Request a Quote
             </Link>

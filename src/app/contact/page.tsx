@@ -161,7 +161,7 @@ export default function ContactPage() {
           </p>
           <a
             href={`tel:${client.phone}`}
-            className="btn-premium inline-block bg-gold hover:bg-gold-dark text-navy-dark font-bold px-12 py-5 rounded-lg text-xl transition-all duration-300 shadow-lg shadow-gold/20"
+            className="btn-premium inline-block bg-gold hover:bg-gold-dark text-white font-bold px-12 py-5 rounded-xl text-xl transition-all duration-300 shadow-lg shadow-gold/20"
           >
             Call {client.phone}
           </a>
