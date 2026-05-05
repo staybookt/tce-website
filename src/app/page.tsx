@@ -24,7 +24,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 stagger-children">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 stagger-children">
             <ServiceCard key={client.services[0].slug} {...client.services[0]} featured />
             {client.services.slice(1).map((service) => (
               <ServiceCard key={service.slug} {...service} />
@@ -63,7 +63,7 @@ export default function Home() {
           <div className="text-center mb-16 animate-on-scroll">
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">How It Works</p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-[-0.03em]">
-              Three steps. <span className="gradient-text">That&apos;s it.</span>
+              Three steps. <span className="gradient-text">That's it.</span>
             </h2>
           </div>
 
@@ -156,7 +156,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-[-0.03em] leading-[1.05]">
                 We treat your home
                 <br />
-                <span className="gradient-text">like it&apos;s ours.</span>
+                <span className="gradient-text">like it's ours.</span>
               </h2>
               <p className="text-gray-400 text-base leading-relaxed mb-10">
                 Upfront pricing. Clean jobsites. Licensed, inspected, guaranteed. The bar should be higher in this industry, and we set it.
@@ -169,7 +169,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-2">ESA Licensed &amp; Inspected</h3>
+                <h3 className="text-xl font-bold mb-2">ESA Licensed & Inspected</h3>
                 <p className="text-white/40 text-sm leading-relaxed">
                   Every job meets or exceeds the Ontario Electrical Safety Code. We pull permits, pass inspections, and stand behind every connection.
                 </p>
@@ -319,7 +319,7 @@ export default function Home() {
             Our promise to you.
           </h2>
           <p className="text-gray-400 text-lg leading-relaxed mb-16">
-            If you&apos;re not happy with the work, we come back and make it right at no extra charge. Every job is ESA inspected, every quote is honoured, and every jobsite is left clean. That&apos;s not a policy. It&apos;s how we&apos;ve kept customers coming back for {client.yearsInBusiness}+ years.
+            If you're not happy with the work, we come back and make it right at no extra charge. Every job is ESA inspected, every quote is honoured, and every jobsite is left clean. That's not a policy. It's how we've kept customers coming back for {client.yearsInBusiness}+ years.
           </p>
           <div className="grid sm:grid-cols-3 gap-4 stagger-children">
             {[

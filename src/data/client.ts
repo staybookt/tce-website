@@ -33,6 +33,7 @@ export const client = {
       name: "Panel Upgrades",
       shortDescription: "Safe, code-compliant electrical panel upgrades for homes and businesses.",
       icon: "Zap",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=600&q=80",
       keywords: ["panel upgrade Newmarket", "electrical panel upgrade York Region", "200 amp panel upgrade"],
     },
     {
@@ -40,6 +41,7 @@ export const client = {
       name: "EV Charger Installation",
       shortDescription: "Level 2 home EV charger installation. Drive electric, charge at home.",
       icon: "BatteryCharging",
+      image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=600&q=80",
       keywords: ["EV charger installation Newmarket", "home EV charger York Region", "Level 2 charger installation"],
     },
     {
@@ -47,6 +49,7 @@ export const client = {
       name: "Landscape Lighting",
       shortDescription: "Professional outdoor lighting that transforms your property after dark.",
       icon: "Sun",
+      image: "https://images.unsplash.com/photo-1558171813-4c088753af8f?auto=format&fit=crop&w=600&q=80",
       keywords: ["landscape lighting Newmarket", "outdoor lighting York Region", "garden lighting installation"],
     },
     {
@@ -54,6 +57,7 @@ export const client = {
       name: "Pot Light Installation",
       shortDescription: "Clean, modern recessed lighting for any room in your home.",
       icon: "Lightbulb",
+      image: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&w=600&q=80",
       keywords: ["pot light installation Newmarket", "recessed lighting York Region", "LED pot lights"],
     },
     {
@@ -61,6 +65,7 @@ export const client = {
       name: "Knob & Tube Removal",
       shortDescription: "Safe removal of outdated knob-and-tube wiring to protect your home and family.",
       icon: "ShieldCheck",
+      image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80",
       keywords: ["knob and tube removal Newmarket", "knob and tube rewiring York Region", "old wiring replacement"],
     },
     {
@@ -68,6 +73,7 @@ export const client = {
       name: "Residential Wiring",
       shortDescription: "Complete residential electrical wiring for renovations and new builds.",
       icon: "Home",
+      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
       keywords: ["residential electrician Newmarket", "house wiring York Region", "electrical wiring renovation"],
     },
     {
@@ -75,6 +81,7 @@ export const client = {
       name: "Commercial Electrical",
       shortDescription: "Reliable electrical services for offices, retail, and light commercial spaces.",
       icon: "Building",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
       keywords: ["commercial electrician Newmarket", "commercial electrical York Region", "office electrical"],
     },
     {
@@ -82,6 +89,7 @@ export const client = {
       name: "Generator Installation",
       shortDescription: "Whole-home backup generators so you never lose power when it matters.",
       icon: "Power",
+      image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=600&q=80",
       keywords: ["generator installation Newmarket", "whole home generator York Region", "backup power"],
     },
     {
@@ -89,6 +97,7 @@ export const client = {
       name: "Smoke & CO Detectors",
       shortDescription: "Code-compliant smoke and carbon monoxide detector installation and upgrades.",
       icon: "AlertTriangle",
+      image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=600&q=80",
       keywords: ["smoke detector installation Newmarket", "carbon monoxide detector York Region", "CO detector installation"],
     },
   ],
