@@ -58,6 +58,12 @@ export default function ServiceIcon({ icon, className = 'w-6 h-6' }: ServiceIcon
           <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636a9 9 0 11-12.728 0M12 3v9" />
         </svg>
       );
+    case 'AlertTriangle':
+      return (
+        <svg {...props}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01" />
+        </svg>
+      );
     default:
       return (
         <svg {...props}>

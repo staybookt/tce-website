@@ -84,6 +84,13 @@ export const client = {
       icon: "Power",
       keywords: ["generator installation Newmarket", "whole home generator York Region", "backup power"],
     },
+    {
+      slug: "smoke-co-detectors",
+      name: "Smoke & CO Detectors",
+      shortDescription: "Code-compliant smoke and carbon monoxide detector installation and upgrades.",
+      icon: "AlertTriangle",
+      keywords: ["smoke detector installation Newmarket", "carbon monoxide detector York Region", "CO detector installation"],
+    },
   ],
 
   // Service Areas
