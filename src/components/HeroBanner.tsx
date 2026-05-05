@@ -32,7 +32,7 @@ export default function HeroBanner() {
             </span>
           </div>
 
-          <h1 className="text-6xl md:text-7xl lg:text-[5.5rem] font-bold text-white leading-[0.95] mb-8 tracking-[-0.03em]">
+          <h1 className="text-7xl md:text-8xl lg:text-[7rem] font-bold text-white leading-[0.9] mb-8 tracking-[-0.04em]">
             Electrical Work
             <br />
             Done Right.
@@ -40,15 +40,15 @@ export default function HeroBanner() {
             <span className="gradient-text">Every Time.</span>
           </h1>
 
-          <p className="text-white/45 text-lg md:text-xl mb-10 leading-relaxed max-w-lg">
+          <p className="text-white/50 text-lg md:text-xl mb-12 leading-relaxed max-w-lg">
             Licensed, insured, and trusted by homeowners across Newmarket, Aurora, and York Region
             for {client.yearsInBusiness}+ years.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-gold/20 hover:shadow-gold/35 hover:scale-[1.02]"
+              className="btn-premium bg-gold hover:bg-gold-dark text-white font-bold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-gold/20 hover:shadow-gold/35 hover:scale-[1.02]"
             >
               Get a Free Quote
             </Link>

@@ -37,8 +37,8 @@ export default function Header() {
         }`}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 bg-gold rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-gold/30">
-              <svg viewBox="0 0 24 24" className="w-5 h-5 text-navy-dark" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <div className="w-9 h-9 bg-gold rounded-xl flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-gold/30">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
             </div>
@@ -80,7 +80,7 @@ export default function Header() {
             </a>
             <Link
               href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-navy-dark font-bold text-sm px-6 py-2.5 rounded-lg transition-all duration-300 shadow-lg shadow-gold/20 hover:shadow-gold/40"
+              className="btn-premium bg-gold hover:bg-gold-dark text-white font-bold text-sm px-6 py-2.5 rounded-xl transition-all duration-300 shadow-lg shadow-gold/20 hover:shadow-gold/40"
             >
               Get a Free Quote
             </Link>
@@ -128,7 +128,7 @@ export default function Header() {
             <div className="pt-4 space-y-3">
               <a
                 href={`tel:${client.phone}`}
-                className="block btn-premium bg-gold text-navy-dark font-bold text-center py-3.5 rounded-lg shadow-lg shadow-gold/20"
+                className="block btn-premium bg-gold text-white font-bold text-center py-3.5 rounded-xl shadow-lg shadow-gold/20"
               >
                 Call {client.phone}
               </a>

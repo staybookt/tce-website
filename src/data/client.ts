@@ -16,9 +16,9 @@ export const client = {
   bonded: true,
 
   // Brand
-  primaryColor: "#1B3A5C",
-  secondaryColor: "#D4A843",
-  accentColor: "#2E7D32",
+  primaryColor: "#08080A",
+  secondaryColor: "#2563EB",
+  accentColor: "#06B6D4",
   logo: null as string | null,
   tagline: "York Region's Trusted Electrician",
 
