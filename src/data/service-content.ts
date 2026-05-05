@@ -1,0 +1,131 @@
+export const serviceContent: Record<string, {
+  headline: string;
+  intro: string;
+  whatToExpect: string;
+  problems: string[];
+  whyPro: string;
+  metaDescription: string;
+}> = {
+  'panel-upgrades': {
+    headline: 'Panel Upgrades in York Region',
+    intro: `If your home still runs on a 60 or 100 amp panel, you're probably already feeling it. Breakers tripping when you run the dryer and microwave at the same time. Lights dimming when the AC kicks in. An older panel can't keep up with how much power a modern home actually uses. A panel upgrade brings your home's electrical system up to current code and gives you the capacity to run everything you need without worrying about overloading.`,
+    whatToExpect: `We start with a full assessment of your current panel and your home's electrical load. If an upgrade makes sense, we'll walk you through the options, pull the ESA permit, and schedule the work. The upgrade itself typically takes a full day. We handle everything from disconnecting the old panel to wiring the new one, labeling every circuit, and scheduling the ESA inspection. When we leave, your panel is up to code, your breakers are labeled, and your home can handle whatever you plug in.`,
+    problems: [
+      'Breakers tripping frequently',
+      'Fuse panel (screw-in fuses instead of breakers)',
+      'Panel is warm to the touch',
+      'Burning smell near the panel',
+      'Insurance company requiring an upgrade',
+      'Adding a hot tub, EV charger, or major appliance',
+      'Renovation that adds load to the home',
+      'Federal Pacific or Zinsco panel (known safety hazards)',
+    ],
+    whyPro: `Panel work involves your home's main electrical feed. It's not a YouTube project. An improperly wired panel is a fire hazard, and in Ontario, panel work requires an ESA permit and inspection. We're licensed, we pull permits, and we get it right the first time.`,
+    metaDescription: 'ESA licensed panel upgrades in Newmarket, Aurora, and York Region. 100 to 200 amp upgrades, fuse panel replacements, and more. Free quotes.',
+  },
+  'ev-charger-installation': {
+    headline: 'EV Charger Installation in York Region',
+    intro: `Charging your electric vehicle at home is the single biggest convenience of owning one. No more gas stations, no more public charger hunting. A Level 2 home charger gives you a full charge overnight, every night. We install all major brands and handle the entire process from panel assessment to final hookup.`,
+    whatToExpect: `We'll check your electrical panel to make sure it can handle the additional 40-50 amp load. If your panel needs an upgrade, we'll quote that too so there are no surprises. We install a dedicated 240V circuit from your panel to your garage or driveway, mount the charger, and test everything. Most installations take half a day. We handle the ESA permit and inspection.`,
+    problems: [
+      'Level 1 charging is too slow (8+ hours for a partial charge)',
+      'Need a dedicated circuit for the charger',
+      'Panel doesn\'t have enough capacity',
+      'Want a charger installed in detached garage',
+      'Need outdoor-rated installation for driveway parking',
+      'Looking to install chargers at a commercial property',
+    ],
+    whyPro: `EV charger installation requires a dedicated high-amperage circuit. Done wrong, it's a fire risk. We size the circuit correctly, use the right wire gauge, and make sure your panel can handle the load. ESA permit and inspection included.`,
+    metaDescription: 'Professional EV charger installation in Newmarket and York Region. Level 2 home chargers, all brands. ESA licensed electrician. Free quotes.',
+  },
+  'landscape-lighting': {
+    headline: 'Landscape Lighting in York Region',
+    intro: `Good landscape lighting does two things at once. It makes your property look great after dark, and it makes it safer. Path lights, accent lighting on architectural features, uplighting on trees, security lighting around entries. Done right, it transforms how your home feels at night. Done wrong, it looks like a runway.`,
+    whatToExpect: `We start with a walkthrough of your property to understand what you want to highlight and what areas need better light for safety. We'll put together a layout and give you a clear quote before any work starts. Installation includes trenching for underground wiring, setting fixtures, connecting to a dedicated circuit with a timer or smart controller, and testing everything at night to make sure the light levels are right.`,
+    problems: [
+      'Dark walkways and entry points',
+      'Want to highlight landscaping or architectural features',
+      'Security concerns around the property',
+      'Existing landscape lighting is outdated or failing',
+      'Want smart controls for outdoor lighting',
+      'Need lighting for outdoor entertaining areas',
+    ],
+    whyPro: `Low-voltage landscape lighting is relatively safe to DIY, but the results show. Professional installation means proper wire sizing, weatherproof connections, and a layout designed by someone who understands how light works outdoors. We also tie everything to a controller so you're not walking outside to flip switches.`,
+    metaDescription: 'Professional landscape lighting design and installation in York Region. Path lights, accent lighting, security lighting. ESA licensed. Free quotes.',
+  },
+  'pot-light-installation': {
+    headline: 'Pot Light Installation in York Region',
+    intro: `Pot lights are one of the fastest ways to modernize a room. They're clean, they disappear into the ceiling, and they put light exactly where you need it. Whether you're finishing a basement, renovating a kitchen, or just tired of the old dome light in the living room, recessed lighting makes the space feel bigger and brighter.`,
+    whatToExpect: `We'll look at the room, talk about how you use the space, and recommend a layout. Then we cut the holes, run the wiring, and install the fixtures. If you're going with LED (and you should, the energy savings are significant), we'll help you choose the right color temperature for the room. Most rooms take a few hours. We patch, we clean up, and we leave you with dimmable, energy-efficient lighting.`,
+    problems: [
+      'Outdated ceiling fixtures that don\'t provide enough light',
+      'Want to modernize a kitchen, bathroom, or living room',
+      'Finishing a basement and need lighting',
+      'Want dimmable lighting for different moods',
+      'Existing pot lights are old halogen (hot, expensive to run)',
+      'Need task lighting over counters or workspaces',
+    ],
+    whyPro: `Cutting holes in your ceiling and running wire through your walls is permanent. If the spacing is off, the holes are too big, or the wiring isn't done right, it shows. We've installed thousands of pot lights and we get the layout right the first time.`,
+    metaDescription: 'Pot light installation in Newmarket, Aurora, and York Region. LED recessed lighting for kitchens, basements, and living rooms. Free quotes.',
+  },
+  'knob-and-tube-removal': {
+    headline: 'Knob & Tube Removal in York Region',
+    intro: `If your home was built before 1950, there's a good chance it still has knob-and-tube wiring somewhere. It was the standard for decades, but it's not compatible with modern electrical loads, it can't be insulated over, and most insurance companies won't cover a home that still has it. Removing it is a big job, but it's one of the best investments you can make in an older home.`,
+    whatToExpect: `We inspect the entire home to identify all knob-and-tube circuits. Then we put together a plan to replace them with modern NMD-90 wiring, circuit by circuit. The scope depends on the size of the home and how accessible the wiring is. We pull ESA permits, do the work room by room to minimize disruption, and schedule the inspection. When we're done, you can insulate your walls, your insurance company will be happy, and your home is safer.`,
+    problems: [
+      'Insurance company won\'t insure or is charging a premium',
+      'Can\'t add insulation because of knob-and-tube in walls',
+      'Buying or selling a home with knob-and-tube',
+      'Circuits are overloaded and breakers keep tripping',
+      'Planning a renovation and need to bring wiring up to code',
+      'Visible deterioration on exposed wiring in attic or basement',
+    ],
+    whyPro: `Knob-and-tube removal is not a weekend project. It involves working with live circuits, opening walls, and replacing wiring throughout the home. This is work that requires a licensed electrician, an ESA permit, and a proper inspection. Cutting corners on this job puts your family at risk.`,
+    metaDescription: 'Safe knob and tube wiring removal in York Region. ESA licensed, fully insured. Insurance-compliant rewiring for older homes. Free quotes.',
+  },
+  'residential-wiring': {
+    headline: 'Residential Wiring in York Region',
+    intro: `Whether you're building new, adding a room, or renovating the kitchen, the wiring behind the walls matters. It's the part you'll never see, but it determines whether your home is safe, whether your circuits can handle the load, and whether everything works the way it should for the next 30 years.`,
+    whatToExpect: `For new construction or additions, we work with your builder or contractor to rough in all the wiring before the drywall goes up. We place outlets, switches, and fixtures exactly where you want them. For renovations, we assess the existing wiring, bring anything up to code that needs it, and add new circuits as needed. We pull all permits and schedule ESA inspections.`,
+    problems: [
+      'Building a new home or addition',
+      'Major renovation (kitchen, bathroom, basement)',
+      'Need additional outlets or circuits',
+      'Outdated wiring that needs to be brought up to code',
+      'Home office that needs dedicated circuits',
+      'Adding a hot tub, sauna, or workshop',
+    ],
+    whyPro: `The wiring in your walls is there for decades. If it's not done right, you deal with tripping breakers, insufficient outlets, and potential safety hazards for years. We wire homes to exceed code, not just meet it.`,
+    metaDescription: 'Residential electrical wiring in Newmarket and York Region. New builds, renovations, additions. ESA licensed electrician. Free quotes.',
+  },
+  'commercial-electrical': {
+    headline: 'Commercial Electrical in York Region',
+    intro: `Your business can't afford electrical problems. A tripped breaker during business hours means lost revenue. Bad lighting means a worse experience for customers and employees. We handle commercial electrical for offices, retail spaces, restaurants, and light industrial. Same quality, same reliability, same people as our residential work.`,
+    whatToExpect: `We'll assess your space, understand your needs, and put together a scope of work. We're flexible on scheduling because we know downtime costs money. For new buildouts, we work with your general contractor. For service calls, we prioritize getting your business back up and running.`,
+    problems: [
+      'Tenant buildout or new office setup',
+      'Lighting upgrades (LED retrofit)',
+      'Additional circuits for equipment',
+      'Emergency lighting and exit signs',
+      'Electrical maintenance and troubleshooting',
+      'Sign installation and wiring',
+    ],
+    whyPro: `Commercial electrical has its own code requirements, and mistakes are expensive. We handle permits, inspections, and coordinate with other trades to keep your project on schedule.`,
+    metaDescription: 'Commercial electrical services in York Region. Office buildouts, LED upgrades, equipment circuits. ESA licensed. Minimal downtime. Free quotes.',
+  },
+  'generator-installation': {
+    headline: 'Generator Installation in York Region',
+    intro: `Power outages in York Region are more common than people think, especially during winter storms and summer heat waves. A whole-home generator kicks in automatically when the power goes out. Your furnace keeps running, your fridge stays cold, your sump pump keeps working. No candles, no extension cords from the neighbor, no worrying about frozen pipes.`,
+    whatToExpect: `We help you choose the right size generator based on what you want to keep running during an outage. We install a transfer switch at your panel, run the gas line (or coordinate with a gas fitter), set the generator on a concrete pad outside, and test the automatic switchover. When the power goes out, the generator starts within seconds. When it comes back, it shuts off on its own.`,
+    problems: [
+      'Frequent power outages in your area',
+      'Sump pump stops during outages (flooding risk)',
+      'Home office needs uninterrupted power',
+      'Medical equipment that requires constant power',
+      'Want to keep HVAC running during outages',
+      'Tired of dealing with portable generators',
+    ],
+    whyPro: `Generator installation involves high-voltage connections to your panel and either natural gas or propane fuel lines. The transfer switch has to be wired correctly or you risk back-feeding the grid, which is dangerous for utility workers and illegal. This is licensed electrician work, period.`,
+    metaDescription: 'Whole-home generator installation in York Region. Automatic backup power for your home. ESA licensed, all permits handled. Free quotes.',
+  },
+};
