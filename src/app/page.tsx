@@ -198,7 +198,7 @@ export default function Home() {
               },
               {
                 title: '24/7 Emergency',
-                desc: 'Electrical problems don&apos;t wait for business hours. Neither do we. Same-day service across York Region.',
+                desc: "Electrical problems don't wait for business hours. Neither do we. Same-day service across York Region.",
                 icon: (
                   <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
