@@ -14,7 +14,7 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
     return (
       <Link
         href={`/services/${slug}`}
-        className="group block relative rounded-3xl overflow-hidden bg-navy-dark min-h-[320px] md:min-h-[400px] service-featured"
+        className="group block relative rounded-3xl overflow-hidden bg-navy-dark min-h-[320px] md:min-h-[400px] md:col-span-2 md:row-span-2"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-dark to-navy-dark/95 group-hover:from-navy-light group-hover:via-navy group-hover:to-navy-dark transition-all duration-700" />
         <div className="absolute top-0 right-0 w-64 h-64 bg-gold/[0.06] rounded-full blur-[80px] group-hover:bg-gold/[0.12] transition-all duration-700" />

@@ -4,16 +4,21 @@ import { client } from '@/data/client';
 export default function HeroBanner() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image */}
+      {/* Background video */}
       <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80"
-          alt=""
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80"
           className="w-full h-full object-cover scale-105"
           style={{ animation: 'fadeIn 2s cubic-bezier(0.16, 1, 0.3, 1)' }}
-        />
+        >
+          <source src="https://videos.pexels.com/video-files/8853517/8853517-hd_1920_1080_24fps.mp4" type="video/mp4" />
+        </video>
         {/* Deeper gradient for text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/80 via-navy-dark/60 to-navy-dark/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/85 via-navy-dark/65 to-navy-dark/90" />
         <div className="absolute inset-0 grain" />
       </div>
 

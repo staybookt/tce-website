@@ -24,12 +24,10 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Bento grid: 2 featured + 6 standard */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 stagger-children">
-            {client.services.slice(0, 2).map((service) => (
-              <ServiceCard key={service.slug} {...service} featured />
-            ))}
-            {client.services.slice(2).map((service) => (
+          {/* Bento grid: 1 featured spanning 2 cols + remaining in grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
+            <ServiceCard key={client.services[0].slug} {...client.services[0]} featured />
+            {client.services.slice(1).map((service) => (
               <ServiceCard key={service.slug} {...service} />
             ))}
           </div>
@@ -37,22 +35,22 @@ export default function Home() {
       </section>
 
       {/* ═══ Stats Counter — Full-width, Apple numbers ═══ */}
-      <section className="py-24 md:py-28 bg-navy-dark relative overflow-hidden">
+      <section className="py-20 md:py-24 bg-navy-dark relative overflow-hidden">
         <div className="absolute inset-0 mesh-gradient opacity-50" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
-        <div className="max-w-7xl mx-auto px-4 relative">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 animate-on-scroll">
+        <div className="max-w-6xl mx-auto px-4 relative">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 animate-on-scroll">
             {[
               { number: `${client.yearsInBusiness}+`, label: 'Years in Business', sublabel: 'Serving York Region' },
               { number: '5.0', label: 'Google Rating', sublabel: 'From Verified Reviews' },
               { number: '24/7', label: 'Always Available', sublabel: 'Emergency Response' },
               { number: '100%', label: 'ESA Compliant', sublabel: 'Every Single Job' },
             ].map((stat, i) => (
-              <div key={i} className="text-center md:text-left">
-                <p className="text-5xl md:text-6xl lg:text-7xl font-bold text-white ticker-number mb-3">{stat.number}</p>
-                <p className="text-white/80 font-semibold text-sm tracking-tight">{stat.label}</p>
+              <div key={i} className="text-center">
+                <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-white ticker-number mb-2">{stat.number}</p>
+                <p className="text-white/70 font-semibold text-sm tracking-tight">{stat.label}</p>
                 <p className="text-white/30 text-xs mt-1">{stat.sublabel}</p>
               </div>
             ))}
@@ -72,7 +70,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-0 relative stagger-children">
             {/* Connecting line behind steps */}
-            <div className="hidden md:block absolute top-[52px] left-[16.67%] right-[16.67%] h-[2px] bg-gradient-to-r from-gold/40 via-gold/20 to-gold/40" />
+            <div className="hidden md:block absolute top-[48px] left-[16.67%] right-[16.67%] h-[1px] bg-gradient-to-r from-gold/30 via-gold/15 to-gold/30" />
 
             {[
               {
@@ -93,8 +91,8 @@ export default function Home() {
             ].map((item, i) => (
               <div key={i} className="relative text-center px-4 md:px-8">
                 {/* Step circle */}
-                <div className="w-[104px] h-[104px] rounded-full bg-gray-50 border-2 border-gray-100 flex items-center justify-center mx-auto mb-8 relative z-10">
-                  <span className="text-3xl font-bold text-gold tracking-tight">{item.step}</span>
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white border border-gray-100 shadow-sm flex items-center justify-center mx-auto mb-8 relative z-10">
+                  <span className="text-2xl md:text-3xl font-bold text-gold tracking-tight">{item.step}</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">{item.title}</h3>
                 <p className="text-gray-400 text-[15px] leading-relaxed max-w-xs mx-auto">{item.desc}</p>
@@ -180,7 +178,7 @@ export default function Home() {
             </div>
 
             {/* Right column: 3 cards in grid */}
-            <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4 stagger-children">
+            <div className="lg:col-span-3 grid sm:grid-cols-3 gap-4 stagger-children">
               {[
                 {
                   title: 'Clean Jobsite, Every Time',
@@ -210,7 +208,7 @@ export default function Home() {
                   ),
                 },
               ].map((item, i) => (
-                <div key={i} className={`bento-card ${i === 2 ? 'sm:col-span-2' : ''}`}>
+                <div key={i} className="bento-card">
                   <div className="w-12 h-12 rounded-xl bg-white border border-gray-100 flex items-center justify-center mb-5 text-gold shadow-sm">
                     {item.icon}
                   </div>
@@ -220,7 +218,7 @@ export default function Home() {
               ))}
 
               {/* Quote form card */}
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-3">
                 <div className="gradient-border">
                   <div className="gradient-border-inner p-8 md:p-10">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">Get a Free Quote</h3>
@@ -257,7 +255,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="scroll-strip md:grid md:grid-cols-3 md:gap-6 stagger-children">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
             {client.reviews.slice(0, 3).map((review, i) => (
               <ReviewCard key={i} {...review} />
             ))}
@@ -301,7 +299,7 @@ export default function Home() {
               <Link
                 key={area.slug}
                 href={`/areas/${area.slug}`}
-                className="group bg-gray-50 hover:bg-navy text-gray-600 hover:text-white px-7 py-3.5 rounded-full text-sm font-medium transition-all duration-400 border border-gray-100 hover:border-navy hover:shadow-xl hover:shadow-navy/15 hover:scale-105"
+                className="group bg-gray-50 hover:bg-navy-dark text-gray-600 hover:text-white px-6 py-3 rounded-full text-sm font-medium transition-all duration-500 border border-gray-100 hover:border-navy-dark hover:shadow-lg hover:shadow-navy-dark/10 hover:scale-[1.03]"
               >
                 {area.name}
               </Link>
@@ -324,13 +322,13 @@ export default function Home() {
           <p className="text-gray-400 text-lg leading-relaxed mb-16">
             If you're not happy with the work, we come back and make it right at no extra charge. Every job is ESA inspected, every quote is honoured, and every jobsite is left clean. That's not a policy. It's how we've kept customers coming back for {client.yearsInBusiness}+ years.
           </p>
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-3 gap-4 stagger-children">
             {[
               { label: 'Written Quote', desc: 'Before any work starts' },
               { label: 'ESA Inspected', desc: 'Every job, every time' },
               { label: 'Satisfaction Guaranteed', desc: 'We make it right' },
             ].map((item, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 shadow-sm">
+              <div key={i} className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-md hover:border-gold/20 transition-all duration-500">
                 <p className="text-gold font-bold text-sm uppercase tracking-widest mb-2">{item.label}</p>
                 <p className="text-gray-400 text-sm">{item.desc}</p>
               </div>
