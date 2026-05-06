@@ -113,23 +113,29 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — stat blocks that reinforce trust */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 rounded-2xl p-8 text-center">
-                <p className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-2">5.0</p>
-                <p className="text-gray-500 text-sm">Google Rating</p>
-              </div>
-              <div className="bg-gray-50 rounded-2xl p-8 text-center">
-                <p className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-2">100%</p>
-                <p className="text-gray-500 text-sm">ESA Pass Rate</p>
-              </div>
-              <div className="bg-gray-50 rounded-2xl p-8 text-center">
-                <p className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-2">{client.yearsInBusiness}+</p>
-                <p className="text-gray-500 text-sm">Years in Business</p>
-              </div>
-              <div className="bg-amber-50 rounded-2xl p-8 text-center border border-amber-100">
-                <p className="font-display text-4xl md:text-5xl font-bold text-amber-600 mb-2">0</p>
-                <p className="text-gray-500 text-sm">Surprise Invoices</p>
+            {/* Right — image with stat overlay */}
+            <div className="relative rounded-3xl overflow-hidden min-h-[400px]">
+              <img
+                src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Beautiful home exterior at dusk with warm interior lighting"
+                className="w-full h-full object-cover absolute inset-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
+              <div className="relative h-full flex flex-col justify-end p-8">
+                <div className="grid grid-cols-3 gap-6">
+                  <div>
+                    <p className="font-display text-3xl md:text-4xl font-bold text-white">5.0</p>
+                    <p className="text-white/50 text-xs mt-1">Google Rating</p>
+                  </div>
+                  <div>
+                    <p className="font-display text-3xl md:text-4xl font-bold text-white">{client.yearsInBusiness}+</p>
+                    <p className="text-white/50 text-xs mt-1">Years in Business</p>
+                  </div>
+                  <div>
+                    <p className="font-display text-3xl md:text-4xl font-bold text-amber-400">100%</p>
+                    <p className="text-white/50 text-xs mt-1">ESA Pass Rate</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

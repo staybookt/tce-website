@@ -33,7 +33,7 @@ export const client = {
       name: "Panel Upgrades",
       shortDescription: "Safe, code-compliant electrical panel upgrades for homes and businesses.",
       icon: "Zap",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800",
       keywords: ["panel upgrade Newmarket", "electrical panel upgrade York Region", "200 amp panel upgrade"],
     },
     {
@@ -57,7 +57,7 @@ export const client = {
       name: "Pot Light Installation",
       shortDescription: "Clean, modern recessed lighting for any room in your home.",
       icon: "Lightbulb",
-      image: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800",
       keywords: ["pot light installation Newmarket", "recessed lighting York Region", "LED pot lights"],
     },
     {
@@ -65,7 +65,7 @@ export const client = {
       name: "Knob & Tube Removal",
       shortDescription: "Safe removal of outdated knob-and-tube wiring to protect your home and family.",
       icon: "ShieldCheck",
-      image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.pexels.com/photos/5691590/pexels-photo-5691590.jpeg?auto=compress&cs=tinysrgb&w=800",
       keywords: ["knob and tube removal Newmarket", "knob and tube rewiring York Region", "old wiring replacement"],
     },
     {
@@ -73,7 +73,7 @@ export const client = {
       name: "Residential Wiring",
       shortDescription: "Complete residential electrical wiring for renovations and new builds.",
       icon: "Home",
-      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.pexels.com/photos/27928762/pexels-photo-27928762.jpeg?auto=compress&cs=tinysrgb&w=800",
       keywords: ["residential electrician Newmarket", "house wiring York Region", "electrical wiring renovation"],
     },
     {
@@ -81,7 +81,7 @@ export const client = {
       name: "Commercial Electrical",
       shortDescription: "Reliable electrical services for offices, retail, and light commercial spaces.",
       icon: "Building",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+      image: "https://images.pexels.com/photos/6301168/pexels-photo-6301168.jpeg?auto=compress&cs=tinysrgb&w=800",
       keywords: ["commercial electrician Newmarket", "commercial electrical York Region", "office electrical"],
     },
     {
