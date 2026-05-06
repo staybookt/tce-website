@@ -4,9 +4,9 @@
   --navy: #111113;
   --navy-dark: #08080A;
   --navy-light: #1E1E22;
-  --gold: #2563EB;
-  --gold-dark: #1D4ED8;
-  --gold-light: #60A5FA;
+  --gold: #F59E0B;
+  --gold-dark: #D97706;
+  --gold-light: #FBBF24;
   --green: #22C55E;
   --white: #FFFFFF;
   --gray-50: #F5F5F7;
@@ -112,8 +112,8 @@ a[href^="tel:"] {
 }
 
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(37, 99, 235, 0.5); }
+  0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.5); }
 }
 
 /* Scroll-triggered animations via IntersectionObserver */
@@ -276,8 +276,8 @@ a[href^="tel:"] {
 
 .premium-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(37, 99, 235, 0.15);
-  border-color: rgba(37, 99, 235, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.2);
 }
 
 /* Blue shimmer effect on buttons */
@@ -392,7 +392,7 @@ select {
 
 .bento-card:hover {
   background: var(--white);
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.08);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(245, 158, 11, 0.08);
   transform: translateY(-4px);
 }
 
@@ -438,16 +438,16 @@ select {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--gold) 0%, rgba(37, 99, 235, 0.2) 100%);
+  background: linear-gradient(90deg, var(--gold) 0%, rgba(245, 158, 11, 0.2) 100%);
   z-index: 0;
 }
 
 /* Subtle mesh gradient background */
 .mesh-gradient {
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(6, 182, 212, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(37, 99, 235, 0.02) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(245, 158, 11, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(251, 191, 36, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(245, 158, 11, 0.02) 0%, transparent 50%);
 }
 
 /* Large quote mark */
@@ -459,7 +459,7 @@ select {
   font-size: 120px;
   line-height: 1;
   font-family: Georgia, serif;
-  color: rgba(37, 99, 235, 0.06);
+  color: rgba(245, 158, 11, 0.06);
   pointer-events: none;
 }
 
@@ -480,7 +480,7 @@ select {
   bottom: -4px;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, #2563EB, #60A5FA);
+  background: linear-gradient(90deg, #F59E0B, #FBBF24);
   border-radius: 2px;
   animation: revealLine 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
   width: 0;
@@ -527,7 +527,7 @@ img, video {
   position: relative;
   border-radius: 24px;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(6, 182, 212, 0.15), rgba(37, 99, 235, 0.3));
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.3));
 }
 
 .gradient-border-inner {

@@ -26,7 +26,7 @@ export default function Header() {
       }`}>
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           <span className="tracking-wide">{client.hours.regular}</span>
-          <span className="text-gold font-medium tracking-wide">{client.hours.emergency}</span>
+          <span className="text-amber-400 font-medium tracking-wide">{client.hours.emergency}</span>
         </div>
       </div>
 
@@ -37,14 +37,14 @@ export default function Header() {
         }`}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 bg-gold rounded-xl flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-gold/30">
+            <div className="w-9 h-9 bg-amber-500 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-500/30">
               <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
             </div>
             <div>
-              <span className="text-white font-bold text-lg leading-none block tracking-tight">{client.name}</span>
-              <span className="text-gold/70 text-[10px] tracking-[0.15em] uppercase">{client.tagline}</span>
+              <span className="text-white font-bold text-lg leading-none block tracking-tight font-display">{client.name}</span>
+              <span className="text-amber-400/70 text-[10px] tracking-[0.15em] uppercase">{client.tagline}</span>
             </div>
           </Link>
 
@@ -71,7 +71,7 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-4">
             <a
               href={`tel:${client.phone}`}
-              className="text-white text-sm font-bold tracking-tight hover:text-gold transition-colors duration-300 flex items-center gap-2"
+              className="text-white text-sm font-bold tracking-tight hover:text-amber-400 transition-colors duration-300 flex items-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
                 <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -80,7 +80,7 @@ export default function Header() {
             </a>
             <Link
               href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-white font-bold text-sm px-6 py-2.5 rounded-xl transition-all duration-300 shadow-lg shadow-gold/20 hover:shadow-gold/40"
+              className="btn-premium bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-sm px-6 py-2.5 rounded-xl transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
             >
               Get a Free Quote
             </Link>
@@ -128,7 +128,7 @@ export default function Header() {
             <div className="pt-4 space-y-3">
               <a
                 href={`tel:${client.phone}`}
-                className="block btn-premium bg-gold text-white font-bold text-center py-3.5 rounded-xl shadow-lg shadow-gold/20"
+                className="block btn-premium bg-amber-500 text-gray-900 font-bold text-center py-3.5 rounded-xl shadow-lg shadow-amber-500/20"
               >
                 Call {client.phone}
               </a>

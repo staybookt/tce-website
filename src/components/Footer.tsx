@@ -5,20 +5,20 @@ export default function Footer() {
   return (
     <footer className="relative bg-navy-dark text-white overflow-hidden">
       {/* Top border gradient */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 pt-20 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Brand */}
           <div className="md:col-span-4">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-gold rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center">
                 <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                 </svg>
               </div>
               <div>
-                <span className="font-bold text-xl tracking-tight block">{client.name}</span>
+                <span className="font-bold text-xl tracking-tight block font-display">{client.name}</span>
                 <span className="text-white/30 text-xs tracking-[0.12em] uppercase">{client.tagline}</span>
               </div>
             </div>
@@ -26,16 +26,16 @@ export default function Footer() {
               Licensed, insured, and trusted by homeowners across York Region for {client.yearsInBusiness}+ years.
             </p>
             <div className="space-y-3 text-sm">
-              <a href={`tel:${client.phone}`} className="flex items-center gap-3 text-white/40 hover:text-gold transition-colors">
-                <div className="w-1.5 h-1.5 rounded-full bg-gold/40" />
+              <a href={`tel:${client.phone}`} className="flex items-center gap-3 text-white/40 hover:text-amber-400 transition-colors">
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-500/40" />
                 {client.phone}
               </a>
-              <a href={`mailto:${client.email}`} className="flex items-center gap-3 text-white/40 hover:text-gold transition-colors">
-                <div className="w-1.5 h-1.5 rounded-full bg-gold/40" />
+              <a href={`mailto:${client.email}`} className="flex items-center gap-3 text-white/40 hover:text-amber-400 transition-colors">
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-500/40" />
                 {client.email}
               </a>
               <div className="flex items-center gap-3 text-white/40">
-                <div className="w-1.5 h-1.5 rounded-full bg-gold/40" />
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-500/40" />
                 {client.address}
               </div>
             </div>
@@ -53,7 +53,7 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/services" className="text-gold/60 hover:text-gold text-sm font-medium transition-colors">
+                <Link href="/services" className="text-amber-400/60 hover:text-amber-400 text-sm font-medium transition-colors">
                   View All &rarr;
                 </Link>
               </li>
@@ -72,7 +72,7 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/areas" className="text-gold/60 hover:text-gold text-sm font-medium transition-colors">
+                <Link href="/areas" className="text-amber-400/60 hover:text-amber-400 text-sm font-medium transition-colors">
                   View All &rarr;
                 </Link>
               </li>
@@ -83,7 +83,7 @@ export default function Footer() {
           <div className="md:col-span-3">
             <h3 className="text-white/50 text-xs uppercase tracking-[0.2em] font-semibold mb-6">Hours</h3>
             <p className="text-white/40 text-sm mb-1">{client.hours.regular}</p>
-            <p className="text-gold/60 text-sm font-medium mb-10">{client.hours.emergency}</p>
+            <p className="text-amber-400/60 text-sm font-medium mb-10">{client.hours.emergency}</p>
 
             <h3 className="text-white/50 text-xs uppercase tracking-[0.2em] font-semibold mb-6">Credentials</h3>
             <div className="space-y-3 text-sm text-white/40">

@@ -62,8 +62,8 @@ export default function HeroBanner() {
         </div>
       </div>
 
-      {/* Bottom gradient fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+      {/* Bottom gradient fade into TrustBar */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-950 to-transparent" />
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2" style={{ animation: 'fadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 1s both' }}>
