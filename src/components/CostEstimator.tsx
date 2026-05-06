@@ -156,7 +156,7 @@ export default function CostEstimator({ variant = 'light' }: CostEstimatorProps)
                     : 'text-gray-500 hover:text-gray-700'
               }`}
             >
-              <span className="text-xs font-medium block">{option.label}</span>
+              <span className="text-[10px] sm:text-xs font-medium block leading-tight">{option.label}</span>
             </button>
           ))}
         </div>
@@ -192,7 +192,7 @@ export default function CostEstimator({ variant = 'light' }: CostEstimatorProps)
           </div>
 
           {/* Savings + included - single compact row */}
-          <div className={`flex items-start gap-4 p-4 rounded-xl ${isDark ? 'bg-white/[0.03]' : 'bg-gray-50'}`}>
+          <div className={`flex flex-col sm:flex-row items-start gap-3 sm:gap-4 p-4 rounded-xl ${isDark ? 'bg-white/[0.03]' : 'bg-gray-50'}`}>
             <div className="shrink-0">
               <p className={`text-xs font-semibold uppercase tracking-wider mb-1 ${isDark ? 'text-green-400/80' : 'text-green-700'}`}>
                 You save ~${barData.savings.toLocaleString()}
@@ -201,8 +201,9 @@ export default function CostEstimator({ variant = 'light' }: CostEstimatorProps)
                 Same licence, same ESA inspection
               </p>
             </div>
-            <div className={`w-px self-stretch ${isDark ? 'bg-white/[0.06]' : 'bg-gray-200'}`} />
-            <div className="grid grid-cols-2 gap-x-4 gap-y-1 flex-1">
+            <div className={`hidden sm:block w-px self-stretch ${isDark ? 'bg-white/[0.06]' : 'bg-gray-200'}`} />
+            <div className={`sm:hidden w-full h-px ${isDark ? 'bg-white/[0.06]' : 'bg-gray-200'}`} />
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1 flex-1 w-full">
               {activeOption.included.map((item, i) => (
                 <div key={i} className="flex items-center gap-1.5">
                   <svg viewBox="0 0 24 24" className={`w-3 h-3 shrink-0 ${isDark ? 'text-amber-400/50' : 'text-amber-500/70'}`} fill="none" stroke="currentColor" strokeWidth="2.5">

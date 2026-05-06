@@ -121,19 +121,19 @@ export default function Home() {
                 className="w-full h-full object-cover absolute inset-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
-              <div className="relative h-full flex flex-col justify-end p-8">
-                <div className="grid grid-cols-3 gap-6">
+              <div className="relative h-full flex flex-col justify-end p-5 sm:p-8">
+                <div className="grid grid-cols-3 gap-3 sm:gap-6">
                   <div>
-                    <p className="font-display text-3xl md:text-4xl font-bold text-white">5.0</p>
-                    <p className="text-white/50 text-xs mt-1">Google Rating</p>
+                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">5.0</p>
+                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">Google Rating</p>
                   </div>
                   <div>
-                    <p className="font-display text-3xl md:text-4xl font-bold text-white">{client.yearsInBusiness}+</p>
-                    <p className="text-white/50 text-xs mt-1">Years in Business</p>
+                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">{client.yearsInBusiness}+</p>
+                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">Years in Business</p>
                   </div>
                   <div>
-                    <p className="font-display text-3xl md:text-4xl font-bold text-amber-400">100%</p>
-                    <p className="text-white/50 text-xs mt-1">ESA Pass Rate</p>
+                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-amber-400">100%</p>
+                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">ESA Pass Rate</p>
                   </div>
                 </div>
               </div>

@@ -31,7 +31,7 @@ export default function HeroBanner() {
             </span>
           </div>
 
-          <h1 className="font-display text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-white leading-[0.9] mb-8 tracking-[-0.04em]">
+          <h1 className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-white leading-[0.9] mb-8 tracking-[-0.04em]">
             Your Local
             <br />
             Electrician.

@@ -37,8 +37,8 @@ export default function Header() {
         }`}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 bg-amber-500 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-500/30">
-              <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-500/30 ring-2 ring-amber-400/20">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="currentColor">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
             </div>
