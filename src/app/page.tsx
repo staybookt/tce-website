@@ -1,7 +1,6 @@
 import HeroBanner from '@/components/HeroBanner';
 import TrustBar from '@/components/TrustBar';
 import ServiceCard from '@/components/ServiceCard';
-import ReviewCard from '@/components/ReviewCard';
 import CostEstimator from '@/components/CostEstimator';
 import RecentWork from '@/components/RecentWork';
 import { client } from '@/data/client';
@@ -13,148 +12,141 @@ export default function Home() {
       <HeroBanner />
       <TrustBar />
 
-      {/* ═══ Why Top Choice — editorial layout ═══ */}
+      {/* ═══ Services — what they came for ═══ */}
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
-            {/* Left — sticky headline */}
-            <div className="md:col-span-5 md:sticky md:top-32">
-              <div className="accent-line mb-6" />
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-6">
-                We treat your home like it&apos;s ours.
-              </h2>
-              <p className="text-gray-500 text-lg leading-relaxed">
-                No shortcuts. No surprises. Just honest electrical work backed by
-                an ESA licence, a clean jobsite, and a team that picks up the phone
-                when your power goes out at 2am.
-              </p>
-            </div>
-
-            {/* Right — feature cards with stagger */}
-            <div className="md:col-span-7 space-y-5">
-              {[
-                {
-                  title: 'ESA Licensed',
-                  desc: 'Every job meets or exceeds the Ontario Electrical Safety Code. Permits pulled, inspections passed.',
-                  number: '01',
-                },
-                {
-                  title: 'Upfront Pricing',
-                  desc: 'No surprise charges. We quote upfront and stick to it. If something changes, you hear about it first.',
-                  number: '02',
-                },
-                {
-                  title: 'Clean Jobsite',
-                  desc: 'Drop cloths down, debris cleaned up, and your home looks better when we leave. Every time.',
-                  number: '03',
-                },
-                {
-                  title: '24/7 Emergency',
-                  desc: "Electrical problems don't wait for business hours. Neither do we. Same-day service across York Region.",
-                  number: '04',
-                },
-              ].map((item, i) => (
-                <div key={i} className="group flex gap-6 p-6 md:p-8 rounded-2xl border border-gray-100 hover:border-amber-200 hover:bg-amber-50/30 transition-all duration-500">
-                  <span className="font-display text-3xl font-bold text-gray-200 group-hover:text-amber-300 transition-colors duration-500 shrink-0">
-                    {item.number}
-                  </span>
-                  <div>
-                    <h3 className="font-display font-bold text-gray-900 text-xl mb-2">{item.title}</h3>
-                    <p className="text-gray-500 text-[15px] leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ Reviews — dark editorial section ═══ */}
-      <section className="section-dark py-24 md:py-32 relative overflow-hidden">
-        {/* Subtle warm glow */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl" />
-
-        <div className="relative max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <div>
-              <div className="accent-line mb-6" />
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1]">
-                Trusted by homeowners<br className="hidden md:block" /> across York Region.
-              </h2>
-            </div>
-            <Link href="/reviews" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold transition-colors shrink-0">
-              Read All Reviews
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+          <div className="max-w-2xl mb-14">
+            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">What We Do</p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
+              Every electrical service your home needs.
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
-            {client.reviews.slice(0, 3).map((review, i) => (
-              <ReviewCard key={i} {...review} variant="dark" />
+          {/* Featured service — full width hero card */}
+          <div className="mb-4">
+            <ServiceCard key={client.services[0].slug} {...client.services[0]} featured />
+          </div>
+
+          {/* Grid of remaining services — 2x3 or 3x2 */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            {client.services.slice(1, 7).map((service) => (
+              <ServiceCard key={service.slug} {...service} />
             ))}
           </div>
 
           <div className="text-center">
-            <Link
-              href="/contact"
-              className="inline-flex bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-10 py-4 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02]"
-            >
-              Get a Free Quote
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ Services — full bleed featured + grid ═══ */}
-      <section className="py-24 md:py-32 section-warm">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-            <div className="max-w-2xl">
-              <div className="accent-line mb-6" />
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
-                Every electrical service<br className="hidden md:block" /> your home needs.
-              </h2>
-            </div>
-            <Link href="/services" className="inline-flex items-center gap-2 text-amber-600 hover:text-amber-700 font-semibold transition-colors shrink-0">
-              View All Services
+            <Link href="/services" className="inline-flex items-center gap-2 text-amber-600 hover:text-amber-700 font-semibold text-sm transition-colors">
+              View All {client.services.length} Services
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <ServiceCard key={client.services[0].slug} {...client.services[0]} featured />
-            {client.services.slice(1, 4).map((service) => (
-              <ServiceCard key={service.slug} {...service} />
-            ))}
+      {/* ═══ Cost Estimator — right after services ═══ */}
+      <section className="section-dark py-24 md:py-32 relative overflow-hidden">
+        {/* Warm ambient glows */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/[0.07] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+            {/* Left — headline + context */}
+            <div className="md:col-span-5">
+              <p className="text-amber-400 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Pricing</p>
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+                What&apos;s this going to cost?
+              </h2>
+              <p className="text-white/40 text-base leading-relaxed mb-8">
+                Pick your service and scope. These are real ranges based on jobs we&apos;ve done across York Region. Your actual quote depends on your panel, your home, and the run distance.
+              </p>
+              <div className="hidden md:flex items-center gap-4 text-sm text-white/30">
+                <div className="flex items-center gap-2">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-400/50" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  No obligation
+                </div>
+                <div className="flex items-center gap-2">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-400/50" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Exact quote same day
+                </div>
+              </div>
+            </div>
+
+            {/* Right — the estimator */}
+            <div className="md:col-span-7">
+              <CostEstimator variant="dark" />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ Cost Estimator ═══ */}
-      <section className="py-24 md:py-32 bg-white">
+      {/* ═══ Featured Testimonial — big, singular, impactful ═══ */}
+      <section className="py-24 md:py-32 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gray-950 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            {/* Warm gradient accent */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-60 h-60 bg-orange-500/5 rounded-full blur-3xl" />
-
-            <div className="relative">
-              <div className="mb-10">
-                <div className="accent-line mb-6" />
-                <h3 className="font-display text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">
-                  What&apos;s this going to cost?
-                </h3>
-                <p className="text-white/50 text-base max-w-lg">
-                  Pick your service and scope to get a ballpark range. Real numbers based on typical jobs in York Region.
-                </p>
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+            {/* Left — the big quote */}
+            <div>
+              <div className="flex gap-1 mb-6">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
               </div>
-              <CostEstimator variant="dark" />
+              <blockquote className="font-display text-2xl md:text-3xl font-bold text-gray-900 leading-snug mb-8 tracking-tight">
+                &ldquo;Tim and his team rewired our entire basement during a renovation. They showed up on time, cleaned up after themselves, and the work passed inspection on the first try.&rdquo;
+              </blockquote>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
+                  <span className="font-bold text-amber-600 text-lg">S</span>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900">Sarah M.</p>
+                  <p className="text-gray-500 text-sm">Newmarket &middot; Residential Wiring</p>
+                </div>
+              </div>
             </div>
+
+            {/* Right — stat blocks that reinforce trust */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-gray-50 rounded-2xl p-8 text-center">
+                <p className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-2">5.0</p>
+                <p className="text-gray-500 text-sm">Google Rating</p>
+              </div>
+              <div className="bg-gray-50 rounded-2xl p-8 text-center">
+                <p className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-2">100%</p>
+                <p className="text-gray-500 text-sm">ESA Pass Rate</p>
+              </div>
+              <div className="bg-gray-50 rounded-2xl p-8 text-center">
+                <p className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-2">{client.yearsInBusiness}+</p>
+                <p className="text-gray-500 text-sm">Years in Business</p>
+              </div>
+              <div className="bg-amber-50 rounded-2xl p-8 text-center border border-amber-100">
+                <p className="font-display text-4xl md:text-5xl font-bold text-amber-600 mb-2">0</p>
+                <p className="text-gray-500 text-sm">Surprise Invoices</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Secondary reviews — smaller, supporting */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 pt-16 border-t border-gray-100">
+            {client.reviews.slice(1, 4).map((review, i) => (
+              <div key={i} className="flex gap-4">
+                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+                  <span className="font-bold text-gray-500 text-sm">{review.name.charAt(0)}</span>
+                </div>
+                <div>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-2">&ldquo;{review.text}&rdquo;</p>
+                  <p className="text-gray-400 text-xs font-medium">{review.name} &middot; {review.location}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -168,12 +160,11 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-500/10 rounded-full blur-3xl" />
 
         <div className="relative max-w-3xl mx-auto px-4 text-center">
-          <div className="accent-line mx-auto mb-8" />
           <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.05]">
-            Ready to get started?
+            Let&apos;s get it done.
           </h2>
           <p className="text-white/40 text-lg mb-12 max-w-md mx-auto">
-            Whether it&apos;s a small repair or a major project, we&apos;re here to help.
+            Call for a same-day quote. No voicemail, no runaround.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -186,7 +177,7 @@ export default function Home() {
               href="/contact"
               className="bg-white/10 hover:bg-white/15 text-white font-bold px-10 py-4 rounded-xl text-base transition-all duration-300 border border-white/10 hover:border-white/20 backdrop-blur-sm"
             >
-              Get a Free Quote
+              Request a Quote Online
             </Link>
           </div>
         </div>

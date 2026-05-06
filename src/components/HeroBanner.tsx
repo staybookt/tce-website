@@ -17,7 +17,6 @@ export default function HeroBanner() {
         >
           <source src="https://videos.pexels.com/video-files/8853517/8853517-hd_1920_1080_24fps.mp4" type="video/mp4" />
         </video>
-        {/* Deeper gradient for text contrast */}
         <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/85 via-navy-dark/65 to-navy-dark/90" />
         <div className="absolute inset-0 grain" />
       </div>
@@ -32,32 +31,31 @@ export default function HeroBanner() {
             </span>
           </div>
 
-          <h1 className="font-display text-7xl md:text-8xl lg:text-[7rem] font-bold text-white leading-[0.9] mb-8 tracking-[-0.04em]">
-            Electrical Work
+          <h1 className="font-display text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-white leading-[0.9] mb-8 tracking-[-0.04em]">
+            Your Local
             <br />
-            Done Right.
+            Electrician.
             <br />
-            <span className="gradient-text">Every Time.</span>
+            <span className="gradient-text">Not a Call Centre.</span>
           </h1>
 
           <p className="text-white/50 text-lg md:text-xl mb-12 leading-relaxed max-w-lg">
-            Licensed, insured, and trusted by homeowners across Newmarket, Aurora, and York Region
-            for {client.yearsInBusiness}+ years.
+            You call, Tim answers. Licensed, insured, and doing electrical work across York Region for {client.yearsInBusiness}+ years.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/contact"
-              className="btn-premium bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02]"
-            >
-              Get a Free Quote
-            </Link>
             <a
               href={`tel:${client.phone}`}
-              className="glass hover:bg-white/10 text-white font-semibold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center hover:scale-[1.02]"
+              className="btn-premium bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02]"
             >
               Call {client.phone}
             </a>
+            <Link
+              href="/contact"
+              className="glass hover:bg-white/10 text-white font-semibold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center hover:scale-[1.02]"
+            >
+              Get a Free Quote
+            </Link>
           </div>
         </div>
       </div>
