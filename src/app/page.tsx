@@ -57,10 +57,10 @@ export default function Home() {
             <div className="md:col-span-5">
               <p className="text-amber-400 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Pricing</p>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-6">
-                What&apos;s this going to cost?
+                Fair pricing. No franchise markup.
               </h2>
               <p className="text-white/40 text-base leading-relaxed mb-8">
-                Pick your service and scope. These are real ranges based on jobs we&apos;ve done across York Region. Your actual quote depends on your panel, your home, and the run distance.
+                Big franchise operations charge more because they have to. National marketing, call centres, royalty fees. We don&apos;t have any of that. Same licence, same ESA inspection, same quality work.
               </p>
               <div className="hidden md:flex items-center gap-4 text-sm text-white/30">
                 <div className="flex items-center gap-2">
