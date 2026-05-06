@@ -87,7 +87,7 @@ export default async function AreaPage({ params }: Props) {
                     <p>{area.description}</p>
                   ) : (
                     <p>
-                      {client.name} has been serving {area.name} and the broader {area.region} area for over {client.yearsInBusiness} years.
+                      {client.name} has been serving {area.name} and the broader {area.region} area with over {client.yearsExperience} years of experience.
                       When you call us, you're getting a local electrician who knows the area, understands the housing stock,
                       and can be at your door the same day for most jobs.
                     </p>
