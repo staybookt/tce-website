@@ -95,8 +95,8 @@ interface CostEstimatorProps {
 }
 
 export default function CostEstimator({ variant = 'light' }: CostEstimatorProps) {
-  const [selectedService, setSelectedService] = useState<string | null>(null);
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [selectedService, setSelectedService] = useState<string | null>('panel-upgrade');
+  const [selectedOption, setSelectedOption] = useState<number | null>(0);
   const isDark = variant === 'dark';
 
   const activeService = services.find((s) => s.id === selectedService);
