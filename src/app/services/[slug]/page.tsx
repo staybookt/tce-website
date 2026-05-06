@@ -20,8 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const content = serviceContent[slug];
   if (!service) return {};
   return {
-    title: `${service.name} in Newmarket & York Region`,
+    title: `${service.name} in Newmarket & York Region | Cost, Process & ESA Permits`,
     description: content?.metaDescription || service.shortDescription,
+    alternates: {
+      canonical: `https://www.topchoiceelectrical.com/services/${slug}`,
+    },
   };
 }
 
@@ -37,6 +40,32 @@ export default async function ServicePage({ params }: Props) {
   return (
     <>
       <SchemaMarkup type="Service" serviceName={service.name} serviceDescription={service.shortDescription} />
+
+      {/* HowTo Schema */}
+      {content.howToSteps && content.howToSteps.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'HowTo',
+              name: `How ${service.name} Works`,
+              description: service.shortDescription,
+              step: content.howToSteps.map((step, i) => ({
+                '@type': 'HowToStep',
+                position: i + 1,
+                name: step.name,
+                text: step.text,
+              })),
+              provider: {
+                '@type': 'Electrician',
+                name: client.name,
+                telephone: client.phone,
+              },
+            }),
+          }}
+        />
+      )}
 
       {/* FAQ Schema */}
       {content.faqs && content.faqs.length > 0 && (
@@ -92,6 +121,15 @@ export default async function ServicePage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-16">
             <div className="lg:col-span-2 space-y-16">
+              {/* AEO Summary — direct answer for AI engines */}
+              {content.aeoSummary && (
+                <div className="animate-on-scroll">
+                  <div className="bg-gray-50 border-l-4 border-gold rounded-r-xl p-6">
+                    <p className="text-gray-800 text-[15px] leading-relaxed font-medium">{content.aeoSummary}</p>
+                  </div>
+                </div>
+              )}
+
               {/* Intro */}
               <div className="animate-on-scroll">
                 <p className="text-gray-600 text-lg leading-relaxed">{content.intro}</p>

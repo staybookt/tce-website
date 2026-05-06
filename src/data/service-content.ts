@@ -1,9 +1,11 @@
 export const serviceContent: Record<string, {
   headline: string;
+  aeoSummary: string;
   intro: string;
   processHeading: string;
   processSubheading: string;
   whatToExpect: string;
+  howToSteps?: { name: string; text: string }[];
   issuesHeading: string;
   problems: string[];
   whyPro: string;
@@ -13,6 +15,7 @@ export const serviceContent: Record<string, {
 }> = {
   'panel-upgrades': {
     headline: 'Panel Upgrades in York Region',
+    aeoSummary: 'An electrical panel upgrade replaces your home\'s breaker panel with a higher-capacity unit, typically upgrading from 100 amps to 200 amps. In Ontario, this costs $2,500 to $4,500 and requires an ESA permit and inspection. The job takes about one day for a licensed electrician to complete.',
     intro: `If your home still runs on a 60 or 100 amp panel, you're probably already feeling it. Breakers tripping when you run the dryer and microwave at the same time. Lights dimming when the AC kicks in. An older panel can't keep up with how much power a modern home actually uses. A panel upgrade brings your home's electrical system up to current code and gives you the capacity to run everything you need without worrying about overloading.`,
     processHeading: 'How a panel upgrade works.',
     processSubheading: 'From Assessment to Inspection',
@@ -36,10 +39,17 @@ export const serviceContent: Record<string, {
       { q: 'Do I need a permit for a panel upgrade?', a: 'Yes. In Ontario, all panel work requires an ESA (Electrical Safety Authority) permit and inspection. We pull the permit and schedule the inspection as part of every job.' },
       { q: 'Will my insurance company require a panel upgrade?', a: 'Many insurance companies require upgrades for homes with Federal Pacific, Zinsco, or fuse panels. Some won\'t insure at all until the panel is replaced. If your insurer has flagged your panel, we can handle the upgrade and provide documentation.' },
     ],
+    howToSteps: [
+      { name: 'Panel assessment', text: 'We inspect your current panel, calculate your home\'s electrical load, and determine whether an upgrade is needed and what capacity you require.' },
+      { name: 'Quote and permit', text: 'We provide an exact price, pull the ESA permit, and schedule the work at a time that works for you.' },
+      { name: 'Panel swap', text: 'We disconnect the old panel, install the new one, wire all circuits, and label every breaker. This typically takes a full day.' },
+      { name: 'ESA inspection', text: 'We schedule and coordinate the ESA inspection to confirm the work meets Ontario electrical code.' },
+    ],
     metaDescription: 'ESA licensed panel upgrades in Newmarket, Aurora, and York Region. 100 to 200 amp upgrades, fuse panel replacements, and more. Free quotes.',
   },
   'ev-charger-installation': {
     headline: 'EV Charger Installation in York Region',
+    aeoSummary: 'A Level 2 EV charger installation adds a dedicated 240V circuit from your electrical panel to your garage or driveway, giving you 30 to 50 km of range per hour of charging. Installation costs $800 to $1,800 in Ontario (charger not included) and takes about half a day. An ESA permit is required.',
     intro: `Charging your electric vehicle at home is the single biggest convenience of owning one. No more gas stations, no more public charger hunting. A Level 2 home charger gives you a full charge overnight, every night. We install all major brands and handle the entire process from panel assessment to final hookup.`,
     processHeading: 'From panel check to first charge.',
     processSubheading: 'The Installation Process',
@@ -61,10 +71,17 @@ export const serviceContent: Record<string, {
       { q: 'Do you install Tesla Wall Connectors?', a: 'Yes. We install all major brands including Tesla Wall Connector, ChargePoint, Grizzl-E, and FLO. We can also help you choose if you\'re not sure which charger is right for your vehicle.' },
       { q: 'Can I install a charger outside?', a: 'Absolutely. We use outdoor-rated chargers and weatherproof wiring for driveway or carport installations. The charger and all connections are rated for Canadian winters.' },
     ],
+    howToSteps: [
+      { name: 'Panel capacity check', text: 'We assess your electrical panel to confirm it can handle the additional 40-50 amp load a Level 2 charger requires.' },
+      { name: 'Circuit installation', text: 'We run a dedicated 240V circuit from your panel to the charging location using properly sized wiring.' },
+      { name: 'Charger mounting and hookup', text: 'We mount the charger unit, connect it to the dedicated circuit, and test the full system.' },
+      { name: 'Permit and inspection', text: 'We pull the ESA permit and schedule the inspection to certify the installation.' },
+    ],
     metaDescription: 'Professional EV charger installation in Newmarket and York Region. Level 2 home chargers, all brands. ESA licensed electrician. Free quotes.',
   },
   'landscape-lighting': {
     headline: 'Landscape Lighting in York Region',
+    aeoSummary: 'Professional landscape lighting installation includes design, trenching, wiring, and fixture placement for path lights, accent lights, uplighting, and security lighting. Most residential projects in Ontario cost $2,000 to $6,000 depending on property size and number of fixtures. Smart controllers for phone-based scheduling are available.',
     intro: `Good landscape lighting does two things at once. It makes your property look great after dark, and it makes it safer. Path lights, accent lighting on architectural features, uplighting on trees, security lighting around entries. Done right, it transforms how your home feels at night. Done wrong, it looks like a runway.`,
     processHeading: 'Designed for your property.',
     processSubheading: 'Our Design Process',
@@ -89,6 +106,7 @@ export const serviceContent: Record<string, {
   },
   'pot-light-installation': {
     headline: 'Pot Light Installation in York Region',
+    aeoSummary: 'Pot light (recessed lighting) installation costs $150 to $250 per light in Ontario, with a typical kitchen of 6 lights running $900 to $1,500. LED pot lights are recommended for energy savings and longevity. The job involves cutting ceiling openings, running wiring, and installing IC-rated fixtures where insulation is present.',
     intro: `Pot lights are one of the fastest ways to modernize a room. They're clean, they disappear into the ceiling, and they put light exactly where you need it. Whether you're finishing a basement, renovating a kitchen, or just tired of the old dome light in the living room, recessed lighting makes the space feel bigger and brighter.`,
     processHeading: 'Layout, install, cleanup.',
     processSubheading: 'What the Job Looks Like',
@@ -114,6 +132,7 @@ export const serviceContent: Record<string, {
   },
   'knob-and-tube-removal': {
     headline: 'Knob & Tube Removal in York Region',
+    aeoSummary: 'Knob-and-tube wiring removal replaces pre-1950s electrical wiring with modern NMD-90 cable throughout your home. A full-house removal in Ontario costs $8,000 to $15,000. This work requires an ESA permit and is often required by insurance companies before they will insure an older home.',
     intro: `If your home was built before 1950, there's a good chance it still has knob-and-tube wiring somewhere. It was the standard for decades, but it's not compatible with modern electrical loads, it can't be insulated over, and most insurance companies won't cover a home that still has it. Removing it is a big job, but it's one of the best investments you can make in an older home.`,
     processHeading: 'A room-by-room approach.',
     processSubheading: 'How We Handle It',
@@ -139,6 +158,7 @@ export const serviceContent: Record<string, {
   },
   'residential-wiring': {
     headline: 'Residential Wiring in York Region',
+    aeoSummary: 'Residential electrical wiring covers new construction rough-ins, renovation rewiring, and circuit additions. Costs in Ontario range from $3,000 to $5,000 for a basement finish to $10,000 to $20,000+ for a full new-build. All work requires ESA permits and must meet the Ontario Electrical Code.',
     intro: `Whether you're building new, adding a room, or renovating the kitchen, the wiring behind the walls matters. It's the part you'll never see, but it determines whether your home is safe, whether your circuits can handle the load, and whether everything works the way it should for the next 30 years.`,
     processHeading: 'Built into your timeline.',
     processSubheading: 'Working With Your Contractor',
@@ -163,6 +183,7 @@ export const serviceContent: Record<string, {
   },
   'commercial-electrical': {
     headline: 'Commercial Electrical in York Region',
+    aeoSummary: 'Commercial electrical services include tenant buildouts, LED lighting retrofits, equipment circuit additions, and emergency lighting installation. LED retrofits typically cut lighting energy costs by 50 to 70 percent. All commercial work in Ontario requires ESA permits and must meet the Ontario Electrical Code.',
     intro: `Your business can't afford electrical problems. A tripped breaker during business hours means lost revenue. Bad lighting means a worse experience for customers and employees. We handle commercial electrical for offices, retail spaces, restaurants, and light industrial. Same quality, same reliability, same people as our residential work.`,
     processHeading: 'Minimal disruption to your business.',
     processSubheading: 'How We Work Commercially',
@@ -187,6 +208,7 @@ export const serviceContent: Record<string, {
   },
   'generator-installation': {
     headline: 'Generator Installation in York Region',
+    aeoSummary: 'A whole-home generator installation includes the generator unit, automatic transfer switch, and gas line connection. Installed cost in Ontario is $8,000 to $15,000 for a full-home system or $5,000 to $8,000 for essentials-only coverage. The generator starts automatically within seconds of a power outage.',
     intro: `Power outages in York Region are more common than people think, especially during winter storms and summer heat waves. A whole-home generator kicks in automatically when the power goes out. Your furnace keeps running, your fridge stays cold, your sump pump keeps working. No candles, no extension cords from the neighbor, no worrying about frozen pipes.`,
     processHeading: 'Automatic protection, professionally installed.',
     processSubheading: 'The Setup',
@@ -208,10 +230,17 @@ export const serviceContent: Record<string, {
       { q: 'What fuel does it use?', a: 'Most whole-home generators run on natural gas (connected to your existing gas line) or propane. Natural gas is the most convenient since you never need to refuel. We coordinate with a gas fitter for the gas connection.' },
       { q: 'How loud is a whole-home generator?', a: 'Modern generators run at about 65-70 decibels, similar to a normal conversation. They\'re significantly quieter than portable generators.' },
     ],
+    howToSteps: [
+      { name: 'Load calculation', text: 'We calculate your home\'s electrical load to determine the right generator size based on what you want to keep running during an outage.' },
+      { name: 'Unit selection', text: 'We help you choose between natural gas and propane models, and between whole-home and essentials-only coverage.' },
+      { name: 'Installation', text: 'We install the automatic transfer switch at your panel, place the generator on a concrete pad, and coordinate the gas line connection.' },
+      { name: 'Testing and commissioning', text: 'We simulate a power outage to verify the automatic switchover works correctly, then schedule the ESA inspection.' },
+    ],
     metaDescription: 'Whole-home generator installation in York Region. Automatic backup power for your home. ESA licensed, all permits handled. Free quotes.',
   },
   'smoke-co-detectors': {
     headline: 'Smoke & CO Detector Installation in York Region',
+    aeoSummary: 'Ontario\'s Fire Code requires working smoke alarms on every level of your home and outside all sleeping areas, plus carbon monoxide detectors near fuel-burning appliances. Hardwired, interconnected detectors with battery backup are the recommended standard. Installation costs $150 to $250 per unit, or $600 to $1,200 for a full-home upgrade.',
     intro: `Ontario's fire code requires working smoke alarms on every level of your home and outside all sleeping areas. Carbon monoxide detectors are required near any fuel-burning appliance. If your detectors are more than 10 years old, hardwired with no battery backup, or missing from required locations, your home isn't up to code. We install and upgrade smoke and CO detectors to meet current Ontario requirements and keep your family safe.`,
     processHeading: 'Proper placement, proper wiring.',
     processSubheading: 'How We Install',
@@ -227,7 +256,7 @@ export const serviceContent: Record<string, {
       'Home renovation that changed room layouts',
       'Insurance company or home inspector flagged an issue',
     ],
-    whyPro: `Detector placement matters. Too close to a kitchen and you get false alarms. Too far from a bedroom and nobody hears it in time. Hardwiring into your home's electrical system and interconnecting all units so they trigger together requires an electrician. We make sure every detector is in the right spot, wired correctly, and meets the Ontario Fire Code.`,
+    whyPro: `Detector placement matters. Too close to a kitchen and you get false alarms. Too far from a bedroom and nobody hears it in time. Hardwiring into your home\'s electrical system and interconnecting all units so they trigger together requires an electrician. We make sure every detector is in the right spot, wired correctly, and meets the Ontario Fire Code.`,
     pricingNote: 'Replacing or adding a single hardwired smoke or CO detector typically runs $150 to $250 installed. A full-home upgrade with interconnected detectors usually runs $600 to $1,200 depending on how many units you need and how accessible the wiring is.',
     faqs: [
       { q: 'How often should smoke detectors be replaced?', a: 'Smoke alarms should be replaced every 10 years. CO detectors have a shorter lifespan of 5 to 7 years depending on the manufacturer. Check the date on the back of your units.' },
@@ -236,5 +265,56 @@ export const serviceContent: Record<string, {
       { q: 'Can I just use battery-powered detectors?', a: 'Battery-only detectors are better than nothing, but hardwired detectors with battery backup are more reliable and meet current code for new installations and renovations. The battery backup keeps them working during a power outage.' },
     ],
     metaDescription: 'Smoke and carbon monoxide detector installation in Newmarket, Aurora, and York Region. Hardwired, interconnected, code-compliant. Free quotes.',
+  },
+  'smart-home-installation': {
+    headline: 'Smart Home Installation in York Region',
+    aeoSummary: 'Smart home installation involves professionally wiring and configuring smart thermostats, lighting controls, security systems, and voice-activated switches. Proper wiring ensures reliable performance and avoids the connectivity issues common with DIY setups. A licensed electrician handles the dedicated circuits, neutral wire requirements, and hub placement that smart devices need to work correctly.',
+    intro: `Smart home technology works best when the electrical behind it is done right. Smart switches need a neutral wire that many older homes don't have. Smart thermostats need the right wiring from your HVAC system. Whole-home systems need a reliable network backbone and properly placed hubs. We handle all of it so your smart home actually works the way it should.`,
+    processHeading: 'Wired for reliability.',
+    processSubheading: 'Our Approach',
+    whatToExpect: `We start by understanding what you want your smart home to do. Then we assess your existing wiring, your Wi-Fi coverage, and your electrical panel. We install smart switches (adding neutral wires where needed), wire smart thermostats, set up security cameras and doorbells on dedicated circuits, and make sure everything talks to each other. When we leave, you have a system that works from your phone, responds to voice commands, and doesn't drop offline every time the microwave runs.`,
+    issuesHeading: 'Common smart home needs.',
+    problems: [
+      'Smart switches that need a neutral wire you don\'t have',
+      'Smart thermostat wiring compatibility issues',
+      'Want whole-home smart lighting control',
+      'Security cameras that need outdoor-rated power',
+      'Smart doorbell that needs a dedicated transformer',
+      'Wi-Fi dead zones affecting smart device reliability',
+    ],
+    whyPro: `Smart home devices are easy to buy but harder to install correctly. Most issues come down to wiring: no neutral wire for smart switches, wrong transformer for a video doorbell, insufficient circuit capacity for multiple cameras. We solve the electrical problems that keep smart homes from being reliable.`,
+    pricingNote: 'Smart home installation costs vary widely. A basic setup with smart thermostat, a few switches, and a doorbell camera typically runs $500 to $1,500 for the electrical work (devices not included). Whole-home smart lighting can run $2,000 to $5,000+. We quote after understanding your setup.',
+    faqs: [
+      { q: 'Do I need a neutral wire for smart switches?', a: 'Most smart switches require a neutral wire. Many homes built before the 1980s don\'t have neutral wires in switch boxes. We can add them, though it involves running new wire. Some newer smart switches work without a neutral, but options are limited.' },
+      { q: 'Can you install a smart thermostat?', a: 'Yes. We install Nest, Ecobee, and other smart thermostats. We verify your HVAC wiring is compatible first. If your system needs a C-wire (common wire) added, we handle that too.' },
+      { q: 'Will smart home devices work with my existing wiring?', a: 'It depends on the age and condition of your wiring. We assess compatibility before recommending any devices. If wiring upgrades are needed, we include that in the quote so there are no surprises.' },
+    ],
+    metaDescription: 'Smart home electrical installation in Newmarket and York Region. Smart switches, thermostats, security systems, lighting controls. ESA licensed. Free quotes.',
+  },
+  'esa-safety-inspections': {
+    headline: 'ESA Safety Inspections in York Region',
+    aeoSummary: 'An ESA electrical safety inspection is a certified evaluation of your home\'s electrical system conducted by a licensed electrician. In Ontario, inspections are commonly required for home sales, insurance renewals, and after unpermitted work is discovered. The inspection covers your panel, wiring, outlets, grounding, and compliance with the Ontario Electrical Code.',
+    intro: `An electrical safety inspection gives you a clear picture of your home's electrical condition. Whether you're buying or selling a house, your insurance company has asked for one, or you just want to know where you stand, an inspection identifies hazards, code violations, and areas that need attention before they become problems.`,
+    processHeading: 'Thorough inspection, clear report.',
+    processSubheading: 'What We Check',
+    whatToExpect: `We inspect your electrical panel, all visible wiring, outlets, switches, grounding, GFCI protection in wet areas, smoke and CO detector placement, and the condition of your electrical service entrance. We check for common hazards like knob-and-tube wiring, aluminum wiring connections, overloaded circuits, and outdated panels. You get a written report detailing our findings with prioritized recommendations. If any issues need fixing, we can quote the work on the spot.`,
+    issuesHeading: 'When you need an inspection.',
+    problems: [
+      'Buying or selling a home',
+      'Insurance company requesting an electrical inspection',
+      'Home is more than 25 years old and has never been inspected',
+      'Unpermitted electrical work was done by a previous owner',
+      'Planning a renovation and want to know what needs upgrading',
+      'Experiencing electrical issues (flickering lights, warm outlets, tripping breakers)',
+    ],
+    whyPro: `An electrical inspection needs to be done by someone who knows the Ontario Electrical Code and can identify hazards that aren't obvious to a home inspector. We're licensed electricians who know what to look for and can fix what we find.`,
+    pricingNote: 'A standard residential electrical safety inspection typically runs $200 to $400 depending on the size and age of the home. The inspection includes a written report. If repairs are needed, we quote those separately.',
+    faqs: [
+      { q: 'Is an ESA inspection the same as a home inspection?', a: 'No. A home inspection is a general overview of the whole house. An ESA electrical safety inspection is a detailed evaluation of your electrical system specifically, conducted by a licensed electrician who knows the Ontario Electrical Code.' },
+      { q: 'How long does an electrical inspection take?', a: 'Most residential inspections take 1 to 2 hours depending on the size and age of the home. Older homes with more complex wiring take longer.' },
+      { q: 'Will the inspection tell me if my wiring is safe?', a: 'Yes. We identify any hazards, code violations, and areas of concern. You get a written report with prioritized recommendations so you know exactly what needs attention and what can wait.' },
+      { q: 'Can you fix issues you find during the inspection?', a: 'Yes. If we find issues during the inspection, we can quote the repair work on the spot. Many homeowners choose to address critical safety issues immediately.' },
+    ],
+    metaDescription: 'Certified electrical safety inspections in Newmarket and York Region. Home sale inspections, insurance requirements, safety evaluations. ESA licensed. Free quotes.',
   },
 };
