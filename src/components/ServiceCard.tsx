@@ -32,12 +32,12 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
 
         {/* Content */}
         <div className="relative h-full flex flex-col justify-end p-8 md:p-10">
-          <div className="w-12 h-12 rounded-xl bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center mb-5 group-hover:bg-blue-600/30 transition-all duration-500">
-            <ServiceIcon icon={icon} className="w-6 h-6 text-blue-400" />
+          <div className="w-12 h-12 rounded-xl bg-amber-500/20 backdrop-blur-sm border border-amber-500/30 flex items-center justify-center mb-5 group-hover:bg-amber-500/30 transition-all duration-500">
+            <ServiceIcon icon={icon} className="w-6 h-6 text-amber-400" />
           </div>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">{name}</h3>
-          <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-md">{shortDescription}</p>
-          <div className="flex items-center gap-2 text-blue-400 font-semibold text-sm">
+          <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">{name}</h3>
+          <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-md">{shortDescription}</p>
+          <div className="flex items-center gap-2 text-amber-400 font-semibold text-sm">
             <span>Learn More</span>
             <svg className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -51,7 +51,7 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
   return (
     <Link
       href={`/services/${slug}`}
-      className="group block bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-200 transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
+      className="group block bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-amber-200 transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
     >
       {/* Image */}
       <div className="relative h-44 overflow-hidden">
@@ -73,9 +73,9 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
 
       {/* Content */}
       <div className="p-5">
-        <h3 className="text-base font-bold text-gray-900 mb-1.5 group-hover:text-blue-600 transition-colors duration-300 tracking-tight">{name}</h3>
+        <h3 className="font-display text-base font-bold text-gray-900 mb-1.5 group-hover:text-amber-600 transition-colors duration-300 tracking-tight">{name}</h3>
         <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">{shortDescription}</p>
-        <div className="flex items-center gap-2 text-blue-500 group-hover:text-blue-600 font-semibold text-xs uppercase tracking-wider transition-colors">
+        <div className="flex items-center gap-2 text-amber-500 group-hover:text-amber-600 font-semibold text-xs uppercase tracking-wider transition-colors">
           <span>View Service</span>
           <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

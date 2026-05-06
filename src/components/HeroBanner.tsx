@@ -32,7 +32,7 @@ export default function HeroBanner() {
             </span>
           </div>
 
-          <h1 className="text-7xl md:text-8xl lg:text-[7rem] font-bold text-white leading-[0.9] mb-8 tracking-[-0.04em]">
+          <h1 className="font-display text-7xl md:text-8xl lg:text-[7rem] font-bold text-white leading-[0.9] mb-8 tracking-[-0.04em]">
             Electrical Work
             <br />
             Done Right.
@@ -48,7 +48,7 @@ export default function HeroBanner() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-white font-bold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-gold/20 hover:shadow-gold/35 hover:scale-[1.02]"
+              className="btn-premium bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02]"
             >
               Get a Free Quote
             </Link>

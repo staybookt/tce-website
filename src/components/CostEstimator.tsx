@@ -90,16 +90,21 @@ const services = [
   },
 ];
 
-export default function CostEstimator() {
+interface CostEstimatorProps {
+  variant?: 'light' | 'dark';
+}
+
+export default function CostEstimator({ variant = 'light' }: CostEstimatorProps) {
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const isDark = variant === 'dark';
 
   const activeService = services.find((s) => s.id === selectedService);
 
   return (
     <div className="space-y-8">
       <div>
-        <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">
+        <p className={`text-sm font-semibold uppercase tracking-wider mb-4 ${isDark ? 'text-amber-400' : 'text-amber-600'}`}>
           Step 1 — What do you need?
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -112,11 +117,19 @@ export default function CostEstimator() {
               }}
               className={`flex items-center gap-3 p-4 rounded-xl border text-left transition-all duration-200 ${
                 selectedService === service.id
-                  ? 'bg-blue-50 border-blue-300 text-blue-700'
-                  : 'bg-slate-50 border-gray-200 text-gray-600 hover:bg-slate-100 hover:border-gray-300'
+                  ? isDark
+                    ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+                    : 'bg-amber-50 border-amber-300 text-amber-700'
+                  : isDark
+                    ? 'bg-white/[0.04] border-white/[0.08] text-white/50 hover:bg-white/[0.06] hover:border-white/[0.12]'
+                    : 'bg-slate-50 border-gray-200 text-gray-600 hover:bg-slate-100 hover:border-gray-300'
               }`}
             >
-              <div className={`shrink-0 ${selectedService === service.id ? 'text-blue-600' : 'text-gray-400'}`}>
+              <div className={`shrink-0 ${
+                selectedService === service.id
+                  ? isDark ? 'text-amber-400' : 'text-amber-600'
+                  : isDark ? 'text-white/30' : 'text-gray-400'
+              }`}>
                 {service.icon}
               </div>
               <span className="text-sm font-medium">{service.name}</span>
@@ -127,7 +140,7 @@ export default function CostEstimator() {
 
       {activeService && (
         <div>
-          <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-4">
+          <p className={`text-sm font-semibold uppercase tracking-wider mb-4 ${isDark ? 'text-amber-400' : 'text-amber-600'}`}>
             Step 2 — What&apos;s the scope?
           </p>
           <div className="space-y-3">
@@ -137,14 +150,26 @@ export default function CostEstimator() {
                 onClick={() => setSelectedOption(i)}
                 className={`w-full flex items-center justify-between p-5 rounded-xl border text-left transition-all duration-200 ${
                   selectedOption === i
-                    ? 'bg-blue-50 border-blue-300'
-                    : 'bg-slate-50 border-gray-200 hover:bg-slate-100 hover:border-gray-300'
+                    ? isDark
+                      ? 'bg-amber-500/10 border-amber-500/30'
+                      : 'bg-amber-50 border-amber-300'
+                    : isDark
+                      ? 'bg-white/[0.04] border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.12]'
+                      : 'bg-slate-50 border-gray-200 hover:bg-slate-100 hover:border-gray-300'
                 }`}
               >
-                <span className={`text-sm font-medium ${selectedOption === i ? 'text-blue-700' : 'text-gray-600'}`}>
+                <span className={`text-sm font-medium ${
+                  selectedOption === i
+                    ? isDark ? 'text-amber-300' : 'text-amber-700'
+                    : isDark ? 'text-white/50' : 'text-gray-600'
+                }`}>
                   {option.label}
                 </span>
-                <span className={`text-sm font-semibold tabular-nums ${selectedOption === i ? 'text-blue-600' : 'text-gray-400'}`}>
+                <span className={`text-sm font-semibold tabular-nums ${
+                  selectedOption === i
+                    ? isDark ? 'text-amber-400' : 'text-amber-600'
+                    : isDark ? 'text-white/30' : 'text-gray-400'
+                }`}>
                   ${option.low.toLocaleString()} – ${option.high.toLocaleString()}
                 </span>
               </button>
@@ -154,30 +179,36 @@ export default function CostEstimator() {
       )}
 
       {activeService && selectedOption !== null && (
-        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-8">
+        <div className={`rounded-2xl p-8 ${isDark ? 'bg-amber-500/10 border border-amber-500/20' : 'bg-amber-50 border border-amber-200'}`}>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
             <div>
-              <p className="text-blue-600 text-xs uppercase tracking-wider font-semibold mb-1">Estimated Range</p>
-              <p className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
+              <p className={`text-xs uppercase tracking-wider font-semibold mb-1 ${isDark ? 'text-amber-400' : 'text-amber-600'}`}>
+                Estimated Range
+              </p>
+              <p className={`text-3xl sm:text-4xl font-bold tracking-tight font-display ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 ${activeService.options[selectedOption].low.toLocaleString()}
-                <span className="text-gray-300 mx-2">–</span>
+                <span className={isDark ? 'text-white/20 mx-2' : 'text-gray-300 mx-2'}>–</span>
                 ${activeService.options[selectedOption].high.toLocaleString()}
               </p>
             </div>
-            <p className="text-gray-500 text-xs leading-relaxed max-w-[200px]">
+            <p className={`text-xs leading-relaxed max-w-[200px] ${isDark ? 'text-white/30' : 'text-gray-500'}`}>
               Based on typical jobs in York Region. Your actual quote may vary.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/contact"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-xl text-sm transition-all duration-200 text-center"
+              className="bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-8 py-3.5 rounded-xl text-sm transition-all duration-200 text-center"
             >
               Get Your Exact Quote
             </Link>
             <a
               href="tel:(905) 555-0123"
-              className="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-8 py-3.5 rounded-xl text-sm transition-all duration-200 text-center border border-gray-200"
+              className={`font-semibold px-8 py-3.5 rounded-xl text-sm transition-all duration-200 text-center border ${
+                isDark
+                  ? 'bg-white/[0.05] hover:bg-white/[0.1] text-white border-white/[0.1]'
+                  : 'bg-white hover:bg-gray-50 text-gray-700 border-gray-200'
+              }`}
             >
               Call Now
             </a>

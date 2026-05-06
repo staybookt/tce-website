@@ -69,14 +69,14 @@ const recentJobs = [
 
 export default function RecentWork() {
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="section-warm py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Recently Completed</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+        <div className="text-center mb-14">
+          <div className="accent-line mx-auto mb-6" />
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
             What we&apos;ve been working on.
           </h2>
-          <p className="text-gray-500 text-lg max-w-lg mx-auto mt-4">
+          <p className="text-gray-500 text-lg max-w-lg mx-auto mt-5">
             Real jobs. Real neighbourhoods. Here&apos;s what the last few weeks looked like.
           </p>
         </div>
@@ -85,14 +85,14 @@ export default function RecentWork() {
           {recentJobs.map((job, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md hover:border-blue-200 transition-all duration-300"
+              className="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md hover:border-amber-200 transition-all duration-300"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
+                  <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600">
                     {job.icon}
                   </div>
-                  <span className="text-sm font-bold text-gray-900">
+                  <span className="text-sm font-bold text-gray-900 font-display">
                     {job.service}
                   </span>
                 </div>

@@ -13,78 +13,77 @@ export default function Home() {
       <HeroBanner />
       <TrustBar />
 
-      {/* ═══ Why Top Choice (merged trust + features) ═══ */}
-      <section className="py-20 md:py-28 bg-white">
+      {/* ═══ Why Top Choice — editorial layout ═══ */}
+      <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Why Top Choice</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-              We treat your home like it&apos;s ours.
-            </h2>
-          </div>
+          <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+            {/* Left — sticky headline */}
+            <div className="md:col-span-5 md:sticky md:top-32">
+              <div className="accent-line mb-6" />
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-6">
+                We treat your home like it&apos;s ours.
+              </h2>
+              <p className="text-gray-500 text-lg leading-relaxed">
+                No shortcuts. No surprises. Just honest electrical work backed by
+                an ESA licence, a clean jobsite, and a team that picks up the phone
+                when your power goes out at 2am.
+              </p>
+            </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              {
-                title: 'ESA Licensed',
-                desc: 'Every job meets or exceeds the Ontario Electrical Safety Code. Permits pulled, inspections passed.',
-                icon: (
-                  <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                ),
-              },
-              {
-                title: 'Upfront Pricing',
-                desc: 'No surprise charges. We quote upfront and stick to it. If something changes, you hear about it first.',
-                icon: (
-                  <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                ),
-              },
-              {
-                title: 'Clean Jobsite',
-                desc: 'Drop cloths down, debris cleaned up, and your home looks better when we leave. Every time.',
-                icon: (
-                  <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                ),
-              },
-              {
-                title: '24/7 Emergency',
-                desc: "Electrical problems don't wait for business hours. Neither do we. Same-day service across York Region.",
-                icon: (
-                  <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                ),
-              },
-            ].map((item, i) => (
-              <div key={i} className="bg-white rounded-2xl p-7 border border-gray-200 hover:border-blue-200 hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5 text-blue-600">
-                  {item.icon}
+            {/* Right — feature cards with stagger */}
+            <div className="md:col-span-7 space-y-5">
+              {[
+                {
+                  title: 'ESA Licensed',
+                  desc: 'Every job meets or exceeds the Ontario Electrical Safety Code. Permits pulled, inspections passed.',
+                  number: '01',
+                },
+                {
+                  title: 'Upfront Pricing',
+                  desc: 'No surprise charges. We quote upfront and stick to it. If something changes, you hear about it first.',
+                  number: '02',
+                },
+                {
+                  title: 'Clean Jobsite',
+                  desc: 'Drop cloths down, debris cleaned up, and your home looks better when we leave. Every time.',
+                  number: '03',
+                },
+                {
+                  title: '24/7 Emergency',
+                  desc: "Electrical problems don't wait for business hours. Neither do we. Same-day service across York Region.",
+                  number: '04',
+                },
+              ].map((item, i) => (
+                <div key={i} className="group flex gap-6 p-6 md:p-8 rounded-2xl border border-gray-100 hover:border-amber-200 hover:bg-amber-50/30 transition-all duration-500">
+                  <span className="font-display text-3xl font-bold text-gray-200 group-hover:text-amber-300 transition-colors duration-500 shrink-0">
+                    {item.number}
+                  </span>
+                  <div>
+                    <h3 className="font-display font-bold text-gray-900 text-xl mb-2">{item.title}</h3>
+                    <p className="text-gray-500 text-[15px] leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ Reviews ═══ */}
-      <section className="py-20 md:py-28 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      {/* ═══ Reviews — dark editorial section ═══ */}
+      <section className="section-dark py-24 md:py-32 relative overflow-hidden">
+        {/* Subtle warm glow */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
-              <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Testimonials</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-                Trusted by homeowners across York Region.
+              <div className="accent-line mb-6" />
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1]">
+                Trusted by homeowners<br className="hidden md:block" /> across York Region.
               </h2>
             </div>
-            <Link href="/reviews" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors shrink-0">
+            <Link href="/reviews" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold transition-colors shrink-0">
               Read All Reviews
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -92,16 +91,16 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
             {client.reviews.slice(0, 3).map((review, i) => (
-              <ReviewCard key={i} {...review} />
+              <ReviewCard key={i} {...review} variant="dark" />
             ))}
           </div>
 
           <div className="text-center">
             <Link
               href="/contact"
-              className="inline-flex bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl text-sm transition-all duration-200"
+              className="inline-flex bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-10 py-4 rounded-xl text-sm transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02]"
             >
               Get a Free Quote
             </Link>
@@ -109,17 +108,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Services (top 4 only) ═══ */}
-      <section className="py-20 md:py-28 bg-white">
+      {/* ═══ Services — full bleed featured + grid ═══ */}
+      <section className="py-24 md:py-32 section-warm">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
             <div className="max-w-2xl">
-              <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">What We Do</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-                Every electrical service your home needs.
+              <div className="accent-line mb-6" />
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
+                Every electrical service<br className="hidden md:block" /> your home needs.
               </h2>
             </div>
-            <Link href="/services/panel-upgrades" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors shrink-0">
+            <Link href="/services" className="inline-flex items-center gap-2 text-amber-600 hover:text-amber-700 font-semibold transition-colors shrink-0">
               View All Services
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -136,18 +135,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Cost Estimator (standalone) ═══ */}
-      <section className="py-20 md:py-28 bg-slate-50">
+      {/* ═══ Cost Estimator ═══ */}
+      <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-white rounded-2xl p-8 md:p-10 border border-gray-200 shadow-sm">
-            <div className="mb-8">
-              <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">Pricing</p>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">What&apos;s this going to cost?</h3>
-              <p className="text-gray-500 text-base max-w-lg">
-                Pick your service and scope to get a ballpark range. Real numbers based on typical jobs in York Region.
-              </p>
+          <div className="bg-gray-950 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+            {/* Warm gradient accent */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-60 h-60 bg-orange-500/5 rounded-full blur-3xl" />
+
+            <div className="relative">
+              <div className="mb-10">
+                <div className="accent-line mb-6" />
+                <h3 className="font-display text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">
+                  What&apos;s this going to cost?
+                </h3>
+                <p className="text-white/50 text-base max-w-lg">
+                  Pick your service and scope to get a ballpark range. Real numbers based on typical jobs in York Region.
+                </p>
+              </div>
+              <CostEstimator variant="dark" />
             </div>
-            <CostEstimator />
           </div>
         </div>
       </section>
@@ -155,25 +162,29 @@ export default function Home() {
       {/* ═══ Recent Work ═══ */}
       <RecentWork />
 
-      {/* ═══ Final CTA ═══ */}
-      <section className="py-20 md:py-28 bg-blue-600">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+      {/* ═══ Final CTA — warm gradient ═══ */}
+      <section className="py-24 md:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #111113 0%, #1a1408 50%, #111113 100%)' }}>
+        {/* Warm ambient glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-500/10 rounded-full blur-3xl" />
+
+        <div className="relative max-w-3xl mx-auto px-4 text-center">
+          <div className="accent-line mx-auto mb-8" />
+          <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.05]">
             Ready to get started?
           </h2>
-          <p className="text-blue-100 text-lg mb-10 max-w-md mx-auto">
+          <p className="text-white/40 text-lg mb-12 max-w-md mx-auto">
             Whether it&apos;s a small repair or a major project, we&apos;re here to help.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`tel:${client.phone}`}
-              className="bg-white text-blue-600 font-bold px-8 py-4 rounded-xl text-base transition-all duration-300 hover:bg-blue-50"
+              className="bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-10 py-4 rounded-xl text-base transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02]"
             >
               Call {client.phone}
             </a>
             <Link
               href="/contact"
-              className="bg-blue-800 hover:bg-blue-900 text-white font-bold px-8 py-4 rounded-xl text-base transition-all duration-300 border border-blue-500"
+              className="bg-white/10 hover:bg-white/15 text-white font-bold px-10 py-4 rounded-xl text-base transition-all duration-300 border border-white/10 hover:border-white/20 backdrop-blur-sm"
             >
               Get a Free Quote
             </Link>
