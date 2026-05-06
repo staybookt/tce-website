@@ -4,8 +4,11 @@ import { client } from '@/data/client';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Electrical Services in Newmarket & York Region',
+  title: 'Electrical Services in Newmarket & York Region | Full Service List',
   description: `${client.name} offers a full range of residential and commercial electrical services in York Region. Panel upgrades, EV chargers, landscape lighting, wiring, and more. ESA licensed.`,
+  alternates: {
+    canonical: 'https://www.topchoiceelectrical.com/services',
+  },
 };
 
 export default function ServicesPage() {

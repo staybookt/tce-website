@@ -18,8 +18,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const area = client.areas.find((a) => a.slug === slug) as any;
   if (!area) return {};
   return {
-    title: `Electrician in ${area.name}, ON`,
+    title: `Electrician in ${area.name}, ON | Licensed & Insured`,
     description: `${client.name} provides licensed electrical services in ${area.name}, Ontario. ${area.topServices ? area.topServices.slice(0, 3).join(', ') + ', and more.' : 'Panel upgrades, EV chargers, wiring, landscape lighting.'} ESA licensed, fully insured. Call ${client.phone}.`,
+    alternates: {
+      canonical: `https://www.topchoiceelectrical.com/areas/${slug}`,
+    },
   };
 }
 

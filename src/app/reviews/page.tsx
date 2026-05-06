@@ -4,8 +4,11 @@ import { client } from '@/data/client';
 import ReviewCard from '@/components/ReviewCard';
 
 export const metadata: Metadata = {
-  title: 'Reviews & Testimonials',
+  title: 'Reviews & Testimonials | What York Region Homeowners Say',
   description: `Read what homeowners across York Region say about ${client.name}. Real reviews from real customers in Newmarket, Aurora, Richmond Hill, and more.`,
+  alternates: {
+    canonical: 'https://www.topchoiceelectrical.com/reviews',
+  },
 };
 
 export default function ReviewsPage() {

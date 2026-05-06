@@ -3,8 +3,11 @@ import Link from 'next/link';
 import { client } from '@/data/client';
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: 'About Us | Meet the Team Behind Top Choice Electrical',
   description: `${client.name} provides licensed electrical services across York Region with over ${client.yearsExperience} years of experience. ESA licensed, fully insured, and committed to quality work.`,
+  alternates: {
+    canonical: 'https://www.topchoiceelectrical.com/about',
+  },
 };
 
 export default function AboutPage() {

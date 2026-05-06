@@ -4,8 +4,11 @@ import { client } from '@/data/client';
 import QuoteForm from '@/components/QuoteForm';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Get a Free Quote',
+  title: 'Contact Us | Get a Free Electrical Quote in York Region',
   description: `Contact ${client.name} for a free electrical quote. Serving Newmarket, Aurora, and all of York Region. Call ${client.phone} or fill out our online form.`,
+  alternates: {
+    canonical: 'https://www.topchoiceelectrical.com/contact',
+  },
 };
 
 export default function ContactPage() {
@@ -101,7 +104,7 @@ export default function ContactPage() {
                       {item.icon}
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{item.label}</p>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{item.label}</p>
                       {item.href ? (
                         <a href={item.href} className="text-gray-900 font-bold text-lg hover:text-gold transition-colors">
                           {item.value}
@@ -110,7 +113,7 @@ export default function ContactPage() {
                         <p className="text-gray-900 font-bold text-lg">{item.value}</p>
                       )}
                       {item.sub && (
-                        <p className={`text-sm mt-0.5 ${item.subGold ? 'text-gold font-medium' : 'text-gray-500'}`}>{item.sub}</p>
+                        <p className={`text-sm mt-0.5 ${item.subGold ? 'text-gold font-medium' : 'text-gray-400'}`}>{item.sub}</p>
                       )}
                     </div>
                   </div>
@@ -119,7 +122,7 @@ export default function ContactPage() {
 
               {/* Payment methods */}
               <div className="bg-gray-50 rounded-2xl p-6">
-                <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">Payment Methods</p>
+                <p className="text-xs text-gray-400 uppercase tracking-wider mb-3">Payment Methods</p>
                 <div className="flex flex-wrap gap-2">
                   {client.paymentMethods.map((method) => (
                     <span key={method} className="bg-white border border-gray-200 px-4 py-2 rounded-lg text-sm text-gray-700 font-medium">
