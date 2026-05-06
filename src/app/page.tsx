@@ -128,8 +128,8 @@ export default function Home() {
                     <p className="text-white/50 text-[10px] sm:text-xs mt-1">Google Rating</p>
                   </div>
                   <div>
-                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">{client.yearsInBusiness}+</p>
-                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">Years in Business</p>
+                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">{client.yearsExperience}+</p>
+                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">Years Experience</p>
                   </div>
                   <div>
                     <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-amber-400">100%</p>

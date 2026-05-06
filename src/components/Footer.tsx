@@ -12,8 +12,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-4">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center">
-                <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center ring-2 ring-amber-400/20">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="currentColor">
                   <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                 </svg>
               </div>
@@ -23,7 +23,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/30 text-sm leading-relaxed mb-8 max-w-xs">
-              Licensed, insured, and trusted by homeowners across York Region for {client.yearsInBusiness}+ years.
+              Licensed, insured, and trusted by homeowners across York Region. {client.yearsExperience}+ years of electrical experience.
             </p>
             <div className="space-y-3 text-sm">
               <a href={`tel:${client.phone}`} className="flex items-center gap-3 text-white/40 hover:text-amber-400 transition-colors">
@@ -89,7 +89,7 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-white/40">
               <p>ESA Licensed: {client.licenseNumber}</p>
               {client.insured && <p>Fully Insured & Bonded</p>}
-              <p>{client.yearsInBusiness}+ Years in Business</p>
+              <p>{client.yearsExperience}+ Years Experience</p>
             </div>
           </div>
         </div>

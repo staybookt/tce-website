@@ -4,7 +4,7 @@ import { client } from '@/data/client';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: `${client.name} has been providing licensed electrical services across York Region for over ${client.yearsInBusiness} years. ESA licensed, fully insured, and committed to quality work.`,
+  description: `${client.name} provides licensed electrical services across York Region with over ${client.yearsExperience} years of experience. ESA licensed, fully insured, and committed to quality work.`,
 };
 
 export default function AboutPage() {
@@ -42,12 +42,12 @@ export default function AboutPage() {
             <div className="animate-on-scroll slide-left">
               <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Our Story</p>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 tracking-tight leading-tight">
-                {client.yearsInBusiness}+ years of{' '}
+                {client.yearsExperience}+ years of{' '}
                 <span className="gradient-text">doing it right.</span>
               </h2>
               <div className="space-y-5 text-gray-600 leading-relaxed text-[17px]">
                 <p>
-                  {client.name} started the way most good trade businesses start: one person who was good at the work and cared about doing it right. Over {client.yearsInBusiness} years, that's grown into a team that serves homeowners and businesses across York Region and Simcoe County.
+                  {client.name} started the way most good trade businesses start: one person who was good at the work and cared about doing it right. With {client.yearsExperience}+ years of experience behind him, Tim built a team that serves homeowners and businesses across York Region and Simcoe County.
                 </p>
                 <p>
                   We're not a franchise. We're not a call center that dispatches random contractors. When you call us, you're talking to the people who actually do the work. We know the homes in this area because we've been working on them for years.
@@ -62,7 +62,7 @@ export default function AboutPage() {
             <div className="animate-on-scroll slide-right">
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { number: `${client.yearsInBusiness}+`, label: 'Years Serving York Region', icon: '🔧' },
+                  { number: `${client.yearsExperience}+`, label: 'Years Experience', icon: '🔧' },
                   { number: '24/7', label: 'Emergency Response', icon: '⚡' },
                   { number: '100%', label: 'ESA Compliant Jobs', icon: '✓' },
                   { number: '5★', label: 'Customer Reviews', icon: '★' },
@@ -186,7 +186,7 @@ export default function AboutPage() {
               { label: 'ESA Licensed', value: client.licenseNumber, sub: client.licenseBody },
               { label: 'Fully Insured', value: 'General Liability', sub: "Workers' compensation coverage" },
               { label: 'Bonded', value: 'Property Protection', sub: 'Additional security for your home' },
-              { label: 'Experience', value: `${client.yearsInBusiness}+ Years`, sub: 'Serving York Region & Simcoe County' },
+              { label: 'Experience', value: `${client.yearsExperience}+ Years`, sub: 'Serving York Region & Simcoe County' },
             ].map((item, i) => (
               <div key={i} className="glass rounded-2xl p-8 text-center">
                 <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-4">

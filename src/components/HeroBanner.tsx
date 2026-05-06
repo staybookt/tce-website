@@ -40,7 +40,7 @@ export default function HeroBanner() {
           </h1>
 
           <p className="text-white/50 text-lg md:text-xl mb-12 leading-relaxed max-w-lg">
-            You call, Tim answers. Licensed, insured, and doing electrical work across York Region for {client.yearsInBusiness}+ years.
+            You call, Tim answers. Licensed, insured, and {client.yearsExperience}+ years of electrical experience across York Region.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">

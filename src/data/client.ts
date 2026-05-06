@@ -2,14 +2,16 @@ export const client = {
   // Business Info
   name: "Top Choice Electrical",
   legalName: "Top Choice Electrical",
-  phone: "(905) 555-0123",
-  email: "tim@topchoiceelectrical.com",
+  phone: "(416) 805-6676",
+  email: "topchoiceelectrical1@gmail.com",
+  ownerName: "Tim Ciszko",
   address: "York Region, ON",
   hours: {
     regular: "Mon–Fri 7am–6pm, Sat 8am–2pm",
     emergency: "24/7 Emergency Service Available",
   },
-  yearsInBusiness: 15,
+  yearsInBusiness: 4,
+  yearsExperience: 15,
   licenseNumber: "EC-12345",
   licenseBody: "Electrical Safety Authority (ESA)",
   insured: true,
@@ -99,6 +101,22 @@ export const client = {
       icon: "AlertTriangle",
       image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=600&q=80",
       keywords: ["smoke detector installation Newmarket", "carbon monoxide detector York Region", "CO detector installation"],
+    },
+    {
+      slug: "smart-home-installation",
+      name: "Smart Home Installation",
+      shortDescription: "Smart thermostats, lighting, and security systems wired and set up properly.",
+      icon: "Wifi",
+      image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80",
+      keywords: ["smart home electrician Newmarket", "smart thermostat installation York Region", "smart lighting installation"],
+    },
+    {
+      slug: "esa-safety-inspections",
+      name: "ESA Safety Inspections",
+      shortDescription: "Certified electrical safety inspections for home sales, insurance, and peace of mind.",
+      icon: "ClipboardCheck",
+      image: "https://images.pexels.com/photos/8005368/pexels-photo-8005368.jpeg?auto=compress&cs=tinysrgb&w=800",
+      keywords: ["ESA inspection Newmarket", "electrical safety inspection York Region", "home electrical inspection"],
     },
   ],
 
@@ -190,8 +208,8 @@ export const client = {
 
   // Lead Delivery
   leadDelivery: {
-    email: "tim@topchoiceelectrical.com",
-    smsNumber: "(905) 555-0123",
+    email: "topchoiceelectrical1@gmail.com",
+    smsNumber: "(416) 805-6676",
   },
 
   // SEO

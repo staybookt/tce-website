@@ -35,8 +35,8 @@ export default function FounderStory() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-gray-900 font-bold text-sm">{client.yearsInBusiness}+ Years</p>
-                  <p className="text-gray-500 text-xs">In York Region</p>
+                  <p className="text-gray-900 font-bold text-sm">{client.yearsExperience}+ Years</p>
+                  <p className="text-gray-500 text-xs">Experience</p>
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function FounderStory() {
             </h2>
             <div className="space-y-5 text-gray-600 text-[17px] leading-relaxed">
               <p>
-                {client.yearsInBusiness} years ago, Tim left a comfortable job at a large electrical contractor
+                {client.yearsExperience} years ago, Tim left a comfortable job at a large electrical contractor
                 because he was tired of watching homeowners get overcharged for simple work. He bought a van,
                 printed some cards, and started knocking on doors in Newmarket.
               </p>
@@ -70,7 +70,7 @@ export default function FounderStory() {
                 <span className="text-blue-600 font-bold text-lg">T</span>
               </div>
               <div>
-                <p className="font-bold text-gray-900">Tim</p>
+                <p className="font-bold text-gray-900">Tim Ciszko</p>
                 <p className="text-gray-500 text-sm">Owner & Master Electrician</p>
               </div>
             </div>
