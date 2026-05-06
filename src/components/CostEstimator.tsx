@@ -13,9 +13,9 @@ const services = [
       </svg>
     ),
     options: [
-      { label: '100A → 200A', low: 2500, high: 4000, franchiseLow: 4000, franchiseHigh: 6500, included: ['ESA inspection & permit', 'Breaker labelling', 'Surge protector', '2-year warranty'] },
-      { label: 'Panel replacement', low: 2000, high: 3500, franchiseLow: 3500, franchiseHigh: 5500, included: ['ESA inspection & permit', 'Old panel disposal', 'Breakers transferred', '2-year warranty'] },
-      { label: 'Sub-panel addition', low: 1500, high: 2500, franchiseLow: 2500, franchiseHigh: 4000, included: ['ESA inspection & permit', 'Up to 6 circuits', 'Panel labelling', '2-year warranty'] },
+      { label: 'More power (most homes)', low: 2500, high: 4000, franchiseLow: 4000, franchiseHigh: 6500, included: ['All permits & inspection', 'Surge protection included', 'Everything labelled', '2-year warranty'] },
+      { label: 'Replace old panel', low: 2000, high: 3500, franchiseLow: 3500, franchiseHigh: 5500, included: ['All permits & inspection', 'Old panel taken away', 'Everything transferred', '2-year warranty'] },
+      { label: 'Add a second panel', low: 1500, high: 2500, franchiseLow: 2500, franchiseHigh: 4000, included: ['All permits & inspection', 'Room for 6 new circuits', 'Everything labelled', '2-year warranty'] },
     ],
   },
   {
@@ -27,9 +27,9 @@ const services = [
       </svg>
     ),
     options: [
-      { label: 'Level 2 install', low: 1500, high: 2500, franchiseLow: 2500, franchiseHigh: 4000, included: ['40A dedicated circuit', 'NEMA 14-50 outlet', 'Permit & inspection', 'Up to 30ft run'] },
-      { label: 'Level 2 + panel', low: 3500, high: 5500, franchiseLow: 5500, franchiseHigh: 8000, included: ['200A panel upgrade', '40A dedicated circuit', 'Permit & inspection', 'Done in 1 day'] },
-      { label: 'Tesla Wall Connector', low: 1800, high: 3000, franchiseLow: 3000, franchiseHigh: 4500, included: ['60A circuit', 'Wall mount & routing', 'Permit & inspection', 'Wi-Fi setup'] },
+      { label: 'Charger + outlet', low: 1500, high: 2500, franchiseLow: 2500, franchiseHigh: 4000, included: ['Dedicated power line', 'Heavy-duty outlet', 'All permits & inspection', 'Up to 30ft of wiring'] },
+      { label: 'Charger + panel upgrade', low: 3500, high: 5500, franchiseLow: 5500, franchiseHigh: 8000, included: ['Panel upgraded too', 'Dedicated power line', 'All permits & inspection', 'Done in 1 day'] },
+      { label: 'Tesla Wall Connector', low: 1800, high: 3000, franchiseLow: 3000, franchiseHigh: 4500, included: ['High-speed charging', 'Mounted & wired clean', 'All permits & inspection', 'Wi-Fi connected'] },
     ],
   },
   {
@@ -41,37 +41,37 @@ const services = [
       </svg>
     ),
     options: [
-      { label: '4 lights (1 room)', low: 600, high: 1000, franchiseLow: 1000, franchiseHigh: 1600, included: ['LED fixtures', 'Dimmer switch', 'Ceiling patching', 'Old fixture removal'] },
-      { label: '8 lights (2 rooms)', low: 1100, high: 1800, franchiseLow: 1800, franchiseHigh: 3000, included: ['LED fixtures', 'Dimmer switches', 'Ceiling patching', 'Layout planning'] },
-      { label: '12+ lights (floor)', low: 1600, high: 2800, franchiseLow: 2800, franchiseHigh: 4500, included: ['LED fixtures', 'Multi-zone dimmers', 'Ceiling patching', 'Custom layout'] },
+      { label: '1 room', low: 600, high: 1000, franchiseLow: 1000, franchiseHigh: 1600, included: ['4 LED lights', 'Dimmer switch', 'Ceiling patched clean', 'Old lights removed'] },
+      { label: '2 rooms', low: 1100, high: 1800, franchiseLow: 1800, franchiseHigh: 3000, included: ['8 LED lights', 'Dimmer switches', 'Ceiling patched clean', 'We plan the layout'] },
+      { label: 'Entire floor', low: 1600, high: 2800, franchiseLow: 2800, franchiseHigh: 4500, included: ['12+ LED lights', 'Multiple dimmer zones', 'Ceiling patched clean', 'Custom layout design'] },
     ],
   },
   {
     id: 'knob-tube',
-    name: 'Knob & Tube',
+    name: 'Old Wiring',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
     ),
     options: [
-      { label: 'Single circuit', low: 800, high: 1500, franchiseLow: 1500, franchiseHigh: 2500, included: ['ESA inspection', 'New circuit', 'Old wiring removed', 'Insurance letter'] },
-      { label: 'Kitchen + bath', low: 3000, high: 5000, franchiseLow: 5000, franchiseHigh: 8000, included: ['ESA inspection', 'All new circuits', 'Old wiring removed', 'Insurance docs'] },
-      { label: 'Whole house', low: 8000, high: 15000, franchiseLow: 14000, franchiseHigh: 25000, included: ['Full ESA inspection', 'New panel if needed', 'Every circuit replaced', 'Insurance docs'] },
+      { label: 'One area', low: 800, high: 1500, franchiseLow: 1500, franchiseHigh: 2500, included: ['Safety inspection', 'New safe wiring', 'Old wiring removed', 'Insurance letter'] },
+      { label: 'Kitchen + bathroom', low: 3000, high: 5000, franchiseLow: 5000, franchiseHigh: 8000, included: ['Safety inspection', 'All new wiring', 'Old wiring removed', 'Insurance paperwork'] },
+      { label: 'Whole house', low: 8000, high: 15000, franchiseLow: 14000, franchiseHigh: 25000, included: ['Full safety inspection', 'New panel if needed', 'Every wire replaced', 'Insurance paperwork'] },
     ],
   },
   {
     id: 'landscape',
-    name: 'Landscape',
+    name: 'Outdoor Lighting',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
       </svg>
     ),
     options: [
-      { label: 'Pathway (6-8)', low: 1200, high: 2000, franchiseLow: 2000, franchiseHigh: 3500, included: ['LED fixtures', 'Transformer', 'Timer/photocell', 'Burial & routing'] },
-      { label: 'Front yard', low: 2500, high: 4500, franchiseLow: 4500, franchiseHigh: 7000, included: ['LED fixtures', 'Custom layout', 'Transformer & timer', 'Uplighting + path'] },
-      { label: 'Full property', low: 4000, high: 8000, franchiseLow: 7000, franchiseHigh: 12000, included: ['LED fixtures', 'Multiple zones', 'Smart timer', 'Design consult'] },
+      { label: 'Walkway / path', low: 1200, high: 2000, franchiseLow: 2000, franchiseHigh: 3500, included: ['6-8 LED lights', 'Auto on/off at sunset', 'All wiring buried', 'Power supply included'] },
+      { label: 'Front yard', low: 2500, high: 4500, franchiseLow: 4500, franchiseHigh: 7000, included: ['Path + accent lights', 'Custom design layout', 'Auto on/off at sunset', 'Trees & features lit'] },
+      { label: 'Full property', low: 4000, high: 8000, franchiseLow: 7000, franchiseHigh: 12000, included: ['Front + back yard', 'Multiple light zones', 'Smart controls', 'Free design consult'] },
     ],
   },
   {
@@ -83,9 +83,9 @@ const services = [
       </svg>
     ),
     options: [
-      { label: 'Portable hookup', low: 1000, high: 1800, franchiseLow: 1800, franchiseHigh: 3000, included: ['Transfer switch', 'Inlet box', 'Up to 6 circuits', 'Permit & inspection'] },
-      { label: 'Standby 14-20kW', low: 8000, high: 14000, franchiseLow: 13000, franchiseHigh: 20000, included: ['Auto transfer switch', 'Concrete pad', 'Gas coordination', '5-year warranty'] },
-      { label: 'Standby 22kW+', low: 12000, high: 20000, franchiseLow: 18000, franchiseHigh: 30000, included: ['Auto transfer switch', 'Concrete pad', 'Gas coordination', 'Load management'] },
+      { label: 'Portable setup', low: 1000, high: 1800, franchiseLow: 1800, franchiseHigh: 3000, included: ['Safe power transfer', 'Outdoor plug-in point', 'Powers key rooms', 'All permits included'] },
+      { label: 'Whole home (mid)', low: 8000, high: 14000, franchiseLow: 13000, franchiseHigh: 20000, included: ['Turns on automatically', 'Concrete pad poured', 'Gas line coordinated', '5-year warranty'] },
+      { label: 'Whole home (large)', low: 12000, high: 20000, franchiseLow: 18000, franchiseHigh: 30000, included: ['Turns on automatically', 'Concrete pad poured', 'Gas line coordinated', 'Powers everything'] },
     ],
   },
 ];
