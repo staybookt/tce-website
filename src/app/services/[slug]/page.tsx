@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${service.name} in Newmarket & York Region | Cost, Process & ESA Permits`,
     description: content?.metaDescription || service.shortDescription,
     alternates: {
-      canonical: `https://www.topchoiceelectrical.com/services/${slug}`,
+      canonical: `https://www.topchoiceelectrical.ca/services/${slug}`,
     },
   };
 }

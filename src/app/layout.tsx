@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://www.topchoiceelectrical.com',
+    canonical: 'https://www.topchoiceelectrical.ca',
   },
 };
 

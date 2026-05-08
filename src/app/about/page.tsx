@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'About Us | Meet the Team Behind Top Choice Electrical',
   description: `${client.name} provides licensed electrical services across York Region with over ${client.yearsExperience} years of experience. ESA licensed, fully insured, and committed to quality work.`,
   alternates: {
-    canonical: 'https://www.topchoiceelectrical.com/about',
+    canonical: 'https://www.topchoiceelectrical.ca/about',
   },
 };
 

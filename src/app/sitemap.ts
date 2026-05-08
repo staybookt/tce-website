@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { client } from '@/data/client';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.topchoiceelectrical.com';
+  const baseUrl = 'https://www.topchoiceelectrical.ca';
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Reviews & Testimonials | What York Region Homeowners Say',
   description: `Read what homeowners across York Region say about ${client.name}. Real reviews from real customers in Newmarket, Aurora, Richmond Hill, and more.`,
   alternates: {
-    canonical: 'https://www.topchoiceelectrical.com/reviews',
+    canonical: 'https://www.topchoiceelectrical.ca/reviews',
   },
 };
 
@@ -57,8 +57,8 @@ export default function ReviewsPage() {
                   </svg>
                 ))}
               </div>
-              <span className="text-gray-900 font-bold">5.0</span>
-              <span className="text-gray-500 text-sm">from {client.reviews.length} reviews</span>
+              <span className="text-gray-900 font-bold">5 Stars</span>
+              <span className="text-gray-500 text-sm">across all reviews</span>
             </div>
           </div>
 

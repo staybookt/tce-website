@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Contact Us | Get a Free Electrical Quote in York Region',
   description: `Contact ${client.name} for a free electrical quote. Serving Newmarket, Aurora, and all of York Region. Call ${client.phone} or fill out our online form.`,
   alternates: {
-    canonical: 'https://www.topchoiceelectrical.com/contact',
+    canonical: 'https://www.topchoiceelectrical.ca/contact',
   },
 };
 

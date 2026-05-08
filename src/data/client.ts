@@ -12,7 +12,7 @@ export const client = {
   },
   yearsInBusiness: 4,
   yearsExperience: 15,
-  licenseNumber: "EC-12345",
+  licenseNumber: "ESA Certified",
   licenseBody: "Electrical Safety Authority (ESA)",
   insured: true,
   bonded: true,
@@ -25,8 +25,8 @@ export const client = {
   tagline: "York Region's Trusted Electrician",
 
   // Domain
-  domain: "topchoiceelectrical.com",
-  existingSiteUrl: "https://www.topchoiceelectrical.com",
+  domain: "topchoiceelectrical.ca",
+  existingSiteUrl: "https://www.topchoiceelectrical.ca",
 
   // Services
   services: [

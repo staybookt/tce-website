@@ -124,8 +124,8 @@ export default function Home() {
               <div className="relative h-full flex flex-col justify-end p-5 sm:p-8">
                 <div className="grid grid-cols-3 gap-3 sm:gap-6">
                   <div>
-                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">5.0</p>
-                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">Google Rating</p>
+                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">5★</p>
+                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">Rated Service</p>
                   </div>
                   <div>
                     <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">{client.yearsExperience}+</p>
