@@ -3,10 +3,15 @@ import Link from 'next/link';
 import { client } from '@/data/client';
 
 export const metadata: Metadata = {
-  title: 'About Us | Meet the Team Behind Top Choice Electrical',
-  description: `${client.name} provides licensed electrical services across York Region with over ${client.yearsExperience} years of experience. ESA licensed, fully insured, and committed to quality work.`,
+  title: 'About Us | Top Choice Electrical',
+  description: `Meet the team at ${client.name}. Over ${client.yearsExperience} years of experience serving York Region. ESA licensed, fully insured, and committed to quality work.`,
   alternates: {
     canonical: 'https://www.topchoiceelectrical.ca/about',
+  },
+  openGraph: {
+    title: 'About Us | Top Choice Electrical',
+    description: `Meet the team at ${client.name}. Over ${client.yearsExperience} years of experience serving York Region. ESA licensed, fully insured.`,
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'About Top Choice Electrical' }],
   },
 };
 
@@ -18,7 +23,7 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Electrician working on a residential construction site"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 hero-gradient" />
@@ -211,7 +216,7 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Modern office building with professional lighting"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-navy-dark/90" />

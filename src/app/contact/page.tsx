@@ -4,10 +4,15 @@ import { client } from '@/data/client';
 import QuoteForm from '@/components/QuoteForm';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Get a Free Electrical Quote in York Region',
+  title: 'Contact Us | Free Electrical Quote',
   description: `Contact ${client.name} for a free electrical quote. Serving Newmarket, Aurora, and all of York Region. Call ${client.phone} or fill out our online form.`,
   alternates: {
     canonical: 'https://www.topchoiceelectrical.ca/contact',
+  },
+  openGraph: {
+    title: 'Contact Us | Free Electrical Quote',
+    description: `Contact ${client.name} for a free electrical quote in York Region. Call ${client.phone} or use our online form.`,
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Contact Top Choice Electrical' }],
   },
 };
 
@@ -19,7 +24,7 @@ export default function ContactPage() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Modern office with professional electrical lighting"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 hero-gradient" />

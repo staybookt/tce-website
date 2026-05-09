@@ -3,10 +3,15 @@ import Link from 'next/link';
 import { client } from '@/data/client';
 
 export const metadata: Metadata = {
-  title: 'Service Areas | Electrician in York Region & Simcoe County',
+  title: 'Service Areas | York Region & Simcoe County',
   description: `${client.name} serves Newmarket, Aurora, Richmond Hill, Markham, Vaughan, and all of York Region. Licensed electrician, same-day service available.`,
   alternates: {
     canonical: 'https://www.topchoiceelectrical.ca/areas',
+  },
+  openGraph: {
+    title: 'Service Areas | York Region & Simcoe County',
+    description: `Licensed electrician serving Newmarket, Aurora, Richmond Hill, Markham, Vaughan & all of York Region. Same-day service.`,
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Top Choice Electrical Service Areas' }],
   },
 };
 
@@ -18,7 +23,7 @@ export default function AreasPage() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Aerial view of York Region residential neighbourhood"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 hero-gradient" />
@@ -85,7 +90,7 @@ export default function AreasPage() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Professional office building with modern electrical systems"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-navy-dark/90" />

@@ -18,10 +18,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const area = client.areas.find((a) => a.slug === slug) as any;
   if (!area) return {};
   return {
-    title: `Electrician in ${area.name}, ON | Licensed & Insured`,
-    description: `${client.name} provides licensed electrical services in ${area.name}, Ontario. ${area.topServices ? area.topServices.slice(0, 3).join(', ') + ', and more.' : 'Panel upgrades, EV chargers, wiring, landscape lighting.'} ESA licensed, fully insured. Call ${client.phone}.`,
+    title: `Electrician in ${area.name} | Licensed & Insured`,
+    description: `Licensed electrician in ${area.name}, ON. ${area.topServices ? area.topServices.slice(0, 3).join(', ') + ' & more.' : 'Panel upgrades, EV chargers, wiring, lighting.'} ESA certified. Call ${client.phone}.`,
     alternates: {
       canonical: `https://www.topchoiceelectrical.ca/areas/${slug}`,
+    },
+    openGraph: {
+      title: `Electrician in ${area.name} | Licensed & Insured`,
+      description: `Licensed electrical services in ${area.name}, Ontario. ESA certified, fully insured. Call ${client.phone}.`,
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: `Electrician in ${area.name} - Top Choice Electrical` }],
     },
   };
 }
@@ -47,7 +52,7 @@ export default async function AreaPage({ params }: Props) {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Aerial view of a residential neighbourhood in York Region"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 hero-gradient" />
@@ -212,7 +217,7 @@ export default async function AreaPage({ params }: Props) {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Electrician working on wiring in a home"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-navy-dark/90" />

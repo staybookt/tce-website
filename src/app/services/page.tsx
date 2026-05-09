@@ -4,10 +4,15 @@ import { client } from '@/data/client';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Electrical Services in Newmarket & York Region | Full Service List',
-  description: `${client.name} offers a full range of residential and commercial electrical services in York Region. Panel upgrades, EV chargers, landscape lighting, wiring, and more. ESA licensed.`,
+  title: 'Electrical Services | Newmarket & York Region',
+  description: `Full range of residential and commercial electrical services in York Region. Panel upgrades, EV chargers, landscape lighting, wiring & more. ESA licensed.`,
   alternates: {
     canonical: 'https://www.topchoiceelectrical.ca/services',
+  },
+  openGraph: {
+    title: 'Electrical Services | Newmarket & York Region',
+    description: `Residential and commercial electrical services in York Region. Panel upgrades, EV chargers, lighting & more. ESA licensed.`,
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Top Choice Electrical Services' }],
   },
 };
 
@@ -19,7 +24,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Electrician performing professional electrical work"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 hero-gradient" />
@@ -80,7 +85,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Residential electrical tools and supplies"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-navy-dark/90" />

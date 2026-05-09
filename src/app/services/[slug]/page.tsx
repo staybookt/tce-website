@@ -20,10 +20,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const content = serviceContent[slug];
   if (!service) return {};
   return {
-    title: `${service.name} in Newmarket & York Region | Cost, Process & ESA Permits`,
+    title: `${service.name} | Newmarket & York Region`,
     description: content?.metaDescription || service.shortDescription,
     alternates: {
       canonical: `https://www.topchoiceelectrical.ca/services/${slug}`,
+    },
+    openGraph: {
+      title: `${service.name} | Newmarket & York Region`,
+      description: content?.metaDescription || service.shortDescription,
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: `${service.name} - Top Choice Electrical` }],
     },
   };
 }
@@ -93,7 +98,7 @@ export default async function ServicePage({ params }: Props) {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Professional electrician performing electrical service work"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 hero-gradient" />
@@ -261,7 +266,7 @@ export default async function ServicePage({ params }: Props) {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Electrician installing wiring in a residential property"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-navy-dark/90" />

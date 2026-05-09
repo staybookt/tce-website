@@ -4,10 +4,15 @@ import { client } from '@/data/client';
 import ReviewCard from '@/components/ReviewCard';
 
 export const metadata: Metadata = {
-  title: 'Reviews & Testimonials | What York Region Homeowners Say',
+  title: 'Reviews | York Region Customer Testimonials',
   description: `Read what homeowners across York Region say about ${client.name}. Real reviews from real customers in Newmarket, Aurora, Richmond Hill, and more.`,
   alternates: {
     canonical: 'https://www.topchoiceelectrical.ca/reviews',
+  },
+  openGraph: {
+    title: 'Reviews | York Region Customer Testimonials',
+    description: `Real reviews from York Region homeowners about ${client.name}. See why customers trust us for their electrical needs.`,
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Top Choice Electrical Customer Reviews' }],
   },
 };
 
@@ -19,7 +24,7 @@ export default function ReviewsPage() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Residential home with professional electrical work"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 hero-gradient" />
@@ -107,7 +112,7 @@ export default function ReviewsPage() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
-            alt=""
+            alt="Electrician installing wiring in a residential home"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-navy-dark/90" />

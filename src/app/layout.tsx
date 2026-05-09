@@ -9,15 +9,18 @@ import { client } from '@/data/client';
 
 export const metadata: Metadata = {
   title: {
-    default: `${client.name} | Licensed Electrician in Newmarket & York Region`,
+    default: `${client.name} | Electrician in Newmarket`,
     template: `%s | ${client.name}`,
   },
-  description: `${client.name} provides licensed electrical services across York Region and Simcoe County. Panel upgrades, EV chargers, landscape lighting, and more. ESA licensed, fully insured. Call ${client.phone}.`,
+  description: `Licensed electrician serving York Region & Simcoe County. Panel upgrades, EV chargers, lighting & more. ESA certified, fully insured. Call ${client.phone}.`,
   keywords: [client.primaryKeyword, ...client.secondaryKeywords],
   openGraph: {
     type: 'website',
     locale: 'en_CA',
     siteName: client.name,
+    title: `${client.name} | Electrician in Newmarket`,
+    description: `Licensed electrician serving York Region & Simcoe County. Panel upgrades, EV chargers, lighting & more. ESA certified, fully insured. Call ${client.phone}.`,
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: `${client.name} - Licensed Electrician in York Region` }],
   },
   robots: {
     index: true,
