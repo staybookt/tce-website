@@ -116,8 +116,8 @@ export default function Home() {
             {/* Right — image with stat overlay */}
             <div className="relative rounded-3xl overflow-hidden min-h-[400px]">
               <img
-                src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Beautiful home exterior at dusk with warm interior lighting"
+                src="/images/work/IMG_1140.webp"
+                alt="Top Choice Electrical pot-light install on a Newmarket home at dusk, every soffit and porch light glowing"
                 className="w-full h-full object-cover absolute inset-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
