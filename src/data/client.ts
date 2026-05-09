@@ -35,7 +35,7 @@ export const client = {
       name: "Panel Upgrades",
       shortDescription: "Safe, code-compliant electrical panel upgrades for homes and businesses.",
       icon: "Zap",
-      image: "https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/images/work/IMG_3258.webp",
       keywords: ["panel upgrade Newmarket", "electrical panel upgrade York Region", "200 amp panel upgrade"],
     },
     {
@@ -43,7 +43,7 @@ export const client = {
       name: "EV Charger Installation",
       shortDescription: "Level 2 home EV charger installation. Drive electric, charge at home.",
       icon: "BatteryCharging",
-      image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=600&q=80",
+      image: "/images/work/IMG_3038.webp",
       keywords: ["EV charger installation Newmarket", "home EV charger York Region", "Level 2 charger installation"],
     },
     {
@@ -51,7 +51,7 @@ export const client = {
       name: "Landscape Lighting",
       shortDescription: "Professional outdoor lighting that transforms your property after dark.",
       icon: "Sun",
-      image: "https://images.unsplash.com/photo-1558171813-4c088753af8f?auto=format&fit=crop&w=600&q=80",
+      image: "/images/work/IMG_3610.webp",
       keywords: ["landscape lighting Newmarket", "outdoor lighting York Region", "garden lighting installation"],
     },
     {
@@ -59,7 +59,7 @@ export const client = {
       name: "Pot Light Installation",
       shortDescription: "Clean, modern recessed lighting for any room in your home.",
       icon: "Lightbulb",
-      image: "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/images/work/IMG_6204.webp",
       keywords: ["pot light installation Newmarket", "recessed lighting York Region", "LED pot lights"],
     },
     {
@@ -83,7 +83,7 @@ export const client = {
       name: "Commercial Electrical",
       shortDescription: "Reliable electrical services for offices, retail, and light commercial spaces.",
       icon: "Building",
-      image: "https://images.pexels.com/photos/6301168/pexels-photo-6301168.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/images/work/IMG_5375.webp",
       keywords: ["commercial electrician Newmarket", "commercial electrical York Region", "office electrical"],
     },
     {
