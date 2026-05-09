@@ -8,7 +8,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import ScrollAnimator from '@/components/ScrollAnimator';
 import { client } from '@/data/client';
 
-const GA4_ID = 'G-5RJL5E9DR3';
+const GA4_ID = 'G-VMJ6LFNBLY';
 
 export const metadata: Metadata = {
   title: {
