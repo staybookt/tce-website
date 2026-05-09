@@ -1,8 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function ScrollAnimator() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -15,12 +18,28 @@ export default function ScrollAnimator() {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    document.querySelectorAll('.animate-on-scroll, .stagger-children').forEach((el) => {
-      observer.observe(el);
-    });
+    const observeElements = () => {
+      document.querySelectorAll('.animate-on-scroll, .stagger-children').forEach((el) => {
+        if (!el.classList.contains('animated')) {
+          observer.observe(el);
+        }
+      });
+    };
 
-    return () => observer.disconnect();
-  }, []);
+    // Observe current elements
+    observeElements();
+
+    // Watch for dynamically added elements
+    const mutationObserver = new MutationObserver(() => {
+      observeElements();
+    });
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, [pathname]);
 
   return null;
 }
