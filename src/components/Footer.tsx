@@ -100,8 +100,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} {client.name}. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs text-white/20">
-            <Link href="/contact" className="hover:text-white/40 transition-colors">Privacy Policy</Link>
-            <Link href="/contact" className="hover:text-white/40 transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-white/40 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white/40 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
