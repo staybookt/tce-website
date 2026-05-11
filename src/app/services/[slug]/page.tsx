@@ -44,6 +44,16 @@ export default async function ServicePage({ params }: Props) {
 
   const otherServices = client.services.filter((s) => s.slug !== slug).slice(0, 4);
 
+  // Per-service hero photo — each service has its own image in client.services.
+  // Falls back to the panel-upgrade photo for any service that hasn't been set yet.
+  const heroImage = service.image || '/images/work/IMG_3258.webp';
+  const heroAlt = `${service.name} by Top Choice Electrical — ESA-certified work in York Region`;
+
+  // Panel Upgrades surfaces a callout to the dedicated FPE page since
+  // insurance-pressed searchers ("federal pacific panel replacement") need
+  // to land on the FPE-specific content, not the general upgrade page.
+  const showFpeCallout = slug === 'panel-upgrades';
+
   return (
     <>
       <SchemaMarkup type="Service" serviceName={service.name} serviceDescription={service.shortDescription} />
@@ -103,12 +113,12 @@ export default async function ServicePage({ params }: Props) {
         />
       )}
 
-      {/* Hero */}
+      {/* Hero — uses the service's own image */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80"
-            alt="Professional electrician performing electrical service work"
+            src={heroImage}
+            alt={heroAlt}
             fill
             priority
             sizes="100vw"
@@ -139,6 +149,33 @@ export default async function ServicePage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-16">
             <div className="lg:col-span-2 space-y-16">
+              {/* FPE callout — only on panel-upgrades page */}
+              {showFpeCallout && (
+                <div className="animate-on-scroll">
+                  <Link
+                    href="/services/fpe-panel-replacement"
+                    className="block bg-red-50 border-l-4 border-red-500 rounded-r-xl p-6 hover:bg-red-100 transition-colors group"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-red-700 font-bold text-sm uppercase tracking-wider mb-2">Insurance flagged your panel?</p>
+                        <p className="text-gray-800 leading-relaxed mb-2">
+                          If your insurer specifically flagged a <strong>Federal Pacific</strong>, <strong>Stab-Lok</strong>, or <strong>Zinsco</strong> panel — see our dedicated Federal Pacific Panel Replacement page.
+                        </p>
+                        <span className="text-red-600 font-semibold text-sm group-hover:underline">
+                          Go to Federal Pacific Panel Replacement &rarr;
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              )}
+
               {/* AEO Summary — direct answer for AI engines */}
               {content.aeoSummary && (
                 <div className="animate-on-scroll">
