@@ -6,6 +6,7 @@ import { client } from '@/data/client';
 import { serviceContent } from '@/data/service-content';
 import QuoteForm from '@/components/QuoteForm';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import PageSchema from '@/components/PageSchema';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -46,6 +47,14 @@ export default async function ServicePage({ params }: Props) {
   return (
     <>
       <SchemaMarkup type="Service" serviceName={service.name} serviceDescription={service.shortDescription} />
+
+      <PageSchema
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Services', url: '/services' },
+          { name: service.name, url: `/services/${slug}` },
+        ]}
+      />
 
       {/* HowTo Schema */}
       {content.howToSteps && content.howToSteps.length > 0 && (

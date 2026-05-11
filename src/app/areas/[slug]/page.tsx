@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { client } from '@/data/client';
 import QuoteForm from '@/components/QuoteForm';
 import ServiceCard from '@/components/ServiceCard';
+import PageSchema from '@/components/PageSchema';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -48,6 +49,17 @@ export default async function AreaPage({ params }: Props) {
 
   return (
     <>
+      <PageSchema
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Service Areas', url: '/areas' },
+          { name: area.name, url: `/areas/${slug}` },
+        ]}
+        areaName={area.name}
+        areaSlug={slug}
+        areaRegion={area.region}
+      />
+
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
