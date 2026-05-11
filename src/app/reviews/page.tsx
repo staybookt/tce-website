@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { client } from '@/data/client';
 import ReviewCard from '@/components/ReviewCard';
 
@@ -22,10 +23,13 @@ export default function ReviewsPage() {
       {/* Hero — immersive */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1920&q=80"
             alt="Residential home with professional electrical work"
-            className="w-full h-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 hero-gradient" />
           <div className="absolute inset-0 grain" />
@@ -110,10 +114,12 @@ export default function ReviewsPage() {
       {/* CTA — immersive */}
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
             alt="Electrician installing wiring in a residential home"
-            className="w-full h-full object-cover"
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-navy-dark/90" />
           <div className="absolute inset-0 grain" />
