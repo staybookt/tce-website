@@ -9,8 +9,10 @@ import ScrollAnimator from '@/components/ScrollAnimator';
 import { client } from '@/data/client';
 
 const GA4_ID = 'G-VMJ6LFNBLY';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.topchoiceelectrical.ca';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${client.name} | Electrician in Newmarket`,
     template: `%s | ${client.name}`,
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://www.topchoiceelectrical.ca',
+    canonical: SITE_URL,
   },
 };
 

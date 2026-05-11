@@ -67,7 +67,7 @@ export const client = {
       name: "Knob & Tube Removal",
       shortDescription: "Safe removal of outdated knob-and-tube wiring to protect your home and family.",
       icon: "ShieldCheck",
-      image: "https://images.pexels.com/photos/5691590/pexels-photo-5691590.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/images/work/IMG_5017.webp",
       keywords: ["knob and tube removal Newmarket", "knob and tube rewiring York Region", "old wiring replacement"],
     },
     {
@@ -75,7 +75,7 @@ export const client = {
       name: "Residential Wiring",
       shortDescription: "Complete residential electrical wiring for renovations and new builds.",
       icon: "Home",
-      image: "https://images.pexels.com/photos/27928762/pexels-photo-27928762.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/images/work/IMG_1140.webp",
       keywords: ["residential electrician Newmarket", "house wiring York Region", "electrical wiring renovation"],
     },
     {
@@ -228,44 +228,16 @@ export const client = {
     },
   ],
 
-  // Reviews (placeholder — will pull from Google once GBP is set up)
-  reviews: [
-    {
-      name: "Sarah M.",
-      location: "Newmarket",
-      rating: 5,
-      text: "Tim and his team rewired our entire basement during a renovation. They showed up on time, cleaned up after themselves, and the work passed inspection on the first try. We've used them three times now.",
-      service: "Residential Wiring",
-    },
-    {
-      name: "David K.",
-      location: "Aurora",
-      rating: 5,
-      text: "Had an EV charger installed in my garage. Tim walked me through the options, handled the permit, and had it done in a day. Charges perfectly every night.",
-      service: "EV Charger Installation",
-    },
-    {
-      name: "Maria R.",
-      location: "Richmond Hill",
-      rating: 5,
-      text: "Our panel was from the 70s and our insurance company flagged it. Top Choice upgraded us to 200 amps and the whole process was smooth. Fair price, no surprises.",
-      service: "Panel Upgrades",
-    },
-    {
-      name: "James T.",
-      location: "King City",
-      rating: 5,
-      text: "The landscape lighting completely changed our backyard. Tim designed a layout that highlights the stone wall and pathway. Neighbors keep asking who did it.",
-      service: "Landscape Lighting",
-    },
-    {
-      name: "Linda P.",
-      location: "East Gwillimbury",
-      rating: 5,
-      text: "Had knob and tube wiring throughout our 1920s farmhouse. Tim removed all of it and rewired the house. It was a big job but they kept us informed every step of the way.",
-      service: "Knob & Tube Removal",
-    },
-  ],
+  // Reviews are pulled from Google Business Profile once it's live.
+  // No placeholder reviews are displayed — the homepage shows a
+  // "references available on request" block until real reviews exist.
+  reviews: [] as Array<{
+    name: string;
+    location: string;
+    rating: number;
+    text: string;
+    service: string;
+  }>,
 
   // Payment
   paymentMethods: ["Cash", "Cheque", "Interac e-Transfer", "Credit Card"],
@@ -294,9 +266,15 @@ export const client = {
     instagram: null as string | null,
     google: null as string | null,
   },
-} as const;
+};
 
 export type Client = typeof client;
 export type Service = (typeof client.services)[number];
 export type Area = (typeof client.areas)[number] & { description?: string; topServices?: string[] };
-export type Review = (typeof client.reviews)[number];
+export type Review = {
+  name: string;
+  location: string;
+  rating: number;
+  text: string;
+  service: string;
+};
