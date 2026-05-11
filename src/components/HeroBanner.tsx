@@ -27,7 +27,7 @@ export default function HeroBanner() {
           <div className="inline-flex items-center gap-2.5 bg-white/[0.08] backdrop-blur-md border border-white/[0.12] rounded-full px-5 py-2.5 mb-10">
             <div className="w-2 h-2 rounded-full bg-green animate-pulse" />
             <span className="text-white/80 text-sm font-medium tracking-wide">
-              Serving York Region &amp; Simcoe County
+              Newmarket, ON &middot; Serving York Region &amp; Simcoe County
             </span>
           </div>
 
@@ -39,8 +39,8 @@ export default function HeroBanner() {
             <span className="gradient-text">Not a Call Centre.</span>
           </h1>
 
-          <p className="text-white/50 text-lg md:text-xl mb-12 leading-relaxed max-w-lg">
-            You call, Tim answers. Licensed, insured, and {client.yearsExperience}+ years of electrical experience across York Region.
+          <p className="text-white/50 text-lg md:text-xl mb-12 leading-relaxed max-w-xl">
+            Tim takes the call. Tim quotes the job. Tim shows up. {client.yearsExperience}+ years wiring panels, EV chargers, and old farmhouses across York Region &mdash; ESA-certified, fully insured, no franchise markup.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -48,13 +48,13 @@ export default function HeroBanner() {
               href={`tel:${client.phone}`}
               className="btn-premium bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02]"
             >
-              Call {client.phone}
+              Call Tim &mdash; {client.phone}
             </a>
             <Link
               href="/contact"
               className="glass hover:bg-white/10 text-white font-semibold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center hover:scale-[1.02]"
             >
-              Get a Free Quote
+              Get a Same-Day Quote
             </Link>
           </div>
         </div>
