@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import ServiceCard from '@/components/ServiceCard';
 import { client } from '@/data/client';
 import Link from 'next/link';
@@ -22,10 +23,13 @@ export default function ServicesPage() {
       {/* Hero — immersive */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80"
             alt="Electrician performing professional electrical work"
-            className="w-full h-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 hero-gradient" />
           <div className="absolute inset-0 grain" />
@@ -61,10 +65,12 @@ export default function ServicesPage() {
 
       {/* Photo Break */}
       <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
           alt="Electrical installation work"
-          className="w-full h-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/90 via-navy-dark/60 to-transparent" />
         <div className="absolute inset-0 flex items-center">
@@ -83,10 +89,12 @@ export default function ServicesPage() {
       {/* CTA */}
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1920&q=80"
             alt="Residential electrical tools and supplies"
-            className="w-full h-full object-cover"
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-navy-dark/90" />
           <div className="absolute inset-0 grain" />
