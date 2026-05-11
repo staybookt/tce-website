@@ -1,22 +1,21 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { client } from '@/data/client';
 
 export default function HeroBanner() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background video */}
+      {/* Background photo — real Tim work, no stock video */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80"
-          className="w-full h-full object-cover scale-105"
+        <Image
+          src="/images/work/IMG_5375.webp"
+          alt="Top Choice Electrical work — Tim wiring a panel in York Region"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover scale-105"
           style={{ animation: 'fadeIn 2s cubic-bezier(0.16, 1, 0.3, 1)' }}
-        >
-          <source src="https://videos.pexels.com/video-files/8853517/8853517-hd_1920_1080_24fps.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/85 via-navy-dark/65 to-navy-dark/90" />
         <div className="absolute inset-0 grain" />
       </div>
@@ -32,9 +31,9 @@ export default function HeroBanner() {
           </div>
 
           <h1 className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-white leading-[0.9] mb-8 tracking-[-0.04em]">
-            Your Local
+            Electrician in
             <br />
-            Electrician.
+            Newmarket.
             <br />
             <span className="gradient-text">Not a Call Centre.</span>
           </h1>
