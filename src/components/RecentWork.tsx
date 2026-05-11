@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const recentJobs = [
   {
     area: 'Newmarket',
@@ -94,11 +96,13 @@ export default function RecentWork() {
               className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-md hover:border-amber-200 transition-all duration-300"
             >
               {job.image && (
-                <div className="h-40 overflow-hidden">
-                  <img
+                <div className="relative h-40 overflow-hidden">
+                  <Image
                     src={job.image}
                     alt={`${job.service} in ${job.area}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               )}

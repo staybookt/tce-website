@@ -5,6 +5,7 @@ import CostEstimator from '@/components/CostEstimator';
 import RecentWork from '@/components/RecentWork';
 import { client } from '@/data/client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       <HeroBanner />
       <TrustBar />
 
-      {/* ═══ Services — what they came for ═══ */}
+      {/* âââ Services â what they came for âââ */}
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl mb-14">
@@ -22,12 +23,12 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Featured service — full width hero card */}
+          {/* Featured service â full width hero card */}
           <div className="mb-4">
             <ServiceCard key={client.services[0].slug} {...client.services[0]} featured />
           </div>
 
-          {/* Grid of remaining services — 2x3 or 3x2 */}
+          {/* Grid of remaining services â 2x3 or 3x2 */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {client.services.slice(1, 7).map((service) => (
               <ServiceCard key={service.slug} {...service} />
@@ -45,7 +46,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Cost Estimator — right after services ═══ */}
+      {/* âââ Cost Estimator â right after services âââ */}
       <section className="section-dark py-24 md:py-32 relative overflow-hidden">
         {/* Warm ambient glows */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/[0.07] rounded-full blur-3xl" />
@@ -53,7 +54,7 @@ export default function Home() {
 
         <div className="relative max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
-            {/* Left — headline + context */}
+            {/* Left â headline + context */}
             <div className="md:col-span-5">
               <p className="text-amber-400 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Pricing</p>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-6">
@@ -78,7 +79,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — the estimator */}
+            {/* Right â the estimator */}
             <div className="md:col-span-7">
               <CostEstimator variant="dark" />
             </div>
@@ -86,11 +87,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Featured Testimonial — big, singular, impactful ═══ */}
+      {/* âââ Featured Testimonial â big, singular, impactful âââ */}
       <section className="py-24 md:py-32 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-            {/* Left — the big quote */}
+            {/* Left â the big quote */}
             <div>
               <div className="flex gap-1 mb-6">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -113,18 +114,20 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — image with stat overlay */}
+            {/* Right â image with stat overlay */}
             <div className="relative rounded-3xl overflow-hidden min-h-[400px]">
-              <img
+              <Image
                 src="/images/work/IMG_1140.webp"
                 alt="Top Choice Electrical pot-light install on a Newmarket home at dusk, every soffit and porch light glowing"
-                className="w-full h-full object-cover absolute inset-0"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
               <div className="relative h-full flex flex-col justify-end p-5 sm:p-8">
                 <div className="grid grid-cols-3 gap-3 sm:gap-6">
                   <div>
-                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">5★</p>
+                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">5â</p>
                     <p className="text-white/50 text-[10px] sm:text-xs mt-1">Rated Service</p>
                   </div>
                   <div>
@@ -140,7 +143,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Secondary reviews — smaller, supporting */}
+          {/* Secondary reviews â smaller, supporting */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 pt-16 border-t border-gray-100">
             {client.reviews.slice(1, 4).map((review, i) => (
               <div key={i} className="flex gap-4">
@@ -157,10 +160,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ Recent Work ═══ */}
+      {/* âââ Recent Work âââ */}
       <RecentWork />
 
-      {/* ═══ Final CTA — warm gradient ═══ */}
+      {/* âââ Final CTA â warm gradient âââ */}
       <section className="py-24 md:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #111113 0%, #1a1408 50%, #111113 100%)' }}>
         {/* Warm ambient glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-500/10 rounded-full blur-3xl" />

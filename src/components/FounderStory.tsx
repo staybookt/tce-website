@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { client } from '@/data/client';
 
 export default function FounderStory() {
@@ -8,10 +9,12 @@ export default function FounderStory() {
           {/* Photo side */}
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] max-w-md">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80"
                 alt="Electrician at work"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
             </div>
             {/* Credential card */}
