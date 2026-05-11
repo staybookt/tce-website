@@ -13,22 +13,22 @@ export default function Home() {
       <HeroBanner />
       <TrustBar />
 
-      {/* âââ Services â what they came for âââ */}
+      {/* === Services === */}
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl mb-14">
-            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">What We Do</p>
+            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">What Tim Does</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
-              Every electrical service your home needs.
+              From a tripped breaker to a full rewire.
             </h2>
           </div>
 
-          {/* Featured service â full width hero card */}
+          {/* Featured service - full width hero card */}
           <div className="mb-4">
             <ServiceCard key={client.services[0].slug} {...client.services[0]} featured />
           </div>
 
-          {/* Grid of remaining services â 2x3 or 3x2 */}
+          {/* Grid of remaining services */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {client.services.slice(1, 7).map((service) => (
               <ServiceCard key={service.slug} {...service} />
@@ -46,7 +46,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* âââ Cost Estimator â right after services âââ */}
+      {/* === Cost Estimator === */}
       <section className="section-dark py-24 md:py-32 relative overflow-hidden">
         {/* Warm ambient glows */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/[0.07] rounded-full blur-3xl" />
@@ -54,14 +54,14 @@ export default function Home() {
 
         <div className="relative max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
-            {/* Left â headline + context */}
+            {/* Left - headline + context */}
             <div className="md:col-span-5">
               <p className="text-amber-400 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Pricing</p>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-6">
                 Fair pricing. No franchise markup.
               </h2>
               <p className="text-white/40 text-base leading-relaxed mb-8">
-                Big franchise operations charge more because they have to. National marketing, call centres, royalty fees. We don&apos;t have any of that. Same licence, same ESA inspection, same quality work.
+                The big franchise operations charge more because they have to. National marketing, call centres, royalty fees, sales reps on commission. Tim runs Top Choice out of Newmarket with a small crew and a van. Same ESA licence, same inspections, same code &mdash; just without the layers in between that drive your bill up.
               </p>
               <div className="hidden md:flex items-center gap-4 text-sm text-white/30">
                 <div className="flex items-center gap-2">
@@ -74,12 +74,12 @@ export default function Home() {
                   <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-400/50" fill="none" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Exact quote same day
+                  Tim quotes it himself, same day
                 </div>
               </div>
             </div>
 
-            {/* Right â the estimator */}
+            {/* Right - the estimator */}
             <div className="md:col-span-7">
               <CostEstimator variant="dark" />
             </div>
@@ -87,11 +87,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* âââ Featured Testimonial â big, singular, impactful âââ */}
+      {/* === Featured Testimonial === */}
       <section className="py-24 md:py-32 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-            {/* Left â the big quote */}
+            {/* Left - the big quote */}
             <div>
               <div className="flex gap-1 mb-6">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -114,7 +114,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right â image with stat overlay */}
+            {/* Right - image with stat overlay */}
             <div className="relative rounded-3xl overflow-hidden min-h-[400px]">
               <Image
                 src="/images/work/IMG_1140.webp"
@@ -127,23 +127,23 @@ export default function Home() {
               <div className="relative h-full flex flex-col justify-end p-5 sm:p-8">
                 <div className="grid grid-cols-3 gap-3 sm:gap-6">
                   <div>
-                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">5â</p>
-                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">Rated Service</p>
+                    <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">200+</p>
+                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">Panels Wired in York Region</p>
                   </div>
                   <div>
                     <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white">{client.yearsExperience}+</p>
-                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">Years Experience</p>
+                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">Years on the Tools</p>
                   </div>
                   <div>
                     <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-amber-400">100%</p>
-                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">ESA Pass Rate</p>
+                    <p className="text-white/50 text-[10px] sm:text-xs mt-1">ESA Inspections Passed</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Secondary reviews â smaller, supporting */}
+          {/* Secondary reviews */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 pt-16 border-t border-gray-100">
             {client.reviews.slice(1, 4).map((review, i) => (
               <div key={i} className="flex gap-4">
@@ -160,10 +160,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* âââ Recent Work âââ */}
+      {/* === Recent Work === */}
       <RecentWork />
 
-      {/* âââ Final CTA â warm gradient âââ */}
+      {/* === Final CTA === */}
       <section className="py-24 md:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #111113 0%, #1a1408 50%, #111113 100%)' }}>
         {/* Warm ambient glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-500/10 rounded-full blur-3xl" />
@@ -173,14 +173,14 @@ export default function Home() {
             Let&apos;s get it done.
           </h2>
           <p className="text-white/40 text-lg mb-12 max-w-md mx-auto">
-            Call for a same-day quote. No voicemail, no runaround.
+            Call for a same-day quote. Tim picks up. No voicemail, no runaround.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`tel:${client.phone}`}
               className="bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-10 py-4 rounded-xl text-base transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02]"
             >
-              Call {client.phone}
+              Call Tim &mdash; {client.phone}
             </a>
             <Link
               href="/contact"
