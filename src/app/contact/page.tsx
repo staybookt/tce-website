@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { client } from '@/data/client';
 import QuoteForm from '@/components/QuoteForm';
 
@@ -22,10 +23,13 @@ export default function ContactPage() {
       {/* Hero — immersive */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
             alt="Modern office with professional electrical lighting"
-            className="w-full h-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 hero-gradient" />
           <div className="absolute inset-0 grain" />
