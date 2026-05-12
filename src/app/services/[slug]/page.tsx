@@ -7,6 +7,7 @@ import { serviceContent } from '@/data/service-content';
 import QuoteForm from '@/components/QuoteForm';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import PageSchema from '@/components/PageSchema';
+import ServiceGallery from '@/components/ServiceGallery';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -217,6 +218,9 @@ export default async function ServicePage({ params }: Props) {
                 </h2>
                 <p className="text-gray-600 leading-relaxed text-[17px]">{content.whatToExpect}</p>
               </div>
+
+              {/* Recent work gallery — 4 real photos relevant to this service */}
+              <ServiceGallery slug={slug} serviceName={service.name} />
 
               {/* Common problems */}
               <div className="animate-on-scroll">

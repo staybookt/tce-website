@@ -6,6 +6,7 @@ import { client } from '@/data/client';
 import QuoteForm from '@/components/QuoteForm';
 import ServiceCard from '@/components/ServiceCard';
 import PageSchema from '@/components/PageSchema';
+import RecentWorkGallery from '@/components/RecentWorkGallery';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -121,6 +122,9 @@ export default async function AreaPage({ params }: Props) {
                   </p>
                 </div>
               </div>
+
+              {/* Recent work gallery */}
+              <RecentWorkGallery headline="A few recent jobs." eyebrow="Recent Work" />
 
               {/* Popular services in this area */}
               {topServices.length > 0 && (
