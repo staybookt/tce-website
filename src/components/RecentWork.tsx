@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useRef } from 'react';
 
 const recentJobs = [
   {
@@ -40,7 +43,7 @@ const recentJobs = [
   {
     area: 'Richmond Hill',
     service: 'Pot Lights',
-    detail: '12 LED pot lights across the main floor open concept. Replaced 6 old fluorescent fixtures.',
+    detail: '12 LED pot lights across the main floor open concept. Replaced 6 old fluorescent fixtures. Matched dimmer to LED driver — zero flicker, full-range dim. Drywall touch-up handled by the homeowner; cuts were clean enough that a single coat covered it.',
     timeAgo: '1 week ago',
     image: '/images/work/IMG_6204.webp',
     icon: (
@@ -64,7 +67,7 @@ const recentJobs = [
   {
     area: 'Stouffville',
     service: 'Generator',
-    detail: 'Generac 22kW whole-home standby with automatic transfer switch. Customer lost power 4 times last winter.',
+    detail: 'Generac 22kW whole-home standby with automatic transfer switch. Customer lost power 4 times last winter. Quoted, permitted, gas line coordinated with the plumber, installed and commissioned in two days. Tested with a simulated outage before we left.',
     timeAgo: '2 weeks ago',
     image: '/images/work/IMG_5695.webp',
     icon: (
@@ -76,66 +79,114 @@ const recentJobs = [
 ];
 
 export default function RecentWork() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollBy = (direction: 'prev' | 'next') => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const cardWidth = el.querySelector('article')?.clientWidth ?? 380;
+    const gap = 16;
+    el.scrollBy({ left: direction === 'next' ? cardWidth + gap : -(cardWidth + gap), behavior: 'smooth' });
+  };
+
   return (
-    <section className="section-warm py-24 md:py-32">
+    <section className="section-warm py-24 md:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-14">
-          <div className="accent-line mx-auto mb-6" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
-            What we&apos;ve been working on.
-          </h2>
-          <p className="text-gray-500 text-lg max-w-lg mx-auto mt-5">
-            Real jobs. Real neighbourhoods. Here&apos;s what the last few weeks looked like.
-          </p>
+        {/* Header row — title left, arrows right on desktop */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 md:mb-14 gap-6">
+          <div className="max-w-xl">
+            <div className="accent-line mb-6" />
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
+              What we&apos;ve been working on.
+            </h2>
+            <p className="text-gray-500 text-lg mt-5">
+              Real jobs. Real neighbourhoods. Swipe through the last few weeks.
+            </p>
+          </div>
+
+          {/* Desktop scroll arrows */}
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => scrollBy('prev')}
+              aria-label="Previous recent job"
+              className="w-12 h-12 rounded-full border-2 border-gray-200 hover:border-amber-500 hover:bg-amber-50 transition-colors flex items-center justify-center text-gray-700 hover:text-amber-600"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollBy('next')}
+              aria-label="Next recent job"
+              className="w-12 h-12 rounded-full border-2 border-gray-200 hover:border-amber-500 hover:bg-amber-50 transition-colors flex items-center justify-center text-gray-700 hover:text-amber-600"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {recentJobs.map((job, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-md hover:border-amber-200 transition-all duration-300"
-            >
-              {job.image && (
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={job.image}
-                    alt={`${job.service} in ${job.area}`}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              )}
-              <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600">
-                    {job.icon}
+        {/* Horizontal scroller */}
+        <div className="relative -mx-4 px-4">
+          <div
+            ref={scrollerRef}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6"
+            style={{ scrollbarWidth: 'none' }}
+          >
+            {recentJobs.map((job, i) => (
+              <article
+                key={i}
+                className="flex-shrink-0 snap-start w-[85%] sm:w-[60%] md:w-[42%] lg:w-[31%] bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg hover:border-amber-200 transition-all duration-300"
+              >
+                {job.image && (
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={job.image}
+                      alt={`${job.service} in ${job.area} by Top Choice Electrical`}
+                      fill
+                      sizes="(max-width: 640px) 85vw, (max-width: 1024px) 42vw, 31vw"
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <span className="text-sm font-bold text-gray-900 font-display">
-                    {job.service}
-                  </span>
+                )}
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600">
+                        {job.icon}
+                      </div>
+                      <span className="text-sm font-bold text-gray-900 font-display">
+                        {job.service}
+                      </span>
+                    </div>
+                    <span className="text-xs text-gray-400">{job.timeAgo}</span>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-4 min-h-[7rem]">
+                    {job.detail}
+                  </p>
+                  <div className="flex items-center gap-1.5 pt-3 border-t border-gray-100">
+                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-gray-300" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                    <span className="text-xs font-medium text-gray-400">{job.area}</span>
+                  </div>
                 </div>
-                <span className="text-xs text-gray-400">
-                  {job.timeAgo}
-                </span>
-              </div>
-              <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                {job.detail}
-              </p>
-              <div className="flex items-center gap-1.5">
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-gray-300" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-                <span className="text-xs font-medium text-gray-400">
-                  {job.area}
-                </span>
-              </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            ))}
+          </div>
+
+          {/* Subtle edge fade — mobile only, hints there's more */}
+          <div className="pointer-events-none absolute top-0 right-0 bottom-6 w-12 bg-gradient-to-l from-[color:var(--warm-bg,#fafaf7)] to-transparent md:hidden" />
         </div>
+
+        {/* Mobile-only swipe hint */}
+        <p className="md:hidden mt-2 text-center text-gray-400 text-xs italic">
+          Swipe to see more →
+        </p>
       </div>
     </section>
   );
