@@ -224,9 +224,21 @@ export default function Home() {
       <RecentWork />
 
       {/* === Final CTA === */}
-      <section className="py-24 md:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #111113 0%, #1a1408 50%, #111113 100%)' }}>
-        {/* Warm ambient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-500/10 rounded-full blur-3xl" />
+      <section className="py-24 md:py-32 relative overflow-hidden">
+        {/* Real work background photo with dark overlay — matches every other CTA on the site */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/work/IMG_5375.webp"
+            alt="Top Choice Electrical panel work in York Region"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-950/80 via-gray-950/85 to-gray-950/90" />
+          <div className="absolute inset-0 grain" />
+        </div>
+        {/* Warm ambient glow on top of the photo */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-500/15 rounded-full blur-3xl" />
 
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.05]">
