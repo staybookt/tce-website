@@ -123,7 +123,7 @@ export default async function ServicePage({ params }: Props) {
       )}
 
       {/* === 1. Hero === */}
-      <section className="relative min-h-[44vh] md:min-h-[50vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[56vh] md:min-h-[64vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={heroImage}
@@ -131,24 +131,28 @@ export default async function ServicePage({ params }: Props) {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover scale-105"
           />
           <div className="absolute inset-0 hero-gradient" />
           <div className="absolute inset-0 grain" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 w-full pb-14 pt-36">
+        <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <div className="flex items-center gap-2 text-sm text-white/40 mb-5">
+            <div className="flex items-center gap-2 text-sm text-white/40 mb-6">
               <Link href="/" className="hover:text-gold transition-colors">Home</Link>
               <span>/</span>
               <Link href="/services" className="hover:text-gold transition-colors">Services</Link>
               <span>/</span>
               <span className="text-gold">{service.name}</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 tracking-tight leading-tight">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="h-px w-12 bg-amber-400" />
+              <span className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em]">ESA-Certified · York Region</span>
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[0.95] max-w-4xl">
               {content.headline}
             </h1>
-            <p className="text-white/65 max-w-2xl text-lg leading-relaxed">{service.shortDescription}</p>
+            <p className="text-white/70 max-w-2xl text-lg md:text-xl leading-relaxed">{service.shortDescription}</p>
           </div>
         </div>
       </section>
@@ -188,9 +192,11 @@ export default async function ServicePage({ params }: Props) {
                 </div>
               )}
 
-              {/* Intro — single paragraph, no AEO box above */}
+              {/* Intro — single paragraph with drop cap for typographic lift */}
               <div className="animate-on-scroll">
-                <p className="text-gray-700 text-lg leading-relaxed">{content.intro}</p>
+                <p className="text-gray-700 text-lg leading-relaxed first-letter:font-display first-letter:text-6xl md:first-letter:text-7xl first-letter:font-bold first-letter:text-amber-500 first-letter:float-left first-letter:mr-3 first-letter:leading-[0.85] first-letter:mt-1">
+                  {content.intro}
+                </p>
               </div>
 
               {/* Pricing card — promoted, larger numbers, immediately visible */}
@@ -224,14 +230,59 @@ export default async function ServicePage({ params }: Props) {
               {/* Before/after slider (renders null until real pairs land) */}
               <BeforeAfterSlider slug={slug} />
 
-              {/* Process — what to expect */}
+              {/* Process — numbered stepper when steps exist, paragraph fallback otherwise */}
               <div className="animate-on-scroll">
                 <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">{content.processSubheading}</p>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-5 tracking-tight">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
                   {content.processHeading}
                 </h2>
-                <p className="text-gray-700 leading-relaxed text-lg">{content.whatToExpect}</p>
+
+                {content.howToSteps && content.howToSteps.length > 0 ? (
+                  <ol className="relative space-y-8 md:space-y-10">
+                    {/* Vertical connector line */}
+                    <div className="absolute left-6 top-6 bottom-6 w-px bg-gradient-to-b from-amber-300 via-amber-200 to-transparent hidden sm:block" />
+                    {content.howToSteps.map((step, i) => (
+                      <li key={i} className="relative flex gap-5 md:gap-7">
+                        <div className="flex-shrink-0 relative z-10">
+                          <div className="w-12 h-12 rounded-full bg-white border-2 border-amber-500 flex items-center justify-center shadow-sm">
+                            <span className="font-display font-bold text-amber-600 text-lg">
+                              {String(i + 1).padStart(2, '0')}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex-1 pt-1.5">
+                          <h3 className="font-display text-xl font-bold text-gray-900 mb-2 tracking-tight">
+                            {step.name}
+                          </h3>
+                          <p className="text-gray-600 leading-relaxed text-base">{step.text}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                ) : (
+                  <p className="text-gray-700 leading-relaxed text-lg">{content.whatToExpect}</p>
+                )}
               </div>
+
+              {/* Pull quote — whyPro content elevated typographically */}
+              {content.whyPro && (
+                <div className="animate-on-scroll relative py-6 md:py-8">
+                  <svg className="absolute -top-2 -left-2 w-16 h-16 text-amber-100" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                  </svg>
+                  <blockquote className="relative pl-10 md:pl-14 pr-4 md:pr-8 border-l-4 border-amber-500">
+                    <p className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-[1.3] tracking-tight">
+                      {content.whyPro}
+                    </p>
+                    <footer className="mt-5 flex items-center gap-3">
+                      <div className="h-px w-8 bg-amber-500" />
+                      <span className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em]">
+                        The standard
+                      </span>
+                    </footer>
+                  </blockquote>
+                </div>
+              )}
 
               {/* Common issues — diagnostic content */}
               <div className="animate-on-scroll bg-gray-50 -mx-4 px-4 md:mx-0 md:px-10 py-10 md:py-12 md:rounded-2xl">
