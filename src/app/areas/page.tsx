@@ -6,6 +6,7 @@ import SectionCTA from '@/components/SectionCTA';
 import TrustStrip from '@/components/TrustStrip';
 import PhotoBreak from '@/components/PhotoBreak';
 import ServiceAreaMap from '@/components/ServiceAreaMap';
+import AreasByDriveTime from '@/components/AreasByDriveTime';
 import { areaNeighbourhoods } from '@/data/area-neighbourhoods';
 import { areaImage } from '@/data/area-images';
 
@@ -114,66 +115,8 @@ export default function AreasPage() {
       {/* === Service area map === */}
       <ServiceAreaMap />
 
-      {/* === Other 11 cities — photo-led grid === */}
-      <section className="py-14 md:py-16 bg-gray-50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 relative">
-          <div className="mb-10">
-            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Across the region</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-              11 more cities Tim covers regularly.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {otherAreas.map((area) => {
-              const hoods = (areaNeighbourhoods[area.slug] || []).slice(0, 3);
-              const img = areaImage[area.slug] || '/images/work/IMG_5375.webp';
-              return (
-                <Link
-                  key={area.slug}
-                  href={`/areas/${area.slug}`}
-                  className="group block bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-amber-300 hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={img}
-                      alt={`Electrical work in ${area.name} by Top Choice Electrical`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent" />
-                    <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-sm">
-                      <svg viewBox="0 0 24 24" className="w-3 h-3 text-amber-500" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                      </svg>
-                      <span className="text-gray-800 text-xs font-bold uppercase tracking-wider">{area.region}</span>
-                    </div>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-display text-xl font-bold text-gray-900 mb-3 tracking-tight">{area.name}</h3>
-                    {hoods.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 mb-4">
-                        {hoods.map((n) => (
-                          <span key={n} className="inline-block bg-gray-50 border border-gray-200 text-gray-700 text-[11px] font-semibold px-2.5 py-1 rounded-full">
-                            {n}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    <div className="flex items-center gap-1.5 text-amber-600 group-hover:text-amber-700 font-semibold text-sm transition-colors">
-                      <span>View {area.name}</span>
-                      <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* === Cities by drive time — SEO/AEO text section === */}
+      <AreasByDriveTime />
 
       {/* === Photo break === */}
       <section className="py-14 md:py-16 bg-white">
