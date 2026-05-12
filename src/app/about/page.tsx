@@ -74,11 +74,43 @@ export default function AboutPage() {
                 <p>
                   Tim runs a small crew now &mdash; small enough that he&apos;s still on every site visit over $1,000, still pulls every permit himself, and still answers the phone when it rings. If you call this number, you&apos;re going to talk to him.
                 </p>
+
+                <div className="flex items-center gap-4 pt-6 mt-6 border-t border-gray-100">
+                  <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center text-white font-display font-bold text-xl shrink-0">
+                    T
+                  </div>
+                  <div>
+                    <p className="font-display font-bold text-gray-900 text-base leading-tight">Tim Ciszko</p>
+                    <p className="text-gray-500 text-sm">Owner &amp; Master Electrician · ESA #{client.licenseNumber}</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Stats block */}
-            <div className="animate-on-scroll lg:sticky lg:top-28">
+            {/* Tim portrait placeholder + stats */}
+            <div className="animate-on-scroll lg:sticky lg:top-28 space-y-5">
+              {/* Portrait card — placeholder uses real work photo cropped portrait.
+                  Swap src to actual Tim headshot when one is available. */}
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
+                <Image
+                  src="/images/work/IMG_5375.webp"
+                  alt="Tim Ciszko, owner and master electrician at Top Choice Electrical"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                  style={{ objectPosition: 'center top' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-px w-8 bg-amber-400" />
+                    <span className="text-amber-300 text-[10px] font-bold uppercase tracking-[0.25em]">Owner-operator</span>
+                  </div>
+                  <p className="font-display text-white text-2xl font-bold leading-tight">Tim Ciszko</p>
+                  <p className="text-white/70 text-sm mt-1">Master Electrician · ESA-Certified</p>
+                </div>
+              </div>
+
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { number: `${client.yearsExperience}+`, label: 'Years on the tools' },
@@ -126,6 +158,41 @@ export default function AboutPage() {
                 </span>
               </footer>
             </blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* === How Tim works — voice statement === */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="mb-10">
+            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">How I work</p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.05]">
+              Five rules,{' '}
+              <span className="gradient-text">no exceptions.</span>
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { rule: 'I won\u2019t quote a panel over the phone.', why: 'Service entrances, wire condition, code variances \u2014 they need eyes on. The walkthrough is free.' },
+              { rule: 'The quote you get is the price you pay.', why: 'It doesn\u2019t move unless you change scope. No change orders for things I should have flagged.' },
+              { rule: 'Every permit. Every inspection. Every time.', why: 'If the job needs an ESA permit, we pull it. You get the paperwork at the end.' },
+              { rule: 'I label every breaker by room.', why: 'A panel with a sticker saying \u201cKitchen\u201d on it isn\u2019t finished work. Every circuit gets named.' },
+              { rule: 'I clean up before I leave.', why: 'Drywall dust, wire offcuts, packaging. The site looks like we were never there \u2014 except the work works.' },
+            ].map((r, i) => (
+              <div key={i} className="flex gap-4 bg-gradient-to-br from-amber-50/40 to-white border border-amber-100 rounded-2xl p-5 md:p-6">
+                <div className="w-9 h-9 rounded-lg bg-amber-500 flex items-center justify-center shrink-0 shadow-sm">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="3">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-display font-bold text-gray-900 text-base mb-1.5 leading-snug">{r.rule}</p>
+                  <p className="text-gray-600 text-[14px] leading-relaxed">{r.why}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -198,6 +265,44 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* === Brands installed === */}
+      <section className="py-14 md:py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Brands we install</p>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-gray-900 tracking-tight leading-tight max-w-2xl mx-auto">
+              The equipment we trust on the panels we wire.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {[
+              { name: 'Square D', category: 'Panels' },
+              { name: 'Eaton', category: 'Panels' },
+              { name: 'Siemens', category: 'Panels' },
+              { name: 'Generac', category: 'Generators' },
+              { name: 'Tesla', category: 'EV / Powerwall' },
+              { name: 'ChargePoint', category: 'EV chargers' },
+              { name: 'Grizzl-E', category: 'EV chargers' },
+              { name: 'FLO', category: 'EV chargers' },
+              { name: 'Enphase', category: 'Battery backup' },
+              { name: 'Lutron', category: 'Smart lighting' },
+              { name: 'Leviton', category: 'Devices' },
+              { name: 'Hubbell', category: 'Devices' },
+            ].map((b) => (
+              <div key={b.name} className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:border-amber-300 transition-colors">
+                <p className="font-display font-bold text-gray-900 text-sm leading-tight">{b.name}</p>
+                <p className="text-gray-400 text-[11px] uppercase tracking-wider mt-1">{b.category}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-gray-500 text-sm mt-8 max-w-2xl mx-auto">
+            Working with a specific brand or model? Mention it on the quote &mdash; chances are we&apos;ve installed it before.
+          </p>
         </div>
       </section>
 
