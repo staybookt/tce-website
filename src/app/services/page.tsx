@@ -3,7 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ServiceCard from '@/components/ServiceCard';
 import { client } from '@/data/client';
-import { serviceCategories, featuredServiceSlugs } from '@/data/service-categories';
+import { featuredServiceSlugs } from '@/data/service-categories';
+import ServicesExplorer from '@/components/ServicesExplorer';
 
 export const metadata: Metadata = {
   title: 'Electrical Services | Newmarket & York Region',
@@ -56,19 +57,13 @@ export default function ServicesPage() {
       {/* === Jump nav — sticky scroll anchors === */}
       <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4">
-          <nav aria-label="Service categories" className="flex gap-1 overflow-x-auto py-3 -mx-1 px-1">
+          <nav aria-label="Quick links" className="flex gap-1 overflow-x-auto py-3 -mx-1 px-1">
             <a href="#featured" className="flex-shrink-0 text-xs md:text-sm font-semibold text-gray-700 hover:text-amber-600 hover:bg-amber-50 px-3 md:px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
               Most requested
             </a>
-            {serviceCategories.map((cat) => (
-              <a
-                key={cat.slug}
-                href={`#${cat.slug}`}
-                className="flex-shrink-0 text-xs md:text-sm font-semibold text-gray-700 hover:text-amber-600 hover:bg-amber-50 px-3 md:px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
-              >
-                {cat.title}
-              </a>
-            ))}
+            <a href="#explorer" className="flex-shrink-0 text-xs md:text-sm font-semibold text-gray-700 hover:text-amber-600 hover:bg-amber-50 px-3 md:px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
+              Browse all 18 services
+            </a>
             <Link
               href="/emergency-electrician"
               className="flex-shrink-0 text-xs md:text-sm font-bold text-red-600 hover:bg-red-50 px-3 md:px-4 py-2 rounded-lg transition-colors whitespace-nowrap ml-auto"
@@ -150,38 +145,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* === Category sections === */}
-      <div className="bg-white">
-        {serviceCategories.map((cat, idx) => {
-          const services = cat.services.map(findService).filter(Boolean) as typeof client.services;
-          if (services.length === 0) return null;
-          const isAlt = idx % 2 === 1; // alternate background tint for visual rhythm
-          return (
-            <section
-              key={cat.slug}
-              id={cat.slug}
-              className={`py-16 md:py-20 scroll-mt-20 ${isAlt ? 'bg-gray-50' : 'bg-white'}`}
-            >
-              <div className="max-w-7xl mx-auto px-4">
-                <div className="max-w-2xl mb-10">
-                  <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">{cat.eyebrow}</p>
-                  <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-4">
-                    {cat.title}
-                  </h2>
-                  <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                    {cat.description}
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {services.map((service) => (
-                    <ServiceCard key={service.slug} {...service} />
-                  ))}
-                </div>
-              </div>
-            </section>
-          );
-        })}
+      {/* === Filterable services explorer === */}
+      <div id="explorer" className="scroll-mt-20">
+        <ServicesExplorer />
       </div>
 
       {/* === Custom work photo break === */}
