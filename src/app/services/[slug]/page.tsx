@@ -12,6 +12,8 @@ import ServiceFeatureImage from '@/components/ServiceFeatureImage';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 import SectionCTA from '@/components/SectionCTA';
 import TrustStrip from '@/components/TrustStrip';
+import ProblemSolutionCard from '@/components/ProblemSolutionCard';
+import PhotoBreak from '@/components/PhotoBreak';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -221,6 +223,14 @@ export default async function ServicePage({ params }: Props) {
                 </div>
               )}
 
+              {/* Problem / Solution card — text bullets of typical problems + real photo */}
+              <ProblemSolutionCard
+                problems={content.problems}
+                afterImage={service.image || '/images/work/IMG_3258.webp'}
+                afterImageAlt={`${service.name} by Top Choice Electrical — finished work in York Region`}
+                serviceName={service.name}
+              />
+
               {/* Recent work gallery — visual proof of outcome */}
               <ServiceGallery slug={slug} serviceName={service.name} />
 
@@ -263,6 +273,13 @@ export default async function ServicePage({ params }: Props) {
                   <p className="text-gray-700 leading-relaxed text-lg">{content.whatToExpect}</p>
                 )}
               </div>
+
+              {/* Full-bleed photo break — pure visual rest */}
+              <PhotoBreak
+                image="/images/work/IMG_5375.webp"
+                alt={`${service.name} work in York Region by Top Choice Electrical`}
+                aspect="21/9"
+              />
 
               {/* Pull quote — whyPro content elevated typographically */}
               {content.whyPro && (
