@@ -4,9 +4,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { client } from '@/data/client';
 
-// Angular position per city, measured clockwise from 12 o'clock (true north).
-// Not survey-accurate — a close mental model so the dots feel geographically
-// reasonable without competing with a real map.
 interface Spoke {
   slug: string;
   angle: number;
@@ -14,17 +11,17 @@ interface Spoke {
 }
 
 const SPOKES: Spoke[] = [
-  { slug: 'east-gwillimbury', angle:   0, radius: 18 },  // N
-  { slug: 'keswick',          angle: 345, radius: 36 },  // NNW
-  { slug: 'innisfil',         angle: 320, radius: 36 },  // NW
-  { slug: 'bradford',         angle: 290, radius: 22 },  // W
-  { slug: 'king-city',        angle: 230, radius: 26 },  // SW
-  { slug: 'vaughan',          angle: 205, radius: 38 },  // SSW
-  { slug: 'aurora',           angle: 180, radius: 18 },  // S
-  { slug: 'richmond-hill',    angle: 170, radius: 32 },  // S/SSE
-  { slug: 'markham',          angle: 145, radius: 38 },  // SE
-  { slug: 'stouffville',      angle: 115, radius: 32 },  // E/SE
-  { slug: 'uxbridge',         angle:  85, radius: 38 },  // E
+  { slug: 'east-gwillimbury', angle:   0, radius: 18 },
+  { slug: 'keswick',          angle: 345, radius: 34 },
+  { slug: 'innisfil',         angle: 320, radius: 34 },
+  { slug: 'bradford',         angle: 290, radius: 22 },
+  { slug: 'king-city',        angle: 230, radius: 26 },
+  { slug: 'vaughan',          angle: 205, radius: 36 },
+  { slug: 'aurora',           angle: 180, radius: 18 },
+  { slug: 'richmond-hill',    angle: 170, radius: 30 },
+  { slug: 'markham',          angle: 145, radius: 36 },
+  { slug: 'stouffville',      angle: 115, radius: 30 },
+  { slug: 'uxbridge',         angle:  85, radius: 36 },
 ];
 
 const polar = (angleDeg: number, r: number) => {
@@ -38,7 +35,6 @@ const polar = (angleDeg: number, r: number) => {
 export default function ServiceAreaMap() {
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
 
-  // HQ first, then alphabetical by name
   const orderedAreas = [...client.areas].sort((a, b) => {
     if (a.slug === 'newmarket') return -1;
     if (b.slug === 'newmarket') return 1;
@@ -46,9 +42,7 @@ export default function ServiceAreaMap() {
   });
 
   return (
-    <section className="relative overflow-hidden bg-white py-16 md:py-24">
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[500px] bg-amber-100/30 rounded-full blur-3xl pointer-events-none" />
-
+    <section className="relative overflow-hidden bg-gradient-to-br from-amber-50/30 via-white to-white py-16 md:py-24">
       <div className="relative max-w-7xl mx-auto px-4">
         <div className="max-w-2xl mb-10 md:mb-14">
           <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Service coverage</p>
@@ -61,90 +55,147 @@ export default function ServiceAreaMap() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-stretch">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-10 items-stretch">
           {/* === MAP === */}
-          <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-sm overflow-hidden">
-            <svg
-              viewBox="0 0 100 100"
-              preserveAspectRatio="xMidYMid meet"
-              className="absolute inset-0 w-full h-full"
-              aria-hidden="true"
-            >
-              <defs>
-                <radialGradient id="zone-fill" cx="0.5" cy="0.5" r="0.5">
-                  <stop offset="0%" stopColor="#fde68a" stopOpacity="0.5" />
-                  <stop offset="60%" stopColor="#fde68a" stopOpacity="0.18" />
-                  <stop offset="100%" stopColor="#fde68a" stopOpacity="0" />
-                </radialGradient>
-                <radialGradient id="hq-glow" cx="0.5" cy="0.5" r="0.5">
-                  <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.45" />
-                  <stop offset="100%" stopColor="#f59e0b" stopOpacity="0" />
-                </radialGradient>
-              </defs>
+          <div className="relative">
+            {/* Localized ambient glow — sits only under the map, not the list */}
+            <div className="absolute inset-0 bg-amber-200/40 rounded-full blur-3xl scale-90 pointer-events-none" />
 
-              <circle cx="50" cy="50" r="42" fill="url(#zone-fill)" />
-              <circle cx="50" cy="50" r="42" fill="none" stroke="#fbbf24" strokeWidth="0.15" strokeDasharray="0.6 1" opacity="0.5" />
+            <div className="relative aspect-square rounded-3xl bg-gradient-to-br from-amber-50/50 via-white to-amber-50/30 border border-amber-100 shadow-xl shadow-amber-100/40 overflow-hidden">
+              <svg
+                viewBox="0 0 100 100"
+                preserveAspectRatio="xMidYMid meet"
+                className="absolute inset-0 w-full h-full"
+                aria-hidden="true"
+              >
+                <defs>
+                  <radialGradient id="zone-fill-v3" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stopColor="#fcd34d" stopOpacity="0.55" />
+                    <stop offset="55%" stopColor="#fcd34d" stopOpacity="0.18" />
+                    <stop offset="100%" stopColor="#fcd34d" stopOpacity="0" />
+                  </radialGradient>
+                  <radialGradient id="hq-glow-v3" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.6" />
+                    <stop offset="100%" stopColor="#f59e0b" stopOpacity="0" />
+                  </radialGradient>
+                  <filter id="dot-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="0.3" />
+                    <feOffset dx="0" dy="0.2" result="offsetblur" />
+                    <feFlood floodColor="#000" floodOpacity="0.15" />
+                    <feComposite in2="offsetblur" operator="in" />
+                    <feMerge>
+                      <feMergeNode />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
 
-              {SPOKES.map((spoke) => {
-                const p = polar(spoke.angle, spoke.radius);
-                const isHovered = hoveredSlug === spoke.slug;
-                return (
-                  <line
-                    key={`line-${spoke.slug}`}
-                    x1={50}
-                    y1={50}
-                    x2={p.x}
-                    y2={p.y}
-                    stroke={isHovered ? '#f59e0b' : '#94a3b8'}
-                    strokeWidth={isHovered ? 0.3 : 0.15}
-                    opacity={isHovered ? 0.7 : 0.35}
-                    className="transition-all duration-300"
-                  />
-                );
-              })}
+                {/* Service area boundary — softer, more visible */}
+                <circle cx="50" cy="50" r="42" fill="url(#zone-fill-v3)" />
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#f59e0b" strokeWidth="0.25" strokeDasharray="1 1.4" opacity="0.5" />
 
-              <circle cx="50" cy="50" r="6" fill="url(#hq-glow)" />
+                {/* Thicker connector spokes */}
+                {SPOKES.map((spoke) => {
+                  const p = polar(spoke.angle, spoke.radius);
+                  const isHovered = hoveredSlug === spoke.slug;
+                  return (
+                    <line
+                      key={`line-${spoke.slug}`}
+                      x1={50}
+                      y1={50}
+                      x2={p.x}
+                      y2={p.y}
+                      stroke={isHovered ? '#f59e0b' : '#94a3b8'}
+                      strokeWidth={isHovered ? 0.5 : 0.25}
+                      opacity={isHovered ? 0.85 : 0.4}
+                      className="transition-all duration-300"
+                    />
+                  );
+                })}
 
-              <circle cx="50" cy="50" r="2" fill="none" stroke="#f59e0b" strokeWidth="0.3" opacity="0">
-                <animate attributeName="r" from="2" to="8" dur="3s" repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.7" to="0" dur="3s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="50" cy="50" r="2" fill="none" stroke="#f59e0b" strokeWidth="0.3" opacity="0">
-                <animate attributeName="r" from="2" to="8" dur="3s" begin="1.5s" repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.7" to="0" dur="3s" begin="1.5s" repeatCount="indefinite" />
-              </circle>
+                {/* HQ glow */}
+                <circle cx="50" cy="50" r="9" fill="url(#hq-glow-v3)" />
 
-              <circle cx="50" cy="50" r="2.2" fill="#f59e0b" />
-              <circle cx="50" cy="50" r="0.9" fill="#fff" />
+                {/* HQ pulse rings */}
+                <circle cx="50" cy="50" r="3" fill="none" stroke="#f59e0b" strokeWidth="0.4" opacity="0">
+                  <animate attributeName="r" from="3" to="10" dur="3s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" from="0.75" to="0" dur="3s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="50" cy="50" r="3" fill="none" stroke="#f59e0b" strokeWidth="0.4" opacity="0">
+                  <animate attributeName="r" from="3" to="10" dur="3s" begin="1.5s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" from="0.75" to="0" dur="3s" begin="1.5s" repeatCount="indefinite" />
+                </circle>
 
-              <text x="50" y="56" fill="#0f172a" fontSize="2.6" fontWeight="800" textAnchor="middle" letterSpacing="-0.05">Newmarket</text>
-              <text x="50" y="59.5" fill="#b45309" fontSize="1.5" fontWeight="700" textAnchor="middle" letterSpacing="0.4">HEADQUARTERS</text>
+                {/* HQ marker — bigger, with drop shadow */}
+                <circle cx="50" cy="50" r="3.2" fill="#f59e0b" filter="url(#dot-shadow)" />
+                <circle cx="50" cy="50" r="1.3" fill="#fff" />
 
-              {SPOKES.map((spoke) => {
-                const p = polar(spoke.angle, spoke.radius);
-                const isHovered = hoveredSlug === spoke.slug;
-                return (
-                  <g key={spoke.slug}>
-                    {isHovered && (
-                      <circle cx={p.x} cy={p.y} r={3.5} fill="none" stroke="#f59e0b" strokeWidth="0.4" opacity="0.6">
-                        <animate attributeName="r" from="2" to="5" dur="1.2s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" from="0.7" to="0" dur="1.2s" repeatCount="indefinite" />
-                      </circle>
-                    )}
-                    <circle cx={p.x} cy={p.y} r={isHovered ? 2 : 1.4} fill="#f59e0b" opacity={isHovered ? 0.25 : 0.15} className="transition-all duration-300" />
-                    <circle cx={p.x} cy={p.y} r={isHovered ? 1.4 : 1.1} fill="#f59e0b" className="transition-all duration-300" />
-                    <circle cx={p.x} cy={p.y} r={isHovered ? 0.5 : 0.4} fill="#fff" className="transition-all duration-300" />
-                  </g>
-                );
-              })}
-            </svg>
+                {/* HQ labels — bigger and bolder */}
+                <text x="50" y="58" fill="#0f172a" fontSize="3.5" fontWeight="900" textAnchor="middle" letterSpacing="-0.08">Newmarket</text>
+                <text x="50" y="62" fill="#b45309" fontSize="1.9" fontWeight="800" textAnchor="middle" letterSpacing="0.5">HEADQUARTERS</text>
+
+                {/* City dots — bigger, more vibrant, with shadow */}
+                {SPOKES.map((spoke) => {
+                  const p = polar(spoke.angle, spoke.radius);
+                  const area = client.areas.find((a) => a.slug === spoke.slug);
+                  const isHovered = hoveredSlug === spoke.slug;
+                  return (
+                    <g
+                      key={spoke.slug}
+                      onMouseEnter={() => setHoveredSlug(spoke.slug)}
+                      onMouseLeave={() => setHoveredSlug(null)}
+                      className="cursor-pointer"
+                    >
+                      {/* Hover pulse */}
+                      {isHovered && (
+                        <circle cx={p.x} cy={p.y} r={4} fill="none" stroke="#f59e0b" strokeWidth="0.45" opacity="0.7">
+                          <animate attributeName="r" from="2.5" to="6" dur="1.2s" repeatCount="indefinite" />
+                          <animate attributeName="opacity" from="0.8" to="0" dur="1.2s" repeatCount="indefinite" />
+                        </circle>
+                      )}
+                      {/* Halo */}
+                      <circle cx={p.x} cy={p.y} r={isHovered ? 3 : 2.4} fill="#f59e0b" opacity={isHovered ? 0.35 : 0.2} className="transition-all duration-300" />
+                      {/* Dot — bigger */}
+                      <circle cx={p.x} cy={p.y} r={isHovered ? 2 : 1.7} fill="#f59e0b" filter="url(#dot-shadow)" className="transition-all duration-300" />
+                      <circle cx={p.x} cy={p.y} r={isHovered ? 0.7 : 0.6} fill="#fff" className="transition-all duration-300" />
+                      {/* Larger transparent hit target for hover */}
+                      <circle cx={p.x} cy={p.y} r={6} fill="transparent" />
+                      {/* City name label on hover */}
+                      {isHovered && area && (
+                        <g>
+                          <rect
+                            x={p.x - 12}
+                            y={p.y - 9.5}
+                            width="24"
+                            height="5.5"
+                            rx="1.2"
+                            fill="#0f172a"
+                            opacity="0.92"
+                          />
+                          <text
+                            x={p.x}
+                            y={p.y - 5.7}
+                            fill="#fff"
+                            fontSize="2.8"
+                            fontWeight="700"
+                            textAnchor="middle"
+                          >
+                            {area.name}
+                          </text>
+                        </g>
+                      )}
+                    </g>
+                  );
+                })}
+              </svg>
+            </div>
           </div>
 
           {/* === LIST === */}
-          <div>
+          <div className="relative">
             <div className="mb-5 flex items-baseline justify-between">
               <p className="text-gray-700 font-bold text-sm uppercase tracking-[0.18em]">Cities served</p>
-              <p className="text-gray-400 text-xs">Hover to highlight on map</p>
+              <p className="text-gray-400 text-xs hidden sm:block">Hover any city or map dot</p>
             </div>
 
             <ul className="space-y-1.5">
@@ -162,7 +213,7 @@ export default function ServiceAreaMap() {
                         isHQ
                           ? 'bg-amber-50 border-amber-200'
                           : isHovered
-                          ? 'bg-white border-amber-300 shadow-sm'
+                          ? 'bg-white border-amber-400 shadow-md shadow-amber-100/50'
                           : 'bg-white border-gray-200 hover:border-amber-300 hover:shadow-sm'
                       }`}
                     >
@@ -173,7 +224,7 @@ export default function ServiceAreaMap() {
                             <span className="relative rounded-full w-2.5 h-2.5 bg-amber-500" />
                           </span>
                         ) : (
-                          <span className={`w-2.5 h-2.5 rounded-full transition-colors shrink-0 ${isHovered ? 'bg-amber-600' : 'bg-amber-500'}`} />
+                          <span className={`w-2.5 h-2.5 rounded-full transition-colors shrink-0 ${isHovered ? 'bg-amber-600 ring-2 ring-amber-200' : 'bg-amber-500'}`} />
                         )}
                         <span className="font-display font-bold text-gray-900 text-base truncate">
                           {area.name}
@@ -186,7 +237,7 @@ export default function ServiceAreaMap() {
                         <span className="text-gray-500 font-medium text-xs uppercase tracking-wider">
                           {isHQ ? 'York' : regionShort}
                         </span>
-                        <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <svg className={`w-4 h-4 transition-colors ${isHovered ? 'text-amber-500' : 'text-gray-300'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                       </div>
