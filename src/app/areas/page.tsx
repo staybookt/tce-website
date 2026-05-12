@@ -51,7 +51,7 @@ export default function AreasPage() {
               <span className="gradient-text">Simcoe County.</span>
             </h1>
             <p className="text-white/70 max-w-2xl text-lg md:text-xl leading-relaxed">
-              Tim&apos;s home base is Newmarket. Most jobs across York Region run on a 30-minute drive or less. Same-day quotes, same-day visits for most jobs. Not sure if your city&apos;s in range? Call &mdash; the answer is usually yes.
+              Top Choice Electrical is headquartered in Newmarket. Most jobs across York Region and Simcoe County are within a 30-minute drive. Same-day quotes, same-day visits for most calls. Not sure if your city is covered? Call &mdash; the answer is usually yes.
             </p>
           </div>
         </div>
@@ -80,13 +80,13 @@ export default function AreasPage() {
                 <div className="max-w-2xl">
                   <div className="inline-flex items-center gap-2.5 bg-amber-500/[0.15] backdrop-blur-md border border-amber-400/30 rounded-full px-4 py-2 mb-6">
                     <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                    <span className="text-amber-200 text-xs font-bold tracking-wide uppercase">Home base · Tim&apos;s yard</span>
+                    <span className="text-amber-200 text-xs font-bold tracking-wide uppercase">Headquarters · York Region</span>
                   </div>
                   <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 tracking-tight leading-[0.95]">
                     Newmarket.
                   </h2>
                   <p className="text-white/70 text-base md:text-lg leading-relaxed mb-6 max-w-xl">
-                    {homeBase.description || `Tim's been wiring Newmarket homes for ${client.yearsExperience}+ years. Most of the panel upgrades and aluminum wiring jobs we do come from this town.`}
+                    {homeBase.description || `Top Choice Electrical has been wiring Newmarket homes for ${client.yearsExperience}+ years. Most of our panel upgrades and aluminum wiring projects come from this town.`}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-7">
                     {(areaNeighbourhoods['newmarket'] || []).slice(0, 5).map((n) => (
