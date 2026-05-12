@@ -6,7 +6,7 @@ import SectionCTA from '@/components/SectionCTA';
 import TrustStrip from '@/components/TrustStrip';
 import PhotoBreak from '@/components/PhotoBreak';
 import ServiceAreaMap from '@/components/ServiceAreaMap';
-import AreasByDriveTime from '@/components/AreasByDriveTime';
+import AreasByRegion from '@/components/AreasByRegion';
 import { areaNeighbourhoods } from '@/data/area-neighbourhoods';
 import { areaImage } from '@/data/area-images';
 
@@ -115,8 +115,8 @@ export default function AreasPage() {
       {/* === Service area map === */}
       <ServiceAreaMap />
 
-      {/* === Cities by drive time — SEO/AEO text section === */}
-      <AreasByDriveTime />
+      {/* === Cities and neighbourhoods by region — SEO/AEO text section === */}
+      <AreasByRegion />
 
       {/* === Photo break === */}
       <section className="py-14 md:py-16 bg-white">
