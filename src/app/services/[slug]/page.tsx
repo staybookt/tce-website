@@ -11,6 +11,7 @@ import ServiceGallery from '@/components/ServiceGallery';
 import ServiceFeatureImage from '@/components/ServiceFeatureImage';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 import SectionCTA from '@/components/SectionCTA';
+import TrustStrip from '@/components/TrustStrip';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -48,20 +49,14 @@ export default async function ServicePage({ params }: Props) {
 
   const otherServices = client.services.filter((s) => s.slug !== slug).slice(0, 4);
 
-  // Per-service hero photo — each service has its own image in client.services.
-  // Falls back to the panel-upgrade photo for any service that hasn't been set yet.
   const heroImage = service.image || '/images/work/IMG_3258.webp';
   const heroAlt = `${service.name} by Top Choice Electrical — ESA-certified work in York Region`;
 
-  // Panel Upgrades surfaces a callout to the dedicated FPE page since
-  // insurance-pressed searchers ("federal pacific panel replacement") need
-  // to land on the FPE-specific content, not the general upgrade page.
   const showFpeCallout = slug === 'panel-upgrades';
 
   return (
     <>
       <SchemaMarkup type="Service" serviceName={service.name} serviceDescription={service.shortDescription} />
-
       <PageSchema
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -70,7 +65,7 @@ export default async function ServicePage({ params }: Props) {
         ]}
       />
 
-      {/* HowTo Schema */}
+      {/* HowTo Schema (invisible) */}
       {content.howToSteps && content.howToSteps.length > 0 && (
         <script
           type="application/ld+json"
@@ -86,17 +81,13 @@ export default async function ServicePage({ params }: Props) {
                 name: step.name,
                 text: step.text,
               })),
-              provider: {
-                '@type': 'Electrician',
-                name: client.name,
-                telephone: client.phone,
-              },
+              provider: { '@type': 'Electrician', name: client.name, telephone: client.phone },
             }),
           }}
         />
       )}
 
-      {/* FAQ Schema */}
+      {/* FAQ Schema (invisible) */}
       {content.faqs && content.faqs.length > 0 && (
         <script
           type="application/ld+json"
@@ -107,18 +98,32 @@ export default async function ServicePage({ params }: Props) {
               mainEntity: content.faqs.map((faq) => ({
                 '@type': 'Question',
                 name: faq.q,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: faq.a,
-                },
+                acceptedAnswer: { '@type': 'Answer', text: faq.a },
               })),
             }),
           }}
         />
       )}
 
-      {/* Hero — uses the service's own image */}
-      <section className="relative min-h-[50vh] flex items-end overflow-hidden">
+      {/* AEO summary in schema only — was a visible gray box, schema markup still
+          carries the same content for AI search engines */}
+      {content.aeoSummary && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Article',
+              headline: content.headline,
+              description: content.aeoSummary,
+              about: service.name,
+            }),
+          }}
+        />
+      )}
+
+      {/* === 1. Hero === */}
+      <section className="relative min-h-[44vh] md:min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={heroImage}
@@ -131,29 +136,32 @@ export default async function ServicePage({ params }: Props) {
           <div className="absolute inset-0 hero-gradient" />
           <div className="absolute inset-0 grain" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
+        <div className="relative max-w-7xl mx-auto px-4 w-full pb-14 pt-36">
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <div className="flex items-center gap-2 text-sm text-white/40 mb-6">
+            <div className="flex items-center gap-2 text-sm text-white/40 mb-5">
               <Link href="/" className="hover:text-gold transition-colors">Home</Link>
               <span>/</span>
               <Link href="/services" className="hover:text-gold transition-colors">Services</Link>
               <span>/</span>
               <span className="text-gold">{service.name}</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 tracking-tight leading-tight">
               {content.headline}
             </h1>
-            <p className="text-white/60 max-w-xl text-lg leading-relaxed">{service.shortDescription}</p>
+            <p className="text-white/65 max-w-2xl text-lg leading-relaxed">{service.shortDescription}</p>
           </div>
         </div>
       </section>
 
-      {/* Content */}
-      <section className="py-24 md:py-32 bg-white">
+      {/* === 2. Trust strip — ESA, insured, years, pass rate === */}
+      <TrustStrip />
+
+      {/* === 3. Main content — 2-col on desktop with sticky sidebar === */}
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-16">
-            <div className="lg:col-span-2 space-y-16">
-              {/* FPE callout — only on panel-upgrades page */}
+          <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
+            <div className="lg:col-span-2 space-y-14">
+              {/* FPE callout — panel-upgrades only */}
               {showFpeCallout && (
                 <div className="animate-on-scroll">
                   <Link
@@ -180,68 +188,62 @@ export default async function ServicePage({ params }: Props) {
                 </div>
               )}
 
-              {/* AEO Summary — direct answer for AI engines */}
-              {content.aeoSummary && (
-                <div className="animate-on-scroll">
-                  <div className="bg-gray-50 border-l-4 border-gold rounded-r-xl p-6">
-                    <p className="text-gray-800 text-[15px] leading-relaxed font-medium">{content.aeoSummary}</p>
-                  </div>
-                </div>
-              )}
-
-              {/* Feature image — relevant stock photo showing outcome */}
-              <ServiceFeatureImage slug={slug} serviceName={service.name} />
-
-              {/* Before/after slider — only renders if pair exists for slug */}
-              <BeforeAfterSlider slug={slug} />
-
-              {/* Intro */}
+              {/* Intro — single paragraph, no AEO box above */}
               <div className="animate-on-scroll">
-                <p className="text-gray-600 text-lg leading-relaxed">{content.intro}</p>
+                <p className="text-gray-700 text-lg leading-relaxed">{content.intro}</p>
               </div>
 
-              {/* Pricing guidance */}
+              {/* Pricing card — promoted, larger numbers, immediately visible */}
               {content.pricingNote && (
                 <div className="animate-on-scroll">
-                  <div className="bg-gold/5 border border-gold/20 rounded-2xl p-8">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
-                        <svg viewBox="0 0 24 24" className="w-5 h-5 text-gold" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <div className="bg-gradient-to-br from-amber-50 to-amber-100/50 border border-amber-200 rounded-2xl p-8 md:p-10">
+                    <div className="flex items-start gap-5">
+                      <div className="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center shrink-0 shadow-sm">
+                        <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
                       <div>
-                        <p className="text-gold-dark font-bold text-sm uppercase tracking-wider mb-2">Pricing Guide</p>
-                        <p className="text-gray-700 text-[15px] leading-relaxed">{content.pricingNote}</p>
+                        <p className="text-amber-700 font-bold text-xs uppercase tracking-[0.2em] mb-2">What it costs</p>
+                        <h3 className="font-display text-2xl md:text-3xl font-bold text-gray-900 tracking-tight leading-tight mb-3">
+                          Transparent pricing in writing.
+                        </h3>
+                        <p className="text-gray-700 text-base md:text-lg leading-relaxed">{content.pricingNote}</p>
                       </div>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Process */}
-              <div className="animate-on-scroll">
-                <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">{content.processSubheading}</p>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
-                  <span className="gradient-text">{content.processHeading}</span>
-                </h2>
-                <p className="text-gray-600 leading-relaxed text-[17px]">{content.whatToExpect}</p>
-              </div>
-
-              {/* Recent work gallery — 4 real photos relevant to this service */}
+              {/* Recent work gallery — visual proof of outcome */}
               <ServiceGallery slug={slug} serviceName={service.name} />
 
-              {/* Common problems */}
+              {/* Feature image (renders null if no slug match) */}
+              <ServiceFeatureImage slug={slug} serviceName={service.name} />
+
+              {/* Before/after slider (renders null until real pairs land) */}
+              <BeforeAfterSlider slug={slug} />
+
+              {/* Process — what to expect */}
               <div className="animate-on-scroll">
-                <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Common Issues</p>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
+                <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">{content.processSubheading}</p>
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-5 tracking-tight">
+                  {content.processHeading}
+                </h2>
+                <p className="text-gray-700 leading-relaxed text-lg">{content.whatToExpect}</p>
+              </div>
+
+              {/* Common issues — diagnostic content */}
+              <div className="animate-on-scroll bg-gray-50 -mx-4 px-4 md:mx-0 md:px-10 py-10 md:py-12 md:rounded-2xl">
+                <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">When to call</p>
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
                   {content.issuesHeading}
                 </h2>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-3">
                   {content.problems.map((problem, i) => (
-                    <div key={i} className="flex gap-4 items-start bg-gray-50 rounded-xl p-5 group hover:bg-gold/5 transition-colors duration-300">
-                      <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-gold" fill="none" stroke="currentColor" strokeWidth="2">
+                    <div key={i} className="flex gap-3 items-start bg-white rounded-xl p-4 border border-gray-100">
+                      <div className="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                         </svg>
                       </div>
@@ -251,36 +253,23 @@ export default async function ServicePage({ params }: Props) {
                 </div>
               </div>
 
-              {/* Why hire a pro */}
-              <div className="animate-on-scroll">
-                <div className="bg-navy-dark rounded-2xl p-10 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
-                  <div className="relative">
-                    <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Why It Matters</p>
-                    <h2 className="text-2xl font-bold text-white mb-4">Why Hire a Licensed Electrician</h2>
-                    <p className="text-white/60 leading-relaxed">{content.whyPro}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQ Section */}
+              {/* FAQ */}
               {content.faqs && content.faqs.length > 0 && (
                 <div className="animate-on-scroll">
-                  <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Common Questions</p>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
-                    Frequently asked about{' '}
-                    <span className="gradient-text">{service.name.toLowerCase()}.</span>
+                  <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">FAQ</p>
+                  <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
+                    Common questions
                   </h2>
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {content.faqs.map((faq, i) => (
-                      <details key={i} className="group bg-gray-50 rounded-xl overflow-hidden">
-                        <summary className="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-gray-100 transition-colors">
-                          <span className="font-semibold text-gray-900 text-[15px] pr-4">{faq.q}</span>
-                          <svg className="w-5 h-5 text-gray-400 shrink-0 transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                      <details key={i} className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-amber-200 transition-colors">
+                        <summary className="flex items-center justify-between p-5 cursor-pointer list-none">
+                          <span className="font-semibold text-gray-900 text-base pr-4">{faq.q}</span>
+                          <svg className="w-5 h-5 text-gray-400 shrink-0 transition-transform duration-300 group-open:rotate-45 group-hover:text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
                           </svg>
                         </summary>
-                        <div className="px-6 pb-6 -mt-2">
+                        <div className="px-5 pb-5 -mt-1">
                           <p className="text-gray-600 text-[15px] leading-relaxed">{faq.a}</p>
                         </div>
                       </details>
@@ -290,26 +279,28 @@ export default async function ServicePage({ params }: Props) {
               )}
             </div>
 
-            {/* Sidebar */}
-            <div className="space-y-6">
-              <div className="sticky top-28">
-                <div className="bg-white rounded-3xl shadow-2xl shadow-navy/10 p-8 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Get a Free Quote</h3>
-                  <p className="text-gray-500 text-sm mb-6">for {service.name}</p>
+            {/* === Sidebar === */}
+            <aside className="space-y-6">
+              <div className="sticky top-28 space-y-6">
+                {/* Quote form */}
+                <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/60 p-7 border border-gray-100 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500" />
+                  <h3 className="font-display text-xl font-bold text-gray-900 mb-1">Get a free quote</h3>
+                  <p className="text-gray-500 text-sm mb-5">for {service.name}</p>
                   <QuoteForm preselectedService={service.name} />
                 </div>
 
-                <div className="mt-6 bg-gray-50 rounded-2xl p-6">
-                  <p className="text-gold font-semibold text-xs uppercase tracking-[0.2em] mb-4">Other Services</p>
-                  <ul className="space-y-3">
+                {/* Other services */}
+                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                  <p className="text-amber-600 font-semibold text-xs uppercase tracking-[0.2em] mb-4">Other services</p>
+                  <ul className="space-y-1">
                     {otherServices.map((s) => (
                       <li key={s.slug}>
                         <Link
                           href={`/services/${s.slug}`}
-                          className="text-gray-700 hover:text-gold text-sm font-medium transition-colors flex items-center gap-3 group"
+                          className="text-gray-700 hover:text-amber-600 text-sm font-medium transition-colors flex items-center gap-2 group py-1.5"
                         >
-                          <svg viewBox="0 0 24 24" className="w-4 h-4 text-gray-300 group-hover:text-gold transition-colors" fill="none" stroke="currentColor" strokeWidth="2">
+                          <svg viewBox="0 0 24 24" className="w-4 h-4 text-gray-300 group-hover:text-amber-500 transition-colors shrink-0" fill="none" stroke="currentColor" strokeWidth="2">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                           </svg>
                           {s.name}
@@ -317,14 +308,23 @@ export default async function ServicePage({ params }: Props) {
                       </li>
                     ))}
                   </ul>
+                  <Link
+                    href="/services"
+                    className="mt-4 inline-flex items-center gap-1 text-amber-600 hover:text-amber-700 text-sm font-bold transition-colors"
+                  >
+                    See all 18 services
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
-            </div>
+            </aside>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* === CTA === */}
       <SectionCTA
         eyebrow={`${service.name} in York Region`}
         headline={`Need ${service.name.toLowerCase()}? Get a quote.`}
