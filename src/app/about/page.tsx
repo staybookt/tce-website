@@ -75,15 +75,6 @@ export default function AboutPage() {
                   Tim runs a small crew now &mdash; small enough that he&apos;s still on every site visit over $1,000, still pulls every permit himself, and still answers the phone when it rings. If you call this number, you&apos;re going to talk to him.
                 </p>
 
-                <div className="flex items-center gap-4 pt-6 mt-6 border-t border-gray-100">
-                  <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center text-white font-display font-bold text-xl shrink-0">
-                    T
-                  </div>
-                  <div>
-                    <p className="font-display font-bold text-gray-900 text-base leading-tight">Tim Ciszko</p>
-                    <p className="text-gray-500 text-sm">Owner &amp; Master Electrician · ESA #{client.licenseNumber}</p>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -123,6 +114,38 @@ export default function AboutPage() {
                     <p className="text-gray-600 text-xs leading-tight mt-2">{stat.label}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* === Byline banner — horizontal === */}
+      <section className="bg-gradient-to-r from-amber-50 via-amber-50/60 to-amber-50 border-y border-amber-100">
+        <div className="max-w-7xl mx-auto px-4 py-6 md:py-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+            <div className="flex items-center gap-5">
+              <div className="w-16 h-16 rounded-full bg-amber-500 flex items-center justify-center shrink-0 shadow-md">
+                <span className="font-display font-bold text-white text-2xl">TC</span>
+              </div>
+              <div>
+                <p className="text-amber-700 text-[10px] font-bold uppercase tracking-[0.25em] mb-1">Written by</p>
+                <p className="font-display font-bold text-gray-900 text-xl md:text-2xl leading-tight">Tim Ciszko</p>
+                <p className="text-gray-600 text-sm mt-0.5">Owner &amp; Master Electrician · ESA-Certified · Newmarket, ON</p>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm md:border-l md:border-amber-200 md:pl-8">
+              <div className="flex items-center gap-2">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                <span className="text-gray-700 font-semibold">ESA-Certified</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span className="text-gray-700 font-semibold">{client.yearsExperience}+ years on the tools</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                <a href={`tel:${client.phone}`} className="text-amber-700 font-bold hover:text-amber-800 transition-colors">{client.phone}</a>
               </div>
             </div>
           </div>
