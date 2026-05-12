@@ -5,6 +5,7 @@ import { client } from '@/data/client';
 import SectionCTA from '@/components/SectionCTA';
 import TrustStrip from '@/components/TrustStrip';
 import PhotoBreak from '@/components/PhotoBreak';
+import RecentWork from '@/components/RecentWork';
 
 export const metadata: Metadata = {
   title: 'About Tim | Top Choice Electrical',
@@ -220,6 +221,9 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* === Recent work carousel — proof of the rules === */}
+      <RecentWork />
+
       {/* === Three pillars === */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
@@ -259,6 +263,17 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* === Photo break #2 — different photo than first === */}
+      <section className="py-10 md:py-14 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <PhotoBreak
+            image="/images/work/IMG_3038.webp"
+            alt="EV charger install by Top Choice Electrical in York Region"
+            aspect="21/9"
+          />
+        </div>
+      </section>
+
       {/* === Credentials — light theme, cleaner === */}
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
@@ -287,6 +302,67 @@ export default function AboutPage() {
                 <p className="text-gray-500 text-sm leading-snug">{item.sub}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === Where we work — compact link to /areas === */}
+      <section className="relative py-16 md:py-20 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+            <div>
+              <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Where we work</p>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-5">
+                Newmarket-based.{` `}
+                <span className="gradient-text">York Region covered.</span>
+              </h2>
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6">
+                Twelve cities across York Region, Simcoe County, and Durham Region. Same-day quotes everywhere on the map. Click through to see the neighbourhoods we serve in each city.
+              </p>
+              <Link
+                href="/areas"
+                className="inline-flex items-center gap-2 text-amber-600 hover:text-amber-700 font-bold text-sm transition-colors"
+              >
+                See all service areas
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Mini map — visual */}
+            <div className="relative aspect-square max-w-md mx-auto">
+              <div className="absolute inset-0 bg-amber-200/30 rounded-full blur-3xl scale-90 pointer-events-none" />
+              <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-amber-50/50 via-white to-amber-50/30 border border-amber-100 shadow-lg overflow-hidden">
+                <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="mini-zone" cx="0.5" cy="0.5" r="0.5">
+                      <stop offset="0%" stopColor="#fcd34d" stopOpacity="0.5" />
+                      <stop offset="100%" stopColor="#fcd34d" stopOpacity="0" />
+                    </radialGradient>
+                  </defs>
+                  {/* Zone fill */}
+                  <circle cx="50" cy="50" r="42" fill="url(#mini-zone)" />
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="#f59e0b" strokeWidth="0.25" strokeDasharray="1 1.4" opacity="0.5" />
+                  {/* 11 city dots at approximate positions */}
+                  {[[50,32],[47,21],[34,22],[26,32],[26,46],[33,58],[50,58],[44,62],[60,66],[68,58],[72,44]].map(([x,y],i) => (
+                    <g key={i}>
+                      <circle cx={x} cy={y} r="2.2" fill="#f59e0b" opacity="0.2" />
+                      <circle cx={x} cy={y} r="1.5" fill="#f59e0b" />
+                      <circle cx={x} cy={y} r="0.55" fill="#fff" />
+                    </g>
+                  ))}
+                  {/* HQ pulse */}
+                  <circle cx="50" cy="50" r="3" fill="none" stroke="#f59e0b" strokeWidth="0.4" opacity="0">
+                    <animate attributeName="r" from="3" to="10" dur="3s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" from="0.7" to="0" dur="3s" repeatCount="indefinite" />
+                  </circle>
+                  <circle cx="50" cy="50" r="3.2" fill="#f59e0b" />
+                  <circle cx="50" cy="50" r="1.3" fill="#fff" />
+                  <text x="50" y="56" fill="#0f172a" fontSize="3.2" fontWeight="800" textAnchor="middle" letterSpacing="-0.05">Newmarket</text>
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </section>
