@@ -236,7 +236,7 @@ export default function Home() {
       </section>
 
       {/* === Final CTA === */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
+      <section className="pt-16 md:pt-20 pb-24 md:pb-32 relative overflow-hidden">
         {/* Real work background photo with dark overlay — matches every other CTA on the site */}
         <div className="absolute inset-0">
           <Image

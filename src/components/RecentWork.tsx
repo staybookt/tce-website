@@ -90,10 +90,10 @@ export default function RecentWork() {
   };
 
   return (
-    <section className="section-warm py-24 md:py-32 overflow-hidden">
+    <section className="section-warm py-16 md:py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header row — title left, arrows right on desktop */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 md:mb-14 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-12 gap-6">
           <div className="max-w-xl">
             <div className="accent-line mb-6" />
             <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
@@ -133,7 +133,7 @@ export default function RecentWork() {
         <div className="relative -mx-4 px-4">
           <div
             ref={scrollerRef}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6"
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2"
             style={{ scrollbarWidth: 'none' }}
           >
             {recentJobs.map((job, i) => (
