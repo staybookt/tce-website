@@ -5,6 +5,7 @@ import { client } from '@/data/client';
 import SectionCTA from '@/components/SectionCTA';
 import TrustStrip from '@/components/TrustStrip';
 import PhotoBreak from '@/components/PhotoBreak';
+import ServiceAreaMap from '@/components/ServiceAreaMap';
 import { areaNeighbourhoods } from '@/data/area-neighbourhoods';
 import { areaImage } from '@/data/area-images';
 
@@ -109,6 +110,9 @@ export default function AreasPage() {
           </div>
         </section>
       )}
+
+      {/* === Service area map === */}
+      <ServiceAreaMap />
 
       {/* === Other 11 cities — photo-led grid === */}
       <section className="py-14 md:py-16 bg-gray-50 relative overflow-hidden">
