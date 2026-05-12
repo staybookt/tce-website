@@ -124,16 +124,16 @@ export default function AboutPage() {
           <div className="text-center mb-16 animate-on-scroll">
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">What makes us different</p>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-              Three things,{' '}
-              <span className="gradient-text">that&apos;s it.</span>
+              What sets the{' '}
+              <span className="gradient-text">work apart.</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 stagger-children">
             {[
               {
-                title: 'Tim works the job',
-                desc: 'The owner answers the phone. The owner quotes the job. The owner shows up on site visits over $1,000. No salespeople, no call centres, no subcontractors you&apos;ve never met.',
+                title: 'Owner-operator',
+                desc: 'The owner answers the phone, quotes the work, and is on site for every job over $1,000. The name on the truck, the licence, and the invoice is the same name.',
                 icon: (
                   <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -141,8 +141,8 @@ export default function AboutPage() {
                 ),
               },
               {
-                title: 'Word of mouth, not marketing',
-                desc: 'We don&apos;t run ads. We don&apos;t pay for leads. Most of our work comes from homeowners who heard about us from a neighbour or a contractor we&apos;ve worked with. The job speaks. We trust that.',
+                title: 'ESA-permitted, ESA-inspected',
+                desc: 'Every job that needs a permit gets one. Every permit gets an inspection. The inspector signs off, and you get the paperwork &mdash; for your records, your insurer, or the next buyer if you ever sell.',
                 icon: (
                   <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
@@ -226,7 +226,7 @@ export default function AboutPage() {
             Talk to Tim.
           </h2>
           <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
-            Same-day quote. No voicemail, no runaround. Whether it&apos;s a single outlet or a full rewire, Tim picks up.
+            Same-day quote. Single outlet to full rewire &mdash; same number, same person.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

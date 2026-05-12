@@ -31,15 +31,15 @@ export default function HeroBanner() {
           </div>
 
           <h1 className="font-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[6.5rem] font-bold text-white leading-[0.9] mb-8 tracking-[-0.04em]">
-            Electrician in
+            Electrical work
             <br />
-            Newmarket.
+            done right.
             <br />
-            <span className="gradient-text">Not a Call Centre.</span>
+            <span className="gradient-text">Across York Region.</span>
           </h1>
 
           <p className="text-white/50 text-lg md:text-xl mb-12 leading-relaxed max-w-xl">
-            Tim takes the call. Tim quotes the job. Tim shows up. {client.yearsExperience}+ years wiring panels, EV chargers, and old farmhouses across York Region &mdash; ESA-certified, fully insured, no franchise markup.
+            Panel upgrades, EV chargers, emergency repairs, full rewires. Same-day quotes across York Region and Simcoe County. ESA-certified, fully insured, {client.yearsExperience}+ years on the tools &mdash; every permit pulled, every inspection passed first time.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -47,7 +47,7 @@ export default function HeroBanner() {
               href={`tel:${client.phone}`}
               className="btn-premium bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02]"
             >
-              Call Tim &mdash; {client.phone}
+              Same-day quote &mdash; {client.phone}
             </a>
             <Link
               href="/contact"

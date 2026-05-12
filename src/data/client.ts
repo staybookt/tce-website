@@ -22,7 +22,7 @@ export const client = {
   secondaryColor: "#2563EB",
   accentColor: "#06B6D4",
   logo: null as string | null,
-  tagline: "York Region's Trusted Electrician",
+  tagline: "Electrical work done right. Across York Region.",
 
   // Domain
   domain: "topchoiceelectrical.ca",
@@ -91,7 +91,7 @@ export const client = {
       name: "Generator Installation",
       shortDescription: "Whole-home backup generators so you never lose power when it matters.",
       icon: "Power",
-      image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=600&q=80",
+      image: "/images/work/IMG_5695.webp",
       keywords: ["generator installation Newmarket", "whole home generator York Region", "backup power"],
     },
     {
@@ -99,7 +99,7 @@ export const client = {
       name: "Smoke & CO Detectors",
       shortDescription: "Code-compliant smoke and carbon monoxide detector installation and upgrades.",
       icon: "AlertTriangle",
-      image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=600&q=80",
+      image: "/images/work/IMG_6785.webp",
       keywords: ["smoke detector installation Newmarket", "carbon monoxide detector York Region", "CO detector installation"],
     },
     {
@@ -107,7 +107,7 @@ export const client = {
       name: "Smart Home Installation",
       shortDescription: "Smart thermostats, lighting, and security systems wired and set up properly.",
       icon: "Wifi",
-      image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80",
+      image: "/images/work/IMG_6204.webp",
       keywords: ["smart home electrician Newmarket", "smart thermostat installation York Region", "smart lighting installation"],
     },
     {
@@ -115,7 +115,7 @@ export const client = {
       name: "ESA Safety Inspections",
       shortDescription: "Certified electrical safety inspections for home sales, insurance, and peace of mind.",
       icon: "ClipboardCheck",
-      image: "https://images.pexels.com/photos/8005368/pexels-photo-8005368.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/images/work/IMG_5017.webp",
       keywords: ["ESA inspection Newmarket", "electrical safety inspection York Region", "home electrical inspection"],
     },
     {
@@ -123,7 +123,7 @@ export const client = {
       name: "Hot Tub Wiring",
       shortDescription: "Dedicated 240V circuits and GFCI disconnects for safe, code-compliant hot tub installations.",
       icon: "Waves",
-      image: "https://images.unsplash.com/photo-1610641818989-575305b2cb05?auto=format&fit=crop&w=600&q=80",
+      image: "/images/work/IMG_3038.webp",
       keywords: ["hot tub wiring Newmarket", "hot tub electrician Aurora", "240V hot tub circuit York Region"],
     },
     {
@@ -131,7 +131,7 @@ export const client = {
       name: "Federal Pacific Panel Replacement",
       shortDescription: "Safe replacement of Federal Pacific, Stab-Lok, and Zinsco panels flagged by insurers.",
       icon: "ShieldAlert",
-      image: "https://images.pexels.com/photos/5691660/pexels-photo-5691660.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/images/work/IMG_5375.webp",
       keywords: ["Federal Pacific panel replacement", "Stab-Lok panel replacement York Region", "Zinsco panel replacement Newmarket"],
     },
     {
@@ -139,7 +139,7 @@ export const client = {
       name: "Aluminum Wiring Remediation",
       shortDescription: "Pigtailing and full aluminum wiring replacement for homes built between 1965 and 1976.",
       icon: "Cable",
-      image: "https://images.pexels.com/photos/8005404/pexels-photo-8005404.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/images/work/IMG_1140.webp",
       keywords: ["aluminum wiring remediation York Region", "aluminum wiring pigtailing Newmarket", "AlumiConn connectors Aurora"],
     },
     {
@@ -147,7 +147,7 @@ export const client = {
       name: "Heat Pump Electrical",
       shortDescription: "Dedicated 240V circuits and panel work for heat pump installations and Greener Homes rebates.",
       icon: "Thermometer",
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80",
+      image: "/images/work/IMG_2638.webp",
       keywords: ["heat pump electrical Newmarket", "heat pump wiring York Region", "Greener Homes electrician Aurora"],
     },
     {
@@ -155,7 +155,7 @@ export const client = {
       name: "Battery Backup Installation",
       shortDescription: "Tesla Powerwall, Generac PWRcell, and Enphase home battery installations.",
       icon: "BatteryFull",
-      image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80",
+      image: "/images/work/IMG_5695.webp",
       keywords: ["Tesla Powerwall installation York Region", "home battery backup Newmarket", "Generac PWRcell Aurora"],
     },
     {
@@ -163,7 +163,7 @@ export const client = {
       name: "Whole-Home Surge Protection",
       shortDescription: "Type 2 surge protective devices installed at the panel to protect electronics from grid surges.",
       icon: "Shield",
-      image: "https://images.pexels.com/photos/7857488/pexels-photo-7857488.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/images/work/IMG_3258.webp",
       keywords: ["whole home surge protector Newmarket", "Type 2 SPD York Region", "surge protection installation Aurora"],
     },
     {
@@ -171,7 +171,7 @@ export const client = {
       name: "Ceiling Fan Installation",
       shortDescription: "Ceiling fan installation including new ceiling boxes and circuits where none exist.",
       icon: "Fan",
-      image: "https://images.unsplash.com/photo-1523413555968-7eb38c41fa39?auto=format&fit=crop&w=600&q=80",
+      image: "/images/work/IMG_6204.webp",
       keywords: ["ceiling fan installation Newmarket", "ceiling fan electrician York Region", "ceiling fan wiring Aurora"],
     },
   ],

@@ -24,8 +24,8 @@ export default function ContactPage() {
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
-            alt="Modern office with professional electrical lighting"
+            src="/images/work/IMG_5375.webp"
+            alt="Top Choice Electrical work in York Region"
             fill
             priority
             sizes="100vw"
@@ -36,13 +36,13 @@ export default function ContactPage() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Contact Us</p>
+            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Contact</p>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-              Let's Get{' '}
-              <span className="gradient-text">Started</span>
+              Get a{' '}
+              <span className="gradient-text">quote.</span>
             </h1>
             <p className="text-white/60 max-w-xl text-lg leading-relaxed">
-              Whether you need a quote, have a question, or need emergency service, we're here.
+              Same-day response across York Region. Call, text, or fill out the form &mdash; whichever is fastest for you.
             </p>
           </div>
         </div>
@@ -146,8 +146,8 @@ export default function ContactPage() {
             <div className="animate-on-scroll slide-right">
               <div className="bg-white rounded-3xl shadow-2xl shadow-navy/10 p-10 relative overflow-hidden sticky top-28">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Request a Free Quote</h3>
-                <p className="text-gray-500 mb-8">Tell us about your project. No obligation, no pressure.</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Request a quote</h3>
+                <p className="text-gray-500 mb-8">30 seconds. Same-day response during business hours.</p>
                 <QuoteForm />
               </div>
             </div>
