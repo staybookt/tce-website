@@ -4,7 +4,7 @@ const recentJobs = [
   {
     area: 'Newmarket',
     service: 'Panel Upgrade',
-    detail: '100A to 200A upgrade in a 1985 colonial. Insurance company required it before renewal.',
+    detail: "Owner had been refused renewal until the 60A fuse panel was gone. Quoted Wednesday, swapped Tuesday — full 200A Square D, every circuit labelled, ESA-inspected and passed first visit. Paperwork delivered, policy renewed by Friday.",
     timeAgo: '3 days ago',
     image: '/images/work/IMG_3258.webp',
     icon: (
@@ -16,7 +16,7 @@ const recentJobs = [
   {
     area: 'Aurora',
     service: 'EV Charger',
-    detail: 'Tesla Wall Connector in a detached garage. Ran 40A circuit from the main panel, 60ft run.',
+    detail: "Family bought their first EV and wanted home charging in the detached garage. Tim ran a dedicated 40A circuit 60ft from the main panel, fished underground through the trench, mounted the Tesla Wall Connector. Half-day job, weatherproofed end-to-end, ESA-permitted.",
     timeAgo: '5 days ago',
     image: '/images/work/IMG_3038.webp',
     icon: (
@@ -28,7 +28,7 @@ const recentJobs = [
   {
     area: 'King City',
     service: 'Landscape Lighting',
-    detail: '14-fixture package: pathway lights, uplighting on mature oaks, and accent lighting on the stone retaining wall.',
+    detail: "14-fixture estate package in King City. Pathway lighting up the drive, uplighting on three mature oaks, accent wash on the stone retaining wall. Direct-burial cable to code depth, smart controller wired to the homeowner's phone. Walked the property at dusk to dial in every aim.",
     timeAgo: '1 week ago',
     image: '/images/work/IMG_3610.webp',
     icon: (
@@ -52,7 +52,7 @@ const recentJobs = [
   {
     area: 'East Gwillimbury',
     service: 'Knob & Tube',
-    detail: 'Full knob-and-tube removal in a 1920s farmhouse. 3-day job, all new circuits, ESA inspected.',
+    detail: "Three other electricians had quoted gutting walls. Tim worked the 1920s farmhouse room by room over three days, fishing new NMD-90 through the existing plaster cavities. Plaster stayed up. ESA-permitted, paperwork to the insurer the same week.",
     timeAgo: '2 weeks ago',
     image: '/images/work/IMG_5017.webp',
     icon: (

@@ -3,6 +3,7 @@ import TrustBar from '@/components/TrustBar';
 import ServiceCard from '@/components/ServiceCard';
 import CostEstimator from '@/components/CostEstimator';
 import RecentWork from '@/components/RecentWork';
+import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 import { client } from '@/data/client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -222,6 +223,17 @@ export default function Home() {
 
       {/* === Recent Work === */}
       <RecentWork />
+
+      {/* === Before/After slider === */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <BeforeAfterSlider
+            slug="homepage"
+            headline="Old panel. New panel. Drag to see the difference."
+            eyebrow="See the Work"
+          />
+        </div>
+      </section>
 
       {/* === Final CTA === */}
       <section className="py-24 md:py-32 relative overflow-hidden">

@@ -9,6 +9,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import PageSchema from '@/components/PageSchema';
 import ServiceGallery from '@/components/ServiceGallery';
 import ServiceFeatureImage from '@/components/ServiceFeatureImage';
+import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -189,6 +190,9 @@ export default async function ServicePage({ params }: Props) {
 
               {/* Feature image — relevant stock photo showing outcome */}
               <ServiceFeatureImage slug={slug} serviceName={service.name} />
+
+              {/* Before/after slider — only renders if pair exists for slug */}
+              <BeforeAfterSlider slug={slug} />
 
               {/* Intro */}
               <div className="animate-on-scroll">
