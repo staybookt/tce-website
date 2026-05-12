@@ -1,7 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { client } from '@/data/client';
+
+// Source-tracking metadata captured from URL + page context. Sent with every
+// quote-request submission so we can attribute leads to channel, campaign,
+// and which page the visitor was on when they converted.
+interface SourceMeta {
+  utm_source: string;
+  utm_medium: string;
+  utm_campaign: string;
+  utm_term: string;
+  utm_content: string;
+  page_path: string;
+  referrer: string;
+  submitted_at: string;
+}
+
+// GA4 dataLayer typing (loose) — fires the `form_submit` conversion event
+// when the form succeeds.
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
 
 export default function QuoteForm({ preselectedService }: { preselectedService?: string }) {
   const [formData, setFormData] = useState({
@@ -12,35 +34,76 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
     urgency: '',
     message: '',
   });
+  const [source, setSource] = useState<SourceMeta>({
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: '',
+    utm_content: '',
+    page_path: '',
+    referrer: '',
+    submitted_at: '',
+  });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  // On mount, capture UTM params, page path, and referrer. Stored in state so
+  // they survive even if the user navigates within the SPA before submitting.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    setSource({
+      utm_source: params.get('utm_source') || '',
+      utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      utm_term: params.get('utm_term') || '',
+      utm_content: params.get('utm_content') || '',
+      page_path: window.location.pathname,
+      referrer: document.referrer || '',
+      submitted_at: '',
+    });
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
 
+    const payload = {
+      ...formData,
+      ...source,
+      submitted_at: new Date().toISOString(),
+      _subject: `New Quote Request: ${formData.service || 'General Inquiry'} — ${formData.name}`,
+    };
+
     try {
       const response = await fetch('https://formspree.io/f/xpwdqkbj', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          _subject: `New Quote Request: ${formData.service || 'General Inquiry'} — ${formData.name}`,
-        }),
+        body: JSON.stringify(payload),
       });
-
       if (response.ok) {
         setSubmitted(true);
       } else {
-        // Fallback: still show success (form data logged)
-        console.log('Form submitted:', formData);
+        console.log('Form submitted:', payload);
         setSubmitted(true);
       }
     } catch {
-      console.log('Form submitted:', formData);
+      console.log('Form submitted:', payload);
       setSubmitted(true);
     } finally {
       setSubmitting(false);
+      // GA4 conversion event — survives even if Formspree blip
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        window.gtag('event', 'form_submit', {
+          form_id: 'quote_form',
+          service: formData.service || 'unspecified',
+          urgency: formData.urgency || 'unspecified',
+          page_path: source.page_path,
+          utm_source: source.utm_source || '(direct)',
+          utm_medium: source.utm_medium || '(none)',
+          utm_campaign: source.utm_campaign || '(none)',
+        });
+      }
     }
   };
 
@@ -164,6 +227,17 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
           className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold focus:bg-white transition-all duration-200 resize-none"
         />
       </div>
+
+      {/* Hidden source-tracking fields — also included in JSON payload, but
+          duplicated as form inputs so Formspree dashboards surface them. */}
+      <input type="hidden" name="utm_source" value={source.utm_source} />
+      <input type="hidden" name="utm_medium" value={source.utm_medium} />
+      <input type="hidden" name="utm_campaign" value={source.utm_campaign} />
+      <input type="hidden" name="utm_term" value={source.utm_term} />
+      <input type="hidden" name="utm_content" value={source.utm_content} />
+      <input type="hidden" name="page_path" value={source.page_path} />
+      <input type="hidden" name="referrer" value={source.referrer} />
+
       <button
         type="submit"
         disabled={submitting}
