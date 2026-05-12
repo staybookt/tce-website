@@ -5,17 +5,33 @@ import { client } from '@/data/client';
 export default function HeroBanner() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background photo — real Tim work, no stock video */}
+      {/* Background — video on capable devices, poster image always paints first */}
       <div className="absolute inset-0">
+        {/* Static poster image — paints instantly, also serves as fallback */}
         <Image
           src="/images/work/IMG_5375.webp"
-          alt="Top Choice Electrical work — Tim wiring a panel in York Region"
+          alt="Top Choice Electrical work in York Region"
           fill
           priority
           sizes="100vw"
           className="object-cover scale-105"
           style={{ animation: 'fadeIn 2s cubic-bezier(0.16, 1, 0.3, 1)' }}
         />
+        {/* Background video — Pexels free-license electrician footage.
+            autoPlay muted loop playsInline so it works in every modern browser including iOS Safari.
+            Self-hosted in /public/videos. preload=metadata so we don't fetch the whole file upfront. */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/work/IMG_5375.webp"
+          aria-hidden="true"
+        >
+          <source src="/videos/hero-electrical-work.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/85 via-navy-dark/65 to-navy-dark/90" />
         <div className="absolute inset-0 grain" />
       </div>
