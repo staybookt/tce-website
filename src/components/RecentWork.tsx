@@ -96,7 +96,7 @@ export default function RecentWork() {
               className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-md hover:border-amber-200 transition-all duration-300"
             >
               {job.image && (
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={job.image}
                     alt={`${job.service} in ${job.area}`}

@@ -57,7 +57,7 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
       className="group block bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-amber-200 transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
     >
       {/* Image */}
-      <div className="relative h-44 overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden">
         {image ? (
           <Image
             src={image}
