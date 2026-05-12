@@ -8,6 +8,7 @@ import QuoteForm from '@/components/QuoteForm';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import PageSchema from '@/components/PageSchema';
 import ServiceGallery from '@/components/ServiceGallery';
+import ServiceFeatureImage from '@/components/ServiceFeatureImage';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -185,6 +186,9 @@ export default async function ServicePage({ params }: Props) {
                   </div>
                 </div>
               )}
+
+              {/* Feature image — relevant stock photo showing outcome */}
+              <ServiceFeatureImage slug={slug} serviceName={service.name} />
 
               {/* Intro */}
               <div className="animate-on-scroll">
