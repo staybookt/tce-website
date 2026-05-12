@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/data/client';
+import SectionCTA from '@/components/SectionCTA';
 
 export const metadata: Metadata = {
   title: 'Service Areas | York Region & Simcoe County',
@@ -90,41 +91,15 @@ export default function AreasPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-32 md:py-40 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/work/IMG_2638.webp"
-            alt="Top Choice Electrical commercial work in York Region"
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-navy-dark/90" />
-          <div className="absolute inset-0 grain" />
-        </div>
-        <div className="relative max-w-3xl mx-auto px-4 text-center animate-on-scroll">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Not sure if we cover your area?
-          </h2>
-          <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
-            Call. If we can get there, we can quote it.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={`tel:${client.phone}`}
-              className="glass hover:bg-white/10 text-white font-bold px-10 py-4 rounded-lg text-lg transition-all duration-300"
-            >
-              Call {client.phone}
-            </a>
-            <Link
-              href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-white font-bold px-10 py-4 rounded-xl text-lg transition-all duration-300 shadow-lg shadow-gold/20"
-            >
-              Get a Free Quote
-            </Link>
-          </div>
-        </div>
-      </section>
+      <SectionCTA
+        eyebrow="Outside the 12 cities?"
+        headline="Not sure if we cover your area?"
+        body="Call. If we can get there, we can quote it. Newmarket and Simcoe County have been the base for years — we know the drive times."
+        image="/images/work/IMG_5375.webp"
+        imageAlt="Top Choice Electrical hands-on residential panel work in York Region"
+        primaryCTA={{ label: `Call ${client.phone}`, href: `tel:${client.phone}` }}
+        secondaryCTA={{ label: 'Get a free quote', href: '/contact' }}
+      />
     </>
   );
 }

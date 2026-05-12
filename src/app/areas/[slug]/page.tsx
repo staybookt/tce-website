@@ -7,6 +7,7 @@ import QuoteForm from '@/components/QuoteForm';
 import ServiceCard from '@/components/ServiceCard';
 import PageSchema from '@/components/PageSchema';
 import RecentWorkGallery from '@/components/RecentWorkGallery';
+import SectionCTA from '@/components/SectionCTA';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -233,41 +234,15 @@ export default async function AreaPage({ params }: Props) {
       </section>
 
       {/* CTA */}
-      <section className="relative py-32 md:py-40 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/work/IMG_3258.webp"
-            alt="Top Choice Electrical panel work in York Region"
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-navy-dark/90" />
-          <div className="absolute inset-0 grain" />
-        </div>
-        <div className="relative max-w-3xl mx-auto px-4 text-center animate-on-scroll">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Need an electrician in {area.name}?
-          </h2>
-          <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
-            Same-day quote. ESA-certified, permitted, inspected.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={`tel:${client.phone}`}
-              className="glass hover:bg-white/10 text-white font-bold px-10 py-4 rounded-lg text-lg transition-all duration-300"
-            >
-              Call {client.phone}
-            </a>
-            <Link
-              href="/contact"
-              className="btn-premium bg-gold hover:bg-gold-dark text-white font-bold px-10 py-4 rounded-xl text-lg transition-all duration-300 shadow-lg shadow-gold/20"
-            >
-              Request a Quote
-            </Link>
-          </div>
-        </div>
-      </section>
+      <SectionCTA
+        eyebrow={`Serving ${area.name}`}
+        headline={`Need an electrician in ${area.name}?`}
+        body="Same-day quote. ESA-certified, permitted, inspected, passed first visit."
+        image="/images/work/IMG_3258.webp"
+        imageAlt={`Top Choice Electrical work in ${area.name}`}
+        primaryCTA={{ label: `Call ${client.phone}`, href: `tel:${client.phone}` }}
+        secondaryCTA={{ label: 'Request a quote', href: '/contact' }}
+      />
     </>
   );
 }

@@ -4,6 +4,7 @@ import ServiceCard from '@/components/ServiceCard';
 import CostEstimator from '@/components/CostEstimator';
 import RecentWork from '@/components/RecentWork';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
+import SectionCTA from '@/components/SectionCTA';
 import { client } from '@/data/client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -236,45 +237,15 @@ export default function Home() {
       </section>
 
       {/* === Final CTA === */}
-      <section className="pt-16 md:pt-20 pb-24 md:pb-32 relative overflow-hidden">
-        {/* Real work background photo with dark overlay — matches every other CTA on the site */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/work/IMG_5375.webp"
-            alt="Top Choice Electrical panel work in York Region"
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-950/80 via-gray-950/85 to-gray-950/90" />
-          <div className="absolute inset-0 grain" />
-        </div>
-        {/* Warm ambient glow on top of the photo */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-amber-500/15 rounded-full blur-3xl" />
-
-        <div className="relative max-w-3xl mx-auto px-4 text-center">
-          <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.05]">
-            Same-day quote.
-          </h2>
-          <p className="text-white/40 text-lg mb-12 max-w-md mx-auto">
-            Newmarket, Aurora, Richmond Hill, Markham, Vaughan, King City, and the rest of York Region. Most jobs scheduled within 48 hours.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={`tel:${client.phone}`}
-              className="bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-10 py-4 rounded-xl text-base transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02]"
-            >
-              Call for a quote &mdash; {client.phone}
-            </a>
-            <Link
-              href="/contact"
-              className="bg-white/10 hover:bg-white/15 text-white font-bold px-10 py-4 rounded-xl text-base transition-all duration-300 border border-white/10 hover:border-white/20 backdrop-blur-sm"
-            >
-              Request a Quote Online
-            </Link>
-          </div>
-        </div>
-      </section>
+      <SectionCTA
+        eyebrow="Get a quote"
+        headline="Same-day quotes across York Region."
+        body="Newmarket, Aurora, Richmond Hill, Markham, Vaughan, King City, and the rest of York Region and Simcoe County. Most jobs scheduled within 48 hours."
+        image="/images/work/IMG_5375.webp"
+        imageAlt="Top Choice Electrical panel work in York Region"
+        primaryCTA={{ label: `Call ${client.phone}`, href: `tel:${client.phone}` }}
+        secondaryCTA={{ label: 'Request a quote online', href: '/contact' }}
+      />
     </>
   );
 }
