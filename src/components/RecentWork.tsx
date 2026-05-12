@@ -66,7 +66,7 @@ const recentJobs = [
     service: 'Generator',
     detail: 'Generac 22kW whole-home standby with automatic transfer switch. Customer lost power 4 times last winter.',
     timeAgo: '2 weeks ago',
-    image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=400&q=80',
+    image: '/images/work/IMG_5695.webp',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />

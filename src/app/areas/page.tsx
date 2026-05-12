@@ -23,8 +23,8 @@ export default function AreasPage() {
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1920&q=80"
-            alt="Aerial view of York Region residential neighbourhood"
+            src="/images/work/IMG_5375.webp"
+            alt="Top Choice Electrical work across York Region"
             fill
             priority
             sizes="100vw"
@@ -35,13 +35,13 @@ export default function AreasPage() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Where We Work</p>
+            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Service Areas</p>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-              Proudly Serving{' '}
-              <span className="gradient-text">York Region</span>
+              York Region &amp;{' '}
+              <span className="gradient-text">Simcoe County.</span>
             </h1>
             <p className="text-white/60 max-w-xl text-lg leading-relaxed">
-              We serve homeowners and businesses across York Region and into Simcoe County. If you're not sure whether we cover your area, give us a call.
+              12 cities served. Same-day quotes, same-day visits for most jobs. Not sure if your city&apos;s in range? Call &mdash; the answer is usually yes.
             </p>
           </div>
         </div>
@@ -93,8 +93,8 @@ export default function AreasPage() {
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
-            alt="Professional office building with modern electrical systems"
+            src="/images/work/IMG_2638.webp"
+            alt="Top Choice Electrical commercial work in York Region"
             fill
             sizes="100vw"
             className="object-cover"
@@ -107,7 +107,7 @@ export default function AreasPage() {
             Not sure if we cover your area?
           </h2>
           <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
-            Give us a call. If we can get there, we will.
+            Call. If we can get there, we can quote it.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

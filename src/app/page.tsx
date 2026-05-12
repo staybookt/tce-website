@@ -17,9 +17,9 @@ export default function Home() {
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl mb-14">
-            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">What Tim Does</p>
+            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Services</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
-              From a tripped breaker to a full rewire.
+              18 trades covered. Most jobs quoted same day.
             </h2>
           </div>
 
@@ -58,10 +58,10 @@ export default function Home() {
             <div className="md:col-span-5">
               <p className="text-amber-400 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Pricing</p>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-6">
-                Fair pricing. No franchise markup.
+                Fair, transparent, in writing.
               </h2>
               <p className="text-white/40 text-base leading-relaxed mb-8">
-                The big franchise operations charge more because they have to. National marketing, call centres, royalty fees, sales reps on commission. Tim runs Top Choice out of Newmarket with a small crew and a van. Same ESA licence, same inspections, same code &mdash; just without the layers in between that drive your bill up.
+                Standard panel upgrades run $2,500&ndash;$4,500 installed. EV chargers $800&ndash;$1,800 with the panel ready. Emergency callouts flat $150 credited to the job. Quotes are on-site, no charge, no obligation. The quote you get is the price you pay &mdash; it doesn&apos;t move unless you change scope.
               </p>
               <div className="hidden md:flex items-center gap-4 text-sm text-white/30">
                 <div className="flex items-center gap-2">
@@ -74,7 +74,7 @@ export default function Home() {
                   <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-400/50" fill="none" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Tim quotes it himself, same day
+                  Same-day, on-site
                 </div>
               </div>
             </div>
@@ -146,22 +146,22 @@ export default function Home() {
             /* References-on-request block — runs until Google reviews exist */
             <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
               <div>
-                <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">References, Not Stock Photos</p>
+                <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">By the Numbers</p>
                 <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-8">
-                  Most of Tim&apos;s work comes by referral.
+                  Two decades of York Region work.
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                  Tim&apos;s Google Business Profile is going live this month — reviews from real York Region homeowners will land there as they come in.
+                  Over 200 panels upgraded across Newmarket, Aurora, Richmond Hill, and the rest of York Region. Every job ESA-permitted. Every inspection passed on the first visit.
                 </p>
                 <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                  Until then, the honest version: call Tim and ask for three recent customers in your neighbourhood. He&apos;ll give you their numbers. Call them. Then decide.
+                  Reviews from real homeowners are landing on Google as the business profile goes live this month. In the meantime, ask for three recent references in your neighbourhood &mdash; addresses, phone numbers, the lot. Call them. Then decide.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
                     href={`tel:${client.phone}`}
                     className="bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-8 py-4 rounded-xl text-base transition-all duration-300 shadow-lg shadow-amber-500/20 hover:scale-[1.02] text-center"
                   >
-                    Call Tim &mdash; {client.phone}
+                    Call for a quote &mdash; {client.phone}
                   </a>
                   <Link
                     href="/contact"
@@ -230,17 +230,17 @@ export default function Home() {
 
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.05]">
-            Let&apos;s get it done.
+            Same-day quote.
           </h2>
           <p className="text-white/40 text-lg mb-12 max-w-md mx-auto">
-            Call for a same-day quote. Tim picks up. No voicemail, no runaround.
+            Newmarket, Aurora, Richmond Hill, Markham, Vaughan, King City, and the rest of York Region. Most jobs scheduled within 48 hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`tel:${client.phone}`}
               className="bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-10 py-4 rounded-xl text-base transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02]"
             >
-              Call Tim &mdash; {client.phone}
+              Call for a quote &mdash; {client.phone}
             </a>
             <Link
               href="/contact"

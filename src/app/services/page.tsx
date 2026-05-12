@@ -24,8 +24,8 @@ export default function ServicesPage() {
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80"
-            alt="Electrician performing professional electrical work"
+            src="/images/work/IMG_5375.webp"
+            alt="Top Choice Electrical panel work in York Region"
             fill
             priority
             sizes="100vw"
@@ -36,13 +36,13 @@ export default function ServicesPage() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Our Services</p>
+            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Services</p>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-              Electrical Services for{' '}
-              <span className="gradient-text">Every Need</span>
+              Electrical services for{' '}
+              <span className="gradient-text">York Region.</span>
             </h1>
             <p className="text-white/60 max-w-xl text-lg leading-relaxed">
-              Residential or commercial, big job or small fix. ESA licensed and fully insured to handle everything from a single outlet to a complete rewire.
+              Residential or commercial, single outlet or full rewire. 18 trades covered, ESA-permitted, inspected. Same-day quotes.
             </p>
           </div>
         </div>
@@ -66,8 +66,8 @@ export default function ServicesPage() {
       {/* Photo Break */}
       <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
-          alt="Electrical installation work"
+          src="/images/work/IMG_2638.webp"
+          alt="Commercial electrical work in York Region by Top Choice Electrical"
           fill
           sizes="100vw"
           className="object-cover"
@@ -80,7 +80,7 @@ export default function ServicesPage() {
               Don't see what you need?
             </h2>
             <p className="text-white/60 max-w-md text-lg">
-              We handle a wide range of electrical work beyond what's listed. If it involves wires, we can probably help.
+              If it involves wires, the answer is probably yes. Call and describe the job &mdash; we&apos;ll tell you straight whether it&apos;s in our wheelhouse.
             </p>
           </div>
         </div>
@@ -90,8 +90,8 @@ export default function ServicesPage() {
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1920&q=80"
-            alt="Residential electrical tools and supplies"
+            src="/images/work/IMG_5017.webp"
+            alt="Top Choice Electrical residential wiring in York Region"
             fill
             sizes="100vw"
             className="object-cover"
@@ -104,7 +104,7 @@ export default function ServicesPage() {
             Tell us what you need.
           </h2>
           <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto">
-            Give us a call and describe what you're dealing with. Free quote, no obligation.
+            Same-day quote. Across York Region and Simcoe County.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

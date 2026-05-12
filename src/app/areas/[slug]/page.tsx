@@ -64,8 +64,8 @@ export default async function AreaPage({ params }: Props) {
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1920&q=80"
-            alt="Aerial view of a residential neighbourhood in York Region"
+            src="/images/work/IMG_5375.webp"
+            alt="Top Choice Electrical work in York Region"
             fill
             priority
             sizes="100vw"
@@ -88,7 +88,7 @@ export default async function AreaPage({ params }: Props) {
               <span className="gradient-text">{area.name}</span>
             </h1>
             <p className="text-white/60 max-w-xl text-lg leading-relaxed">
-              Licensed electrical services for homes and businesses in {area.name} and the surrounding {area.region} area.
+              Same-day quotes for panel upgrades, EV chargers, wiring, and emergencies across {area.name} and the surrounding {area.region} area. ESA-certified, fully insured.
             </p>
           </div>
         </div>
@@ -232,8 +232,8 @@ export default async function AreaPage({ params }: Props) {
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
-            alt="Electrician working on wiring in a home"
+            src="/images/work/IMG_3258.webp"
+            alt="Top Choice Electrical panel work in York Region"
             fill
             sizes="100vw"
             className="object-cover"
@@ -246,7 +246,7 @@ export default async function AreaPage({ params }: Props) {
             Need an electrician in {area.name}?
           </h2>
           <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
-            We're local, we're licensed, and we can usually get there same-day.
+            Same-day quote. ESA-certified, permitted, inspected.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

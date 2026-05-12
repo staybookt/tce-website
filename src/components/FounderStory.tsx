@@ -10,8 +10,8 @@ export default function FounderStory() {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] max-w-md">
               <Image
-                src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80"
-                alt="Electrician at work"
+                src="/images/work/IMG_5375.webp"
+                alt="Tim Ciszko, owner of Top Choice Electrical, on a panel install in York Region"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -53,9 +53,9 @@ export default function FounderStory() {
             </h2>
             <div className="space-y-5 text-gray-600 text-[17px] leading-relaxed">
               <p>
-                {client.yearsExperience} years ago, Tim left a comfortable job at a large electrical contractor
-                because he was tired of watching homeowners get overcharged for simple work. He bought a van,
-                printed some cards, and started knocking on doors in Newmarket.
+                {client.yearsExperience} years ago, Tim left a large electrical contractor to start Top Choice. He bought a van,
+                printed some cards, and started knocking on doors in Newmarket. The work would
+                speak, or it wouldn&apos;t.
               </p>
               <p>
                 The pitch was simple: show up when you say you will, charge what you quoted, and leave the place

@@ -24,7 +24,7 @@ export default function ReviewsPage() {
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1920&q=80"
+            src="/images/work/IMG_5375.webp"
             alt="Residential home with professional electrical work"
             fill
             priority
@@ -36,13 +36,13 @@ export default function ReviewsPage() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 w-full pb-16 pt-40">
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Testimonials</p>
+            <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Reviews</p>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-              What Our Customers{' '}
-              <span className="gradient-text">Say</span>
+              York Region homeowners,{' '}
+              <span className="gradient-text">in their own words.</span>
             </h1>
             <p className="text-white/60 max-w-xl text-lg leading-relaxed">
-              We don't ask for reviews unless we're confident in the work. Here's what homeowners across York Region have to say.
+              Real customers, real jobs, real reviews. Reach out for references in your neighbourhood &mdash; we keep a current list.
             </p>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default function ReviewsPage() {
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
+            src="/images/work/IMG_3258.webp"
             alt="Electrician installing wiring in a residential home"
             fill
             sizes="100vw"

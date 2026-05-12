@@ -315,8 +315,8 @@ export default async function ServicePage({ params }: Props) {
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
-            alt="Electrician installing wiring in a residential property"
+            src="/images/work/IMG_3258.webp"
+            alt="Top Choice Electrical work in York Region"
             fill
             sizes="100vw"
             className="object-cover"
@@ -326,10 +326,10 @@ export default async function ServicePage({ params }: Props) {
         </div>
         <div className="relative max-w-3xl mx-auto px-4 text-center animate-on-scroll">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Need {service.name.toLowerCase()}?
+            Need {service.name.toLowerCase()}? Get a quote.
           </h2>
           <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
-            Call us for a free, no-obligation quote. We serve Newmarket, Aurora, and all of York Region.
+            Same-day quote across York Region. ESA-certified, permitted, inspected, passed.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
