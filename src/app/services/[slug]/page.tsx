@@ -15,6 +15,8 @@ import TrustStrip from '@/components/TrustStrip';
 import ProblemSolutionCard from '@/components/ProblemSolutionCard';
 import PhotoBreak from '@/components/PhotoBreak';
 import InlineCallStrip from '@/components/InlineCallStrip';
+import TrustedBrands from '@/components/TrustedBrands';
+import CoveragePromise from '@/components/CoveragePromise';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -399,6 +401,12 @@ export default async function ServicePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* === Coverage Promise — guarantee, warranty, financing === */}
+      <CoveragePromise />
+
+      {/* === Trusted Brands === */}
+      <TrustedBrands />
 
       {/* Tap-to-call strip — last inline call CTA before the SectionCTA closer */}
       <InlineCallStrip

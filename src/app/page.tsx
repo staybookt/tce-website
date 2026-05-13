@@ -6,6 +6,8 @@ import RecentWork from '@/components/RecentWork';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 import SectionCTA from '@/components/SectionCTA';
 import InlineCallStrip from '@/components/InlineCallStrip';
+import TrustedBrands from '@/components/TrustedBrands';
+import CoveragePromise from '@/components/CoveragePromise';
 import { client } from '@/data/client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -55,6 +57,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* === Trusted Brands strip — equipment + ESA badge trust transfer === */}
+      <TrustedBrands />
+
+      {/* === Coverage Promise — guarantee + warranty + financing === */}
+      <CoveragePromise />
 
       {/* Tap-to-call strip — bridges services to pricing */}
       <InlineCallStrip
