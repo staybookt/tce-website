@@ -13,6 +13,7 @@ import NeighbourhoodChips from '@/components/NeighbourhoodChips';
 import PhotoBreak from '@/components/PhotoBreak';
 import LocalSnapshot from '@/components/LocalSnapshot';
 import AreaFAQ from '@/components/AreaFAQ';
+import InlineCallStrip from '@/components/InlineCallStrip';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -109,6 +110,13 @@ export default async function AreaPage({ params }: Props) {
 
       {/* === Trust strip === */}
       <TrustStrip />
+
+      {/* Tap-to-call strip — keeps the local phone CTA persistent after the hero */}
+      <InlineCallStrip
+        variant="amber"
+        headline={`Same-day quote in ${area.name}.`}
+        tagline={`${area.region} · 22 years on the tools · ESA-certified`}
+      />
 
       {/* === Content === */}
       <section className="py-16 md:py-20 bg-white">
@@ -223,6 +231,13 @@ export default async function AreaPage({ params }: Props) {
         areaName={area.name}
         region={area.region}
         topServices={topServiceNames}
+      />
+
+      {/* Tap-to-call strip — last inline call CTA before the SectionCTA closer */}
+      <InlineCallStrip
+        variant="light"
+        headline={`Got a job in ${area.name}?`}
+        tagline="Talk to Tim · most quotes within 24 hours"
       />
 
       {/* === CTA === */}

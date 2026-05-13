@@ -5,6 +5,7 @@ import CostEstimator from '@/components/CostEstimator';
 import RecentWork from '@/components/RecentWork';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 import SectionCTA from '@/components/SectionCTA';
+import InlineCallStrip from '@/components/InlineCallStrip';
 import { client } from '@/data/client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -14,6 +15,13 @@ export default function Home() {
     <>
       <HeroBanner />
       <TrustBar />
+
+      {/* Tap-to-call strip — keeps the phone number unmissable below the fold */}
+      <InlineCallStrip
+        variant="amber"
+        headline="Same-day quotes in York Region."
+        tagline="22 years on the tools · ESA-certified · 24/7 emergency"
+      />
 
       {/* === Services === */}
       <section className="py-24 md:py-32 bg-white">
@@ -47,6 +55,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Tap-to-call strip — bridges services to pricing */}
+      <InlineCallStrip
+        variant="light"
+        headline="Want it priced in writing today?"
+        tagline="On-site quote, no charge, no obligation"
+      />
 
       {/* === Cost Estimator === */}
       <section className="section-dark py-24 md:py-32 relative overflow-hidden">
@@ -88,6 +103,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Tap-to-call strip — closes the pricing section with a call CTA */}
+      <InlineCallStrip
+        variant="dark"
+        headline="Skip the estimator — talk to Tim direct."
+        tagline="Most quotes done in a 10-minute call"
+      />
 
       {/* === Reviews / References block === */}
       <section className="py-24 md:py-32 bg-white relative overflow-hidden">
@@ -222,8 +244,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Tap-to-call strip — bridges proof to recent work */}
+      <InlineCallStrip
+        variant="light"
+        headline="Got a job like these?"
+        tagline="Call Tim · most quotes within 24 hours"
+      />
+
       {/* === Recent Work === */}
       <RecentWork />
+
+      {/* Tap-to-call strip — final inline call CTA before the section CTA closer */}
+      <InlineCallStrip
+        variant="amber"
+        headline="Ready to book?"
+        tagline="Same-day quotes · 24/7 emergency hotline"
+      />
 
       {/* === Before/After slider === */}
       <section className="py-24 md:py-32 bg-white">

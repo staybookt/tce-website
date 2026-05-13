@@ -14,6 +14,7 @@ import SectionCTA from '@/components/SectionCTA';
 import TrustStrip from '@/components/TrustStrip';
 import ProblemSolutionCard from '@/components/ProblemSolutionCard';
 import PhotoBreak from '@/components/PhotoBreak';
+import InlineCallStrip from '@/components/InlineCallStrip';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -161,6 +162,13 @@ export default async function ServicePage({ params }: Props) {
 
       {/* === 2. Trust strip — ESA, insured, years, pass rate === */}
       <TrustStrip />
+
+      {/* Tap-to-call strip — keeps the phone surfaced right after hero */}
+      <InlineCallStrip
+        variant="amber"
+        headline={`Need ${service.name.toLowerCase()} today?`}
+        tagline="Same-day quotes · ESA-certified · 22 years on the tools"
+      />
 
       {/* === 3. Main content — 2-col on desktop with sticky sidebar === */}
       <section className="py-16 md:py-20 bg-white">
@@ -391,6 +399,13 @@ export default async function ServicePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Tap-to-call strip — last inline call CTA before the SectionCTA closer */}
+      <InlineCallStrip
+        variant="light"
+        headline={`Talk to Tim about your ${service.name.toLowerCase()} job.`}
+        tagline="Most quotes done in a 10-minute call"
+      />
 
       {/* === CTA === */}
       <SectionCTA
