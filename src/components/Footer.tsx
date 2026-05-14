@@ -23,7 +23,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/30 text-sm leading-relaxed mb-8 max-w-xs">
-              Licensed, insured, and trusted by homeowners across York Region. {client.yearsExperience}+ years of electrical experience.
+              Licensed, insured ($5M), and trusted by homeowners across York Region and Simcoe County. {client.yearsExperience} years on the tools, {client.yearsInBusiness} on his own.
             </p>
             <div className="space-y-3 text-sm">
               <a href={`tel:${client.phone}`} className="flex items-center gap-3 text-white/40 hover:text-amber-400 transition-colors">

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.topchoiceelectrical.ca/services' },
   openGraph: {
     title: 'Electrical Services | Newmarket & York Region',
-    description: '18 trades covered, ESA-licensed, fully insured, same-day quotes across York Region.',
+    description: '18 electrical services, ESA-licensed, fully insured, same-day quotes across York Region.',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Top Choice Electrical Services' }],
   },
 };
@@ -45,7 +45,7 @@ export default function ServicesPage() {
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Services</p>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-              18 trades covered.{' '}
+              18 electrical services.{' '}
               <span className="gradient-text">One number to call.</span>
             </h1>
             <p className="text-white/60 max-w-xl text-lg leading-relaxed">
@@ -157,7 +157,7 @@ export default function ServicesPage() {
         headline="If it involves wires, the answer is probably yes."
         body="Call and describe the job — same-day quote, no obligation. Tim will tell you straight whether it's in our wheelhouse."
         image="/images/work/IMG_5375.webp"
-        imageAlt="Tim Ciszko of Top Choice Electrical, hands on residential panel work in York Region"
+        imageAlt="Tim Ciszkowski of Top Choice Electrical, hands on residential panel work in York Region"
         primaryCTA={{ label: `Call ${client.phone}`, href: `tel:${client.phone}` }}
         secondaryCTA={{ label: 'Get a quote online', href: '/contact' }}
       />

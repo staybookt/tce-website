@@ -9,11 +9,11 @@ import RecentWork from '@/components/RecentWork';
 
 export const metadata: Metadata = {
   title: 'About Tim | Top Choice Electrical',
-  description: `Tim Ciszko runs Top Choice Electrical out of Newmarket. ${client.yearsExperience}+ years wiring York Region homes. ESA-certified, insured, bonded. Tim works the job himself.`,
+  description: `Tim Ciszkowski runs Top Choice Electrical out of Newmarket. ${client.yearsExperience}+ years wiring York Region homes. ESA-certified, insured, bonded. Tim works the job himself.`,
   alternates: { canonical: 'https://www.topchoiceelectrical.ca/about' },
   openGraph: {
     title: 'About Tim | Top Choice Electrical',
-    description: `Tim Ciszko runs Top Choice Electrical out of Newmarket. ${client.yearsExperience}+ years wiring York Region homes. ESA-certified, insured, bonded.`,
+    description: `Tim Ciszkowski runs Top Choice Electrical out of Newmarket. ${client.yearsExperience}+ years wiring York Region homes. ESA-certified, insured, bonded.`,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'About Top Choice Electrical' }],
   },
 };
@@ -26,7 +26,7 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/work/IMG_5375.webp"
-            alt="Tim Ciszko of Top Choice Electrical working on a residential panel"
+            alt="Tim Ciszkowski of Top Choice Electrical working on a residential panel"
             fill
             priority
             sizes="100vw"
@@ -39,14 +39,14 @@ export default function AboutPage() {
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
             <div className="flex items-center gap-3 mb-5">
               <div className="h-px w-12 bg-amber-400" />
-              <span className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em]">About · Tim Ciszko · Newmarket</span>
+              <span className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em]">About · Tim Ciszkowski · Newmarket</span>
             </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[0.95] max-w-4xl">
               Owner-operator electrician.{' '}
               <span className="gradient-text">Newmarket.</span>
             </h1>
             <p className="text-white/70 max-w-2xl text-lg md:text-xl leading-relaxed">
-              Tim Ciszko runs Top Choice with a small crew out of Newmarket. The owner answers the phone, the owner shows up on the bigger jobs, and the work is referred. That&apos;s the whole story.
+              Tim Ciszkowski runs Top Choice with a small crew out of Newmarket. The owner answers the phone, the owner shows up on the bigger jobs, and the work is referred. That&apos;s the whole story.
             </p>
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function AboutPage() {
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
                 <Image
                   src="/images/work/IMG_5375.webp"
-                  alt="Tim Ciszko, owner and master electrician at Top Choice Electrical"
+                  alt="Tim Ciszkowski, owner and master electrician at Top Choice Electrical"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -98,16 +98,16 @@ export default function AboutPage() {
                     <div className="h-px w-8 bg-amber-400" />
                     <span className="text-amber-300 text-[10px] font-bold uppercase tracking-[0.25em]">Owner-operator</span>
                   </div>
-                  <p className="font-display text-white text-2xl font-bold leading-tight">Tim Ciszko</p>
+                  <p className="font-display text-white text-2xl font-bold leading-tight">Tim Ciszkowski</p>
                   <p className="text-white/70 text-sm mt-1">Master Electrician · ESA-Certified</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { number: `${client.yearsExperience}+`, label: 'Years on the tools' },
-                  { number: '200+', label: 'Panels wired in York Region' },
-                  { number: '100%', label: 'ESA inspections passed first visit' },
+                  { number: `${client.yearsExperience}`, label: 'Years on the tools' },
+                  { number: `${client.yearsInBusiness}`, label: 'Years on his own' },
+                  { number: '$5M', label: 'Liability insurance coverage' },
                   { number: '24/7', label: 'Emergency response' },
                 ].map((stat, i) => (
                   <div key={i} className="bg-gradient-to-br from-amber-50 to-white border border-amber-100 rounded-2xl p-6 text-center shadow-sm">
@@ -131,7 +131,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <p className="text-amber-700 text-[10px] font-bold uppercase tracking-[0.25em] mb-1">Written by</p>
-                <p className="font-display font-bold text-gray-900 text-xl md:text-2xl leading-tight">Tim Ciszko</p>
+                <p className="font-display font-bold text-gray-900 text-xl md:text-2xl leading-tight">Tim Ciszkowski</p>
                 <p className="text-gray-600 text-sm mt-0.5">Owner &amp; Master Electrician · ESA-Certified · Newmarket, ON</p>
               </div>
             </div>
@@ -411,7 +411,7 @@ export default function AboutPage() {
         headline="Same-day quote. Same number every time."
         body="Single outlet to full rewire — Tim picks up, Tim quotes, Tim shows up."
         image="/images/work/IMG_5375.webp"
-        imageAlt="Tim Ciszko on residential panel work in York Region"
+        imageAlt="Tim Ciszkowski on residential panel work in York Region"
         primaryCTA={{ label: `Call Tim — ${client.phone}`, href: `tel:${client.phone}` }}
         secondaryCTA={{ label: 'Request a quote online', href: '/contact' }}
       />

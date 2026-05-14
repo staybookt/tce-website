@@ -47,11 +47,11 @@ export default function ServiceAreaMap() {
         <div className="max-w-2xl mb-10 md:mb-14">
           <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Service coverage</p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.05]">
-            One headquarters.{' '}
-            <span className="gradient-text">Twelve cities served.</span>
+            York Region, Simcoe County,{' '}
+            <span className="gradient-text">and all areas in between.</span>
           </h2>
           <p className="text-gray-600 text-base md:text-lg leading-relaxed mt-5 max-w-xl">
-            Top Choice Electrical is headquartered in Newmarket. Same-day service across York Region, Simcoe County, and parts of Durham Region.
+            Headquartered in Newmarket. Same-day quotes and same-day visits for most calls across all 12 cities below.
           </p>
         </div>
 

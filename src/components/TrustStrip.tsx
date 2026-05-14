@@ -14,16 +14,16 @@ export default function TrustStrip() {
       detail: client.licenseNumber,
     },
     {
-      value: 'Insured & Bonded',
-      detail: '1-year workmanship warranty',
+      value: '$5M Insured',
+      detail: 'Bonded · 1-year workmanship warranty',
     },
     {
-      value: `${client.yearsExperience}+ Years`,
-      detail: 'On the tools in York Region',
+      value: `${client.yearsExperience} Years`,
+      detail: `On the tools, ${client.yearsInBusiness} on his own`,
     },
     {
-      value: '100% Pass',
-      detail: 'ESA inspections on first visit',
+      value: 'Inspection-Pass',
+      detail: 'ESA guarantee · fix it free if it fails',
     },
   ];
 

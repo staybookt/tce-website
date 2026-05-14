@@ -1,0 +1,27 @@
+Wave 11.0: Richard feedback round 1 — factual fixes + UX cleanup
+
+Owner / business facts:
+- Surname: Ciszko -> Ciszkowski across the site
+- Years framing: 22 on the tools, 6 on his own (was a vague 15+)
+- HQ address: Newmarket (was mixed Newmarket/York Region)
+- Added 5M liability insurance into client.ts, TrustStrip, Footer, hero copy
+
+Marketing claims tightened to what we can defend:
+- Removed all 100% first-visit pass rate claims
+- Kept inspection-pass guarantee (fix free if it fails)
+- 2-year warranty -> 1-year warranty everywhere
+
+Geography:
+- Hero H1 now reads York Region and Simcoe County
+- Homepage inline strip + final SectionCTA mention both regions
+- Reviews page H1 mentions both regions
+- Service area map header: York Region, Simcoe County, and all areas in between
+- About page proof block + Footer mention both regions
+
+Copy hygiene:
+- 18 trades -> 18 electrical services
+- ev charger -> EV charger in gallery alt text
+- Hero CTAs now distinct: Call Tim | Request a quote online (was two same-day buttons)
+- References on request — dropped region/neighbourhood qualifier
+
+Source: Richard feedback memo, May 13.

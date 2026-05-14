@@ -21,8 +21,8 @@ export default function Home() {
       {/* Tap-to-call strip — keeps the phone number unmissable below the fold */}
       <InlineCallStrip
         variant="amber"
-        headline="Same-day quotes in York Region."
-        tagline="22 years on the tools · ESA-certified · 24/7 emergency"
+        headline="Same-day quotes across York Region &amp; Simcoe County."
+        tagline="22 years on the tools, 6 on his own · ESA-certified · 24/7 emergency"
       />
 
       {/* === Services === */}
@@ -31,7 +31,7 @@ export default function Home() {
           <div className="max-w-2xl mb-14">
             <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Services</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
-              18 trades covered. Most jobs quoted same day.
+              18 electrical services. Most jobs quoted same day.
             </h2>
           </div>
 
@@ -183,10 +183,10 @@ export default function Home() {
                   Two decades of York Region work.
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                  Over 200 panels upgraded across Newmarket, Aurora, Richmond Hill, and the rest of York Region. Every job ESA-permitted. Every inspection passed on the first visit.
+                  Over 200 panels upgraded across Newmarket, Aurora, Bradford, Innisfil, Richmond Hill, and the rest of York Region and Simcoe County. Every job ESA-permitted, every inspection passed.
                 </p>
                 <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                  Reviews from real homeowners are landing on Google as the business profile goes live this month. In the meantime, ask for three recent references in your neighbourhood &mdash; addresses, phone numbers, the lot. Call them. Then decide.
+                  Reviews from real homeowners are landing on Google as the business profile goes live this month. In the meantime, ask for three recent references &mdash; addresses, phone numbers, the lot. Call them. Then decide.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
@@ -283,8 +283,8 @@ export default function Home() {
       {/* === Final CTA === */}
       <SectionCTA
         eyebrow="Get a quote"
-        headline="Same-day quotes across York Region."
-        body="Newmarket, Aurora, Richmond Hill, Markham, Vaughan, King City, and the rest of York Region and Simcoe County. Most jobs scheduled within 48 hours."
+        headline="Same-day quotes across York Region &amp; Simcoe County."
+        body="Newmarket, Aurora, Richmond Hill, Markham, Vaughan, King City, Bradford, Innisfil — and everywhere in between. Most jobs scheduled within 48 hours."
         image="/images/work/IMG_5375.webp"
         imageAlt="Top Choice Electrical panel work in York Region"
         primaryCTA={{ label: `Call ${client.phone}`, href: `tel:${client.phone}` }}

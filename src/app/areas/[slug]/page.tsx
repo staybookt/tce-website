@@ -115,7 +115,7 @@ export default async function AreaPage({ params }: Props) {
       <InlineCallStrip
         variant="amber"
         headline={`Same-day quote in ${area.name}.`}
-        tagline={`${area.region} · 22 years on the tools · ESA-certified`}
+        tagline={`${area.region} · 22 years on the tools, 6 on his own · ESA-certified`}
       />
 
       {/* === Content === */}

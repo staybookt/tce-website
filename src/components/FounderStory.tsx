@@ -11,7 +11,7 @@ export default function FounderStory() {
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] max-w-md">
               <Image
                 src="/images/work/IMG_5375.webp"
-                alt="Tim Ciszko, owner of Top Choice Electrical, on a panel install in York Region"
+                alt="Tim Ciszkowski, owner of Top Choice Electrical, on a panel install in York Region"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -53,7 +53,7 @@ export default function FounderStory() {
             </h2>
             <div className="space-y-5 text-gray-600 text-[17px] leading-relaxed">
               <p>
-                {client.yearsExperience} years ago, Tim left a large electrical contractor to start Top Choice. He bought a van,
+                After {client.yearsExperience} years on the tools at a large electrical contractor, Tim went out on his own {client.yearsInBusiness} years ago to start Top Choice. He bought a van,
                 printed some cards, and started knocking on doors in Newmarket. The work would
                 speak, or it wouldn&apos;t.
               </p>
@@ -73,7 +73,7 @@ export default function FounderStory() {
                 <span className="text-blue-600 font-bold text-lg">T</span>
               </div>
               <div>
-                <p className="font-bold text-gray-900">Tim Ciszko</p>
+                <p className="font-bold text-gray-900">Tim Ciszkowski</p>
                 <p className="text-gray-500 text-sm">Owner & Master Electrician</p>
               </div>
             </div>

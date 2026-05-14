@@ -35,7 +35,7 @@ interface Props {
 
 export default function TrustedBrands({
   heading = 'Trusted brands we install.',
-  subhead = 'ESA-certified · Manufacturer-warrantied · Two-year labour guarantee on every job',
+  subhead = 'ESA-certified · Manufacturer-warrantied · One-year labour guarantee on every job',
   tone = 'light',
 }: Props) {
   const bg = tone === 'dark' ? 'bg-gray-900' : 'bg-white';

@@ -169,7 +169,7 @@ export default async function ServicePage({ params }: Props) {
       <InlineCallStrip
         variant="amber"
         headline={`Need ${service.name.toLowerCase()} today?`}
-        tagline="Same-day quotes · ESA-certified · 22 years on the tools"
+        tagline="Same-day quotes · ESA-certified · 22 years on the tools, 6 on his own"
       />
 
       {/* === 3. Main content — 2-col on desktop with sticky sidebar === */}

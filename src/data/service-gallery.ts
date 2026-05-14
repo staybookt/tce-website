@@ -9,10 +9,10 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
     { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical panel upgrades in York Region' },
   ],
   'ev-charger-installation': [
-    { src: '/images/work/IMG_3038.webp', alt: 'Top Choice Electrical ev charger installation in York Region' },
-    { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical ev charger installation in York Region' },
-    { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical ev charger installation in York Region' },
-    { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical ev charger installation in York Region' },
+    { src: '/images/work/IMG_3038.webp', alt: 'Top Choice Electrical EV charger installation in York Region' },
+    { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical EV charger installation in York Region' },
+    { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical EV charger installation in York Region' },
+    { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical EV charger installation in York Region' },
   ],
   'landscape-lighting': [
     { src: '/images/work/IMG_3610.webp', alt: 'Top Choice Electrical landscape lighting in York Region' },

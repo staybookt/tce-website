@@ -13,9 +13,9 @@ const services = [
       </svg>
     ),
     options: [
-      { label: 'More power (most homes)', low: 2500, high: 4000, franchiseLow: 4000, franchiseHigh: 6500, included: ['All permits & inspection', 'Surge protection included', 'Everything labelled', '2-year warranty'] },
-      { label: 'Replace old panel', low: 2000, high: 3500, franchiseLow: 3500, franchiseHigh: 5500, included: ['All permits & inspection', 'Old panel taken away', 'Everything transferred', '2-year warranty'] },
-      { label: 'Add a second panel', low: 1500, high: 2500, franchiseLow: 2500, franchiseHigh: 4000, included: ['All permits & inspection', 'Room for 6 new circuits', 'Everything labelled', '2-year warranty'] },
+      { label: 'More power (most homes)', low: 2500, high: 4000, franchiseLow: 4000, franchiseHigh: 6500, included: ['All permits & inspection', 'Surge protection included', 'Everything labelled', '1-year warranty'] },
+      { label: 'Replace old panel', low: 2000, high: 3500, franchiseLow: 3500, franchiseHigh: 5500, included: ['All permits & inspection', 'Old panel taken away', 'Everything transferred', '1-year warranty'] },
+      { label: 'Add a second panel', low: 1500, high: 2500, franchiseLow: 2500, franchiseHigh: 4000, included: ['All permits & inspection', 'Room for 6 new circuits', 'Everything labelled', '1-year warranty'] },
     ],
   },
   {

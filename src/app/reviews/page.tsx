@@ -38,11 +38,11 @@ export default function ReviewsPage() {
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Reviews</p>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-              York Region homeowners,{' '}
+              York Region &amp; Simcoe County homeowners,{' '}
               <span className="gradient-text">in their own words.</span>
             </h1>
             <p className="text-white/60 max-w-xl text-lg leading-relaxed">
-              Real customers, real jobs, real reviews. Reach out for references in your neighbourhood &mdash; we keep a current list.
+              Real customers, real jobs, real reviews. Reach out for references &mdash; we keep a current list.
             </p>
           </div>
         </div>
