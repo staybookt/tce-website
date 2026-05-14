@@ -1,0 +1,13 @@
+Wave 10 #63: surface 24/7 emergency higher in global IA
+
+Replaced the existing Header top-bar (static hours + emergency text)
+with a clickable red-gradient emergency strip. Shows on every page at
+the top, slides up on scroll like the previous top bar did.
+
+The whole strip is a tel: link to (416) 805-6676 with a pulsing dot,
+"24/7 emergency electrician" label, and the phone number in a chip on
+the right. Click anywhere on the strip and the user is calling Tim.
+
+Closes the gap Richard flagged on emergency capture surface area.
+The strip is a sibling of every page so emergency-intent visitors
+never have to hunt for the phone number.

@@ -20,15 +20,35 @@ export default function Header() {
         ? 'bg-navy-dark/95 backdrop-blur-xl shadow-2xl shadow-black/20'
         : 'bg-transparent'
     }`}>
-      {/* Top bar — slides up on scroll */}
-      <div className={`bg-navy text-white/80 text-xs overflow-hidden transition-all duration-500 ${
-        scrolled ? 'max-h-0 py-0' : 'max-h-10 py-1.5'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <span className="tracking-wide">{client.hours.regular}</span>
-          <span className="text-amber-400 font-medium tracking-wide">{client.hours.emergency}</span>
+      {/* Emergency top strip — clickable tel: link, slides up on scroll */}
+      <a
+        href={`tel:${client.phone}`}
+        className={`block bg-gradient-to-r from-red-700 via-red-600 to-red-700 hover:from-red-600 hover:via-red-500 hover:to-red-600 text-white transition-all duration-500 overflow-hidden ${
+          scrolled ? 'max-h-0 py-0' : 'max-h-12 py-2'
+        }`}
+        aria-label="24/7 emergency electrician — tap to call"
+      >
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-4 text-xs">
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="relative flex w-2 h-2 shrink-0">
+              <span className="absolute inset-0 rounded-full bg-amber-300 opacity-75 animate-ping" />
+              <span className="relative inline-flex w-2 h-2 rounded-full bg-amber-300" />
+            </span>
+            <span className="font-bold uppercase tracking-wider">
+              24/7 emergency electrician
+            </span>
+            <span className="hidden md:inline text-white/70">
+              · Power out, breaker tripping, burnt smell? Tim answers nights and weekends.
+            </span>
+          </div>
+          <span className="bg-white/15 hover:bg-white/25 px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shrink-0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} className="w-3 h-3">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            {client.phone}
+          </span>
         </div>
-      </div>
+      </a>
 
       {/* Main nav */}
       <div className="max-w-7xl mx-auto px-4">
