@@ -9,6 +9,8 @@ import InlineCallStrip from '@/components/InlineCallStrip';
 import TrustedBrands from '@/components/TrustedBrands';
 import CoveragePromise from '@/components/CoveragePromise';
 import ServiceSearch from '@/components/ServiceSearch';
+import CallbackForm from '@/components/CallbackForm';
+import HomepageFAQ from '@/components/HomepageFAQ';
 import { client } from '@/data/client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -67,6 +69,9 @@ export default function Home() {
 
       {/* === Coverage Promise — guarantee + warranty + financing === */}
       <CoveragePromise />
+
+      {/* === Callback Form — low-friction lead capture === */}
+      <CallbackForm />
 
       {/* Tap-to-call strip — bridges services to pricing */}
       <InlineCallStrip
@@ -265,6 +270,9 @@ export default function Home() {
 
       {/* === Recent Work === */}
       <RecentWork />
+
+      {/* === Homepage FAQ — common questions + JSON-LD FAQPage schema === */}
+      <HomepageFAQ />
 
       {/* Tap-to-call strip — final inline call CTA before the section CTA closer */}
       <InlineCallStrip
