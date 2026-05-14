@@ -8,6 +8,7 @@ import SectionCTA from '@/components/SectionCTA';
 import InlineCallStrip from '@/components/InlineCallStrip';
 import TrustedBrands from '@/components/TrustedBrands';
 import CoveragePromise from '@/components/CoveragePromise';
+import ServiceSearch from '@/components/ServiceSearch';
 import { client } from '@/data/client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -24,6 +25,9 @@ export default function Home() {
         headline="Same-day quotes across York Region &amp; Simcoe County."
         tagline="22 years on the tools, 6 on his own · ESA-certified · 24/7 emergency"
       />
+
+      {/* === Service Search — fast nav for visitors who know what they need === */}
+      <ServiceSearch />
 
       {/* === Services === */}
       <section className="py-24 md:py-32 bg-white">

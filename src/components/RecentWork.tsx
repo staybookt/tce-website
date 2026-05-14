@@ -8,7 +8,6 @@ const recentJobs = [
     area: 'Newmarket',
     service: 'Panel Upgrade',
     detail: "Owner had been refused renewal until the 60A fuse panel was gone. Quoted Wednesday, swapped Tuesday — full 200A Square D, every circuit labelled, ESA-inspected and passed first visit. Paperwork delivered, policy renewed by Friday.",
-    timeAgo: '3 days ago',
     image: '/images/work/IMG_3258.webp',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
@@ -20,7 +19,6 @@ const recentJobs = [
     area: 'Aurora',
     service: 'EV Charger',
     detail: "Family bought their first EV and wanted home charging in the detached garage. Tim ran a dedicated 40A circuit 60ft from the main panel, fished underground through the trench, mounted the Tesla Wall Connector. Half-day job, weatherproofed end-to-end, ESA-permitted.",
-    timeAgo: '5 days ago',
     image: '/images/work/IMG_3038.webp',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
@@ -32,7 +30,6 @@ const recentJobs = [
     area: 'King City',
     service: 'Landscape Lighting',
     detail: "14-fixture estate package in King City. Pathway lighting up the drive, uplighting on three mature oaks, accent wash on the stone retaining wall. Direct-burial cable to code depth, smart controller wired to the homeowner's phone. Walked the property at dusk to dial in every aim.",
-    timeAgo: '1 week ago',
     image: '/images/work/IMG_3610.webp',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
@@ -44,7 +41,6 @@ const recentJobs = [
     area: 'Richmond Hill',
     service: 'Pot Lights',
     detail: '12 LED pot lights across the main floor open concept. Replaced 6 old fluorescent fixtures. Matched dimmer to LED driver — zero flicker, full-range dim. Drywall touch-up handled by the homeowner; cuts were clean enough that a single coat covered it.',
-    timeAgo: '1 week ago',
     image: '/images/work/IMG_6204.webp',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
@@ -56,7 +52,6 @@ const recentJobs = [
     area: 'East Gwillimbury',
     service: 'Knob & Tube',
     detail: "Three other electricians had quoted gutting walls. Tim worked the 1920s farmhouse room by room over three days, fishing new NMD-90 through the existing plaster cavities. Plaster stayed up. ESA-permitted, paperwork to the insurer the same week.",
-    timeAgo: '2 weeks ago',
     image: '/images/work/IMG_5017.webp',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
@@ -68,7 +63,6 @@ const recentJobs = [
     area: 'Stouffville',
     service: 'Generator',
     detail: 'Generac 22kW whole-home standby with automatic transfer switch. Customer lost power 4 times last winter. Quoted, permitted, gas line coordinated with the plumber, installed and commissioned in two days. Tested with a simulated outage before we left.',
-    timeAgo: '2 weeks ago',
     image: '/images/work/IMG_5695.webp',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
@@ -97,10 +91,10 @@ export default function RecentWork() {
           <div className="max-w-xl">
             <div className="accent-line mb-6" />
             <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
-              What we&apos;ve been working on.
+              Real jobs. Real neighbourhoods.
             </h2>
             <p className="text-gray-500 text-lg mt-5">
-              Real jobs. Real neighbourhoods. Swipe through the last few weeks.
+              A look at the work — panel upgrades, EV chargers, full rewires across York Region and Simcoe County.
             </p>
           </div>
 
@@ -162,7 +156,7 @@ export default function RecentWork() {
                         {job.service}
                       </span>
                     </div>
-                    <span className="text-xs text-gray-400">{job.timeAgo}</span>
+                    
                   </div>
                   <p className="text-sm text-gray-600 leading-relaxed mb-4 min-h-[7rem]">
                     {job.detail}

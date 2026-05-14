@@ -186,26 +186,30 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === How Tim works — voice statement === */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="mb-10">
-            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">How I work</p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.05]">
-              Five rules,{' '}
-              <span className="gradient-text">no exceptions.</span>
+      {/* === Tim's business rules to live by — consolidated values + voice === */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="max-w-3xl mb-12 md:mb-14">
+            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Owner-operator</p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-6">
+              Tim&apos;s business rules{' '}
+              <span className="gradient-text">to live by.</span>
             </h2>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+              The owner answers the phone, quotes the work, and is on site for every job over $1,000. The name on the truck, the licence, and the invoice is the same name. These are the six rules he holds himself and his crew to, every job, no exceptions.
+            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {[
-              { rule: 'I won\u2019t quote a panel over the phone.', why: 'Service entrances, wire condition, code variances \u2014 they need eyes on. The walkthrough is free.' },
-              { rule: 'The quote you get is the price you pay.', why: 'It doesn\u2019t move unless you change scope. No change orders for things I should have flagged.' },
-              { rule: 'Every permit. Every inspection. Every time.', why: 'If the job needs an ESA permit, we pull it. You get the paperwork at the end.' },
-              { rule: 'I label every breaker by room.', why: 'A panel with a sticker saying \u201cKitchen\u201d on it isn\u2019t finished work. Every circuit gets named.' },
-              { rule: 'I clean up before I leave.', why: 'Drywall dust, wire offcuts, packaging. The site looks like we were never there \u2014 except the work works.' },
+              { rule: 'The owner shows up.', why: 'Tim quotes every job himself and is on site for anything over $1,000. The person you talk to is the person who does the work.' },
+              { rule: 'I won’t quote a panel over the phone.', why: 'Service entrances, wire condition, code variances — they need eyes on. The walkthrough is free.' },
+              { rule: 'The quote you get is the price you pay.', why: 'It doesn’t move unless you change scope. No change orders for things I should have flagged.' },
+              { rule: 'Every permit. Every inspection. Every time.', why: `If the job needs an ESA permit, we pull it. ${client.licenseBody}. You get the paperwork at the end.` },
+              { rule: 'I label every breaker by room.', why: 'A panel with a sticker saying “Kitchen” on it isn’t finished work. Every circuit gets named.' },
+              { rule: 'I clean up before I leave.', why: 'Drywall dust, wire offcuts, packaging. The site looks like we were never there — except the work works.' },
             ].map((r, i) => (
-              <div key={i} className="flex gap-4 bg-gradient-to-br from-amber-50/40 to-white border border-amber-100 rounded-2xl p-5 md:p-6">
+              <div key={i} className="flex gap-4 bg-gradient-to-br from-amber-50/40 to-white border border-amber-100 rounded-2xl p-5 md:p-6 hover:border-amber-200 transition-colors">
                 <div className="w-9 h-9 rounded-lg bg-amber-500 flex items-center justify-center shrink-0 shadow-sm">
                   <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="3">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -223,45 +227,6 @@ export default function AboutPage() {
 
       {/* === Recent work carousel — proof of the rules === */}
       <RecentWork />
-
-      {/* === Three pillars === */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="max-w-2xl mb-12">
-            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">What sets the work apart</p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.05]">
-              Three things,{' '}
-              <span className="gradient-text">no shortcuts.</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {[
-              {
-                num: '01',
-                title: 'Owner-operator',
-                desc: 'The owner answers the phone, quotes the work, and is on site for every job over $1,000. The name on the truck, the licence, and the invoice is the same name.',
-              },
-              {
-                num: '02',
-                title: 'ESA-permitted, ESA-inspected',
-                desc: 'Every job that needs a permit gets one. Every permit gets an inspection. The inspector signs off, and you get the paperwork — for your records, your insurer, or the next buyer if you ever sell.',
-              },
-              {
-                num: '03',
-                title: 'Ontario code, every job',
-                desc: `ESA-certified (licence ${client.licenseNumber}). Tim knows the inspectors and gets the work passed on the first visit. No corners cut, no callbacks for code issues.`,
-              },
-            ].map((v) => (
-              <div key={v.num} className="bg-white rounded-2xl p-7 md:p-8 border border-gray-200 hover:border-amber-300 hover:shadow-md transition-all">
-                <div className="font-display font-bold text-amber-500 text-4xl mb-5 leading-none">{v.num}</div>
-                <h3 className="font-display font-bold text-gray-900 text-xl mb-3 tracking-tight">{v.title}</h3>
-                <p className="text-gray-600 text-[15px] leading-relaxed">{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* === Photo break #2 — different photo than first === */}
       <section className="py-10 md:py-14 bg-gray-50">

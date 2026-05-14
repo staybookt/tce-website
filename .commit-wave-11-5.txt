@@ -1,0 +1,22 @@
+Wave 11.5: Richard feedback round 2 — site search, about consolidation, ESA page
+
+New components:
+- ServiceSearch: "Know what you're looking for?" freeform search above
+  the services grid on the homepage. Matches against service names,
+  keywords, descriptions, and service areas. Top 6 ranked results.
+- /why-esa-licensed: new page explaining ESA vs handyman — permits,
+  inspections, $5M liability, code compliance, insurance claims,
+  warranty, and a verification CTA pointing to esasafe.com/find-an-lec.
+
+About page restructure:
+- Collapsed "How I work" + "Three pillars" into one section: "Tim's
+  business rules to live by" — owner-operator intro + 6 rules. Closes
+  the duplication Richard flagged.
+
+RecentWork carousel:
+- Removed all "3 days ago / 1 week ago" timestamps from job data.
+  Heading changed from "What we've been working on" to "Real jobs.
+  Real neighbourhoods." Eliminates the maintenance burden Richard
+  flagged where timestamps go stale.
+
+Source: Richard feedback memo, May 13. Tier 2.
