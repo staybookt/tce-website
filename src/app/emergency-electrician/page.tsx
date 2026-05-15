@@ -169,7 +169,7 @@ export default function EmergencyElectricianPage() {
             <p className="text-gray-800 text-lg leading-relaxed font-medium">
               Top Choice Electrical provides 24/7 emergency electrical service across York Region — Newmarket, Aurora,
               Richmond Hill, Markham, Vaughan, King City, Stouffville, and surrounding areas. Tim Ciszkowski, an ESA-certified
-              Master Electrician with {client.yearsExperience}+ years of experience, takes emergency calls personally.
+              Master Electrician with {client.yearsExperience} years of experience, takes emergency calls personally.
               Most non-life-threatening emergencies are on-site within 2-4 hours; active sparking, burning, or fire
               situations are prioritized for under-an-hour response. Standard rates during business hours; an after-hours
               call-out rate applies overnight, on Sundays, and on stat holidays — quoted up front before dispatch.
@@ -331,7 +331,7 @@ export default function EmergencyElectricianPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <span className="text-gray-700">{client.yearsExperience}+ years across York Region</span>
+                  <span className="text-gray-700">{client.yearsExperience} years across York Region</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center shrink-0">
