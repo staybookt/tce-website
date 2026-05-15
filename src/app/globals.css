@@ -29,12 +29,40 @@
   --color-green: var(--green);
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--white);
   color: var(--gray-900);
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Mobile: prevent iOS Safari from auto-zooming inputs that have <16px text */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Mobile-only: prevent layout shift from the sticky bottom call bar covering content */
+@media (max-width: 767px) {
+  /* Ensure tap targets meet 44px minimum across the site */
+  a[href^="tel:"], button[type="submit"], button[type="button"][onClick] {
+    min-height: 44px;
+  }
+}
+
+/* Prevent iOS auto-zoom on form inputs by ensuring 16px minimum on mobile */
+@media (max-width: 767px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px;
+  }
 }
 
 /* Premium display font for headlines */
