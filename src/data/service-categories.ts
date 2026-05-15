@@ -26,7 +26,7 @@ export const serviceCategories: ServiceCategory[] = [
   },
   {
     slug: 'ev-energy',
-    title: 'EV & energy',
+    title: 'EV & Energy',
     eyebrow: 'Charging at home, electrified heating',
     description: 'Level 2 EV chargers — Tesla, Grizzl-E, ChargePoint, FLO — plus the dedicated circuits and panel work for heat pumps and modern HVAC.',
     services: [
