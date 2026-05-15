@@ -87,7 +87,7 @@ export default function AreasPage() {
                     Newmarket.
                   </h2>
                   <p className="text-white/70 text-base md:text-lg leading-relaxed mb-6 max-w-xl">
-                    {homeBase.description || `Top Choice Electrical has been wiring Newmarket homes for ${client.yearsExperience}+ years. Most of our panel upgrades and aluminum wiring projects come from this town.`}
+                    {homeBase.description || `Top Choice Electrical has been wiring Newmarket homes for ${client.yearsExperience} years. Most of our panel upgrades and aluminum wiring projects come from this town.`}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-7">
                     {(areaNeighbourhoods['newmarket'] || []).slice(0, 5).map((n) => (
