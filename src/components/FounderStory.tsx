@@ -38,7 +38,7 @@ export default function FounderStory() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-gray-900 font-bold text-sm">{client.yearsExperience}+ Years</p>
+                  <p className="text-gray-900 font-bold text-sm">{client.yearsExperience} Years</p>
                   <p className="text-gray-500 text-xs">Experience</p>
                 </div>
               </div>

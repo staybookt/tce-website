@@ -20,7 +20,7 @@ export default function SchemaMarkup({ type = 'LocalBusiness', serviceName, serv
     logo: `${SITE_URL}/og-image.jpg`,
     telephone: client.phone,
     email: client.email,
-    description: `Licensed, ESA-certified electrician serving York Region and Simcoe County. Panel upgrades, EV chargers, knob-and-tube removal, residential wiring, lighting, generators, and commercial electrical work. ${client.yearsExperience}+ years of experience. Fully insured and bonded.`,
+    description: `Licensed, ESA-certified electrician serving York Region and Simcoe County. Panel upgrades, EV chargers, knob-and-tube removal, residential wiring, lighting, generators, and commercial electrical work. ${client.yearsExperience} years of experience. Fully insured and bonded.`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Newmarket',

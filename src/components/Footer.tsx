@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-4">
             <div className="mb-6">
-              <Logo variant="dark" size="md" />
+              <Logo variant="dark" size="lg" />
             </div>
             <p className="text-white/30 text-sm leading-relaxed mb-8 max-w-xs">
               Licensed, insured ($5M), and trusted by homeowners across York Region and Simcoe County. {client.yearsExperience} years on the tools, {client.yearsInBusiness} on his own.
@@ -82,7 +82,7 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-white/40">
               <p>ESA Licensed: {client.licenseNumber}</p>
               {client.insured && <p>Fully Insured & Bonded</p>}
-              <p>{client.yearsExperience}+ Years Experience</p>
+              <p>{client.yearsExperience} Years Experience</p>
             </div>
           </div>
         </div>

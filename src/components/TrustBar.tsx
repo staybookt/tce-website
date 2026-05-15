@@ -21,7 +21,7 @@ export default function TrustBar() {
       ),
     },
     {
-      value: `${client.yearsExperience}+ Years`,
+      value: `${client.yearsExperience} Years`,
       detail: 'On the tools in York Region',
       icon: (
         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">

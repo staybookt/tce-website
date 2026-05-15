@@ -57,7 +57,7 @@ export default function Header() {
           scrolled ? 'h-16' : 'h-20'
         }`}>
           {/* Logo */}
-          <Logo variant="dark" size={scrolled ? 'sm' : 'md'} />
+          <Logo variant="dark" size={scrolled ? 'md' : 'lg'} />
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
