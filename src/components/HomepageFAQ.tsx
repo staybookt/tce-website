@@ -4,7 +4,7 @@ import FAQSchema from './FAQSchema';
 /**
  * Top-of-funnel FAQ for the homepage. Answers the questions people ask
  * before they call: cost, area coverage, why ESA matters, response time,
- * payment options, warranty. Six questions, short Tim-voice answers.
+ * pricing transparency, warranty. Six questions, short Tim-voice answers.
  *
  * Wired with FAQSchema for Google rich-result eligibility.
  */
@@ -27,8 +27,8 @@ const FAQS = [
     a: 'Most emergencies — power out, breaker tripping repeatedly, a burnt smell from an outlet — Tim is on site the same day. After-hours, weekends, and holidays included. The 24/7 emergency line is the same number as the regular phone: ' + client.phone + '.',
   },
   {
-    q: 'Do you offer payment plans on bigger jobs?',
-    a: 'Panel upgrades, EV charger installs, and full rewires can run $3k–$10k+. For jobs over $2,500, Tim can connect you with home-services financing if that helps spread the cost over 24–60 months. Ask about it on the quote call.',
+    q: 'How does pricing work — do I get the price up front?',
+    a: 'Yes. Tim quotes on-site, in writing, free. The number on the quote is the number on the invoice — no change orders for things he should have flagged on the walkthrough. The only time it moves is if you change the scope.',
   },
   {
     q: 'How long is the warranty on the work?',

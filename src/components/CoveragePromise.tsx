@@ -1,14 +1,10 @@
 import { client } from '@/data/client';
 
 /**
- * Coverage Promise — the trio that closes the affordability + risk-reversal
- * gap vs Right Time portfolio (financing copy, satisfaction guarantee,
- * warranty). Pure copy; no third-party widgets required.
- *
- * Three cards:
- *  1. Guarantee — pass-first-time language tied to ESA inspection
- *  2. Warranty — 2-year labour + manufacturer's parts warranty
- *  3. Payment plans — financing teaser (real partner gets wired in next)
+ * Coverage Promise — what Tim stands behind on every job. Three cards:
+ *   1. Inspection-pass guarantee
+ *   2. 1-year labour warranty + manufacturer parts warranties
+ *   3. The quote is the price (no surprise change orders)
  *
  * Drops onto the homepage + service detail pages as a horizontal three-up.
  */
@@ -36,11 +32,11 @@ const PILLARS: Pillar[] = [
       'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
   },
   {
-    title: 'Big job? Ask about payment plans.',
-    body: 'Panel upgrades, EV charger installs, and full rewires can run $3k–$10k+. I can connect you with home-services financing if that helps — talk to me about it on the quote call.',
-    footnote: 'Most jobs over $2,500 qualify',
+    title: 'The quote is the price.',
+    body: 'I quote on-site, free. The number on the quote is the number on the invoice. No change orders for things I should have flagged on the walkthrough.',
+    footnote: 'On-site quote · No obligation',
     iconPath:
-      'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+      'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
   },
 ];
 
@@ -53,7 +49,7 @@ export default function CoveragePromise() {
             The promise
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
-            Inspected, warrantied, and affordable on the bigger jobs.
+            Inspected. Warrantied. Quoted straight.
           </h2>
         </div>
 
@@ -92,8 +88,8 @@ export default function CoveragePromise() {
         {/* Inline reassurance with call CTA */}
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-amber-50/60 border border-amber-200/60 rounded-xl px-5 md:px-7 py-4 md:py-5">
           <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-            <span className="font-bold text-gray-900">Got a job over $2k?</span>{' '}
-            Ask about payment options on the quote call — most homeowners spread $5k+ jobs over 24–60 months.
+            <span className="font-bold text-gray-900">Not sure what your job needs?</span>{' '}
+            Call Tim. Five minutes, no obligation. He&apos;ll tell you straight whether it&apos;s in his wheelhouse.
           </p>
           <a
             href={`tel:${client.phone}`}

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { client } from '@/data/client';
+import Logo from './Logo';
 
 export default function Footer() {
   return (
@@ -11,16 +12,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Brand */}
           <div className="md:col-span-4">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center ring-2 ring-amber-400/20">
-                <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="currentColor">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                </svg>
-              </div>
-              <div>
-                <span className="font-bold text-xl tracking-tight block font-display">{client.name}</span>
-                <span className="text-white/30 text-xs tracking-[0.12em] uppercase">{client.tagline}</span>
-              </div>
+            <div className="mb-6">
+              <Logo variant="dark" size="md" />
             </div>
             <p className="text-white/30 text-sm leading-relaxed mb-8 max-w-xs">
               Licensed, insured ($5M), and trusted by homeowners across York Region and Simcoe County. {client.yearsExperience} years on the tools, {client.yearsInBusiness} on his own.
