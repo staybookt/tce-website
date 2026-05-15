@@ -9,11 +9,11 @@ import RecentWork from '@/components/RecentWork';
 
 export const metadata: Metadata = {
   title: 'About Tim | Top Choice Electrical',
-  description: `Tim Ciszkowski runs Top Choice Electrical out of Newmarket. ${client.yearsExperience}+ years wiring York Region homes. ESA-certified, insured, bonded. Tim works the job himself.`,
+  description: `Tim Ciszkowski runs Top Choice Electrical out of Newmarket. ${client.yearsExperience} years wiring York Region homes. ESA-certified, insured, bonded. Tim works the job himself.`,
   alternates: { canonical: 'https://www.topchoiceelectrical.ca/about' },
   openGraph: {
     title: 'About Tim | Top Choice Electrical',
-    description: `Tim Ciszkowski runs Top Choice Electrical out of Newmarket. ${client.yearsExperience}+ years wiring York Region homes. ESA-certified, insured, bonded.`,
+    description: `Tim Ciszkowski runs Top Choice Electrical out of Newmarket. ${client.yearsExperience} years wiring York Region homes. ESA-certified, insured, bonded.`,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'About Top Choice Electrical' }],
   },
 };
@@ -142,7 +142,7 @@ export default function AboutPage() {
               </div>
               <div className="flex items-center gap-2">
                 <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                <span className="text-gray-700 font-semibold">{client.yearsExperience}+ years on the tools</span>
+                <span className="text-gray-700 font-semibold">{client.yearsExperience} years on the tools</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
@@ -249,12 +249,13 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {[
               { label: 'ESA Certified', value: client.licenseNumber, sub: client.licenseBody },
-              { label: 'Fully Insured', value: 'General Liability', sub: "WSIB workers' coverage" },
+              { label: 'Liability Coverage', value: '$5,000,000', sub: 'Insured for every job' },
               { label: 'Bonded', value: 'Property Protection', sub: 'Additional security on every job' },
-              { label: 'Experience', value: `${client.yearsExperience}+ Years`, sub: 'Serving York Region & Simcoe' },
+              { label: 'Workmanship', value: '1-Year Warranty', sub: 'Labour-backed on every job' },
+              { label: 'Experience', value: `${client.yearsExperience} Years`, sub: 'Serving York Region & Simcoe' },
             ].map((item, i) => (
               <div key={i} className="bg-gradient-to-br from-amber-50/40 to-white border border-amber-100 rounded-2xl p-6 md:p-7">
                 <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center mb-4 shadow-sm">
@@ -279,7 +280,7 @@ export default function AboutPage() {
               <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Where we work</p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-5">
                 Newmarket-based.{` `}
-                <span className="gradient-text">York Region covered.</span>
+                <span className="gradient-text">York and Simcoe covered.</span>
               </h2>
               <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6">
                 Twelve cities across York Region, Simcoe County, and Durham Region. Same-day quotes everywhere on the map. Click through to see the neighbourhoods we serve in each city.
