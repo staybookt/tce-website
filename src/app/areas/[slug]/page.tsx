@@ -95,7 +95,7 @@ export default async function AreaPage({ params }: Props) {
             </div>
             <div className="flex items-center gap-3 mb-5">
               <div className="h-px w-12 bg-amber-400" />
-              <span className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em]">{area.region} · ESA-Certified</span>
+              <span className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em]">{slug === 'newmarket' ? 'Home Base · Newmarket · ESA-Certified' : `${area.region} · ESA-Certified`}</span>
             </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[0.95] max-w-4xl">
               Electrician in{' '}
