@@ -197,7 +197,7 @@ export default function ServiceSearch() {
                             {m.context}
                           </p>
                         </div>
-                        <span className="text-amber-500 self-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-amber-500 self-center opacity-60 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} className="w-4 h-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>

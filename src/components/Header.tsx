@@ -116,7 +116,7 @@ export default function Header() {
 
       {/* Mobile menu — glass panel */}
       <div className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${
-        mobileOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+        mobileOpen ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'
       }`}>
         <div className="bg-navy-dark/98 backdrop-blur-xl border-t border-white/5">
           <div className="px-4 py-6 space-y-1">

@@ -203,7 +203,7 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
               key={option.value}
               type="button"
               onClick={() => setFormData({ ...formData, urgency: option.value })}
-              className={`py-2.5 px-3 rounded-xl text-xs font-medium border transition-all duration-200 ${
+              className={`min-h-[44px] py-3 px-3 rounded-xl text-xs font-medium border transition-all duration-200 ${
                 formData.urgency === option.value
                   ? option.value === 'emergency'
                     ? 'bg-red/10 border-red/30 text-red'

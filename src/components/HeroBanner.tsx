@@ -37,7 +37,7 @@ export default function HeroBanner() {
       </div>
 
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 py-32 md:py-40 w-full">
+      <div className="relative max-w-7xl mx-auto px-4 py-24 md:py-40 w-full">
         <div className="max-w-4xl" style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
           <div className="inline-flex items-center gap-2.5 bg-white/[0.08] backdrop-blur-md border border-white/[0.12] rounded-full px-5 py-2.5 mb-10">
             <div className="w-2 h-2 rounded-full bg-green animate-pulse" />
@@ -61,13 +61,13 @@ export default function HeroBanner() {
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href={`tel:${client.phone}`}
-              className="btn-premium bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02]"
+              className="btn-premium bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-base px-6 sm:px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02]"
             >
               Call Tim &mdash; {client.phone}
             </a>
             <Link
               href="/contact"
-              className="glass hover:bg-white/10 text-white font-semibold text-base px-10 py-4 rounded-xl transition-all duration-300 text-center hover:scale-[1.02]"
+              className="glass hover:bg-white/10 text-white font-semibold text-base px-6 sm:px-10 py-4 rounded-xl transition-all duration-300 text-center hover:scale-[1.02]"
             >
               Request a quote online
             </Link>

@@ -175,7 +175,7 @@ export default function CallbackForm() {
                     placeholder="Jane Smith"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 focus:bg-white transition-all"
+                    className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-base sm:text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 focus:bg-white transition-all"
                   />
                 </div>
                 <div>
@@ -189,20 +189,20 @@ export default function CallbackForm() {
                     placeholder="(905) 555-1234"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 focus:bg-white transition-all"
+                    className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-base sm:text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 focus:bg-white transition-all"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
                     Best time to call
                   </label>
-                  <div className="grid grid-cols-4 gap-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {TIME_WINDOWS.map((tw) => (
                       <button
                         key={tw.value}
                         type="button"
                         onClick={() => setFormData({ ...formData, timeWindow: tw.value })}
-                        className={`py-2.5 px-2 rounded-xl text-xs font-semibold border transition-all ${
+                        className={`min-h-[44px] py-3 px-2 rounded-xl text-sm sm:text-xs font-semibold border transition-all ${
                           formData.timeWindow === tw.value
                             ? 'bg-amber-500 border-amber-500 text-white shadow-sm'
                             : 'bg-gray-50 border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-100'
@@ -237,7 +237,7 @@ export default function CallbackForm() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold py-3.5 rounded-xl text-sm transition-all shadow-md shadow-amber-500/20 hover:shadow-amber-500/40 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold py-4 rounded-xl text-base sm:text-sm transition-all shadow-md shadow-amber-500/20 hover:shadow-amber-500/40 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {submitting ? (
                     <span className="flex items-center justify-center gap-2">
