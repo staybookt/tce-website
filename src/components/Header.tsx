@@ -64,6 +64,7 @@ export default function Header() {
             {[
               { href: '/services', label: 'Services' },
               { href: '/areas', label: 'Service Areas' },
+              { href: '/why-esa-licensed', label: 'Why ESA?' },
               { href: '/about', label: 'About' },
               { href: '/reviews', label: 'Reviews' },
               { href: '/contact', label: 'Contact' },
@@ -123,6 +124,7 @@ export default function Header() {
             {[
               { href: '/services', label: 'Services' },
               { href: '/areas', label: 'Service Areas' },
+              { href: '/why-esa-licensed', label: 'Why ESA?' },
               { href: '/about', label: 'About' },
               { href: '/reviews', label: 'Reviews' },
               { href: '/contact', label: 'Contact' },
