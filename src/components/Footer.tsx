@@ -89,9 +89,33 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/[0.05] mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/20 text-xs tracking-wide">
-            &copy; {new Date().getFullYear()} {client.name}. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+            <p className="text-white/20 text-xs tracking-wide">
+              &copy; {new Date().getFullYear()} {client.name}. All rights reserved.
+            </p>
+            <span className="hidden sm:inline text-white/10">·</span>
+            <a
+              href="https://www.staybookt.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 text-white/30 hover:text-white/60 transition-colors text-xs"
+              aria-label="Powered by Staybookt"
+            >
+              <span className="tracking-wide">Powered by</span>
+              <span className="inline-flex items-center gap-1.5">
+                {/* Staybookt mark — rounded-square plate with green bolt, mirrors staybookt.com */}
+                <span className="relative w-5 h-5 rounded-md bg-[#0b0d12] flex items-center justify-center shrink-0">
+                  <svg viewBox="0 0 24 24" fill="#22C55E" className="w-3 h-3">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                  </svg>
+                </span>
+                <span className="font-display font-bold tracking-tight">
+                  <span className="text-white/70 group-hover:text-white transition-colors">Stay</span>
+                  <span className="text-green-400 group-hover:text-green-300 transition-colors">bookt</span>
+                </span>
+              </span>
+            </a>
+          </div>
           <div className="flex gap-6 text-xs text-white/20">
             <Link href="/privacy" className="hover:text-white/40 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white/40 transition-colors">Terms of Service</Link>
