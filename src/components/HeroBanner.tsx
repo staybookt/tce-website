@@ -5,9 +5,12 @@ import { client } from '@/data/client';
 export default function HeroBanner() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background — video on capable devices, poster image always paints first */}
+      {/* Background — Tim's real panel work photo. The original design called
+          for a Pexels free-license background video on top of this poster, but
+          the heavy navy gradient overlay below buried 90% of the motion. Audit
+          June 2026 dropped the video — strictly stronger to lead with Tim's
+          actual work, and we save 5.8MB of MP4 from the wire. */}
       <div className="absolute inset-0">
-        {/* Static poster image — paints instantly, also serves as fallback */}
         <Image
           src="/images/work/IMG_5375.webp"
           alt="Top Choice Electrical work in York Region"
@@ -17,21 +20,6 @@ export default function HeroBanner() {
           className="object-cover scale-105"
           style={{ animation: 'fadeIn 2s cubic-bezier(0.16, 1, 0.3, 1)' }}
         />
-        {/* Background video — Pexels free-license electrician footage.
-            autoPlay muted loop playsInline so it works in every modern browser including iOS Safari.
-            Self-hosted in /public/videos. preload=metadata so we don't fetch the whole file upfront. */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover scale-105"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/images/work/IMG_5375.webp"
-          aria-hidden="true"
-        >
-          <source src="/videos/hero-electrical-work.mp4" type="video/mp4" />
-        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/85 via-navy-dark/65 to-navy-dark/90" />
         <div className="absolute inset-0 grain" />
       </div>

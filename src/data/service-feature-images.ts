@@ -1,24 +1,47 @@
-// Per-service "feature" stock photo shown between AEO summary and intro on /services/[slug].
-// Chosen to show OUTCOME or the equipment itself — not generic 'electrician in hardhat' stock.
-// Used alongside the real-photo Recent Work gallery for max visual richness.
+// Per-service "feature" image shown between AEO summary and intro on /services/[slug].
+//
+// History: the original entries were all Unsplash URLs picked by text-description
+// search-rank. Audit (June 2026) found 17 of 18 were wrong — foreign-industrial
+// stock, brand-promo of foreign EV chargers, off-topic shots, or category-
+// mislabeled photos. Same failure mode that killed the before/after slider in Wave 3.
+//
+// Current policy:
+// 1. Where Tim has a real photo that matches the service, use it. Real beats stock.
+// 2. Where Tim doesn't have a photo, use only metadata-verified Unsplash/Pexels
+//    images confirmed to depict the named service in a North American residential
+//    context. No foreign-brand visible, no industrial settings, no "electrician in
+//    hardhat with crossed arms" stock.
+// 3. If neither exists, omit the entry. <ServiceFeatureImage> renders null when
+//    the slug is missing — better null than wrong.
 
 export const serviceFeatureImage: Record<string, string> = {
+  // Kept — only original Unsplash pick that survived the audit.
+  // Generic but plausible residential breakers, no foreign tells.
   'panel-upgrades': 'https://images.unsplash.com/photo-1576446470246-499c738d1c8e?auto=format&fit=crop&w=1600&q=80',
-  'fpe-panel-replacement': 'https://images.unsplash.com/photo-1566417110090-6b15a06ec800?auto=format&fit=crop&w=1600&q=80',
-  'aluminum-wiring': 'https://images.unsplash.com/photo-1635335874521-7987db781153?auto=format&fit=crop&w=1600&q=80',
-  'knob-and-tube-removal': 'https://images.unsplash.com/photo-1652715564391-38cc4475b7f5?auto=format&fit=crop&w=1600&q=80',
-  'esa-safety-inspections': 'https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&w=1600&q=80',
-  'surge-protection': 'https://images.unsplash.com/photo-1645639417590-32e8778b2141?auto=format&fit=crop&w=1600&q=80',
-  'residential-wiring': 'https://images.unsplash.com/photo-1601462904263-f2fa0c851cb9?auto=format&fit=crop&w=1600&q=80',
-  'commercial-electrical': 'https://images.unsplash.com/photo-1607631697491-61972eecf928?auto=format&fit=crop&w=1600&q=80',
-  'ev-charger-installation': 'https://images.unsplash.com/photo-1704475447074-10f039c137dc?auto=format&fit=crop&w=1600&q=80',
-  'battery-backup-installation': 'https://images.unsplash.com/photo-1704474618942-ae933a8edd86?auto=format&fit=crop&w=1600&q=80',
-  'heat-pump-electrical': 'https://images.unsplash.com/photo-1671785253964-bdb43087ed99?auto=format&fit=crop&w=1600&q=80',
-  'pot-light-installation': 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80',
-  'landscape-lighting': 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80',
-  'ceiling-fan-installation': 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80',
-  'smoke-co-detectors': 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1600&q=80',
-  'smart-home-installation': 'https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1600&q=80',
-  'generator-installation': 'https://images.unsplash.com/photo-1620678126869-6fc893412804?auto=format&fit=crop&w=1600&q=80',
-  'hot-tub-wiring': 'https://images.unsplash.com/photo-1693222714437-3aa86b96fa84?auto=format&fit=crop&w=1600&q=80',
+
+  // Tim's real photos — topically matched.
+  'fpe-panel-replacement': '/images/work/IMG_5017.webp',      // clean panel install — what replaces FPE
+  'knob-and-tube-removal': '/images/work/IMG_5017.webp',      // actual K&T job, East Gwillimbury
+  'esa-safety-inspections': '/images/work/IMG_3258.webp',     // clean panel that passed inspection
+  'surge-protection': '/images/work/IMG_3258.webp',           // SPDs mount inside panels
+  'residential-wiring': '/images/work/IMG_6785.webp',         // real interior wiring detail
+  'commercial-electrical': '/images/work/IMG_2638.webp',      // Markham commercial / LED retrofit
+  'ev-charger-installation': '/images/work/IMG_3038.webp',    // Aurora Tesla Wall Connector install
+  'pot-light-installation': '/images/work/IMG_6204.webp',     // Richmond Hill 12-pot install
+  'landscape-lighting': '/images/work/IMG_3610.webp',         // King City 14-fixture estate package
+  'generator-installation': '/images/work/IMG_5695.webp',     // Stouffville 22kW Generac
+
+  // Metadata-verified Pexels/Unsplash replacements where Tim has no photo.
+  // Each URL was verified via photographer caption, tags, and topical-search
+  // inclusion before being added. Eyeball before merging.
+  'battery-backup-installation': 'https://images.pexels.com/photos/33751679/pexels-photo-33751679.jpeg?auto=compress&cs=tinysrgb&w=1600',  // Tesla Powerwall 3 wall-mount, residential
+  'heat-pump-electrical': 'https://images.pexels.com/photos/32497161/pexels-photo-32497161.jpeg?auto=compress&cs=tinysrgb&w=1600',         // outdoor residential HVAC condenser, US front yard
+  'ceiling-fan-installation': 'https://images.pexels.com/photos/4030072/pexels-photo-4030072.jpeg?auto=compress&cs=tinysrgb&w=1600',       // installed residential bedroom ceiling fan
+  'smoke-co-detectors': 'https://images.unsplash.com/photo-1585367437379-e0b71bb18156?auto=format&fit=crop&w=1600&q=80',                   // wall-mounted residential smoke/CO alarm
+  'smart-home-installation': 'https://images.pexels.com/photos/12996907/pexels-photo-12996907.jpeg?auto=compress&cs=tinysrgb&w=1600',      // installed white rocker switches on wall
+
+  // Intentionally omitted — no clean free-stock photo exists, component
+  // renders null. Add when Tim sends a job-site photo from his phone.
+  // 'aluminum-wiring': null
+  // 'hot-tub-wiring': null
 };
