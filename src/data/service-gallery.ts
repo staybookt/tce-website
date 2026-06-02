@@ -1,5 +1,9 @@
 // Per-service photo gallery — real Top Choice work photos rotated by relevance.
 // Drives the <ServiceGallery> component on /services/[slug] pages.
+//
+// IMG_3038 (EV charger photo) was stripped on Tim's instruction — install
+// wasn't to code. Affected services (ev-charger, smart-home, hot-tub,
+// heat-pump, battery-backup) rotated to other Tim photos.
 
 export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
   'panel-upgrades': [
@@ -9,7 +13,7 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
     { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical panel upgrades in York Region' },
   ],
   'ev-charger-installation': [
-    { src: '/images/work/IMG_3038.webp', alt: 'Top Choice Electrical EV charger installation in York Region' },
+    { src: '/images/work/IMG_5017.webp', alt: 'Top Choice Electrical EV charger installation in York Region' },
     { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical EV charger installation in York Region' },
     { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical EV charger installation in York Region' },
     { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical EV charger installation in York Region' },
@@ -60,7 +64,7 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
     { src: '/images/work/IMG_6204.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
     { src: '/images/work/IMG_6785.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
     { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
-    { src: '/images/work/IMG_3038.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
+    { src: '/images/work/IMG_5017.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
   ],
   'esa-safety-inspections': [
     { src: '/images/work/IMG_5017.webp', alt: 'Top Choice Electrical esa safety inspections in York Region' },
@@ -69,7 +73,7 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
     { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical esa safety inspections in York Region' },
   ],
   'hot-tub-wiring': [
-    { src: '/images/work/IMG_3038.webp', alt: 'Top Choice Electrical hot tub wiring in York Region' },
+    { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical hot tub wiring in York Region' },
     { src: '/images/work/IMG_5695.webp', alt: 'Top Choice Electrical hot tub wiring in York Region' },
     { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical hot tub wiring in York Region' },
     { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical hot tub wiring in York Region' },
@@ -88,7 +92,7 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
   ],
   'heat-pump-electrical': [
     { src: '/images/work/IMG_2638.webp', alt: 'Top Choice Electrical heat pump electrical in York Region' },
-    { src: '/images/work/IMG_3038.webp', alt: 'Top Choice Electrical heat pump electrical in York Region' },
+    { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical heat pump electrical in York Region' },
     { src: '/images/work/IMG_5695.webp', alt: 'Top Choice Electrical heat pump electrical in York Region' },
     { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical heat pump electrical in York Region' },
   ],
@@ -96,7 +100,7 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
     { src: '/images/work/IMG_5695.webp', alt: 'Top Choice Electrical battery backup installation in York Region' },
     { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical battery backup installation in York Region' },
     { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical battery backup installation in York Region' },
-    { src: '/images/work/IMG_3038.webp', alt: 'Top Choice Electrical battery backup installation in York Region' },
+    { src: '/images/work/IMG_5017.webp', alt: 'Top Choice Electrical battery backup installation in York Region' },
   ],
   'surge-protection': [
     { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical surge protection in York Region' },

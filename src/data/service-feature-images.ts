@@ -3,7 +3,8 @@
 // History: the original entries were all Unsplash URLs picked by text-description
 // search-rank. Audit (June 2026) found 17 of 18 were wrong — foreign-industrial
 // stock, brand-promo of foreign EV chargers, off-topic shots, or category-
-// mislabeled photos. Same failure mode that killed the before/after slider in Wave 3.
+// mislabeled photos. Tim follow-up (June 2026) flagged IMG_3038 (EV charger photo)
+// as not-to-code — stripped sitewide, replaced with verified Pexels stock.
 //
 // Current policy:
 // 1. Where Tim has a real photo that matches the service, use it. Real beats stock.
@@ -26,12 +27,12 @@ export const serviceFeatureImage: Record<string, string> = {
   'surge-protection': '/images/work/IMG_3258.webp',           // SPDs mount inside panels
   'residential-wiring': '/images/work/IMG_6785.webp',         // real interior wiring detail
   'commercial-electrical': '/images/work/IMG_2638.webp',      // Markham commercial / LED retrofit
-  'ev-charger-installation': '/images/work/IMG_3038.webp',    // Aurora Tesla Wall Connector install
   'pot-light-installation': '/images/work/IMG_6204.webp',     // Richmond Hill 12-pot install
   'landscape-lighting': '/images/work/IMG_3610.webp',         // King City 14-fixture estate package
   'generator-installation': '/images/work/IMG_5695.webp',     // Stouffville 22kW Generac
 
   // Visually-verified Pexels replacements (Chrome navigation + screenshot inspection).
+  'ev-charger-installation': 'https://images.pexels.com/photos/9799734/pexels-photo-9799734.jpeg?auto=compress&cs=tinysrgb&w=1600',        // Tesla Wall Connector handle close-up, Kindel Media
   'heat-pump-electrical': 'https://images.pexels.com/photos/32497161/pexels-photo-32497161.jpeg?auto=compress&cs=tinysrgb&w=1600',         // outdoor residential Carrier condenser, North American home
   'ceiling-fan-installation': 'https://images.pexels.com/photos/4030072/pexels-photo-4030072.jpeg?auto=compress&cs=tinysrgb&w=1600',       // installed residential bedroom ceiling fan
 

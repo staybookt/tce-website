@@ -44,7 +44,10 @@ export const client = {
       name: "EV Charger Installation",
       shortDescription: "Level 2 home EV charger installation. Drive electric, charge at home.",
       icon: "BatteryCharging",
-      image: "/images/work/IMG_3038.webp",
+      // IMG_3038 (Tim's Aurora EV install photo) stripped on Tim's instruction — install
+      // wasn't to code so we don't display it. Replaced with verified Pexels Tesla
+      // Wall Connector close-up (Kindel Media, photo 9799734).
+      image: "https://images.pexels.com/photos/9799734/pexels-photo-9799734.jpeg?auto=compress&cs=tinysrgb&w=1600",
       keywords: ["EV charger installation Newmarket", "home EV charger York Region", "Level 2 charger installation"],
     },
     {
@@ -124,7 +127,9 @@ export const client = {
       name: "Hot Tub Wiring",
       shortDescription: "Dedicated 240V circuits and GFCI disconnects for safe, code-compliant hot tub installations.",
       icon: "Waves",
-      image: "/images/work/IMG_3038.webp",
+      // IMG_3038 was here (the not-to-code EV charger photo). Swapped to IMG_3258
+      // (clean panel install) because hot tub disconnects mount adjacent to the panel.
+      image: "/images/work/IMG_3258.webp",
       keywords: ["hot tub wiring Newmarket", "hot tub electrician Aurora", "240V hot tub circuit York Region"],
     },
     {
