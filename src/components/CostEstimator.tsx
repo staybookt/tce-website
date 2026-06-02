@@ -27,9 +27,9 @@ const services = [
       </svg>
     ),
     options: [
-      { label: 'Charger + outlet', low: 1500, high: 2500, franchiseLow: 2500, franchiseHigh: 4000, included: ['Dedicated power line', 'Heavy-duty outlet', 'All permits & inspection', 'Up to 30ft of wiring'] },
-      { label: 'Charger + panel upgrade', low: 3500, high: 5500, franchiseLow: 5500, franchiseHigh: 8000, included: ['Panel upgraded too', 'Dedicated power line', 'All permits & inspection', 'Done in 1 day'] },
-      { label: 'Tesla Wall Connector', low: 1800, high: 3000, franchiseLow: 3000, franchiseHigh: 4500, included: ['High-speed charging', 'Mounted & wired clean', 'All permits & inspection', 'Wi-Fi connected'] },
+      { label: 'Tesla Wall Connector', low: 1200, high: 2400, franchiseLow: 2400, franchiseHigh: 4000, included: ['Tesla connector included', 'High-speed charging', 'All permits & inspection', 'Wi-Fi connected'] },
+      { label: 'Charger install + outlet', low: 1300, high: 2400, franchiseLow: 2400, franchiseHigh: 4000, included: ['Charger not included', 'Heavy-duty outlet', 'All permits & inspection', 'Up to 30ft of wiring'] },
+      { label: 'Charger install + panel upgrade', low: 3500, high: 5500, franchiseLow: 5500, franchiseHigh: 8000, included: ['Charger not included', 'Panel upgraded too', 'All permits & inspection', 'Done in 1 day'] },
     ],
   },
   {
@@ -83,9 +83,9 @@ const services = [
       </svg>
     ),
     options: [
-      { label: 'Portable setup', low: 1000, high: 1800, franchiseLow: 1800, franchiseHigh: 3000, included: ['Safe power transfer', 'Outdoor plug-in point', 'Powers key rooms', 'All permits included'] },
-      { label: 'Whole home (mid)', low: 8000, high: 14000, franchiseLow: 13000, franchiseHigh: 20000, included: ['Turns on automatically', 'Concrete pad poured', 'Gas line coordinated', '5-year warranty'] },
-      { label: 'Whole home (large)', low: 12000, high: 20000, franchiseLow: 18000, franchiseHigh: 30000, included: ['Turns on automatically', 'Concrete pad poured', 'Gas line coordinated', 'Powers everything'] },
+      { label: 'Portable setup (labour only)', low: 1000, high: 1800, franchiseLow: 1800, franchiseHigh: 3000, included: ['You supply the gen', 'Safe power transfer', 'Outdoor inlet box', 'All permits included'] },
+      { label: 'Whole home (mid-size)', low: 10000, high: 14000, franchiseLow: 13000, franchiseHigh: 20000, included: ['Generator equipment included', 'Concrete pad poured', 'Gas line coordinated', '5-year warranty'] },
+      { label: 'Whole home (large)', low: 14000, high: 20000, franchiseLow: 18000, franchiseHigh: 30000, included: ['Generator equipment included', 'Concrete pad poured', 'Gas line coordinated', 'Powers everything'] },
     ],
   },
 ];
