@@ -95,7 +95,7 @@ export default function Home() {
                 Fair, transparent, in writing.
               </h2>
               <p className="text-white/40 text-base leading-relaxed mb-8">
-                Service calls run $350 for the first three hours, then $85/hour. After-hours and weekend callouts are $500 for three hours. Small jobs under $1,500 have a $150 quote minimum that applies to the work if you book. Panel upgrades $2,500&ndash;$4,500. EV charger installs $1,200&ndash;$5,500 depending on panel work. The quote you get is the price you pay &mdash; it doesn&apos;t move unless you change scope.
+                Service calls are a $350 minimum. That covers up to three hours of work, even if the job runs shorter. Past three hours, $85/hour. After-hours and weekend callouts are a $500 minimum that covers three hours. Small jobs under $1,500 have a $150 quote minimum that applies to the work if you book. Panel upgrades $2,500&ndash;$4,500. EV charger installs $1,200&ndash;$5,500 depending on panel work. The quote you get is the price you pay &mdash; it doesn&apos;t move unless you change scope.
               </p>
               <div className="hidden md:flex items-center gap-4 text-sm text-white/30">
                 <div className="flex items-center gap-2">
