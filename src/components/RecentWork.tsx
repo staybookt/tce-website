@@ -19,7 +19,10 @@ const recentJobs = [
     area: 'Aurora',
     service: 'EV Charger',
     detail: "Family bought their first EV and wanted home charging in the detached garage. Tim ran a dedicated 40A circuit 60ft from the main panel, fished underground through the trench, mounted the Tesla Wall Connector. Half-day job, weatherproofed end-to-end, ESA-permitted.",
-    image: '/images/work/IMG_3038.webp',
+    // IMG_3038 was here (the not-to-code EV photo Tim flagged). Missed in the prior
+    // sitewide sweep — swapped to the Pexels Tesla connector image consistent
+    // with the rest of the site.
+    image: 'https://images.pexels.com/photos/9799734/pexels-photo-9799734.jpeg?auto=compress&cs=tinysrgb&w=1600',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5H18V15H4.5v-4.5z" />
@@ -91,10 +94,10 @@ export default function RecentWork() {
           <div className="max-w-xl">
             <div className="accent-line mb-6" />
             <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1]">
-              Real jobs. Real neighbourhoods.
+              The work, across York Region.
             </h2>
             <p className="text-gray-500 text-lg mt-5">
-              A look at the work — panel upgrades, EV chargers, full rewires across York Region and Simcoe County.
+              Panel upgrades, EV chargers, generators, full rewires. Common projects across York Region and Simcoe County.
             </p>
           </div>
 

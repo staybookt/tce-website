@@ -83,7 +83,7 @@ const services = [
       </svg>
     ),
     options: [
-      { label: 'Portable setup (labour only)', low: 1000, high: 1800, franchiseLow: 1800, franchiseHigh: 3000, included: ['You supply the gen', 'Safe power transfer', 'Outdoor inlet box', 'All permits included'] },
+      { label: 'Portable setup (labour only)', low: 1000, high: 1800, franchiseLow: 1800, franchiseHigh: 3000, included: ['You supply the generator', 'Safe power transfer', 'Outdoor inlet box', 'All permits included'] },
       { label: 'Whole home (mid-size)', low: 10000, high: 14000, franchiseLow: 13000, franchiseHigh: 20000, included: ['Generator equipment included', 'Concrete pad poured', 'Gas line coordinated', '5-year warranty'] },
       { label: 'Whole home (large)', low: 14000, high: 20000, franchiseLow: 18000, franchiseHigh: 30000, included: ['Generator equipment included', 'Concrete pad poured', 'Gas line coordinated', 'Powers everything'] },
     ],
