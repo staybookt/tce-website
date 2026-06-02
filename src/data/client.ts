@@ -3,7 +3,7 @@ export const client = {
   name: "Top Choice Electrical",
   legalName: "Top Choice Electrical",
   phone: "(416) 805-6676",
-  email: "topchoiceelectrical1@gmail.com",
+  email: "tim.ciszko@gmail.com",
   ownerName: "Tim Ciszkowski",
   address: "Newmarket, ON",
   hours: {
@@ -250,7 +250,7 @@ export const client = {
 
   // Lead Delivery
   leadDelivery: {
-    email: "topchoiceelectrical1@gmail.com",
+    email: "tim.ciszko@gmail.com",
     smsNumber: "(416) 805-6676",
   },
 
