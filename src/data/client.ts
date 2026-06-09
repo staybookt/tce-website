@@ -61,7 +61,8 @@ export const client = {
       name: "Pot Light Installation",
       shortDescription: "Clean, modern recessed lighting for any room in your home.",
       icon: "Lightbulb",
-      image: "/images/work/IMG_6204.webp",
+      // Tim's photo: Newmarket home at dusk with glowing soffit pot lights — actual pot light install
+      image: "/images/work/IMG_1140.webp",
       keywords: ["pot light installation Newmarket", "recessed lighting York Region", "LED pot lights"],
     },
     {
@@ -78,7 +79,8 @@ export const client = {
       name: "Residential Wiring",
       shortDescription: "Complete residential electrical wiring for renovations and new builds.",
       icon: "Home",
-      image: "/images/work/IMG_1140.webp",
+      // Tim's photo: interior with pendant chandelier + recessed lighting — whole-home residential wiring work
+      image: "/images/work/IMG_6204.webp",
       keywords: ["residential electrician Newmarket", "house wiring York Region", "electrical wiring renovation"],
     },
     {
