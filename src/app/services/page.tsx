@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import ServiceCard from '@/components/ServiceCard';
 import { client } from '@/data/client';
 import { featuredServiceSlugs } from '@/data/service-categories';
 import ServicesExplorer from '@/components/ServicesExplorer';

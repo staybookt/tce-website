@@ -44,6 +44,35 @@ body {
   text-size-adjust: 100%;
 }
 
+/* ─── Accessibility ─── */
+
+/* Visible keyboard focus ring — replaces the global outline:none */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-to-main-content link — hidden until keyboard focused */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--navy-dark);
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+
 /* Mobile-only: prevent layout shift from the sticky bottom call bar covering content */
 @media (max-width: 767px) {
   /* Ensure tap targets meet 44px minimum across the site */
