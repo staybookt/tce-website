@@ -22,6 +22,11 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// Slugs whose hero image is NOT landscape 16:9 — use object-contain so the
+// whole image is visible, with bg-gray-950 fill that blends into the dark hero gradient.
+// aluminum-wiring: only one Richard ref exists and it's 1:1 square
+const HERO_CONTAIN_SLUGS = new Set(['aluminum-wiring']);
+
 export async function generateStaticParams() {
   return client.services.map((s) => ({ slug: s.slug }));
 }
@@ -56,6 +61,10 @@ export default async function ServicePage({ params }: Props) {
 
   const heroImage = service.image || '/images/work/IMG_3258.webp';
   const heroAlt = `${service.name} by Top Choice Electrical — ESA-certified work in York Region`;
+
+  const heroIsContain = HERO_CONTAIN_SLUGS.has(slug);
+  const heroImageClass = heroIsContain ? 'object-contain' : 'object-cover scale-105';
+  const heroSectionBg = heroIsContain ? 'bg-gray-950' : '';
 
   const showFpeCallout = slug === 'panel-upgrades';
 
@@ -128,7 +137,7 @@ export default async function ServicePage({ params }: Props) {
       )}
 
       {/* === 1. Hero === */}
-      <section className="relative min-h-[56vh] md:min-h-[64vh] flex items-end overflow-hidden">
+      <section className={`relative min-h-[56vh] md:min-h-[64vh] flex items-end overflow-hidden ${heroSectionBg}`}>
         <div className="absolute inset-0">
           <Image
             src={heroImage}
@@ -136,7 +145,7 @@ export default async function ServicePage({ params }: Props) {
             fill
             priority
             sizes="100vw"
-            className="object-cover scale-105"
+            className={heroImageClass}
           />
           <div className="absolute inset-0 hero-gradient" />
           <div className="absolute inset-0 grain" />
