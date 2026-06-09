@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { client } from '@/data/client';
 
 const services = [
   {
@@ -224,7 +225,7 @@ export default function CostEstimator({ variant = 'light' }: CostEstimatorProps)
               Get Your Exact Quote
             </Link>
             <a
-              href="tel:(416) 805-6676"
+              href={`tel:${client.phone}`}
               className={`px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 text-center ${
                 isDark
                   ? 'text-white/50 hover:text-white/70 ring-1 ring-white/[0.08] hover:ring-white/[0.15]'
