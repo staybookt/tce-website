@@ -232,9 +232,9 @@ export default async function ServicePage({ params }: Props) {
                       </div>
                       <div>
                         <p className="text-amber-700 font-bold text-xs uppercase tracking-[0.2em] mb-2">What it costs</p>
-                        <h3 className="font-display text-2xl md:text-3xl font-bold text-gray-900 tracking-tight leading-tight mb-3">
+                        <h2 className="font-display text-2xl md:text-3xl font-bold text-gray-900 tracking-tight leading-tight mb-3">
                           Transparent pricing in writing.
-                        </h3>
+                        </h2>
                         <p className="text-gray-700 text-base md:text-lg leading-relaxed">{content.pricingNote}</p>
                       </div>
                     </div>
