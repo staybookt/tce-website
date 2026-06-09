@@ -52,9 +52,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-full flex flex-col">
+        {/* Skip link — visible on keyboard focus, jumps over the header to main content */}
+        <a href="#main" className="skip-link">Skip to main content</a>
         <SchemaMarkup />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">{children}</main>
         <Footer />
         <ClickToCall />
         <ScrollAnimator />

@@ -3,6 +3,10 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 
+// Three of the six Recent Work cards now use Richard reference images per electrician sub-agent
+// review. Newmarket Panel, Aurora EV, and Richmond Hill Pot Lights stay on Tim's photos (they
+// genuinely depict the service in the right area).
+
 const recentJobs = [
   {
     area: 'Newmarket',
@@ -19,9 +23,6 @@ const recentJobs = [
     area: 'Aurora',
     service: 'EV Charger',
     detail: "Family bought their first EV and wanted home charging in the detached garage. Tim ran a dedicated 40A circuit 60ft from the main panel, fished underground through the trench, mounted the Tesla Wall Connector. Half-day job, weatherproofed end-to-end, ESA-permitted.",
-    // IMG_3038 was here (the not-to-code EV photo Tim flagged). Missed in the prior
-    // sitewide sweep — swapped to the Pexels Tesla connector image consistent
-    // with the rest of the site.
     image: 'https://images.pexels.com/photos/9799734/pexels-photo-9799734.jpeg?auto=compress&cs=tinysrgb&w=1600',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
@@ -33,7 +34,8 @@ const recentJobs = [
     area: 'King City',
     service: 'Landscape Lighting',
     detail: "14-fixture estate package in King City. Pathway lighting up the drive, uplighting on three mature oaks, accent wash on the stone retaining wall. Direct-burial cable to code depth, smart controller wired to the homeowner's phone. Walked the property at dusk to dial in every aim.",
-    image: '/images/work/IMG_3610.webp',
+    // Richard reference: wide estate-at-dusk — most aspirational image in the set, matches King City positioning
+    image: '/images/richard-landscape-2.webp',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636" />
@@ -55,7 +57,8 @@ const recentJobs = [
     area: 'East Gwillimbury',
     service: 'Knob & Tube',
     detail: "Three other electricians had quoted gutting walls. Tim worked the 1920s farmhouse room by room over three days, fishing new NMD-90 through the existing plaster cavities. Plaster stayed up. ESA-permitted, paperwork to the insurer the same week.",
-    image: '/images/work/IMG_5017.webp',
+    // Richard reference: actual K&T wiring in stud cavity — most unambiguous before-removal shot
+    image: '/images/richard-knob-and-tube.webp',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -66,7 +69,8 @@ const recentJobs = [
     area: 'Stouffville',
     service: 'Generator',
     detail: 'Generac 22kW whole-home standby with automatic transfer switch. Customer lost power 4 times last winter. Quoted, permitted, gas line coordinated with the plumber, installed and commissioned in two days. Tested with a simulated outage before we left.',
-    image: '/images/work/IMG_5695.webp',
+    // Richard reference: Generac Guardian Series on brick pad — textbook residential standby
+    image: '/images/richard-generator-primary.webp',
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />

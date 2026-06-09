@@ -44,9 +44,6 @@ export const client = {
       name: "EV Charger Installation",
       shortDescription: "Level 2 home EV charger installation. Drive electric, charge at home.",
       icon: "BatteryCharging",
-      // IMG_3038 (Tim's Aurora EV install photo) stripped on Tim's instruction — install
-      // wasn't to code so we don't display it. Replaced with verified Pexels Tesla
-      // Wall Connector close-up (Kindel Media, photo 9799734).
       image: "https://images.pexels.com/photos/9799734/pexels-photo-9799734.jpeg?auto=compress&cs=tinysrgb&w=1600",
       keywords: ["EV charger installation Newmarket", "home EV charger York Region", "Level 2 charger installation"],
     },
@@ -55,7 +52,8 @@ export const client = {
       name: "Landscape Lighting",
       shortDescription: "Professional outdoor lighting that transforms your property after dark.",
       icon: "Sun",
-      image: "/images/work/IMG_3610.webp",
+      // Richard reference: wide estate at dusk — "pizazz" hero shot
+      image: "/images/richard-landscape-2.webp",
       keywords: ["landscape lighting Newmarket", "outdoor lighting York Region", "garden lighting installation"],
     },
     {
@@ -71,7 +69,8 @@ export const client = {
       name: "Knob & Tube Removal",
       shortDescription: "Safe removal of outdated knob-and-tube wiring to protect your home and family.",
       icon: "ShieldCheck",
-      image: "/images/work/IMG_5017.webp",
+      // Richard reference: actual K&T wiring in stud cavity — textbook before-removal shot
+      image: "/images/richard-knob-and-tube.webp",
       keywords: ["knob and tube removal Newmarket", "knob and tube rewiring York Region", "old wiring replacement"],
     },
     {
@@ -87,7 +86,8 @@ export const client = {
       name: "Commercial Electrical",
       shortDescription: "Reliable electrical services for offices, retail, and light commercial spaces.",
       icon: "Building",
-      image: "/images/work/IMG_5375.webp",
+      // Richard reference: commercial kitchen — reads commercial instantly
+      image: "/images/richard-commercial-primary.webp",
       keywords: ["commercial electrician Newmarket", "commercial electrical York Region", "office electrical"],
     },
     {
@@ -95,7 +95,8 @@ export const client = {
       name: "Generator Installation",
       shortDescription: "Whole-home backup generators so you never lose power when it matters.",
       icon: "Power",
-      image: "/images/work/IMG_5695.webp",
+      // Richard reference: Generac Guardian Series, brick pad, residential
+      image: "/images/richard-generator-primary.webp",
       keywords: ["generator installation Newmarket", "whole home generator York Region", "backup power"],
     },
     {
@@ -111,7 +112,8 @@ export const client = {
       name: "Smart Home Installation",
       shortDescription: "Smart thermostats, lighting, and security systems wired and set up properly.",
       icon: "Wifi",
-      image: "/images/work/IMG_6204.webp",
+      // Richard reference: smart home control panel, modern kitchen context
+      image: "/images/richard-smart-home.webp",
       keywords: ["smart home electrician Newmarket", "smart thermostat installation York Region", "smart lighting installation"],
     },
     {
@@ -127,8 +129,6 @@ export const client = {
       name: "Hot Tub Wiring",
       shortDescription: "Dedicated 240V circuits and GFCI disconnects for safe, code-compliant hot tub installations.",
       icon: "Waves",
-      // IMG_3038 was here (the not-to-code EV charger photo). Swapped to IMG_3258
-      // (clean panel install) because hot tub disconnects mount adjacent to the panel.
       image: "/images/work/IMG_3258.webp",
       keywords: ["hot tub wiring Newmarket", "hot tub electrician Aurora", "240V hot tub circuit York Region"],
     },
@@ -145,7 +145,8 @@ export const client = {
       name: "Aluminum Wiring Remediation",
       shortDescription: "Pigtailing and full aluminum wiring replacement for homes built between 1965 and 1976.",
       icon: "Cable",
-      image: "/images/work/IMG_1140.webp",
+      // Richard reference: aluminum branch wiring inside panel — actual remediation context
+      image: "/images/richard-aluminum-wiring.webp",
       keywords: ["aluminum wiring remediation York Region", "aluminum wiring pigtailing Newmarket", "AlumiConn connectors Aurora"],
     },
     {
@@ -153,7 +154,8 @@ export const client = {
       name: "Heat Pump Electrical",
       shortDescription: "Dedicated 240V circuits and panel work for heat pump installations and Greener Homes rebates.",
       icon: "Thermometer",
-      image: "/images/work/IMG_2638.webp",
+      // Richard reference: single outdoor heat pump unit — installed equipment
+      image: "/images/richard-heat-pump-primary.webp",
       keywords: ["heat pump electrical Newmarket", "heat pump wiring York Region", "Greener Homes electrician Aurora"],
     },
     {
@@ -169,7 +171,8 @@ export const client = {
       name: "Whole-Home Surge Protection",
       shortDescription: "Type 2 surge protective devices installed at the panel to protect electronics from grid surges.",
       icon: "Shield",
-      image: "/images/work/IMG_3258.webp",
+      // Richard reference: WHOLE HOUSE SURGE PROTECTOR mounted next to residential panel
+      image: "/images/richard-surge-protection.webp",
       keywords: ["whole home surge protector Newmarket", "Type 2 SPD York Region", "surge protection installation Aurora"],
     },
     {
@@ -177,7 +180,8 @@ export const client = {
       name: "Ceiling Fan Installation",
       shortDescription: "Ceiling fan installation including new ceiling boxes and circuits where none exist.",
       icon: "Fan",
-      image: "/images/work/IMG_6204.webp",
+      // Richard reference: residential ceiling fan in warm living room — NOT the HVLS industrial fan (2)
+      image: "/images/richard-ceiling-fan-primary.webp",
       keywords: ["ceiling fan installation Newmarket", "ceiling fan electrician York Region", "ceiling fan wiring Aurora"],
     },
   ],
@@ -234,9 +238,6 @@ export const client = {
     },
   ],
 
-  // Reviews are pulled from Google Business Profile once it's live.
-  // No placeholder reviews are displayed — the homepage shows a
-  // "references available on request" block until real reviews exist.
   reviews: [] as Array<{
     name: string;
     location: string;
@@ -245,16 +246,13 @@ export const client = {
     service: string;
   }>,
 
-  // Payment
   paymentMethods: ["Cash", "Cheque", "Interac e-Transfer", "Credit Card"],
 
-  // Lead Delivery
   leadDelivery: {
     email: "tim.ciszko@gmail.com",
     smsNumber: "(416) 805-6676",
   },
 
-  // SEO
   primaryKeyword: "electrician Newmarket",
   secondaryKeywords: [
     "electrician York Region",
@@ -266,7 +264,6 @@ export const client = {
   googleRating: null as number | null,
   reviewCount: 0,
 
-  // Social (to be set up)
   social: {
     facebook: null as string | null,
     instagram: null as string | null,
