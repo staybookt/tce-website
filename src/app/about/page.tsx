@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      {/* === Hero — elevated === */}
+      {/* === Hero — Tim hands-on, on-topic for /about === */}
       <section className="relative min-h-[56vh] md:min-h-[64vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -52,10 +52,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === Trust strip === */}
       <TrustStrip />
 
-      {/* === Story Section — drop cap === */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-start">
@@ -75,14 +73,10 @@ export default function AboutPage() {
                 <p>
                   Tim runs a small crew now &mdash; small enough that he&apos;s still on every site visit over $1,000, still pulls every permit himself, and still answers the phone when it rings. If you call this number, you&apos;re going to talk to him.
                 </p>
-
               </div>
             </div>
 
-            {/* Tim portrait placeholder + stats */}
             <div className="animate-on-scroll lg:sticky lg:top-28 space-y-5">
-              {/* Portrait card — placeholder uses real work photo cropped portrait.
-                  Swap src to actual Tim headshot when one is available. */}
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
                 <Image
                   src="/images/work/IMG_5375.webp"
@@ -121,7 +115,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === Byline banner — horizontal === */}
       <section className="bg-gradient-to-r from-amber-50 via-amber-50/60 to-amber-50 border-y border-amber-100">
         <div className="max-w-7xl mx-auto px-4 py-6 md:py-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
@@ -153,7 +146,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === Photo break === */}
       <section className="py-8 md:py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <PhotoBreak
@@ -164,7 +156,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === Pull quote — housing stock by decade === */}
       <section className="py-10 md:py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <div className="relative py-6 md:py-8">
@@ -186,7 +177,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === Tim's business rules to live by — consolidated values + voice === */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="max-w-3xl mb-12 md:mb-14">
@@ -225,10 +215,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === Recent work carousel — proof of the rules === */}
       <RecentWork />
 
-      {/* === Photo break #2 — landscape estate at dusk, contrasts the panel hero/PhotoBreak #1 === */}
       <section className="py-10 md:py-14 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <PhotoBreak
@@ -239,7 +227,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === Credentials — light theme, cleaner === */}
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl mb-10">
@@ -272,7 +259,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === Where we work — compact link to /areas === */}
       <section className="relative py-16 md:py-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
@@ -296,7 +282,6 @@ export default function AboutPage() {
               </Link>
             </div>
 
-            {/* Mini map — visual */}
             <div className="relative aspect-square max-w-md mx-auto">
               <div className="absolute inset-0 bg-amber-200/30 rounded-full blur-3xl scale-90 pointer-events-none" />
               <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-amber-50/50 via-white to-amber-50/30 border border-amber-100 shadow-lg overflow-hidden">
@@ -307,10 +292,8 @@ export default function AboutPage() {
                       <stop offset="100%" stopColor="#fcd34d" stopOpacity="0" />
                     </radialGradient>
                   </defs>
-                  {/* Zone fill */}
                   <circle cx="50" cy="50" r="42" fill="url(#mini-zone)" />
                   <circle cx="50" cy="50" r="42" fill="none" stroke="#f59e0b" strokeWidth="0.25" strokeDasharray="1 1.4" opacity="0.5" />
-                  {/* 11 city dots at approximate positions */}
                   {[[50,32],[47,21],[34,22],[26,32],[26,46],[33,58],[50,58],[44,62],[60,66],[68,58],[72,44]].map(([x,y],i) => (
                     <g key={i}>
                       <circle cx={x} cy={y} r="2.2" fill="#f59e0b" opacity="0.2" />
@@ -318,7 +301,6 @@ export default function AboutPage() {
                       <circle cx={x} cy={y} r="0.55" fill="#fff" />
                     </g>
                   ))}
-                  {/* HQ pulse */}
                   <circle cx="50" cy="50" r="3" fill="none" stroke="#f59e0b" strokeWidth="0.4" opacity="0">
                     <animate attributeName="r" from="3" to="10" dur="3s" repeatCount="indefinite" />
                     <animate attributeName="opacity" from="0.7" to="0" dur="3s" repeatCount="indefinite" />
@@ -333,7 +315,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === Brands installed === */}
       <section className="py-14 md:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
@@ -371,13 +352,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* === CTA === */}
+      {/* === CTA — lifestyle home at dusk closer (was Tim panel — redundant with hero) === */}
       <SectionCTA
         eyebrow="Talk to Tim"
         headline="Same-day quote. Same number every time."
         body="Single outlet to full rewire — Tim picks up, Tim quotes, Tim shows up."
-        image="/images/work/IMG_5375.webp"
-        imageAlt="Tim Ciszkowski on residential panel work in York Region"
+        image="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        imageAlt="Illuminated home at dusk in York Region — the homes Top Choice Electrical serves"
         primaryCTA={{ label: `Call Tim — ${client.phone}`, href: `tel:${client.phone}` }}
         secondaryCTA={{ label: 'Request a quote online', href: '/contact' }}
       />
