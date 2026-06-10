@@ -20,7 +20,6 @@ export const metadata: Metadata = {
 export default function ReviewsPage() {
   return (
     <>
-      {/* Hero — lifestyle: family on couch reading, evening */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -28,6 +27,7 @@ export default function ReviewsPage() {
             alt="Family relaxing in their warm-lit home — York Region homeowners served by Top Choice Electrical"
             fill
             priority
+            unoptimized
             sizes="100vw"
             className="object-cover"
           />
@@ -48,7 +48,6 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      {/* Reviews Grid */}
       <section className="py-24 md:py-32 bg-gray-50 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, var(--navy) 1px, transparent 0)`,
@@ -78,7 +77,6 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      {/* Google Review CTA */}
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-3xl mx-auto px-4">
           <div className="animate-on-scroll">
@@ -110,14 +108,14 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      {/* CTA — lifestyle: home at dusk */}
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            alt="Illuminated home at dusk in York Region — the homeowners who refer Top Choice Electrical"
+            alt="Illuminated home at dusk in York Region"
             fill
             sizes="100vw"
+            unoptimized
             className="object-cover"
           />
           <div className="absolute inset-0 bg-navy-dark/85" />
