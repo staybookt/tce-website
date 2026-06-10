@@ -5,10 +5,11 @@
 // - Originally rotated Tim's real photos.
 // - Tim feedback June 2026: IMG_3038 (not-to-code EV photo) removed from all rotations.
 // - Richard reference batch + patch + round 2 + Tim battery-backup: every Richard ref appears in at least one rotation.
+// - June 10 2026: Panel Upgrades (modern clean) vs FPE Panel Replacement (aged worn) — now visually distinct.
 
 export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
   'panel-upgrades': [
-    { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical panel upgrades in York Region' },
+    { src: '/images/panel-modern-upgrade.webp', alt: 'Professional modern electrical panel upgrade installation in York Region' },
     { src: '/images/work/IMG_5017.webp', alt: 'Top Choice Electrical panel upgrades in York Region' },
     { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical panel upgrades in York Region' },
     { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical panel upgrades in York Region' },
@@ -80,7 +81,7 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
     { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical hot tub wiring in York Region' },
   ],
   'fpe-panel-replacement': [
-    { src: '/images/work/IMG_5017.webp', alt: 'Top Choice Electrical fpe panel replacement in York Region' },
+    { src: '/images/panel-old-fpe.webp', alt: 'Professional aged FPE panel — dangerous deteriorated state showing need for replacement in York Region' },
     { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical fpe panel replacement in York Region' },
     { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical fpe panel replacement in York Region' },
     { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical fpe panel replacement in York Region' },
