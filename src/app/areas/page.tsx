@@ -26,7 +26,6 @@ export default function AreasPage() {
 
   return (
     <>
-      {/* === Hero === */}
       <section className="relative min-h-[56vh] md:min-h-[64vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -34,6 +33,7 @@ export default function AreasPage() {
             alt="Illuminated suburban home at dusk — Top Choice Electrical serves York Region neighbourhoods like this"
             fill
             priority
+            unoptimized
             sizes="100vw"
             className="object-cover scale-105"
           />
@@ -57,10 +57,8 @@ export default function AreasPage() {
         </div>
       </section>
 
-      {/* === Trust strip === */}
       <TrustStrip />
 
-      {/* === Featured home base — Newmarket === */}
       {homeBase && (
         <section className="py-16 md:py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4">
@@ -111,13 +109,9 @@ export default function AreasPage() {
         </section>
       )}
 
-      {/* === Service area map === */}
       <ServiceAreaMap />
-
-      {/* === Cities and neighbourhoods by region === */}
       <AreasByRegion />
 
-      {/* === Photo break — cozy family room with pot lights + fireplace */}
       <section className="py-14 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <PhotoBreak
@@ -128,7 +122,6 @@ export default function AreasPage() {
         </div>
       </section>
 
-      {/* === Pull quote === */}
       <section className="pb-16 md:pb-20 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <div className="relative py-6 md:py-8">
@@ -150,7 +143,6 @@ export default function AreasPage() {
         </div>
       </section>
 
-      {/* === CTA === */}
       <SectionCTA
         eyebrow="Outside the 12 cities?"
         headline="Not sure if we cover your area?"

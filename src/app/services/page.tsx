@@ -6,6 +6,8 @@ import { featuredServiceSlugs } from '@/data/service-categories';
 import ServicesExplorer from '@/components/ServicesExplorer';
 import SectionCTA from '@/components/SectionCTA';
 
+const isExt = (src: string) => src.startsWith('http://') || src.startsWith('https://');
+
 export const metadata: Metadata = {
   title: 'Electrical Services | Newmarket & York Region',
   description: 'Panel upgrades, EV chargers, landscape lighting, full rewires, knob-and-tube removal, generators, smart home installs, ESA inspections. 18 services across York Region. Same-day quotes.',
@@ -26,7 +28,6 @@ export default function ServicesPage() {
 
   return (
     <>
-      {/* === Hero === */}
       <section className="relative min-h-[44vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -34,6 +35,7 @@ export default function ServicesPage() {
             alt="Illuminated home at dusk in York Region — the outcome of clean residential electrical work"
             fill
             priority
+            unoptimized
             sizes="100vw"
             className="object-cover"
           />
@@ -54,7 +56,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* === Jump nav — sticky scroll anchors === */}
       <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4">
           <nav aria-label="Quick links" className="flex gap-1 overflow-x-auto py-3 -mx-1 px-1">
@@ -74,7 +75,6 @@ export default function ServicesPage() {
         </div>
       </div>
 
-      {/* === Featured row — three high-intent cards === */}
       <section id="featured" className="py-16 md:py-20 bg-gray-50 relative overflow-hidden scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 relative">
           <div className="max-w-2xl mb-10">
@@ -85,34 +85,37 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
-            {featuredServices.map((s) => (
-              <Link
-                key={s.slug}
-                href={`/services/${s.slug}`}
-                className="group block relative rounded-2xl overflow-hidden min-h-[280px] md:min-h-[320px] bg-gray-900"
-              >
-                <Image
-                  src={s.image || '/images/work/IMG_3258.webp'}
-                  alt={s.name}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-gray-900/20" />
-                <div className="relative h-full flex flex-col justify-end p-7 md:p-8">
-                  <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">{s.name}</h3>
-                  <p className="text-white/60 text-sm leading-relaxed mb-5">{s.shortDescription}</p>
-                  <div className="flex items-center gap-2 text-amber-400 font-semibold text-sm">
-                    <span>See details</span>
-                    <svg className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+            {featuredServices.map((s) => {
+              const cardImg = s.image || '/images/work/IMG_3258.webp';
+              return (
+                <Link
+                  key={s.slug}
+                  href={`/services/${s.slug}`}
+                  className="group block relative rounded-2xl overflow-hidden min-h-[280px] md:min-h-[320px] bg-gray-900"
+                >
+                  <Image
+                    src={cardImg}
+                    alt={s.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    unoptimized={isExt(cardImg)}
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-gray-900/20" />
+                  <div className="relative h-full flex flex-col justify-end p-7 md:p-8">
+                    <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">{s.name}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed mb-5">{s.shortDescription}</p>
+                    <div className="flex items-center gap-2 text-amber-400 font-semibold text-sm">
+                      <span>See details</span>
+                      <svg className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
 
-            {/* Emergency card */}
             <Link
               href="/emergency-electrician"
               className="group block relative rounded-2xl overflow-hidden min-h-[280px] md:min-h-[320px] bg-red-950"
@@ -144,12 +147,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* === Filterable services explorer === */}
       <div id="explorer" className="scroll-mt-20">
         <ServicesExplorer />
       </div>
 
-      {/* === Single closing CTA === */}
       <SectionCTA
         eyebrow="Don't see your job?"
         headline="If it involves wires, the answer is probably yes."
