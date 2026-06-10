@@ -3,9 +3,10 @@
 // History:
 // - June 2026 audit (PR #16): replaced 17 of 18 original Unsplash picks with Tim's photos + verified stock
 // - June 2026 Tim feedback (PR #17): removed IMG_3038 (not-to-code EV photo) sitewide
-// - June 2026 Richard reference batch: Richard provided 14 stock reference images via email,
-//   verified by electrician sub-agent before use. These are now the primary feature images
-//   for 9 services. Tim's photos remain in the gallery rotation alongside.
+// - June 2026 Richard reference batch: Richard provided 14 stock reference images via email.
+//   These are now the primary feature images for 9 services.
+// - June 2026 patch: added (2) versions of smart-home and surge-protection that were initially
+//   skipped on agent judgment — reversed because every image Jacob hands over gets used.
 
 export const serviceFeatureImage: Record<string, string> = {
   // Kept — only original Unsplash pick that survived the audit.
@@ -26,8 +27,8 @@ export const serviceFeatureImage: Record<string, string> = {
   'generator-installation': '/images/richard-generator-2.webp',               // Generac + meter base + disconnect
   'heat-pump-electrical': '/images/richard-heat-pump-2.webp',                 // twin outdoor units
   'landscape-lighting': '/images/richard-landscape-primary.webp',             // tight shot of path + uplights
-  'smart-home-installation': '/images/richard-smart-home.webp',               // wall-mount control panel
-  'surge-protection': '/images/richard-surge-protection.webp',                // labeled SPD next to panel
+  'smart-home-installation': '/images/richard-smart-home-2.webp',             // (2) version — feature distinct from hero
+  'surge-protection': '/images/richard-surge-protection-2.webp',              // (2) version — feature distinct from hero
 
   // Intentionally omitted — component renders null gracefully.
   // 'battery-backup-installation': null — Pexels/Unsplash Powerwall stock all has installer branding or wrong product
