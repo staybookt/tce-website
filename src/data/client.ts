@@ -61,8 +61,8 @@ export const client = {
       name: "Pot Light Installation",
       shortDescription: "Clean, modern recessed lighting for any room in your home.",
       icon: "Lightbulb",
-      // Tim's photo: Newmarket home at dusk with glowing soffit pot lights — actual pot light install
-      image: "/images/work/IMG_1140.webp",
+      // Richard round 2: open-concept living room with 4 illuminated recessed pots — unambiguous pot light photo
+      image: "/images/richard-pot-lights.webp",
       keywords: ["pot light installation Newmarket", "recessed lighting York Region", "LED pot lights"],
     },
     {
@@ -131,7 +131,8 @@ export const client = {
       name: "Hot Tub Wiring",
       shortDescription: "Dedicated 240V circuits and GFCI disconnects for safe, code-compliant hot tub installations.",
       icon: "Waves",
-      image: "/images/work/IMG_3258.webp",
+      // Richard round 2: GFCI disconnect mounted next to outdoor hot tub — canonical hot-tub electrical photo
+      image: "/images/richard-hot-tub.webp",
       keywords: ["hot tub wiring Newmarket", "hot tub electrician Aurora", "240V hot tub circuit York Region"],
     },
     {
