@@ -1,12 +1,13 @@
 // Per-service photo gallery — 4 rotating images per service page.
 // Drives the <ServiceGallery> component on /services/[slug] pages.
 //
-// UPDATED: June 10 2026 — Removed Tim's amateur photos, replaced with professional Richard-style images
-// for visual consistency across all services. Goal: cohesive brand aesthetic, no more amateur/pro dissonance.
+// UPDATED: June 10 2026 — Professional quality images for visual consistency.
+// Panel Upgrades: improved professional panel image.
+// CTA section: night/evening landscape lighting for high-impact visual appeal.
 
 export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
   'panel-upgrades': [
-    { src: '/images/richard-commercial-primary.webp', alt: 'Professional electrical panel upgrades in York Region' },
+    { src: '/images/panel-upgrade-professional.webp', alt: 'Professional electrical panel upgrades in York Region' },
     { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical panel upgrades in York Region' },
     { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical panel upgrades in York Region' },
     { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical panel upgrades in York Region' },
@@ -18,7 +19,7 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
     { src: '/images/richard-generator-primary.webp', alt: 'Residential electrical upgrade work' },
   ],
   'landscape-lighting': [
-    { src: '/images/richard-landscape-primary.webp', alt: 'Professional landscape lighting installation in York Region' },
+    { src: '/images/landscape-lighting-night.webp', alt: 'Professional night landscape lighting installation in York Region' },
     { src: '/images/richard-landscape-2.webp', alt: 'Top Choice Electrical landscape lighting in York Region' },
     { src: '/images/work/IMG_3610.webp', alt: 'Top Choice Electrical landscape lighting in York Region' },
     { src: '/images/richard-knob-and-tube.webp', alt: 'Professional electrical work in York Region' },
@@ -112,5 +113,8 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
     { src: '/images/richard-ceiling-fan-install.webp', alt: 'Ceiling fan electrical installation in York Region' },
     { src: '/images/richard-ceiling-fan-2.webp', alt: 'Top Choice Electrical ceiling fan installation in York Region' },
     { src: '/images/richard-residential-wiring.webp', alt: 'Professional electrical installation work' },
+  ],
+  'cta-featured': [
+    { src: '/images/landscape-lighting-night.webp', alt: 'Professional night landscape lighting in York Region' },
   ],
 };
