@@ -44,7 +44,8 @@ export const client = {
       name: "EV Charger Installation",
       shortDescription: "Level 2 home EV charger installation. Drive electric, charge at home.",
       icon: "BatteryCharging",
-      image: "https://images.pexels.com/photos/9799734/pexels-photo-9799734.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      // Pexels free-licence: blue EV plugged into wall-mounted home charger — residential outcome, not a product close-up.
+      image: "https://images.pexels.com/photos/27355835/pexels-photo-27355835.jpeg?auto=compress&cs=tinysrgb&w=1600",
       keywords: ["EV charger installation Newmarket", "home EV charger York Region", "Level 2 charger installation"],
     },
     {
@@ -52,7 +53,6 @@ export const client = {
       name: "Landscape Lighting",
       shortDescription: "Professional outdoor lighting that transforms your property after dark.",
       icon: "Sun",
-      // Richard reference: wide estate at dusk — "pizazz" hero shot
       image: "/images/richard-landscape-2.webp",
       keywords: ["landscape lighting Newmarket", "outdoor lighting York Region", "garden lighting installation"],
     },
@@ -61,7 +61,6 @@ export const client = {
       name: "Pot Light Installation",
       shortDescription: "Clean, modern recessed lighting for any room in your home.",
       icon: "Lightbulb",
-      // Richard round 2: open-concept living room with 4 illuminated recessed pots
       image: "/images/richard-pot-lights.webp",
       keywords: ["pot light installation Newmarket", "recessed lighting York Region", "LED pot lights"],
     },
@@ -70,7 +69,6 @@ export const client = {
       name: "Knob & Tube Removal",
       shortDescription: "Safe removal of outdated knob-and-tube wiring to protect your home and family.",
       icon: "ShieldCheck",
-      // Richard reference: actual K&T wiring in stud cavity
       image: "/images/richard-knob-and-tube.webp",
       keywords: ["knob and tube removal Newmarket", "knob and tube rewiring York Region", "old wiring replacement"],
     },
@@ -87,7 +85,6 @@ export const client = {
       name: "Commercial Electrical",
       shortDescription: "Reliable electrical services for offices, retail, and light commercial spaces.",
       icon: "Building",
-      // Richard reference: commercial kitchen
       image: "/images/richard-commercial-primary.webp",
       keywords: ["commercial electrician Newmarket", "commercial electrical York Region", "office electrical"],
     },
@@ -96,7 +93,6 @@ export const client = {
       name: "Generator Installation",
       shortDescription: "Whole-home backup generators so you never lose power when it matters.",
       icon: "Power",
-      // Richard reference: Generac Guardian Series
       image: "/images/richard-generator-primary.webp",
       keywords: ["generator installation Newmarket", "whole home generator York Region", "backup power"],
     },
@@ -105,8 +101,6 @@ export const client = {
       name: "Smoke & CO Detectors",
       shortDescription: "Code-compliant smoke and carbon monoxide detector installation and upgrades.",
       icon: "AlertTriangle",
-      // Pexels free-licence: smoke detector + LED bulbs + smart camera — residential electrical fixtures composition.
-      // Was IMG_6785 (pool store interior with a tiny detector in the ceiling) which Jacob flagged as not-actually-a-detector-photo.
       image: "https://images.pexels.com/photos/25020272/pexels-photo-25020272.jpeg?auto=compress&cs=tinysrgb&w=1600",
       keywords: ["smoke detector installation Newmarket", "carbon monoxide detector York Region", "CO detector installation"],
     },
@@ -115,7 +109,6 @@ export const client = {
       name: "Smart Home Installation",
       shortDescription: "Smart thermostats, lighting, and security systems wired and set up properly.",
       icon: "Wifi",
-      // Richard reference: smart home control panel
       image: "/images/richard-smart-home.webp",
       keywords: ["smart home electrician Newmarket", "smart thermostat installation York Region", "smart lighting installation"],
     },
@@ -124,7 +117,8 @@ export const client = {
       name: "ESA Safety Inspections",
       shortDescription: "Certified electrical safety inspections for home sales, insurance, and peace of mind.",
       icon: "ClipboardCheck",
-      image: "/images/work/IMG_5017.webp",
+      // Pexels free-licence: electrician inspecting residential fuse box — outcome (you get a real inspection), not a close-up of a panel interior.
+      image: "https://images.pexels.com/photos/32497160/pexels-photo-32497160.jpeg?auto=compress&cs=tinysrgb&w=1600",
       keywords: ["ESA inspection Newmarket", "electrical safety inspection York Region", "home electrical inspection"],
     },
     {
@@ -132,7 +126,6 @@ export const client = {
       name: "Hot Tub Wiring",
       shortDescription: "Dedicated 240V circuits and GFCI disconnects for safe, code-compliant hot tub installations.",
       icon: "Waves",
-      // Richard round 2: GFCI disconnect mounted next to outdoor hot tub
       image: "/images/richard-hot-tub.webp",
       keywords: ["hot tub wiring Newmarket", "hot tub electrician Aurora", "240V hot tub circuit York Region"],
     },
@@ -149,7 +142,6 @@ export const client = {
       name: "Aluminum Wiring Remediation",
       shortDescription: "Pigtailing and full aluminum wiring replacement for homes built between 1965 and 1976.",
       icon: "Cable",
-      // Richard reference: aluminum branch wiring inside panel
       image: "/images/richard-aluminum-wiring.webp",
       keywords: ["aluminum wiring remediation York Region", "aluminum wiring pigtailing Newmarket", "AlumiConn connectors Aurora"],
     },
@@ -158,7 +150,6 @@ export const client = {
       name: "Heat Pump Electrical",
       shortDescription: "Dedicated 240V circuits and panel work for heat pump installations and Greener Homes rebates.",
       icon: "Thermometer",
-      // Richard reference: single outdoor heat pump unit
       image: "/images/richard-heat-pump-primary.webp",
       keywords: ["heat pump electrical Newmarket", "heat pump wiring York Region", "Greener Homes electrician Aurora"],
     },
@@ -167,7 +158,6 @@ export const client = {
       name: "Battery Backup Installation",
       shortDescription: "Tesla Powerwall, Generac PWRcell, and Enphase home battery installations.",
       icon: "BatteryFull",
-      // Tim sent: Tesla Powerwall + Gateway + inverter garage install
       image: "/images/tim-battery-backup.webp",
       keywords: ["Tesla Powerwall installation York Region", "home battery backup Newmarket", "Generac PWRcell Aurora"],
     },
@@ -176,7 +166,6 @@ export const client = {
       name: "Whole-Home Surge Protection",
       shortDescription: "Type 2 surge protective devices installed at the panel to protect electronics from grid surges.",
       icon: "Shield",
-      // Richard reference: WHOLE HOUSE SURGE PROTECTOR mounted next to residential panel
       image: "/images/richard-surge-protection.webp",
       keywords: ["whole home surge protector Newmarket", "Type 2 SPD York Region", "surge protection installation Aurora"],
     },
@@ -185,7 +174,6 @@ export const client = {
       name: "Ceiling Fan Installation",
       shortDescription: "Ceiling fan installation including new ceiling boxes and circuits where none exist.",
       icon: "Fan",
-      // Richard reference: residential ceiling fan in warm living room
       image: "/images/richard-ceiling-fan-primary.webp",
       keywords: ["ceiling fan installation Newmarket", "ceiling fan electrician York Region", "ceiling fan wiring Aurora"],
     },
