@@ -22,10 +22,8 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-// Slugs whose hero image is NOT landscape 16:9 — use object-contain so the
-// whole image is visible, with bg-gray-950 fill that blends into the dark hero gradient.
-// aluminum-wiring: only one Richard ref exists and it's 1:1 square
 const HERO_CONTAIN_SLUGS = new Set(['aluminum-wiring']);
+const isExt = (src: string) => src.startsWith('http://') || src.startsWith('https://');
 
 export async function generateStaticParams() {
   return client.services.map((s) => ({ slug: s.slug }));
@@ -79,7 +77,6 @@ export default async function ServicePage({ params }: Props) {
         ]}
       />
 
-      {/* HowTo Schema (invisible) */}
       {content.howToSteps && content.howToSteps.length > 0 && (
         <script
           type="application/ld+json"
@@ -101,7 +98,6 @@ export default async function ServicePage({ params }: Props) {
         />
       )}
 
-      {/* FAQ Schema (invisible) */}
       {content.faqs && content.faqs.length > 0 && (
         <script
           type="application/ld+json"
@@ -119,8 +115,6 @@ export default async function ServicePage({ params }: Props) {
         />
       )}
 
-      {/* AEO summary in schema only — was a visible gray box, schema markup still
-          carries the same content for AI search engines */}
       {content.aeoSummary && (
         <script
           type="application/ld+json"
@@ -136,7 +130,6 @@ export default async function ServicePage({ params }: Props) {
         />
       )}
 
-      {/* === 1. Hero === */}
       <section className={`relative min-h-[56vh] md:min-h-[64vh] flex items-end overflow-hidden ${heroSectionBg}`}>
         <div className="absolute inset-0">
           <Image
@@ -144,6 +137,7 @@ export default async function ServicePage({ params }: Props) {
             alt={heroAlt}
             fill
             priority
+            unoptimized={isExt(heroImage)}
             sizes="100vw"
             className={heroImageClass}
           />
@@ -171,22 +165,18 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* === 2. Trust strip — ESA, insured, years, pass rate === */}
       <TrustStrip />
 
-      {/* Tap-to-call strip — keeps the phone surfaced right after hero */}
       <InlineCallStrip
         variant="amber"
         headline={`Need ${service.name.toLowerCase()} today?`}
         tagline="Same-day quotes · ESA-certified · 22 years on the tools, 6 on his own"
       />
 
-      {/* === 3. Main content — 2-col on desktop with sticky sidebar === */}
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             <div className="lg:col-span-2 space-y-14">
-              {/* FPE callout — panel-upgrades only */}
               {showFpeCallout && (
                 <div className="animate-on-scroll">
                   <Link
@@ -213,14 +203,12 @@ export default async function ServicePage({ params }: Props) {
                 </div>
               )}
 
-              {/* Intro — single paragraph with drop cap for typographic lift */}
               <div className="animate-on-scroll">
                 <p className="text-gray-700 text-lg leading-relaxed first-letter:font-display first-letter:text-6xl md:first-letter:text-7xl first-letter:font-bold first-letter:text-amber-500 first-letter:float-left first-letter:mr-3 first-letter:leading-[0.85] first-letter:mt-1">
                   {content.intro}
                 </p>
               </div>
 
-              {/* Pricing card — promoted, larger numbers, immediately visible */}
               {content.pricingNote && (
                 <div className="animate-on-scroll">
                   <div className="bg-gradient-to-br from-amber-50 to-amber-100/50 border border-amber-200 rounded-2xl p-8 md:p-10">
@@ -242,7 +230,6 @@ export default async function ServicePage({ params }: Props) {
                 </div>
               )}
 
-              {/* Problem / Solution card — text bullets of typical problems + real photo */}
               <ProblemSolutionCard
                 problems={content.problems}
                 afterImage={service.image || '/images/work/IMG_3258.webp'}
@@ -250,16 +237,10 @@ export default async function ServicePage({ params }: Props) {
                 serviceName={service.name}
               />
 
-              {/* Recent work gallery — visual proof of outcome */}
               <ServiceGallery slug={slug} serviceName={service.name} />
-
-              {/* Feature image (renders null if no slug match) */}
               <ServiceFeatureImage slug={slug} serviceName={service.name} />
-
-              {/* Before/after slider (renders null until real pairs land) */}
               <BeforeAfterSlider slug={slug} />
 
-              {/* Process — numbered stepper when steps exist, paragraph fallback otherwise */}
               <div className="animate-on-scroll">
                 <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">{content.processSubheading}</p>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
@@ -268,7 +249,6 @@ export default async function ServicePage({ params }: Props) {
 
                 {content.howToSteps && content.howToSteps.length > 0 ? (
                   <ol className="relative space-y-8 md:space-y-10">
-                    {/* Vertical connector line */}
                     <div className="absolute left-6 top-6 bottom-6 w-px bg-gradient-to-b from-amber-300 via-amber-200 to-transparent hidden sm:block" />
                     {content.howToSteps.map((step, i) => (
                       <li key={i} className="relative flex gap-5 md:gap-7">
@@ -293,14 +273,12 @@ export default async function ServicePage({ params }: Props) {
                 )}
               </div>
 
-              {/* Full-bleed photo break — uses the service's own hero image so each page stays on-topic */}
               <PhotoBreak
                 image={heroImage}
                 alt={`${service.name} work in York Region by Top Choice Electrical`}
                 aspect="21/9"
               />
 
-              {/* Pull quote — whyPro content elevated typographically */}
               {content.whyPro && (
                 <div className="animate-on-scroll relative py-6 md:py-8">
                   <svg className="absolute -top-2 -left-2 w-16 h-16 text-amber-100" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
@@ -320,7 +298,6 @@ export default async function ServicePage({ params }: Props) {
                 </div>
               )}
 
-              {/* Common issues — diagnostic content */}
               <div className="animate-on-scroll bg-gray-50 -mx-4 px-4 md:mx-0 md:px-10 py-10 md:py-12 md:rounded-2xl">
                 <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">When to call</p>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
@@ -340,7 +317,6 @@ export default async function ServicePage({ params }: Props) {
                 </div>
               </div>
 
-              {/* FAQ */}
               {content.faqs && content.faqs.length > 0 && (
                 <div className="animate-on-scroll">
                   <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">FAQ</p>
@@ -366,10 +342,8 @@ export default async function ServicePage({ params }: Props) {
               )}
             </div>
 
-            {/* === Sidebar === */}
             <aside className="space-y-6">
               <div className="sticky top-28 space-y-6">
-                {/* Quote form */}
                 <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/60 p-7 border border-gray-100 relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500" />
                   <h3 className="font-display text-xl font-bold text-gray-900 mb-1">Get a free quote</h3>
@@ -377,7 +351,6 @@ export default async function ServicePage({ params }: Props) {
                   <QuoteForm preselectedService={service.name} />
                 </div>
 
-                {/* Other services */}
                 <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
                   <p className="text-amber-600 font-semibold text-xs uppercase tracking-[0.2em] mb-4">Other services</p>
                   <ul className="space-y-1">
@@ -411,20 +384,15 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* === Coverage Promise — guarantee, warranty, financing === */}
       <CoveragePromise />
-
-      {/* === Trusted Brands === */}
       <TrustedBrands />
 
-      {/* Tap-to-call strip — last inline call CTA before the SectionCTA closer */}
       <InlineCallStrip
         variant="light"
         headline={`Talk to Tim about your ${service.name.toLowerCase()} job.`}
         tagline="Most quotes done in a 10-minute call"
       />
 
-      {/* === CTA — uses the service's own hero image so each page closes on-topic === */}
       <SectionCTA
         eyebrow={`${service.name} in York Region`}
         headline={`Need ${service.name.toLowerCase()}? Get a quote.`}
