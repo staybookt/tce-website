@@ -5,22 +5,20 @@ import { client } from '@/data/client';
 export default function HeroBanner() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background — Tim's real panel work photo. The original design called
-          for a Pexels free-license background video on top of this poster, but
-          the heavy navy gradient overlay below buried 90% of the motion. Audit
-          June 2026 dropped the video — strictly stronger to lead with Tim's
-          actual work, and we save 5.8MB of MP4 from the wire. */}
+      {/* Background — outcome-led lifestyle hero (illuminated suburban home at dusk, Pexels).
+          The prior hero was Tim's panel work which reads as "trades for trades" —
+          this reads as "this is what your home can look like." */}
       <div className="absolute inset-0">
         <Image
-          src="/images/work/IMG_5375.webp"
-          alt="Top Choice Electrical work in York Region"
+          src="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          alt="Illuminated suburban home at dusk — the outcome of clean residential electrical work in York Region"
           fill
           priority
           sizes="100vw"
           className="object-cover scale-105"
           style={{ animation: 'fadeIn 2s cubic-bezier(0.16, 1, 0.3, 1)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/85 via-navy-dark/65 to-navy-dark/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/75 via-navy-dark/55 to-navy-dark/90" />
         <div className="absolute inset-0 grain" />
       </div>
 
