@@ -166,7 +166,8 @@ export const client = {
       name: "Battery Backup Installation",
       shortDescription: "Tesla Powerwall, Generac PWRcell, and Enphase home battery installations.",
       icon: "BatteryFull",
-      image: "/images/work/IMG_5695.webp",
+      // Tim sent reference: Tesla Powerwall + Powerwall Gateway + inverter, garage install. Was previously IMG_5695 (generator) — Tim said it read as a car charger.
+      image: "/images/tim-battery-backup.webp",
       keywords: ["Tesla Powerwall installation York Region", "home battery backup Newmarket", "Generac PWRcell Aurora"],
     },
     {

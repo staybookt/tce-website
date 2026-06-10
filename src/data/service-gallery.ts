@@ -4,7 +4,7 @@
 // History:
 // - Originally rotated Tim's real photos.
 // - Tim feedback June 2026: IMG_3038 (not-to-code EV photo) removed from all rotations.
-// - Richard reference batch June 2026 + patch + round 2: every Richard ref appears in at least one rotation.
+// - Richard reference batch + patch + round 2 + Tim battery-backup: every Richard ref appears in at least one rotation.
 
 export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
   'panel-upgrades': [
@@ -98,7 +98,7 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
     { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical heat pump electrical in York Region' },
   ],
   'battery-backup-installation': [
-    { src: '/images/work/IMG_5695.webp', alt: 'Top Choice Electrical battery backup installation in York Region' },
+    { src: '/images/tim-battery-backup.webp', alt: 'Tesla Powerwall battery backup installation by Top Choice Electrical in York Region' },
     { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical battery backup installation in York Region' },
     { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical battery backup installation in York Region' },
     { src: '/images/work/IMG_5017.webp', alt: 'Top Choice Electrical battery backup installation in York Region' },
