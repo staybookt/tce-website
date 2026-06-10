@@ -21,12 +21,12 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* === Hero — elevation pattern === */}
+      {/* === Hero — lifestyle === */}
       <section className="relative min-h-[56vh] md:min-h-[64vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/work/IMG_5375.webp"
-            alt="Top Choice Electrical work in York Region"
+            src="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="Illuminated home at dusk in York Region — Top Choice Electrical"
             fill
             priority
             sizes="100vw"
@@ -52,14 +52,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* === Trust strip === */}
       <TrustStrip />
 
-      {/* === Three contact options — bigger CTAs === */}
+      {/* === Three contact options === */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid sm:grid-cols-3 gap-4">
-            {/* Call */}
             <a
               href={`tel:${client.phone}`}
               className="group flex items-center gap-4 bg-amber-500 hover:bg-amber-600 rounded-2xl p-5 md:p-6 transition-all shadow-md hover:shadow-lg"
@@ -76,7 +74,6 @@ export default function ContactPage() {
               </div>
             </a>
 
-            {/* Text */}
             <a
               href={`sms:${phoneDigits}`}
               className="group flex items-center gap-4 bg-gray-900 hover:bg-gray-800 rounded-2xl p-5 md:p-6 transition-all shadow-md hover:shadow-lg"
@@ -93,7 +90,6 @@ export default function ContactPage() {
               </div>
             </a>
 
-            {/* Email */}
             <a
               href={`mailto:${client.email}`}
               className="group flex items-center gap-4 bg-white border border-gray-200 hover:border-amber-300 hover:shadow-md rounded-2xl p-5 md:p-6 transition-all"
@@ -113,11 +109,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* === Main: form + info side-by-side === */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16">
-            {/* LEFT — Contact details + service area */}
             <div className="space-y-10">
               <div>
                 <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Get in touch</p>
@@ -130,9 +124,7 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {/* Hours + Service area + Payment */}
               <div className="space-y-4">
-                {/* Hours */}
                 <div className="bg-gradient-to-br from-amber-50/40 to-white border border-amber-100 rounded-2xl p-5 md:p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-9 h-9 rounded-lg bg-amber-500 flex items-center justify-center shrink-0">
@@ -147,7 +139,6 @@ export default function ContactPage() {
                   <p className="text-amber-600 font-semibold text-sm">{client.hours.emergency}</p>
                 </div>
 
-                {/* Service area with mini-map */}
                 <div className="bg-gradient-to-br from-amber-50/40 to-white border border-amber-100 rounded-2xl p-5 md:p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-9 h-9 rounded-lg bg-amber-500 flex items-center justify-center shrink-0">
@@ -173,7 +164,6 @@ export default function ContactPage() {
                       </Link>
                     </div>
 
-                    {/* Mini map */}
                     <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-xl bg-white border border-amber-100 shadow-sm overflow-hidden shrink-0">
                       <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full" aria-hidden="true">
                         <defs>
@@ -201,7 +191,6 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Payment methods */}
                 <div className="bg-gray-50 border border-gray-200 rounded-2xl p-5 md:p-6">
                   <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.2em] mb-3">Payment methods accepted</p>
                   <div className="flex flex-wrap gap-2">
@@ -215,7 +204,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* RIGHT — Quote form */}
             <div>
               <div className="bg-white rounded-3xl shadow-xl shadow-amber-100/40 border border-amber-100 p-7 md:p-10 relative overflow-hidden lg:sticky lg:top-28">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500" />
@@ -228,7 +216,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* === What happens next — sets expectations === */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="max-w-2xl mb-10">
@@ -243,26 +230,10 @@ export default function ContactPage() {
 
           <div className="grid md:grid-cols-4 gap-4">
             {[
-              {
-                num: '01',
-                title: 'Tim texts back',
-                desc: 'Within 2 hours during business hours. He asks a few questions to figure out scope — type of job, urgency, address.',
-              },
-              {
-                num: '02',
-                title: 'On-site walkthrough',
-                desc: 'Tim drives over, looks at the work, asks the right questions, takes photos if needed. Free, no obligation.',
-              },
-              {
-                num: '03',
-                title: 'Fixed quote',
-                desc: 'In writing, same day or next morning. The quote you get is the price you pay — it doesn’t move unless scope changes.',
-              },
-              {
-                num: '04',
-                title: 'Booked and done',
-                desc: 'Most jobs scheduled within 48 hours. ESA permit pulled, work completed, inspection passed, paperwork delivered.',
-              },
+              { num: '01', title: 'Tim texts back', desc: 'Within 2 hours during business hours. He asks a few questions to figure out scope — type of job, urgency, address.' },
+              { num: '02', title: 'On-site walkthrough', desc: 'Tim drives over, looks at the work, asks the right questions, takes photos if needed. Free, no obligation.' },
+              { num: '03', title: 'Fixed quote', desc: 'In writing, same day or next morning. The quote you get is the price you pay — it doesn’t move unless scope changes.' },
+              { num: '04', title: 'Booked and done', desc: 'Most jobs scheduled within 48 hours. ESA permit pulled, work completed, inspection passed, paperwork delivered.' },
             ].map((step) => (
               <div key={step.num} className="bg-white border border-gray-200 rounded-2xl p-6 md:p-7 hover:border-amber-300 hover:shadow-md transition-all">
                 <p className="font-display font-bold text-amber-500 text-3xl mb-4 leading-none">{step.num}</p>
@@ -274,7 +245,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* === Emergency CTA — converted to light theme === */}
       <section className="relative py-16 md:py-20 overflow-hidden bg-gradient-to-br from-red-50/30 via-white to-amber-50/30 border-y border-red-100">
         <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[400px] bg-red-100/30 rounded-full blur-3xl pointer-events-none" />
         <div className="relative max-w-5xl mx-auto px-4">
