@@ -228,12 +228,12 @@ export default function AboutPage() {
       {/* === Recent work carousel — proof of the rules === */}
       <RecentWork />
 
-      {/* === Photo break #2 — different photo than first === */}
+      {/* === Photo break #2 — landscape estate at dusk, contrasts the panel hero/PhotoBreak #1 === */}
       <section className="py-10 md:py-14 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <PhotoBreak
-            image="/images/work/IMG_3038.webp"
-            alt="EV charger install by Top Choice Electrical in York Region"
+            image="/images/richard-landscape-2.webp"
+            alt="Estate landscape lighting at dusk in York Region by Top Choice Electrical"
             aspect="21/9"
           />
         </div>
