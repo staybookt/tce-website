@@ -11,6 +11,8 @@ interface ServiceCardProps {
   featured?: boolean;
 }
 
+const isExt = (src: string) => src.startsWith('http://') || src.startsWith('https://');
+
 export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap', image, featured = false }: ServiceCardProps) {
   if (featured) {
     return (
@@ -18,7 +20,6 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
         href={`/services/${slug}`}
         className="group block relative rounded-2xl overflow-hidden min-h-[320px] md:min-h-[400px] md:col-span-2 bg-gray-900"
       >
-        {/* Background image */}
         <div className="absolute inset-0">
           {image && (
             <Image
@@ -26,6 +27,7 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
               alt={name}
               fill
               sizes="(max-width: 1024px) 100vw, 66vw"
+              unoptimized={isExt(image)}
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
           )}
@@ -33,7 +35,6 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/60 to-transparent" />
         </div>
 
-        {/* Content */}
         <div className="relative h-full flex flex-col justify-end p-8 md:p-10">
           <div className="w-12 h-12 rounded-xl bg-amber-500/20 backdrop-blur-sm border border-amber-500/30 flex items-center justify-center mb-5 group-hover:bg-amber-500/30 transition-all duration-500">
             <ServiceIcon icon={icon} className="w-6 h-6 text-amber-400" />
@@ -56,7 +57,6 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
       href={`/services/${slug}`}
       className="group block bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-amber-200 transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
     >
-      {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden">
         {image ? (
           <Image
@@ -64,19 +64,18 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
             alt={name}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
+            unoptimized={isExt(image)}
             className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : (
           <div className="w-full h-full bg-gray-100" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        {/* Icon badge */}
         <div className="absolute top-3 right-3 w-10 h-10 rounded-xl bg-white/90 backdrop-blur-sm border border-white/50 flex items-center justify-center shadow-sm">
           <ServiceIcon icon={icon} className="w-5 h-5 text-gray-700" />
         </div>
       </div>
 
-      {/* Content */}
       <div className="p-5">
         <h3 className="font-display text-base font-bold text-gray-900 mb-1.5 group-hover:text-amber-600 transition-colors duration-300 tracking-tight">{name}</h3>
         <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">{shortDescription}</p>
