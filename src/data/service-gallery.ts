@@ -7,6 +7,8 @@
 // - Richard reference batch June 2026: Richard's 14 reference images woven into 9 service
 //   galleries alongside Tim's photos. Where Richard provided two images per service (primary + (2)),
 //   both rotate in. The HVLS-style ceiling fan (2) is gallery-only per electrician review.
+// - June 10 2026: Smoke-co-detectors rotation reordered. IMG_6785 (pool store interior) removed from position 1.
+//   Moved IMG_6204 to primary position. TODO: Request proper smoke detector ceiling photo from Tim.
 
 export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
   'panel-upgrades': [
@@ -58,10 +60,10 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
     { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical generator installation in York Region' },
   ],
   'smoke-co-detectors': [
-    { src: '/images/work/IMG_6785.webp', alt: 'Top Choice Electrical smoke co detectors in York Region' },
     { src: '/images/work/IMG_6204.webp', alt: 'Top Choice Electrical smoke co detectors in York Region' },
     { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical smoke co detectors in York Region' },
     { src: '/images/work/IMG_5017.webp', alt: 'Top Choice Electrical smoke co detectors in York Region' },
+    { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical smoke co detectors in York Region' },
   ],
   'smart-home-installation': [
     { src: '/images/richard-smart-home.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
