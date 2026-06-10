@@ -4,9 +4,10 @@
 // History:
 // - Originally rotated Tim's real photos.
 // - Tim feedback June 2026: IMG_3038 (not-to-code EV photo) removed from all rotations.
-// - Richard reference batch June 2026: Richard's 14 reference images woven into 9 service
-//   galleries alongside Tim's photos. Where Richard provided two images per service (primary + (2)),
-//   both rotate in. The HVLS-style ceiling fan (2) is gallery-only per electrician review.
+// - Richard reference batch June 2026: Richard's reference images woven into 9 service
+//   galleries alongside Tim's photos. The HVLS-style ceiling fan (2) is gallery-only per electrician review.
+// - June 2026 patch: added (2) versions of smart-home and surge-protection that were
+//   initially skipped — reversed because every image Jacob hands over gets used.
 
 export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
   'panel-upgrades': [
@@ -65,9 +66,9 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
   ],
   'smart-home-installation': [
     { src: '/images/richard-smart-home.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
+    { src: '/images/richard-smart-home-2.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
     { src: '/images/work/IMG_6204.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
     { src: '/images/work/IMG_6785.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
-    { src: '/images/work/IMG_1140.webp', alt: 'Top Choice Electrical smart home installation in York Region' },
   ],
   'esa-safety-inspections': [
     { src: '/images/work/IMG_5017.webp', alt: 'Top Choice Electrical esa safety inspections in York Region' },
@@ -107,9 +108,9 @@ export const serviceGallery: Record<string, { src: string; alt: string }[]> = {
   ],
   'surge-protection': [
     { src: '/images/richard-surge-protection.webp', alt: 'Top Choice Electrical surge protection in York Region' },
+    { src: '/images/richard-surge-protection-2.webp', alt: 'Top Choice Electrical surge protection in York Region' },
     { src: '/images/work/IMG_3258.webp', alt: 'Top Choice Electrical surge protection in York Region' },
     { src: '/images/work/IMG_5017.webp', alt: 'Top Choice Electrical surge protection in York Region' },
-    { src: '/images/work/IMG_5375.webp', alt: 'Top Choice Electrical surge protection in York Region' },
   ],
   'ceiling-fan-installation': [
     { src: '/images/richard-ceiling-fan-primary.webp', alt: 'Top Choice Electrical ceiling fan installation in York Region' },
