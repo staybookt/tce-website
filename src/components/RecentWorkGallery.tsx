@@ -7,7 +7,7 @@ import Image from 'next/image';
 const photos = [
   { src: '/images/work/IMG_5017.webp', alt: 'Clean residential panel install by Top Choice Electrical' },
   { src: '/images/work/IMG_3258.webp', alt: 'Panel upgrade in York Region by Top Choice Electrical' },
-  { src: '/images/work/IMG_3038.webp', alt: 'EV charger installation in York Region by Top Choice Electrical' },
+  { src: '/images/richard-generator-primary.webp', alt: 'Generac whole-home generator install by Top Choice Electrical in York Region' },
   { src: '/images/work/IMG_2638.webp', alt: 'Commercial electrical work in York Region by Top Choice Electrical' },
 ];
 
