@@ -119,8 +119,8 @@ export default function ServicesPage() {
               className="group block relative rounded-2xl overflow-hidden min-h-[280px] md:min-h-[320px] bg-red-950"
             >
               <Image
-                src="/images/work/IMG_3258.webp"
-                alt="Emergency electrical service"
+                src="/images/richard-emergency.webp"
+                alt="24/7 emergency electrician responding after hours — Top Choice Electrical, York Region"
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
