@@ -5,15 +5,13 @@ import { client } from '@/data/client';
 export default function HeroBanner() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background — Tim's real panel work photo. The original design called
-          for a Pexels free-license background video on top of this poster, but
-          the heavy navy gradient overlay below buried 90% of the motion. Audit
-          June 2026 dropped the video — strictly stronger to lead with Tim's
-          actual work, and we save 5.8MB of MP4 from the wire. */}
+      {/* Background — Professional landscaped garden lighting at night.
+          High-impact visual opens with premium aesthetic, garden/outdoor
+          appeal. Day-rate headline sells the core value proposition. */}
       <div className="absolute inset-0">
         <Image
-          src="/images/work/IMG_5375.webp"
-          alt="Top Choice Electrical work in York Region"
+          src="/images/landscape-lighting-night.webp"
+          alt="Professional night landscape lighting installation in York Region"
           fill
           priority
           sizes="100vw"
