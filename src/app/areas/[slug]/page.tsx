@@ -14,6 +14,11 @@ import PhotoBreak from '@/components/PhotoBreak';
 import LocalSnapshot from '@/components/LocalSnapshot';
 import AreaFAQ from '@/components/AreaFAQ';
 import InlineCallStrip from '@/components/InlineCallStrip';
+import { areaImage } from '@/data/area-images';
+
+const LIFESTYLE_HERO = 'https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1920';
+const LIFESTYLE_CTA = 'https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1600';
+const LIFESTYLE_BREAK = 'https://images.pexels.com/photos/2343469/pexels-photo-2343469.jpeg?auto=compress&cs=tinysrgb&w=1920';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -52,8 +57,11 @@ export default async function AreaPage({ params }: Props) {
     .map((name: string) => client.services.find((s) => s.name === name))
     .filter(Boolean) as typeof client.services;
 
-  // Per-city pull quote — use area.description when it exists (richer copy),
-  // fall back to the generic "housing stock by decade" line.
+  // Per-area hero/break/CTA: prefer the curated areaImage[slug] (location-specific shot)
+  // and fall back to the lifestyle dusk hero rather than a panel.
+  const areaHeroImage = areaImage[slug] || LIFESTYLE_HERO;
+  const areaCtaImage = areaImage[slug] || LIFESTYLE_CTA;
+
   const pullQuote = area.description ||
     `Tim knows the housing stock by decade. The 1965 split-levels with 60-amp services. The late-70s builds with Federal Pacific panels. The older sections of ${area.name} that still have knob-and-tube in the attic. He doesn't have to guess what's behind the wall.`;
 
@@ -74,7 +82,7 @@ export default async function AreaPage({ params }: Props) {
       <section className="relative min-h-[56vh] md:min-h-[64vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/work/IMG_5375.webp"
+            src={areaHeroImage}
             alt={`Electrical work in ${area.name} by Top Choice Electrical`}
             fill
             priority
@@ -111,7 +119,6 @@ export default async function AreaPage({ params }: Props) {
       {/* === Trust strip === */}
       <TrustStrip />
 
-      {/* Tap-to-call strip — keeps the local phone CTA persistent after the hero */}
       <InlineCallStrip
         variant="amber"
         headline={`Same-day quote in ${area.name}.`}
@@ -123,7 +130,6 @@ export default async function AreaPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             <div className="lg:col-span-2 space-y-14">
-              {/* Local snapshot — instant sense of place */}
               <LocalSnapshot
                 slug={slug}
                 areaName={area.name}
@@ -131,7 +137,6 @@ export default async function AreaPage({ params }: Props) {
                 topServices={topServiceNames}
               />
 
-              {/* Intro — drop cap */}
               <div className="animate-on-scroll">
                 <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Local service</p>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
@@ -143,10 +148,8 @@ export default async function AreaPage({ params }: Props) {
                 </p>
               </div>
 
-              {/* Neighbourhood chips */}
               <NeighbourhoodChips slug={slug} areaName={area.name} />
 
-              {/* Top services — promoted, photo-led */}
               {topServices.length > 0 && (
                 <div className="animate-on-scroll">
                   <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Most requested</p>
@@ -162,17 +165,15 @@ export default async function AreaPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Recent work gallery */}
               <RecentWorkGallery headline={`Recent jobs near ${area.name}.`} eyebrow="Recent Work" />
 
-              {/* Photo break */}
+              {/* Photo break — cozy family room lifestyle shot */}
               <PhotoBreak
-                image="/images/work/IMG_3258.webp"
-                alt={`Panel work in ${area.name} by Top Choice Electrical`}
+                image={LIFESTYLE_BREAK}
+                alt={`Cozy family room with pot lights and fireplace — the kind of electrical outcome we deliver in ${area.name}`}
                 aspect="21/9"
               />
 
-              {/* Pull quote — per-city when description exists, generic fallback */}
               <div className="animate-on-scroll relative py-6 md:py-8">
                 <svg className="absolute -top-2 -left-2 w-16 h-16 text-amber-100" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
                   <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
@@ -191,7 +192,6 @@ export default async function AreaPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Sidebar */}
             <aside className="space-y-6">
               <div className="sticky top-28 space-y-6">
                 <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/60 p-7 border border-gray-100 relative overflow-hidden">
@@ -225,7 +225,6 @@ export default async function AreaPage({ params }: Props) {
         </div>
       </section>
 
-      {/* === Area FAQ === */}
       <AreaFAQ
         slug={slug}
         areaName={area.name}
@@ -233,19 +232,17 @@ export default async function AreaPage({ params }: Props) {
         topServices={topServiceNames}
       />
 
-      {/* Tap-to-call strip — last inline call CTA before the SectionCTA closer */}
       <InlineCallStrip
         variant="light"
         headline={`Got a job in ${area.name}?`}
         tagline="Talk to Tim · most quotes within 24 hours"
       />
 
-      {/* === CTA === */}
       <SectionCTA
         eyebrow={`Serving ${area.name}`}
         headline={`Need an electrician in ${area.name}?`}
         body="Same-day quote. ESA-certified, permitted, inspected, passed first visit."
-        image="/images/work/IMG_3258.webp"
+        image={areaCtaImage}
         imageAlt={`Top Choice Electrical work in ${area.name}`}
         primaryCTA={{ label: `Call ${client.phone}`, href: `tel:${client.phone}` }}
         secondaryCTA={{ label: 'Request a quote', href: '/contact' }}

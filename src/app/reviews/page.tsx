@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 export default function ReviewsPage() {
   return (
     <>
-      {/* Hero — immersive */}
+      {/* Hero — lifestyle: family on couch reading, evening */}
       <section className="relative min-h-[50vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/work/IMG_5375.webp"
-            alt="Residential home with professional electrical work"
+            src="https://images.pexels.com/photos/9873930/pexels-photo-9873930.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="Family relaxing in their warm-lit home — York Region homeowners served by Top Choice Electrical"
             fill
             priority
             sizes="100vw"
@@ -56,7 +56,6 @@ export default function ReviewsPage() {
         }} />
 
         <div className="max-w-7xl mx-auto px-4 relative">
-          {/* Aggregate rating */}
           <div className="text-center mb-16 animate-on-scroll">
             <div className="inline-flex items-center gap-2 bg-white rounded-full px-6 py-3 shadow-sm mb-6">
               <div className="flex gap-0.5">
@@ -79,7 +78,7 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      {/* Google Review CTA — premium card */}
+      {/* Google Review CTA */}
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-3xl mx-auto px-4">
           <div className="animate-on-scroll">
@@ -111,17 +110,17 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      {/* CTA — immersive */}
+      {/* CTA — lifestyle: home at dusk */}
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/work/IMG_3258.webp"
-            alt="Electrician installing wiring in a residential home"
+            src="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="Illuminated home at dusk in York Region — the homeowners who refer Top Choice Electrical"
             fill
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-navy-dark/90" />
+          <div className="absolute inset-0 bg-navy-dark/85" />
           <div className="absolute inset-0 grain" />
         </div>
         <div className="relative max-w-3xl mx-auto px-4 text-center animate-on-scroll">
