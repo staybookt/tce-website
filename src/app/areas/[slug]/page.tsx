@@ -20,6 +20,8 @@ const LIFESTYLE_HERO = 'https://images.pexels.com/photos/4933643/pexels-photo-49
 const LIFESTYLE_CTA = 'https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1600';
 const LIFESTYLE_BREAK = 'https://images.pexels.com/photos/2343469/pexels-photo-2343469.jpeg?auto=compress&cs=tinysrgb&w=1920';
 
+const isExt = (src: string) => src.startsWith('http://') || src.startsWith('https://');
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -57,8 +59,6 @@ export default async function AreaPage({ params }: Props) {
     .map((name: string) => client.services.find((s) => s.name === name))
     .filter(Boolean) as typeof client.services;
 
-  // Per-area hero/break/CTA: prefer the curated areaImage[slug] (location-specific shot)
-  // and fall back to the lifestyle dusk hero rather than a panel.
   const areaHeroImage = areaImage[slug] || LIFESTYLE_HERO;
   const areaCtaImage = areaImage[slug] || LIFESTYLE_CTA;
 
@@ -78,7 +78,6 @@ export default async function AreaPage({ params }: Props) {
         areaRegion={area.region}
       />
 
-      {/* === Hero === */}
       <section className="relative min-h-[56vh] md:min-h-[64vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
@@ -86,6 +85,7 @@ export default async function AreaPage({ params }: Props) {
             alt={`Electrical work in ${area.name} by Top Choice Electrical`}
             fill
             priority
+            unoptimized={isExt(areaHeroImage)}
             sizes="100vw"
             className="object-cover scale-105"
           />
@@ -116,7 +116,6 @@ export default async function AreaPage({ params }: Props) {
         </div>
       </section>
 
-      {/* === Trust strip === */}
       <TrustStrip />
 
       <InlineCallStrip
@@ -125,7 +124,6 @@ export default async function AreaPage({ params }: Props) {
         tagline={`${area.region} · 22 years on the tools, 6 on his own · ESA-certified`}
       />
 
-      {/* === Content === */}
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
@@ -167,7 +165,6 @@ export default async function AreaPage({ params }: Props) {
 
               <RecentWorkGallery headline={`Recent jobs near ${area.name}.`} eyebrow="Recent Work" />
 
-              {/* Photo break — cozy family room lifestyle shot */}
               <PhotoBreak
                 image={LIFESTYLE_BREAK}
                 alt={`Cozy family room with pot lights and fireplace — the kind of electrical outcome we deliver in ${area.name}`}
