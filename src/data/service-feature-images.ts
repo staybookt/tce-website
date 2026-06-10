@@ -3,10 +3,9 @@
 // History:
 // - June 2026 audit (PR #16): replaced 17 of 18 original Unsplash picks with Tim's photos + verified stock
 // - June 2026 Tim feedback (PR #17): removed IMG_3038 (not-to-code EV photo) sitewide
-// - June 2026 Richard reference batch: Richard provided 14 stock reference images via email.
-//   These are now the primary feature images for 9 services.
-// - June 2026 patch: added (2) versions of smart-home and surge-protection that were initially
-//   skipped on agent judgment — reversed because every image Jacob hands over gets used.
+// - June 2026 Richard reference batch: 14 reference images via email.
+// - June 2026 patch: added (2) versions of smart-home and surge-protection that were initially skipped.
+// - June 2026 Richard round 2: 3 more refs solving content-mismatch on pot-light, hot-tub, emergency.
 
 export const serviceFeatureImage: Record<string, string> = {
   // Kept — only original Unsplash pick that survived the audit.
@@ -17,9 +16,8 @@ export const serviceFeatureImage: Record<string, string> = {
   'esa-safety-inspections': '/images/work/IMG_3258.webp',
   'residential-wiring': '/images/work/IMG_6785.webp',
   'ev-charger-installation': 'https://images.pexels.com/photos/9799734/pexels-photo-9799734.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  'pot-light-installation': '/images/work/IMG_6204.webp',
 
-  // Richard reference images — 9 services with electrician-verified mapping.
+  // Richard reference images.
   'aluminum-wiring': '/images/richard-aluminum-wiring.webp',                  // panel-internal aluminum wiring
   'knob-and-tube-removal': '/images/richard-knob-and-tube.webp',              // actual K&T in stud cavity
   'ceiling-fan-installation': '/images/richard-ceiling-fan-primary.webp',     // residential fan (NOT the HVLS (2))
@@ -29,9 +27,10 @@ export const serviceFeatureImage: Record<string, string> = {
   'landscape-lighting': '/images/richard-landscape-primary.webp',             // tight shot of path + uplights
   'smart-home-installation': '/images/richard-smart-home-2.webp',             // (2) version — feature distinct from hero
   'surge-protection': '/images/richard-surge-protection-2.webp',              // (2) version — feature distinct from hero
+  'pot-light-installation': '/images/richard-pot-lights.webp',                // Richard round 2: open-concept room with 4 lit pots
+  'hot-tub-wiring': '/images/richard-hot-tub.webp',                            // Richard round 2: GFCI disconnect next to outdoor hot tub
 
   // Intentionally omitted — component renders null gracefully.
   // 'battery-backup-installation': null — Pexels/Unsplash Powerwall stock all has installer branding or wrong product
   // 'smoke-co-detectors': null        — Unsplash "smoke-alarm" results are commercial fire horns or atmospheric smoke
-  // 'hot-tub-wiring': null            — no clean free stock; add when Tim sends real photo
 };
