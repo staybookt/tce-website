@@ -23,7 +23,6 @@ export const metadata: Metadata = {
 
 export default function AreasPage() {
   const homeBase = client.areas.find((a) => a.slug === 'newmarket');
-  const otherAreas = client.areas.filter((a) => a.slug !== 'newmarket');
 
   return (
     <>
@@ -31,8 +30,8 @@ export default function AreasPage() {
       <section className="relative min-h-[56vh] md:min-h-[64vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/work/IMG_5375.webp"
-            alt="Top Choice Electrical work across York Region"
+            src="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="Illuminated suburban home at dusk — Top Choice Electrical serves York Region neighbourhoods like this"
             fill
             priority
             sizes="100vw"
@@ -115,15 +114,15 @@ export default function AreasPage() {
       {/* === Service area map === */}
       <ServiceAreaMap />
 
-      {/* === Cities and neighbourhoods by region — SEO/AEO text section === */}
+      {/* === Cities and neighbourhoods by region === */}
       <AreasByRegion />
 
-      {/* === Photo break === */}
+      {/* === Photo break — cozy family room with pot lights + fireplace */}
       <section className="py-14 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <PhotoBreak
-            image="/images/work/IMG_3258.webp"
-            alt="Top Choice Electrical panel work across York Region"
+            image="https://images.pexels.com/photos/2343469/pexels-photo-2343469.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="Cozy family room at evening with warm pot lights and fireplace — Top Choice Electrical residential outcome"
             aspect="21/9"
           />
         </div>
@@ -156,8 +155,8 @@ export default function AreasPage() {
         eyebrow="Outside the 12 cities?"
         headline="Not sure if we cover your area?"
         body="Call. If we can get there, we can quote it. Newmarket and Simcoe County have been the base for years — we know the drive times."
-        image="/images/work/IMG_5375.webp"
-        imageAlt="Top Choice Electrical hands-on residential panel work in York Region"
+        image="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        imageAlt="Illuminated suburban home at dusk in York Region — Top Choice Electrical"
         primaryCTA={{ label: `Call ${client.phone}`, href: `tel:${client.phone}` }}
         secondaryCTA={{ label: 'Get a free quote', href: '/contact' }}
       />

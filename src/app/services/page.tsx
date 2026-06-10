@@ -30,8 +30,8 @@ export default function ServicesPage() {
       <section className="relative min-h-[44vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/work/IMG_5375.webp"
-            alt="Top Choice Electrical work in York Region"
+            src="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="Illuminated home at dusk in York Region — the outcome of clean residential electrical work"
             fill
             priority
             sizes="100vw"
@@ -85,7 +85,6 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
-            {/* Featured service cards from the data array */}
             {featuredServices.map((s) => (
               <Link
                 key={s.slug}
@@ -113,7 +112,7 @@ export default function ServicesPage() {
               </Link>
             ))}
 
-            {/* Emergency card — third slot, special treatment */}
+            {/* Emergency card */}
             <Link
               href="/emergency-electrician"
               className="group block relative rounded-2xl overflow-hidden min-h-[280px] md:min-h-[320px] bg-red-950"
@@ -150,13 +149,13 @@ export default function ServicesPage() {
         <ServicesExplorer />
       </div>
 
-      {/* === Single closing CTA (left-justified, unified across the site) === */}
+      {/* === Single closing CTA === */}
       <SectionCTA
         eyebrow="Don't see your job?"
         headline="If it involves wires, the answer is probably yes."
         body="Call and describe the job — same-day quote, no obligation. Tim will tell you straight whether it's in our wheelhouse."
-        image="/images/work/IMG_5375.webp"
-        imageAlt="Tim Ciszkowski of Top Choice Electrical, hands on residential panel work in York Region"
+        image="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        imageAlt="Illuminated home at dusk in York Region — Top Choice Electrical"
         primaryCTA={{ label: `Call ${client.phone}`, href: `tel:${client.phone}` }}
         secondaryCTA={{ label: 'Get a quote online', href: '/contact' }}
       />
