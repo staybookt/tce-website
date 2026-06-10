@@ -293,9 +293,9 @@ export default async function ServicePage({ params }: Props) {
                 )}
               </div>
 
-              {/* Full-bleed photo break — pure visual rest */}
+              {/* Full-bleed photo break — uses the service's own hero image so each page stays on-topic */}
               <PhotoBreak
-                image="/images/work/IMG_5375.webp"
+                image={heroImage}
                 alt={`${service.name} work in York Region by Top Choice Electrical`}
                 aspect="21/9"
               />
@@ -424,12 +424,12 @@ export default async function ServicePage({ params }: Props) {
         tagline="Most quotes done in a 10-minute call"
       />
 
-      {/* === CTA === */}
+      {/* === CTA — uses the service's own hero image so each page closes on-topic === */}
       <SectionCTA
         eyebrow={`${service.name} in York Region`}
         headline={`Need ${service.name.toLowerCase()}? Get a quote.`}
         body="Same-day quote across York Region. ESA-certified, permitted, inspected, passed first visit."
-        image="/images/work/IMG_3258.webp"
+        image={heroImage}
         imageAlt={`${service.name} work by Top Choice Electrical in York Region`}
         primaryCTA={{ label: `Call ${client.phone}`, href: `tel:${client.phone}` }}
         secondaryCTA={{ label: 'Request a quote', href: '/contact' }}
