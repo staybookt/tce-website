@@ -38,7 +38,7 @@ const FAQS = [
 
 export default function HomepageFAQ() {
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="pt-20 md:pt-28 pb-12 md:pb-16 bg-white">
       <FAQSchema faqs={FAQS} />
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-12 md:mb-14 text-center max-w-2xl mx-auto">
