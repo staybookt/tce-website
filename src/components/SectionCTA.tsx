@@ -12,20 +12,13 @@ interface Props {
   body?: string;
   image: string;
   imageAlt: string;
-  primaryCTA?: CTAButton;   // amber, prominent
-  secondaryCTA?: CTAButton; // glass / outline
-  /** Tone variant — 'dark' (default navy gradient) or 'emergency' (red tint) */
+  primaryCTA?: CTAButton;
+  secondaryCTA?: CTAButton;
   tone?: 'dark' | 'emergency';
 }
 
-/**
- * Full-bleed left-justified call-to-action band used above the footer on every
- * page. Photo background + dark gradient that fades to the right + content
- * anchored left inside the max-w-7xl container.
- *
- * Designed to be the single closing visual on a page — no more centered CTA
- * cards stacked below it.
- */
+const isExternal = (src: string) => src.startsWith('http://') || src.startsWith('https://');
+
 export default function SectionCTA({
   eyebrow,
   headline,
@@ -50,6 +43,7 @@ export default function SectionCTA({
           fill
           sizes="100vw"
           className="object-cover"
+          unoptimized={isExternal(image)}
         />
         <div className={`absolute inset-0 ${gradient}`} />
         <div className="absolute inset-0 grain" />

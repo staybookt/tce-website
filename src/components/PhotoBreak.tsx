@@ -3,14 +3,11 @@ import Image from 'next/image';
 interface Props {
   image: string;
   alt: string;
-  /** Aspect ratio — defaults to wide cinematic 21:9 */
   aspect?: '21/9' | '16/9' | '3/1';
 }
 
-/**
- * Full-bleed photo strip used between text sections on service pages.
- * No overlay text — pure visual rest. Photo carries the meaning.
- */
+const isExternal = (src: string) => src.startsWith('http://') || src.startsWith('https://');
+
 export default function PhotoBreak({ image, alt, aspect = '21/9' }: Props) {
   const aspectClass = aspect === '21/9' ? 'aspect-[21/9]' : aspect === '16/9' ? 'aspect-[16/9]' : 'aspect-[3/1]';
 
@@ -22,6 +19,7 @@ export default function PhotoBreak({ image, alt, aspect = '21/9' }: Props) {
         fill
         sizes="100vw"
         className="object-cover"
+        unoptimized={isExternal(image)}
       />
     </div>
   );

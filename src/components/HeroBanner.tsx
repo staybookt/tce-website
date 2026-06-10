@@ -5,15 +5,13 @@ import { client } from '@/data/client';
 export default function HeroBanner() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background — outcome-led lifestyle hero (illuminated suburban home at dusk, Pexels).
-          The prior hero was Tim's panel work which reads as "trades for trades" —
-          this reads as "this is what your home can look like." */}
       <div className="absolute inset-0">
         <Image
           src="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1920"
           alt="Illuminated suburban home at dusk — the outcome of clean residential electrical work in York Region"
           fill
           priority
+          unoptimized
           sizes="100vw"
           className="object-cover scale-105"
           style={{ animation: 'fadeIn 2s cubic-bezier(0.16, 1, 0.3, 1)' }}
@@ -22,7 +20,6 @@ export default function HeroBanner() {
         <div className="absolute inset-0 grain" />
       </div>
 
-      {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 py-24 md:py-40 w-full">
         <div className="max-w-4xl" style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
           <div className="inline-flex items-center gap-2.5 bg-white/[0.08] backdrop-blur-md border border-white/[0.12] rounded-full px-5 py-2.5 mb-10">
@@ -61,10 +58,8 @@ export default function HeroBanner() {
         </div>
       </div>
 
-      {/* Bottom gradient fade into TrustBar */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-950 to-transparent" />
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2" style={{ animation: 'fadeIn 2s cubic-bezier(0.16, 1, 0.3, 1) 1s both' }}>
         <div className="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center pt-2">
           <div className="w-1 h-2.5 bg-white/40 rounded-full" style={{ animation: 'float 2s ease-in-out infinite' }} />
