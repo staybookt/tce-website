@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+Page_Downimport type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
