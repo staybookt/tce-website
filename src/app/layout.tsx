@@ -9,7 +9,7 @@ import ScrollAnimator from '@/components/ScrollAnimator';
 import { client } from '@/data/client';
 
 const GA4_ID = 'G-VMJ6LFNBLY';
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.topchoiceelectrical.ca';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.topchoiceelectrical.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

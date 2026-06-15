@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://www.topchoiceelectrical.ca/sitemap.xml',
+    sitemap: 'https://www.topchoiceelectrical.com/sitemap.xml',
   };
 }

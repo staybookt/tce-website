@@ -6,7 +6,7 @@ interface SchemaMarkupProps {
   serviceDescription?: string;
 }
 
-const SITE_URL = 'https://www.topchoiceelectrical.ca';
+const SITE_URL = 'https://www.topchoiceelectrical.com';
 
 export default function SchemaMarkup({ type = 'LocalBusiness', serviceName, serviceDescription }: SchemaMarkupProps) {
   const localBusiness = {
