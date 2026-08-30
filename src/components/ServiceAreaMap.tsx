@@ -35,11 +35,16 @@ const polar = (angleDeg: number, r: number) => {
 export default function ServiceAreaMap() {
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
 
-  const orderedAreas = [...client.areas].sort((a, b) => {
-    if (a.slug === 'newmarket') return -1;
-    if (b.slug === 'newmarket') return 1;
-    return a.name.localeCompare(b.name);
-  });
+  const REGION_ORDER = ['York Region', 'Simcoe County', 'Durham Region'];
+
+  // Areas grouped by region so the list can collapse to one region at a time
+  // (Aug 2026 UX review: keeps the map the main visual focus and cuts scrolling).
+  const groupedAreas = REGION_ORDER.map((region) => ({
+    region,
+    cities: client.areas
+      .filter((a) => a.region === region)
+      .sort((a, b) => a.name.localeCompare(b.name)),
+  })).filter((g) => g.cities.length > 0);
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-amber-50/30 via-white to-white py-16 md:py-24">
@@ -198,8 +203,36 @@ export default function ServiceAreaMap() {
               <p className="text-gray-400 text-xs hidden sm:block">Hover any city or map dot</p>
             </div>
 
-            <ul className="space-y-1.5">
-              {orderedAreas.map((area) => {
+            <div className="space-y-3">
+              {groupedAreas.map(({ region, cities }, idx) => (
+                <details
+                  key={region}
+                  open={idx === 0}
+                  className="group border-b border-gray-200 pb-3 last:border-b-0"
+                >
+                  <summary className="flex items-center justify-between cursor-pointer list-none py-2 select-none">
+                    <span className="font-display font-bold text-gray-900 text-base md:text-lg uppercase tracking-wide">
+                      {region}
+                    </span>
+                    <span className="flex items-center gap-3">
+                      <span className="text-gray-400 text-xs font-medium">
+                        {cities.length} {cities.length === 1 ? 'city' : 'cities'}
+                      </span>
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.4}
+                        aria-hidden="true"
+                        className="w-4 h-4 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
+                  </summary>
+
+                  <ul className="space-y-1.5 pt-2">
+                    {cities.map((area) => {
                 const isHQ = area.slug === 'newmarket';
                 const isHovered = hoveredSlug === area.slug;
                 const regionShort = area.region.replace(' Region', '').replace(' County', '');
@@ -245,7 +278,10 @@ export default function ServiceAreaMap() {
                   </li>
                 );
               })}
-            </ul>
+                  </ul>
+                </details>
+              ))}
+            </div>
           </div>
         </div>
       </div>

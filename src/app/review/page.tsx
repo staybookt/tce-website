@@ -13,7 +13,7 @@ const GOOGLE_REVIEW_URL =
 export const metadata: Metadata = {
   title: 'Leave a Review | Top Choice Electrical',
   description: `Thanks for choosing ${client.name}. If we did right by you, a quick Google review helps other York Region homeowners find us.`,
-  alternates: { canonical: 'https://www.topchoiceelectrical.ca/review' },
+  alternates: { canonical: 'https://www.topchoiceelectrical.com/review' },
   // Don't waste crawler budget on this page — internal-use only
   robots: { index: false, follow: false },
 };

@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Electrician in ${area.name} | Licensed & Insured`,
     description: `Licensed electrician in ${area.name}, ON. ${area.topServices ? area.topServices.slice(0, 3).join(', ') + ' & more.' : 'Panel upgrades, EV chargers, wiring, lighting.'} ESA certified. Call ${client.phone}.`,
-    alternates: { canonical: `https://www.topchoiceelectrical.ca/areas/${slug}` },
+    alternates: { canonical: `https://www.topchoiceelectrical.com/areas/${slug}` },
     openGraph: {
       title: `Electrician in ${area.name} | Licensed & Insured`,
       description: `Licensed electrical services in ${area.name}, Ontario. ESA certified, fully insured. Call ${client.phone}.`,

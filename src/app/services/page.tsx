@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { client } from '@/data/client';
 import { featuredServiceSlugs } from '@/data/service-categories';
 import ServicesExplorer from '@/components/ServicesExplorer';
+import ServiceSearch from '@/components/ServiceSearch';
 import SectionCTA from '@/components/SectionCTA';
 
 const isExt = (src: string) => src.startsWith('http://') || src.startsWith('https://');
@@ -11,7 +12,7 @@ const isExt = (src: string) => src.startsWith('http://') || src.startsWith('http
 export const metadata: Metadata = {
   title: 'Electrical Services | Newmarket & York Region',
   description: 'Panel upgrades, EV chargers, landscape lighting, full rewires, knob-and-tube removal, generators, smart home installs, ESA inspections. 18 services across York Region. Same-day quotes.',
-  alternates: { canonical: 'https://www.topchoiceelectrical.ca/services' },
+  alternates: { canonical: 'https://www.topchoiceelectrical.com/services' },
   openGraph: {
     title: 'Electrical Services | Newmarket & York Region',
     description: '18 electrical services, ESA-licensed, fully insured, same-day quotes across York Region.',
@@ -75,6 +76,9 @@ export default function ServicesPage() {
         </div>
       </div>
 
+      {/* === Quick-start search - a visitor on the services page is looking for a service === */}
+      <ServiceSearch />
+
       <section id="featured" className="py-16 md:py-20 bg-gray-50 relative overflow-hidden scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 relative">
           <div className="max-w-2xl mb-10">
@@ -131,11 +135,11 @@ export default function ServicesPage() {
               <div className="relative h-full flex flex-col justify-end p-7 md:p-8">
                 <div className="inline-flex items-center gap-2 bg-red-500/[0.15] backdrop-blur-md border border-red-400/30 rounded-full px-3 py-1 mb-4 w-fit">
                   <div className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-                  <span className="text-red-100 text-xs font-semibold tracking-wide uppercase">24/7 · Tim picks up</span>
+                  <span className="text-white text-xs font-semibold tracking-wide uppercase">24/7 · Tim picks up</span>
                 </div>
                 <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-2 tracking-tight">Emergency Electrician</h3>
                 <p className="text-white/70 text-sm leading-relaxed mb-5">Sparks, burning smell, panel won&apos;t reset. Same-day across York Region.</p>
-                <div className="flex items-center gap-2 text-red-300 font-semibold text-sm">
+                <div className="flex items-center gap-2 text-white font-semibold text-sm">
                   <span>Get help now</span>
                   <svg className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

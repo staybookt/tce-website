@@ -3,15 +3,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/data/client';
 import SectionCTA from '@/components/SectionCTA';
-import TrustStrip from '@/components/TrustStrip';
-import InlineCallStrip from '@/components/InlineCallStrip';
 
 export const metadata: Metadata = {
   title: 'Why hire an ESA-licensed electrician (vs a handyman)',
   description:
     'ESA-certified electricians are licensed by the Electrical Safety Authority of Ontario. Permits, inspections, insurance, code compliance. Here is what you get with an ESA contractor that a handyman cannot give you.',
   alternates: {
-    canonical: 'https://www.topchoiceelectrical.ca/why-esa-licensed',
+    canonical: 'https://www.topchoiceelectrical.com/why-esa-licensed',
   },
   openGraph: {
     title: 'Why hire an ESA-licensed electrician in Ontario',
@@ -28,42 +26,42 @@ export const metadata: Metadata = {
   },
 };
 
-const DIFFERENCES = [
+/**
+ * Comparison rows. Wording follows the Aug 2026 UX review: it states what a
+ * licensed contractor is required to do, and describes the unlicensed column
+ * in terms of what is not guaranteed rather than asserting what any individual
+ * does or does not carry.
+ */
+const COMPARISON_ROWS = [
   {
-    icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
-    title: 'Licensed by the Electrical Safety Authority',
-    handyman: 'No formal credentials. Anyone can call themselves a handyman.',
-    esa: `Tim is licensed by the Ontario Electrical Safety Authority (${client.licenseBody}). The licence number is on every quote, every permit, and every invoice. You can verify it on the ESA Find-a-Contractor site.`,
+    label: 'Licensed to do electrical work',
+    licensed: `ECRA/${client.licenseBody} licensed`,
+    unlicensed: `Not authorized unless they hold an ECRA/${client.licenseBody} licence`,
   },
   {
-    icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
-    title: 'Pulls a real permit for permitted work',
-    handyman: 'Skips the permit. The work might pass inspection. It also might not. Either way, there’s no paper trail.',
-    esa: 'Every job that needs an ESA permit gets one. We pull it before the work starts. The inspector signs off when it’s done. You get the paperwork — for your insurer, your records, and the buyer if you ever sell.',
+    label: `${client.licenseBody} notification & inspection`,
+    licensed: 'Handles required notifications and inspections',
+    unlicensed: 'May not provide this',
   },
   {
-    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
-    title: '$5 million in liability insurance',
-    handyman: 'Often no liability insurance at all. If something goes wrong — a fire, a flooded basement, a tradesperson injured on site — you might be on the hook personally.',
-    esa: 'Top Choice carries $5M general liability + WSIB coverage on every tradesperson on site. If the unthinkable happens, the insurance carries it. Not you.',
+    label: 'Proof of completed work',
+    licensed: `${client.licenseBody} Certificate of Acceptance when applicable`,
+    unlicensed: `No ${client.licenseBody} certificate without the required process`,
   },
   {
-    icon: 'M3 5a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V5zM3 11a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zM3 17a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z',
-    title: 'Insurance claims actually pay out',
-    handyman: 'If a fire starts in unpermitted wiring, your home insurance can deny the claim. Same with selling: undisclosed unpermitted electrical work is a deal-breaker on a home inspection.',
-    esa: 'Permitted, inspected, paper-trailed electrical work is what insurers want to see. If you ever file a claim, you have the documentation. If you ever sell, the inspection passes clean.',
+    label: 'Insurance & protection',
+    licensed: 'Licensed contractors carry required liability coverage',
+    unlicensed: 'Coverage can vary \u2014 verify before hiring',
   },
   {
-    icon: 'M5 13l4 4L19 7',
-    title: 'Knows the Ontario Electrical Safety Code',
-    handyman: 'Might know what looks right. Doesn’t necessarily know the OESC, the AFCI requirements, the breaker sizing rules, the bonding requirements.',
-    esa: `${client.yearsExperience} years on the tools means Tim has seen every kind of installation Ontario homes contain. He knows what the code requires, what the inspector will check, and what to do when the original work was done wrong.`,
+    label: 'Ontario Electrical Safety Code',
+    licensed: 'Work is performed to applicable code requirements',
+    unlicensed: 'Qualifications can vary',
   },
   {
-    icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
-    title: 'A real business with a real warranty',
-    handyman: 'Cash deal, no warranty, no recourse if the work fails six months later. If something breaks, the number you have stops working.',
-    esa: 'Top Choice is a registered business with a 1-year labour warranty and manufacturer warranties on every part. If the work fails, we come back and fix it. The phone keeps answering.',
+    label: 'Warranty & accountability',
+    licensed: `Backed by ${client.name}'s workmanship warranty`,
+    unlicensed: 'Depends on the individual',
   },
 ];
 
@@ -101,13 +99,10 @@ export default function WhyEsaLicensedPage() {
         </div>
       </section>
 
-      {/* === Trust strip === */}
-      <TrustStrip />
-
-      {/* === Comparison cards === */}
+      {/* === Comparison table === */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="max-w-3xl mb-12 md:mb-14">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="max-w-3xl mb-10 md:mb-12">
             <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.25em] mb-3">Six real differences</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.05]">
               What an ESA contractor gives you{' '}
@@ -115,42 +110,53 @@ export default function WhyEsaLicensedPage() {
             </h2>
           </div>
 
-          <div className="space-y-4 md:space-y-5">
-            {DIFFERENCES.map((d, i) => (
-              <div
-                key={i}
-                className="grid md:grid-cols-[auto_1fr_1fr] gap-4 md:gap-6 bg-white border border-gray-200 rounded-2xl p-6 md:p-7"
-              >
-                <div className="md:row-span-2 w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center self-start">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 text-amber-500">
-                    <path strokeLinecap="round" strokeLinejoin="round" d={d.icon} />
-                  </svg>
-                </div>
-                <div className="md:col-span-2 mb-3 md:mb-4">
-                  <h3 className="font-display text-lg md:text-xl font-bold text-gray-900 tracking-tight leading-snug">
-                    {d.title}
-                  </h3>
-                </div>
-                <div className="bg-red-50/60 border border-red-100 rounded-xl p-4">
-                  <p className="text-red-700 text-xs font-bold uppercase tracking-wider mb-2">Handyman</p>
-                  <p className="text-gray-700 text-sm leading-relaxed">{d.handyman}</p>
-                </div>
-                <div className="bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-                  <p className="text-amber-700 text-xs font-bold uppercase tracking-wider mb-2">ESA-certified electrician</p>
-                  <p className="text-gray-700 text-sm leading-relaxed">{d.esa}</p>
-                </div>
-              </div>
-            ))}
+          <div className="overflow-x-auto -mx-4 px-4">
+            <table className="w-full min-w-[640px] border-collapse text-left">
+              <caption className="sr-only">
+                Licensed electrical contractor compared with an unlicensed handyman
+              </caption>
+              <thead>
+                <tr className="border-b-2 border-gray-900">
+                  <th scope="col" className="py-4 pr-6 w-[26%]">
+                    <span className="sr-only">Requirement</span>
+                  </th>
+                  <th scope="col" className="py-4 px-4 w-[37%] text-sm md:text-base font-bold text-gray-900">
+                    Licensed Electrical Contractor
+                  </th>
+                  <th scope="col" className="py-4 px-4 w-[37%] text-sm md:text-base font-bold text-gray-900">
+                    Unlicensed / Handyman
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARISON_ROWS.map((row) => (
+                  <tr key={row.label} className="border-b border-gray-200 align-top">
+                    <th scope="row" className="py-5 pr-6 text-sm md:text-[15px] font-semibold text-gray-900">
+                      {row.label}
+                    </th>
+                    <td className="py-5 px-4">
+                      <div className="flex gap-3">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 shrink-0 mt-0.5 text-amber-500" fill="currentColor">
+                          <path fillRule="evenodd" clipRule="evenodd" d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.6 5.6a1 1 0 01-1.4 0l-2.4-2.4a1 1 0 111.4-1.4l1.7 1.7 4.9-4.9a1 1 0 011.4 1.4z" />
+                        </svg>
+                        <span className="text-gray-700 text-sm md:text-[15px] leading-relaxed">{row.licensed}</span>
+                      </div>
+                    </td>
+                    <td className="py-5 px-4">
+                      <div className="flex gap-3">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 shrink-0 mt-0.5 text-red-600" fill="currentColor">
+                          <path fillRule="evenodd" clipRule="evenodd" d="M12 2a10 10 0 100 20 10 10 0 000-20zm3.7 12.3a1 1 0 01-1.4 1.4L12 13.4l-2.3 2.3a1 1 0 11-1.4-1.4l2.3-2.3-2.3-2.3a1 1 0 011.4-1.4l2.3 2.3 2.3-2.3a1 1 0 011.4 1.4L13.4 12z" />
+                        </svg>
+                        <span className="text-gray-700 text-sm md:text-[15px] leading-relaxed">{row.unlicensed}</span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
-
-      {/* === Tap-to-call between sections === */}
-      <InlineCallStrip
-        variant="amber"
-        headline="Got an electrical job? Hire the right person the first time."
-        tagline={`${client.licenseBody}-licensed · $5M insured · 1-year warranty`}
-      />
 
       {/* === The insurance angle deep dive === */}
       <section className="py-16 md:py-24 bg-gray-50">
@@ -161,16 +167,13 @@ export default function WhyEsaLicensedPage() {
           </h2>
           <div className="space-y-5 text-gray-700 text-base md:text-lg leading-relaxed">
             <p>
-              Most Canadian home-insurance policies have language that excludes losses caused by unpermitted electrical work. Read your policy — the words usually live under &ldquo;exclusions&rdquo; or &ldquo;loss caused by non-compliance with safety codes.&rdquo; The line is small. The financial exposure is not.
+              Most Canadian home-insurance policies have exclusions for unpermitted electrical work or safety-code violations. If something goes wrong with unpermitted wiring, panels, or DIY work, your coverage could be affected.
             </p>
             <p>
-              If a fire starts in a knob-and-tube circuit that was &ldquo;repaired&rdquo; by a handyman with no permit and no ESA inspection, your insurer can deny the claim. Same logic applies to aluminum wiring without proper terminations, panels installed without permits, and DIY rewires that were never inspected.
+              With permitted and inspected electrical work, you receive documentation from {client.licenseBody} that can help protect you if an issue arises &mdash; and provide important records when selling your home.
             </p>
-            <p>
-              An ESA-permitted, ESA-inspected job ends with paperwork: the permit number, the inspector&apos;s sign-off, the certificate of inspection. That document is what your insurer wants to see if anything ever goes sideways. It&apos;s also what your real-estate lawyer wants to see when you sell.
-            </p>
-            <p className="text-amber-700 font-semibold">
-              The few hundred dollars a permit costs is the cheapest insurance you can buy on an electrical job.
+            <p className="text-gray-900 font-semibold">
+              A permit is a small cost compared to the risk of unpermitted electrical work.
             </p>
           </div>
         </div>

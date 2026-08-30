@@ -14,7 +14,7 @@ import { client } from '@/data/client';
  *    for "electrician in [city]" queries.
  */
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.topchoiceelectrical.ca';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.topchoiceelectrical.com';
 
 interface BreadcrumbItem {
   name: string;

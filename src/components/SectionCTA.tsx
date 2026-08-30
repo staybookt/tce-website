@@ -69,7 +69,7 @@ export default function SectionCTA({
               {primaryCTA && (
                 <a
                   href={primaryCTA.href}
-                  className="bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold px-8 py-4 rounded-xl text-base transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02] text-center"
+                  className="bg-amber-500 hover:bg-amber-400 ring-1 ring-amber-700/50 text-gray-900 font-bold px-8 py-4 rounded-xl text-base transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02] text-center"
                 >
                   {primaryCTA.label}
                 </a>

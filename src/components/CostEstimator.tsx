@@ -220,7 +220,7 @@ export default function CostEstimator({ variant = 'light' }: CostEstimatorProps)
           <div className="flex gap-3">
             <Link
               href="/contact"
-              className="flex-1 bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold py-3.5 rounded-xl text-sm transition-all duration-200 text-center shadow-lg shadow-amber-500/20"
+              className="flex-1 bg-amber-500 hover:bg-amber-400 ring-1 ring-amber-700/50 text-gray-900 font-bold py-3.5 rounded-xl text-sm transition-all duration-200 text-center shadow-lg shadow-amber-500/20"
             >
               Get Your Exact Quote
             </Link>

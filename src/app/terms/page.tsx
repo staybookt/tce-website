@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Terms of Service',
   description: `Terms governing use of ${client.name}'s website and services.`,
   alternates: {
-    canonical: 'https://www.topchoiceelectrical.ca/terms',
+    canonical: 'https://www.topchoiceelectrical.com/terms',
   },
   robots: {
     index: true,
@@ -36,7 +36,7 @@ export default function TermsPage() {
           <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-10">
             <div>
               <p className="text-[17px]">
-                These terms govern your use of the {client.name} website at topchoiceelectrical.ca. By using the site, you agree to them. If you don&rsquo;t agree, don&rsquo;t use the site.
+                These terms govern your use of the {client.name} website at topchoiceelectrical.com. By using the site, you agree to them. If you don&rsquo;t agree, don&rsquo;t use the site.
               </p>
             </div>
 

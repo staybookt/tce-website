@@ -26,8 +26,8 @@ export const client = {
   tagline: "Electrical work done right. Across York Region.",
 
   // Domain
-  domain: "topchoiceelectrical.ca",
-  existingSiteUrl: "https://www.topchoiceelectrical.ca",
+  domain: "topchoiceelectrical.com",
+  existingSiteUrl: "https://www.topchoiceelectrical.com",
 
   // Services
   services: [
@@ -253,7 +253,7 @@ export const client = {
     "licensed electrician Aurora",
     "residential electrician York Region",
   ],
-  googleBusinessUrl: null as string | null,
+  googleBusinessUrl: "https://g.page/r/CTAyTXHzOdZgEBM/review" as string | null,
   googleRating: null as number | null,
   reviewCount: 0,
 
