@@ -26,8 +26,8 @@ export const client = {
   tagline: "Electrical work done right. Across York Region.",
 
   // Domain
-  domain: "topchoiceelectrical.ca",
-  existingSiteUrl: "https://www.topchoiceelectrical.ca",
+  domain: "topchoiceelectrical.com",
+  existingSiteUrl: "https://www.topchoiceelectrical.com",
 
   // Services
   services: [
@@ -231,7 +231,75 @@ export const client = {
     },
   ],
 
-  reviews: [] as Array<{
+  /**
+   * Real Google reviews, transcribed from the verified Business Profile on
+   * 30 Aug 2026. Verbatim customer wording only. Four reviews are longer on
+   * Google than shown here; Google would not serve the expanded text, so each
+   * is trimmed at a sentence boundary rather than paraphrased. Nothing has
+   * been added or reworded. `service` is only set where the customer named
+   * the work themselves.
+   *
+   * Profile total is 14 reviews at 5.0. The six not listed here are
+   * star-only ratings with no written text.
+   */
+  reviews: [
+    {
+      name: "Jaime Tekela",
+      location: "Google review",
+      rating: 5,
+      text: "I was in urgent need of some electrical work and Tim came after hours to help me out. My problem was fixed same day, within hours. I wouldn't suggest using anyone other than Tim. He sure is the Top Choice for electrical work.",
+      service: "Emergency Service",
+    },
+    {
+      name: "Eddie Mariani",
+      location: "Google review",
+      rating: 5,
+      text: "Renovating a century home comes with its share of challenges, and Tim and his crew at Top Choice Electrical handled every one of them with professionalism and expertise.",
+      service: "Knob & Tube Removal",
+    },
+    {
+      name: "Louise Tasker",
+      location: "Google review",
+      rating: 5,
+      text: "We used Tim at Top Choice Electrical to do some wiring for us. He was great to work with - reliable, trustworthy, and did a great job. His communication was excellent and we always knew what to expect from the job and the price.",
+      service: "Residential Wiring",
+    },
+    {
+      name: "Scott Dennison",
+      location: "Google review",
+      rating: 5,
+      text: "Tim did an excellent job, he was extremely responsive and friendly. Our project evolved throughout the process and he was very accommodating and never made us feel like it was an issue.",
+      service: "",
+    },
+    {
+      name: "Peter Sherk",
+      location: "Google review",
+      rating: 5,
+      text: "We were renovating our kitchen and main floor, and needed/wanted to add and change a bunch of electrical locations for plugs and ceiling lights.",
+      service: "Residential Wiring",
+    },
+    {
+      name: "Roberta Boyne",
+      location: "Google review",
+      rating: 5,
+      text: "You and your partner were very friendly, polite and knowledgeable. I was very pleased with the job you did. Would highly recommend you.",
+      service: "",
+    },
+    {
+      name: "Joff Brown",
+      location: "Google review",
+      rating: 5,
+      text: "Experienced, professional work with great pricing. Highly recommended.",
+      service: "",
+    },
+    {
+      name: "Andrew Mitchell",
+      location: "Google review",
+      rating: 5,
+      text: "Very professional crew. On time, on budget, no mess. Deal with confidence.",
+      service: "",
+    },
+  ] as Array<{
     name: string;
     location: string;
     rating: number;
@@ -253,9 +321,9 @@ export const client = {
     "licensed electrician Aurora",
     "residential electrician York Region",
   ],
-  googleBusinessUrl: null as string | null,
-  googleRating: null as number | null,
-  reviewCount: 0,
+  googleBusinessUrl: "https://g.page/r/CTAyTXHzOdZgEBM/review" as string | null,
+  googleRating: 5.0 as number | null,
+  reviewCount: 14,
 
   social: {
     facebook: null as string | null,

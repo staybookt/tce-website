@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Reviews | York Region Customer Testimonials',
   description: `Read what homeowners across York Region say about ${client.name}. Real reviews from real customers in Newmarket, Aurora, Richmond Hill, and more.`,
   alternates: {
-    canonical: 'https://www.topchoiceelectrical.ca/reviews',
+    canonical: 'https://www.topchoiceelectrical.com/reviews',
   },
   openGraph: {
     title: 'Reviews | York Region Customer Testimonials',

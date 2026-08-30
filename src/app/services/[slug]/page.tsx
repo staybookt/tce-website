@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${service.name} | Newmarket & York Region`,
     description: content?.metaDescription || service.shortDescription,
     alternates: {
-      canonical: `https://www.topchoiceelectrical.ca/services/${slug}`,
+      canonical: `https://www.topchoiceelectrical.com/services/${slug}`,
     },
     openGraph: {
       title: `${service.name} | Newmarket & York Region`,

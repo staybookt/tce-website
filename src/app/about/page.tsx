@@ -2,17 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/data/client';
-import SectionCTA from '@/components/SectionCTA';
-import TrustStrip from '@/components/TrustStrip';
-import PhotoBreak from '@/components/PhotoBreak';
 import RecentWork from '@/components/RecentWork';
 
 export const metadata: Metadata = {
-  title: 'About Tim | Top Choice Electrical',
+  title: 'About Tim',
   description: `Tim Ciszkowski runs Top Choice Electrical out of Newmarket. ${client.yearsExperience} years wiring York Region homes. ESA-certified, insured, bonded. Tim works the job himself.`,
-  alternates: { canonical: 'https://www.topchoiceelectrical.ca/about' },
+  alternates: { canonical: 'https://www.topchoiceelectrical.com/about' },
   openGraph: {
-    title: 'About Tim | Top Choice Electrical',
+    title: 'About Tim',
     description: `Tim Ciszkowski runs Top Choice Electrical out of Newmarket. ${client.yearsExperience} years wiring York Region homes. ESA-certified, insured, bonded.`,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'About Top Choice Electrical' }],
   },
@@ -52,8 +49,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <TrustStrip />
-
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-start">
@@ -76,7 +71,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="animate-on-scroll lg:sticky lg:top-28 space-y-5">
+            <div className="animate-on-scroll lg:sticky lg:top-28">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-900 shadow-lg">
                 <Image
                   src="/images/work/IMG_5375.webp"
@@ -97,82 +92,73 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { number: `${client.yearsExperience}`, label: 'Years on the tools' },
-                  { number: `${client.yearsInBusiness}`, label: 'Years on his own' },
-                  { number: '$5M', label: 'Liability insurance coverage' },
-                  { number: '24/7', label: 'Emergency response' },
-                ].map((stat, i) => (
-                  <div key={i} className="bg-gradient-to-br from-amber-50 to-white border border-amber-100 rounded-2xl p-6 text-center shadow-sm">
-                    <p className="font-display text-3xl md:text-4xl font-bold text-amber-600 mb-1 leading-none">{stat.number}</p>
-                    <p className="text-gray-600 text-xs leading-tight mt-2">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
             </div>
+          </div>
+
+          {/* Credentials, folded into the story rather than sitting alone */}
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mt-12 md:mt-16">
+            {[
+              { label: 'ESA Certified', value: client.licenseNumber, sub: client.licenseBody },
+              { label: 'Liability Coverage', value: '$5,000,000', sub: 'Insured for every job' },
+              { label: 'Bonded', value: 'Property Protection', sub: 'Additional security on every job' },
+              { label: 'Workmanship', value: '1-Year Warranty', sub: 'Labour-backed on every job' },
+              { label: 'Experience', value: `${client.yearsExperience} Years`, sub: 'Serving York Region & Simcoe' },
+            ].map((item, i) => (
+              <div key={i} className="bg-gradient-to-br from-amber-50/40 to-white border border-amber-100 rounded-2xl p-5 md:p-6">
+                <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center mb-4 shadow-sm">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <p className="text-amber-700 text-[10px] uppercase tracking-[0.2em] font-bold mb-1.5">{item.label}</p>
+                <p className="font-display text-gray-900 font-bold text-base md:text-lg mb-1 leading-tight">{item.value}</p>
+                <p className="text-gray-500 text-sm leading-snug">{item.sub}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-gradient-to-r from-amber-50 via-amber-50/60 to-amber-50 border-y border-amber-100">
-        <div className="max-w-7xl mx-auto px-4 py-6 md:py-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-            <div className="flex items-center gap-5">
-              <div className="w-16 h-16 rounded-full bg-amber-500 flex items-center justify-center shrink-0 shadow-md">
-                <span className="font-display font-bold text-white text-2xl">TC</span>
-              </div>
-              <div>
-                <p className="text-amber-700 text-[10px] font-bold uppercase tracking-[0.25em] mb-1">Written by</p>
-                <p className="font-display font-bold text-gray-900 text-xl md:text-2xl leading-tight">Tim Ciszkowski</p>
-                <p className="text-gray-600 text-sm mt-0.5">Owner &amp; Master Electrician · ESA-Certified · Newmarket, ON</p>
-              </div>
-            </div>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm md:border-l md:border-amber-200 md:pl-8">
-              <div className="flex items-center gap-2">
-                <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                <span className="text-gray-700 font-semibold">ESA-Certified</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                <span className="text-gray-700 font-semibold">{client.yearsExperience} years on the tools</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg viewBox="0 0 24 24" className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                <a href={`tel:${client.phone}`} className="text-amber-700 font-bold hover:text-amber-800 transition-colors">{client.phone}</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-8 md:py-12 bg-white">
+      {/* === Quote + photo, with the numbers underneath === */}
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <PhotoBreak
-            image="/images/work/IMG_5017.webp"
-            alt="Clean residential electrical panel installed by Top Choice Electrical, every breaker labelled by circuit"
-            aspect="21/9"
-          />
-        </div>
-      </section>
-
-      <section className="py-10 md:py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="relative py-6 md:py-8">
-            <svg className="absolute -top-2 -left-2 w-16 h-16 text-amber-100" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-              <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-            </svg>
-            <blockquote className="relative pl-10 md:pl-14 pr-4 md:pr-8 border-l-4 border-amber-500">
-              <p className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-[1.3] tracking-tight">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center mb-12 md:mb-16">
+            <blockquote className="relative pl-8 md:pl-10 border-l-4 border-amber-500">
+              <svg className="absolute -top-3 left-6 md:left-8 w-12 h-12 text-amber-200" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+              </svg>
+              <p className="relative font-display text-xl md:text-2xl lg:text-[1.75rem] font-bold text-gray-900 leading-[1.35] tracking-tight">
                 Tim knows the housing stock by decade. The 1965 split-levels with the original 60-amp services. The late-70s builds with Federal Pacific panels. The 1920s farmhouses with knob-and-tube still in the attic. He doesn&apos;t have to guess what&apos;s behind the wall.
               </p>
-              <footer className="mt-5 flex items-center gap-3">
+              <footer className="mt-6 flex items-center gap-3">
                 <div className="h-px w-8 bg-amber-500" />
-                <span className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em]">
-                  The work
-                </span>
+                <span className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em]">The work</span>
               </footer>
             </blockquote>
+
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg">
+              <Image
+                src="/images/work/IMG_5017.webp"
+                alt="Clean residential electrical panel installed by Top Choice Electrical, every breaker labelled by circuit"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { number: `${client.yearsExperience}`, label: 'Years on the tools' },
+              { number: `${client.yearsInBusiness}`, label: 'Years on his own' },
+              { number: '$5M', label: 'Liability insurance coverage' },
+              { number: '24/7', label: 'Emergency response' },
+            ].map((stat, i) => (
+              <div key={i} className="bg-white border border-amber-100 rounded-2xl p-6 text-center shadow-sm">
+                <p className="font-display text-3xl md:text-4xl font-bold text-amber-600 mb-1 leading-none">{stat.number}</p>
+                <p className="text-gray-600 text-xs leading-tight mt-2">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -215,49 +201,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <RecentWork />
-
-      <section className="py-10 md:py-14 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <PhotoBreak
-            image="/images/richard-landscape-2.webp"
-            alt="Estate landscape lighting at dusk in York Region by Top Choice Electrical"
-            aspect="21/9"
-          />
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="max-w-2xl mb-10">
-            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Credentials</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 tracking-tight leading-[1.05]">
-              Licensed. Insured. Bonded.
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {[
-              { label: 'ESA Certified', value: client.licenseNumber, sub: client.licenseBody },
-              { label: 'Liability Coverage', value: '$5,000,000', sub: 'Insured for every job' },
-              { label: 'Bonded', value: 'Property Protection', sub: 'Additional security on every job' },
-              { label: 'Workmanship', value: '1-Year Warranty', sub: 'Labour-backed on every job' },
-              { label: 'Experience', value: `${client.yearsExperience} Years`, sub: 'Serving York Region & Simcoe' },
-            ].map((item, i) => (
-              <div key={i} className="bg-gradient-to-br from-amber-50/40 to-white border border-amber-100 rounded-2xl p-6 md:p-7">
-                <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center mb-4 shadow-sm">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <p className="text-amber-700 text-[10px] uppercase tracking-[0.2em] font-bold mb-1.5">{item.label}</p>
-                <p className="font-display text-gray-900 font-bold text-lg mb-1 leading-tight">{item.value}</p>
-                <p className="text-gray-500 text-sm leading-snug">{item.sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="relative py-16 md:py-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
@@ -315,53 +258,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-14 md:py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <p className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em] mb-3">Brands we install</p>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-gray-900 tracking-tight leading-tight max-w-2xl mx-auto">
-              The equipment we trust on the panels we wire.
-            </h2>
-          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {[
-              { name: 'Square D', category: 'Panels' },
-              { name: 'Eaton', category: 'Panels' },
-              { name: 'Siemens', category: 'Panels' },
-              { name: 'Generac', category: 'Generators' },
-              { name: 'Tesla', category: 'EV / Powerwall' },
-              { name: 'ChargePoint', category: 'EV chargers' },
-              { name: 'Grizzl-E', category: 'EV chargers' },
-              { name: 'FLO', category: 'EV chargers' },
-              { name: 'Enphase', category: 'Battery backup' },
-              { name: 'Lutron', category: 'Smart lighting' },
-              { name: 'Leviton', category: 'Devices' },
-              { name: 'Hubbell', category: 'Devices' },
-            ].map((b) => (
-              <div key={b.name} className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:border-amber-300 transition-colors">
-                <p className="font-display font-bold text-gray-900 text-sm leading-tight">{b.name}</p>
-                <p className="text-gray-400 text-[11px] uppercase tracking-wider mt-1">{b.category}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center text-gray-500 text-sm mt-8 max-w-2xl mx-auto">
-            Working with a specific brand or model? Mention it on the quote &mdash; chances are we&apos;ve installed it before.
-          </p>
-        </div>
-      </section>
-
-      {/* === CTA — lifestyle home at dusk closer (was Tim panel — redundant with hero) === */}
-      <SectionCTA
-        eyebrow="Talk to Tim"
-        headline="Same-day quote. Same number every time."
-        body="Single outlet to full rewire — Tim picks up, Tim quotes, Tim shows up."
-        image="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        imageAlt="Illuminated home at dusk in York Region — the homes Top Choice Electrical serves"
-        primaryCTA={{ label: `Call Tim — ${client.phone}`, href: `tel:${client.phone}` }}
-        secondaryCTA={{ label: 'Request a quote online', href: '/contact' }}
-      />
+      {/* === The work, across York Region === */}
+      <RecentWork />
     </>
   );
 }

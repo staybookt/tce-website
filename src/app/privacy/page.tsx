@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: `How ${client.name} collects, uses, and protects your information. PIPEDA-compliant.`,
   alternates: {
-    canonical: 'https://www.topchoiceelectrical.ca/privacy',
+    canonical: 'https://www.topchoiceelectrical.com/privacy',
   },
   robots: {
     index: true,
@@ -36,7 +36,7 @@ export default function PrivacyPolicyPage() {
           <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-10">
             <div>
               <p className="text-[17px]">
-                {client.name} (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) operates this website at topchoiceelectrical.ca. We respect your privacy and follow the Personal Information Protection and Electronic Documents Act (PIPEDA) and applicable provincial privacy laws.
+                {client.name} (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) operates this website at topchoiceelectrical.com. We respect your privacy and follow the Personal Information Protection and Electronic Documents Act (PIPEDA) and applicable provincial privacy laws.
               </p>
               <p className="text-[17px] mt-4">
                 This policy explains what information we collect, why we collect it, and what we do with it.
