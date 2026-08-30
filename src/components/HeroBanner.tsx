@@ -45,7 +45,8 @@ export default function HeroBanner() {
               Same-day quotes across York Region and Simcoe County.
             </p>
             <p className="text-white/90 text-base md:text-lg leading-relaxed">
-              ESA-certified, fully insured ($5M), {client.yearsExperience} years on the tools, {client.yearsInBusiness} on his own &mdash; every permit pulled, every inspection passed.
+              ESA-certified, fully insured ($5M), {client.yearsExperience} years on the tools,{' '}
+              {client.yearsInBusiness} on his own &mdash; every permit pulled, every inspection passed.
             </p>
           </div>
 

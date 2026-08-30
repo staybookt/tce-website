@@ -35,18 +35,18 @@ export const metadata: Metadata = {
 const COMPARISON_ROWS = [
   {
     label: 'Licensed to do electrical work',
-    licensed: `ECRA/${client.licenseBody} licensed`,
-    unlicensed: `Not authorized unless they hold an ECRA/${client.licenseBody} licence`,
+    licensed: 'ECRA/ESA licensed',
+    unlicensed: 'Not authorized unless they hold an ECRA/ESA licence',
   },
   {
-    label: `${client.licenseBody} notification & inspection`,
+    label: 'ESA notification & inspection',
     licensed: 'Handles required notifications and inspections',
     unlicensed: 'May not provide this',
   },
   {
     label: 'Proof of completed work',
-    licensed: `${client.licenseBody} Certificate of Acceptance when applicable`,
-    unlicensed: `No ${client.licenseBody} certificate without the required process`,
+    licensed: 'ESA Certificate of Acceptance when applicable',
+    unlicensed: 'No ESA certificate without the required process',
   },
   {
     label: 'Insurance & protection',
