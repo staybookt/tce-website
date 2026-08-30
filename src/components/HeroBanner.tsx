@@ -46,7 +46,8 @@ export default function HeroBanner() {
             </p>
             <p className="text-white/90 text-base md:text-lg leading-relaxed">
               ESA-certified, fully insured ($5M), {client.yearsExperience} years on the tools,{' '}
-              {client.yearsInBusiness} on his own &mdash; every permit pulled, every inspection passed.
+              {client.yearsInBusiness}{' '}
+              on his own &mdash; every permit pulled, every inspection passed.
             </p>
           </div>
 
