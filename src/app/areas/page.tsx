@@ -13,7 +13,7 @@ import { areaImage } from '@/data/area-images';
 export const metadata: Metadata = {
   title: 'Service Areas | York Region & Simcoe County',
   description: `${client.name} serves Newmarket, Aurora, Richmond Hill, Markham, Vaughan, and all of York Region. Licensed electrician, same-day service.`,
-  alternates: { canonical: 'https://www.topchoiceelectrical.ca/areas' },
+  alternates: { canonical: 'https://www.topchoiceelectrical.com/areas' },
   openGraph: {
     title: 'Service Areas | York Region & Simcoe County',
     description: 'Licensed electrician serving Newmarket, Aurora, Richmond Hill, Markham, Vaughan & all of York Region. Same-day service.',

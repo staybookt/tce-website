@@ -38,7 +38,8 @@ export default function HeroBanner() {
           </h1>
 
           <p className="text-white/50 text-lg md:text-xl mb-12 leading-relaxed max-w-xl">
-            Panel upgrades, EV chargers, emergency repairs, full rewires. Same-day quotes across York Region and Simcoe County. ESA-certified, fully insured ($5M), {client.yearsExperience} years on the tools, {client.yearsInBusiness} on his own &mdash; every permit pulled, every inspection passed.
+            Panel upgrades, EV chargers, emergency repairs, full rewires. Same-day quotes across York Region and Simcoe County. ESA-certified, fully insured ($5M), {client.yearsExperience} years on the tools, {client.yearsInBusiness}{' '}
+            on his own &mdash; every permit pulled, every inspection passed.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">

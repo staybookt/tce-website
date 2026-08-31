@@ -8,7 +8,7 @@ import PageSchema from '@/components/PageSchema';
 export const metadata: Metadata = {
   title: `Emergency Electrician in Newmarket & York Region | ${client.name}`,
   description: `24/7 emergency electrician serving Newmarket, Aurora, Richmond Hill, and all of York Region. Sparking outlets, burning smells, power loss, tripped breakers that won't reset. Call Tim at ${client.phone}.`,
-  alternates: { canonical: 'https://www.topchoiceelectrical.ca/emergency-electrician' },
+  alternates: { canonical: 'https://www.topchoiceelectrical.com/emergency-electrician' },
   openGraph: {
     title: `Emergency Electrician in Newmarket & York Region | ${client.name}`,
     description: `24/7 emergency electrician serving York Region. Sparking outlets, burning smells, power loss. Call Tim at ${client.phone}.`,
@@ -50,7 +50,7 @@ export default function EmergencyElectricianPage() {
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
             <div className="inline-flex items-center gap-2.5 bg-red-500/[0.15] backdrop-blur-md border border-red-400/30 rounded-full px-5 py-2.5 mb-8">
               <div className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-              <span className="text-red-100 text-sm font-medium tracking-wide uppercase">24/7 &middot; Tim picks up</span>
+              <span className="text-white text-sm font-medium tracking-wide uppercase">24/7 &middot; Tim picks up</span>
             </div>
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.95] mb-6 tracking-[-0.03em] max-w-4xl">Emergency Electrician in<br /><span className="gradient-text">Newmarket &amp; York Region.</span></h1>
             <p className="text-white/70 text-xl md:text-2xl mb-10 leading-relaxed max-w-2xl">Sparks. Burning smell. A breaker that won&apos;t stay reset. Tim takes the call himself, day or night. ESA-certified, fully insured. Texts back within 15 minutes.</p>

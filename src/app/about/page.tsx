@@ -8,11 +8,11 @@ import PhotoBreak from '@/components/PhotoBreak';
 import RecentWork from '@/components/RecentWork';
 
 export const metadata: Metadata = {
-  title: 'About Tim | Top Choice Electrical',
+  title: 'About Tim',
   description: `Tim Ciszkowski runs Top Choice Electrical out of Newmarket. ${client.yearsExperience} years wiring York Region homes. ESA-certified, insured, bonded. Tim works the job himself.`,
-  alternates: { canonical: 'https://www.topchoiceelectrical.ca/about' },
+  alternates: { canonical: 'https://www.topchoiceelectrical.com/about' },
   openGraph: {
-    title: 'About Tim | Top Choice Electrical',
+    title: 'About Tim',
     description: `Tim Ciszkowski runs Top Choice Electrical out of Newmarket. ${client.yearsExperience} years wiring York Region homes. ESA-certified, insured, bonded.`,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'About Top Choice Electrical' }],
   },

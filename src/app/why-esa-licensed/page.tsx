@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'ESA-certified electricians are licensed by the Electrical Safety Authority of Ontario. Permits, inspections, insurance, code compliance. Here is what you get with an ESA contractor that a handyman cannot give you.',
   alternates: {
-    canonical: 'https://www.topchoiceelectrical.ca/why-esa-licensed',
+    canonical: 'https://www.topchoiceelectrical.com/why-esa-licensed',
   },
   openGraph: {
     title: 'Why hire an ESA-licensed electrician in Ontario',

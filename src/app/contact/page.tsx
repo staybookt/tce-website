@@ -8,7 +8,7 @@ import TrustStrip from '@/components/TrustStrip';
 export const metadata: Metadata = {
   title: 'Contact Us | Free Electrical Quote',
   description: `Contact ${client.name} for a free electrical quote. Serving Newmarket, Aurora, and all of York Region. Call ${client.phone} or fill out our online form.`,
-  alternates: { canonical: 'https://www.topchoiceelectrical.ca/contact' },
+  alternates: { canonical: 'https://www.topchoiceelectrical.com/contact' },
   openGraph: {
     title: 'Contact Us | Free Electrical Quote',
     description: `Contact ${client.name} for a free electrical quote in York Region. Call ${client.phone} or use our online form.`,
