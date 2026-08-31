@@ -233,12 +233,14 @@ export const client = {
 
   /**
    * Real Google reviews, transcribed from the verified Business Profile on
-   * 30 Aug 2026. Verbatim customer wording only. Four are longer on Google
-   * than shown here; Google would not serve the expanded text, so each is
-   * trimmed at a sentence boundary rather than paraphrased. Nothing added or
-   * reworded. `service` is set only where the customer named the work.
+   * 30 Aug 2026. Verbatim customer wording only. Four reviews are longer on
+   * Google than shown here; Google would not serve the expanded text, so each
+   * is trimmed at a sentence boundary rather than paraphrased. Nothing has
+   * been added or reworded. `service` is only set where the customer named
+   * the work themselves.
    *
-   * Profile total is 14 at 5.0. The six not listed are star-only ratings.
+   * Profile total is 14 reviews at 5.0. The six not listed here are
+   * star-only ratings with no written text.
    */
   reviews: [
     {

@@ -92,7 +92,7 @@ export default function Header() {
             </a>
             <Link
               href="/contact"
-              className="btn-premium bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-sm px-6 py-2.5 rounded-xl transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
+              className="btn-premium bg-amber-500 hover:bg-amber-400 ring-1 ring-amber-700/50 text-gray-900 font-bold text-sm px-6 py-2.5 rounded-xl transition-all duration-300 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
             >
               Get a Free Quote
             </Link>

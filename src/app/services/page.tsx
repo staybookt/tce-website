@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { client } from '@/data/client';
 import { featuredServiceSlugs } from '@/data/service-categories';
 import ServicesExplorer from '@/components/ServicesExplorer';
+import ServiceSearch from '@/components/ServiceSearch';
 import SectionCTA from '@/components/SectionCTA';
 
 const isExt = (src: string) => src.startsWith('http://') || src.startsWith('https://');
@@ -74,6 +75,9 @@ export default function ServicesPage() {
           </nav>
         </div>
       </div>
+
+      {/* === Quick-start search - a visitor on the services page is looking for a service === */}
+      <ServiceSearch />
 
       <section id="featured" className="py-16 md:py-20 bg-gray-50 relative overflow-hidden scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 relative">

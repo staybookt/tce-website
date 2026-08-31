@@ -65,7 +65,7 @@ export default function ReviewsPage() {
                 ))}
               </div>
               <span className="text-gray-900 font-bold">5 Stars</span>
-              <span className="text-gray-500 text-sm">across all reviews</span>
+              <span className="text-gray-500 text-sm">on every Google review</span>
             </div>
           </div>
 

@@ -2,11 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/data/client';
-import SectionCTA from '@/components/SectionCTA';
-import TrustStrip from '@/components/TrustStrip';
-import PhotoBreak from '@/components/PhotoBreak';
 import ServiceAreaMap from '@/components/ServiceAreaMap';
-import AreasByRegion from '@/components/AreasByRegion';
 import { areaNeighbourhoods } from '@/data/area-neighbourhoods';
 import { areaImage } from '@/data/area-images';
 
@@ -56,8 +52,6 @@ export default function AreasPage() {
           </div>
         </div>
       </section>
-
-      <TrustStrip />
 
       {homeBase && (
         <section className="py-16 md:py-20 bg-white">
@@ -110,48 +104,39 @@ export default function AreasPage() {
       )}
 
       <ServiceAreaMap />
-      <AreasByRegion />
 
-      <section className="py-14 md:py-16 bg-white">
+      {/* === Quote + photo, paired === */}
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <PhotoBreak
-            image="https://images.pexels.com/photos/2343469/pexels-photo-2343469.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            alt="Cozy family room at evening with warm pot lights and fireplace — Top Choice Electrical residential outcome"
-            aspect="21/9"
-          />
-        </div>
-      </section>
-
-      <section className="pb-16 md:pb-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="relative py-6 md:py-8">
-            <svg className="absolute -top-2 -left-2 w-16 h-16 text-amber-100" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-              <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-            </svg>
-            <blockquote className="relative pl-10 md:pl-14 pr-4 md:pr-8 border-l-4 border-amber-500">
-              <p className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-[1.3] tracking-tight">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+            <blockquote className="relative pl-8 md:pl-10 border-l-4 border-amber-500">
+              <svg className="absolute -top-3 left-6 md:left-8 w-12 h-12 text-amber-200 -z-0" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+              </svg>
+              <p className="relative font-display text-xl md:text-2xl lg:text-[1.75rem] font-bold text-gray-900 leading-[1.35] tracking-tight">
                 Tim knows the housing stock by decade. The 1965 split-levels with 60-amp services. The late-70s builds with Federal Pacific panels. The older sections that still have knob-and-tube in the attic. He doesn&apos;t have to guess what&apos;s behind the wall.
               </p>
-              <footer className="mt-5 flex items-center gap-3">
+              <footer className="mt-6 flex items-center gap-3">
                 <div className="h-px w-8 bg-amber-500" />
                 <span className="text-amber-600 font-semibold text-sm uppercase tracking-[0.2em]">
                   Why local matters
                 </span>
               </footer>
             </blockquote>
+
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg">
+              <Image
+                src="https://images.pexels.com/photos/2343469/pexels-photo-2343469.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt="Cozy family room at evening with warm pot lights and fireplace — Top Choice Electrical residential outcome"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <SectionCTA
-        eyebrow="Outside the 12 cities?"
-        headline="Not sure if we cover your area?"
-        body="Call. If we can get there, we can quote it. Newmarket and Simcoe County have been the base for years — we know the drive times."
-        image="https://images.pexels.com/photos/4933643/pexels-photo-4933643.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        imageAlt="Illuminated suburban home at dusk in York Region — Top Choice Electrical"
-        primaryCTA={{ label: `Call ${client.phone}`, href: `tel:${client.phone}` }}
-        secondaryCTA={{ label: 'Get a free quote', href: '/contact' }}
-      />
     </>
   );
 }

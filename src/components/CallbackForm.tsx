@@ -237,7 +237,7 @@ export default function CallbackForm() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold py-4 rounded-xl text-base sm:text-sm transition-all shadow-md shadow-amber-500/20 hover:shadow-amber-500/40 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full bg-amber-500 hover:bg-amber-400 ring-1 ring-amber-700/50 text-gray-900 font-bold py-4 rounded-xl text-base sm:text-sm transition-all shadow-md shadow-amber-500/20 hover:shadow-amber-500/40 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {submitting ? (
                     <span className="flex items-center justify-center gap-2">

@@ -93,7 +93,7 @@ export default function CoveragePromise() {
           </p>
           <a
             href={`tel:${client.phone}`}
-            className="shrink-0 bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-sm px-5 py-3 rounded-xl transition-colors whitespace-nowrap"
+            className="shrink-0 bg-amber-500 hover:bg-amber-400 ring-1 ring-amber-700/50 text-gray-900 font-bold text-sm px-5 py-3 rounded-xl transition-colors whitespace-nowrap"
           >
             Talk to Tim &mdash; {client.phone}
           </a>

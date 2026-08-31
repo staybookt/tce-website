@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/data/client';
 import QuoteForm from '@/components/QuoteForm';
-import TrustStrip from '@/components/TrustStrip';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Free Electrical Quote',
@@ -51,8 +50,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <TrustStrip />
 
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">

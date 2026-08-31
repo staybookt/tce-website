@@ -37,15 +37,24 @@ export default function HeroBanner() {
             <span className="gradient-text">York Region &amp; Simcoe County.</span>
           </h1>
 
-          <p className="text-white/50 text-lg md:text-xl mb-12 leading-relaxed max-w-xl">
-            Panel upgrades, EV chargers, emergency repairs, full rewires. Same-day quotes across York Region and Simcoe County. ESA-certified, fully insured ($5M), {client.yearsExperience} years on the tools, {client.yearsInBusiness}{' '}
-            on his own &mdash; every permit pulled, every inspection passed.
-          </p>
+          <div className="mb-12 max-w-2xl space-y-3">
+            <p className="text-white text-lg md:text-xl lg:text-2xl leading-relaxed font-medium">
+              Panel upgrades, EV chargers, emergency repairs, full rewires.
+            </p>
+            <p className="text-white text-lg md:text-xl lg:text-2xl leading-relaxed font-medium">
+              Same-day quotes across York Region and Simcoe County.
+            </p>
+            <p className="text-white/90 text-base md:text-lg leading-relaxed">
+              ESA-certified, fully insured ($5M), {client.yearsExperience} years on the tools,{' '}
+              {client.yearsInBusiness}{' '}
+              on his own &mdash; every permit pulled, every inspection passed.
+            </p>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href={`tel:${client.phone}`}
-              className="btn-premium bg-amber-500 hover:bg-amber-400 text-gray-900 font-bold text-base px-6 sm:px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02]"
+              className="btn-premium bg-amber-500 hover:bg-amber-400 ring-1 ring-amber-700/50 text-gray-900 font-bold text-base px-6 sm:px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02]"
             >
               Call Tim &mdash; {client.phone}
             </a>
