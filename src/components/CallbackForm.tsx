@@ -53,6 +53,7 @@ export default function CallbackForm() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -70,6 +71,7 @@ export default function CallbackForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setFailed(false);
 
     const payload = {
       form_type: 'callback_request',
@@ -79,29 +81,39 @@ export default function CallbackForm() {
       _subject: `Callback request — ${formData.name} (${formData.timeWindow || 'anytime'})`,
     };
 
+    // Only report success if Formspree actually accepted the lead. Telling
+    // someone "Tim will call you back" when the request never arrived is
+    // worse than showing an error.
+    let delivered = false;
     try {
       const response = await fetch('https://formspree.io/f/xpwdqkbj', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      if (response.ok) {
-        setSubmitted(true);
-      } else {
-        console.log('Callback submitted:', payload);
-        setSubmitted(true);
-      }
+      delivered = response.ok;
     } catch {
-      console.log('Callback submitted (network error):', payload);
+      delivered = false;
+    }
+
+    setSubmitting(false);
+
+    if (delivered) {
       setSubmitted(true);
-    } finally {
-      setSubmitting(false);
       if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
         window.gtag('event', 'form_submit', {
           form_id: 'callback_form',
           time_window: formData.timeWindow || 'unspecified',
           page_path: source.page_path,
           utm_source: source.utm_source || '(direct)',
+        });
+      }
+    } else {
+      setFailed(true);
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        window.gtag('event', 'form_error', {
+          form_id: 'callback_form',
+          page_path: source.page_path,
         });
       }
     }
@@ -164,6 +176,24 @@ export default function CallbackForm() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {failed && (
+                  <div role="alert" className="bg-red-50 border border-red-200 rounded-xl p-4">
+                    <p className="text-red-800 font-bold text-sm mb-1">That didn&apos;t send.</p>
+                    <p className="text-red-700 text-sm leading-relaxed mb-3">
+                      Something went wrong on our end, so your request didn&apos;t reach Tim. Your
+                      details are still here if you want to try again — or just call him directly.
+                    </p>
+                    <a
+                      href={`tel:${client.phone}`}
+                      className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold text-sm px-4 py-2.5 rounded-lg transition-colors"
+                    >
+                      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.21l-2.26 1.13a11 11 0 005.5 5.5l1.13-2.26a1 1 0 011.21-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
+                      </svg>
+                      Call {client.phone}
+                    </a>
+                  </div>
+                )}
                 <div>
                   <label htmlFor="cb-name" className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
                     Your name *
@@ -247,6 +277,8 @@ export default function CallbackForm() {
                       </svg>
                       Sending...
                     </span>
+                  ) : failed ? (
+                    'Try again'
                   ) : (
                     'Request a callback'
                   )}
