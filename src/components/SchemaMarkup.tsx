@@ -110,7 +110,14 @@ export default function SchemaMarkup({ type = 'LocalBusiness', serviceName, serv
       }
     : null;
 
-  const schema = type === 'Service' && service ? [localBusiness, service] : [localBusiness];
+  // layout.tsx renders <SchemaMarkup /> on every page, which already emits the
+  // Electrician/LocalBusiness node (including its aggregateRating). Service
+  // pages mount this component a second time with type="Service". Emitting
+  // localBusiness again there produced a byte-identical duplicate node with the
+  // same @id on all 18 service pages, which Google reported as invalid Review
+  // snippet items. The Service node points at the business by @id, so the
+  // global node is sufficient. Only emit the Service schema here.
+  const schema = type === 'Service' && service ? [service] : [localBusiness];
 
   return (
     <>
