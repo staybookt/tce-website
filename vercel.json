@@ -4,6 +4,16 @@
               "source": "/home",
               "destination": "/",
               "permanent": true
+      },
+      {
+              "source": "/contact-2",
+              "destination": "/contact",
+              "permanent": true
+      },
+      {
+              "source": "/offerings",
+              "destination": "/services",
+              "permanent": true
       }
         ]
 }
