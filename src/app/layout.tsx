@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ClickToCall from '@/components/ClickToCall';
+import CallTracker from '@/components/CallTracker';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ScrollAnimator from '@/components/ScrollAnimator';
 import { client } from '@/data/client';
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main" className="flex-1">{children}</main>
         <Footer />
         <ClickToCall />
+        <CallTracker />
         <ScrollAnimator />
         {/* Google Analytics 4 */}
         <Script
