@@ -18,7 +18,7 @@ interface SourceMeta {
 }
 
 // GA4 dataLayer typing (loose) — fires the `form_submit` conversion event
-// when the form succeeds.
+// when the form succeeds, and `form_error` when the send fails.
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
@@ -46,6 +46,7 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   // On mount, capture UTM params, page path, and referrer. Stored in state so
   // they survive even if the user navigates within the SPA before submitting.
@@ -67,6 +68,7 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setFailed(false);
 
     const payload = {
       ...formData,
@@ -75,24 +77,25 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
       _subject: `New Quote Request: ${formData.service || 'General Inquiry'} — ${formData.name}`,
     };
 
+    // A lead is only "sent" if Formspree actually accepted it. Never report
+    // success on a failed request — the visitor would wait for a call that
+    // isn't coming, and TCE would never know the lead existed.
+    let delivered = false;
     try {
       const response = await fetch('https://formspree.io/f/xpwdqkbj', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      if (response.ok) {
-        setSubmitted(true);
-      } else {
-        console.log('Form submitted:', payload);
-        setSubmitted(true);
-      }
+      delivered = response.ok;
     } catch {
-      console.log('Form submitted:', payload);
+      delivered = false;
+    }
+
+    setSubmitting(false);
+
+    if (delivered) {
       setSubmitted(true);
-    } finally {
-      setSubmitting(false);
-      // GA4 conversion event — survives even if Formspree blip
       if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
         window.gtag('event', 'form_submit', {
           form_id: 'quote_form',
@@ -102,6 +105,16 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
           utm_source: source.utm_source || '(direct)',
           utm_medium: source.utm_medium || '(none)',
           utm_campaign: source.utm_campaign || '(none)',
+        });
+      }
+    } else {
+      setFailed(true);
+      // Surfaces silent delivery failures (quota, outage, blocked form) in GA4
+      // instead of letting them disappear.
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        window.gtag('event', 'form_error', {
+          form_id: 'quote_form',
+          page_path: source.page_path,
         });
       }
     }
@@ -138,6 +151,25 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {failed && (
+        <div role="alert" className="bg-red-50 border border-red-200 rounded-xl p-4">
+          <p className="text-red-800 font-bold text-sm mb-1">That didn&apos;t send.</p>
+          <p className="text-red-700 text-sm leading-relaxed mb-3">
+            Something went wrong on our end, so your request didn&apos;t reach us. Your details are
+            still filled in below if you&apos;d like to try again — or just call Tim directly and
+            skip the form.
+          </p>
+          <a
+            href={`tel:${client.phone}`}
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold text-sm px-4 py-2.5 rounded-lg transition-colors"
+          >
+            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.21l-2.26 1.13a11 11 0 005.5 5.5l1.13-2.26a1 1 0 011.21-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z" />
+            </svg>
+            Call {client.phone}
+          </a>
+        </div>
+      )}
       <div>
         <label htmlFor="name" className="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">Name *</label>
         <input
@@ -251,6 +283,8 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
             </svg>
             Sending...
           </span>
+        ) : failed ? (
+          'Try again'
         ) : (
           'Get Your Free Quote'
         )}
