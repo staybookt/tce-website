@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { client } from '@/data/client';
+import { deliverLead } from '@/lib/deliverLead';
 
 // Source-tracking metadata captured from URL + page context. Sent with every
 // quote-request submission so we can attribute leads to channel, campaign,
@@ -44,6 +45,7 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
     referrer: '',
     submitted_at: '',
   });
+  const [botField, setBotField] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -71,26 +73,19 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
     setFailed(false);
 
     const payload = {
+      form_type: 'quote_request',
       ...formData,
       ...source,
+      _gotcha: botField,
       submitted_at: new Date().toISOString(),
       _subject: `New Quote Request: ${formData.service || 'General Inquiry'} — ${formData.name}`,
     };
 
-    // A lead is only "sent" if Formspree actually accepted it. Never report
-    // success on a failed request — the visitor would wait for a call that
-    // isn't coming, and TCE would never know the lead existed.
-    let delivered = false;
-    try {
-      const response = await fetch('https://formspree.io/f/xpwdqkbj', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      delivered = response.ok;
-    } catch {
-      delivered = false;
-    }
+    // A lead is only "sent" if at least one delivery path accepted it.
+    // Never report success on a failed request — the visitor would wait
+    // for a call that isn't coming, and TCE would never know the lead
+    // existed. See src/lib/deliverLead.ts for the two paths.
+    const { delivered, channels } = await deliverLead(payload);
 
     setSubmitting(false);
 
@@ -102,6 +97,7 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
           service: formData.service || 'unspecified',
           urgency: formData.urgency || 'unspecified',
           page_path: source.page_path,
+          delivery_channels: channels.join(',') || 'none',
           utm_source: source.utm_source || '(direct)',
           utm_medium: source.utm_medium || '(none)',
           utm_campaign: source.utm_campaign || '(none)',
@@ -257,6 +253,20 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold focus:bg-white transition-all duration-200 resize-none"
+        />
+      </div>
+
+      {/* Honeypot — hidden from people, tempting to bots. Any value here and
+          the submission is discarded server-side. */}
+      <div aria-hidden="true" className="hidden">
+        <label htmlFor="company-website">Leave this field empty</label>
+        <input
+          id="company-website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={botField}
+          onChange={(e) => setBotField(e.target.value)}
         />
       </div>
 
