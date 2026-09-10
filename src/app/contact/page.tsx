@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/data/client';
 import QuoteForm from '@/components/QuoteForm';
+import EmailContactTile from '@/components/EmailContactTile';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Free Electrical Quote',
@@ -62,10 +63,7 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-xl bg-amber-400/20 flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg></div>
               <div className="min-w-0"><p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-0.5">Text</p><p className="text-white font-display font-bold text-base md:text-lg leading-tight truncate">{client.phone}</p><p className="text-white/60 text-xs mt-0.5">Send a photo of the issue</p></div>
             </a>
-            <a href={`mailto:${client.email}`} className="group flex items-center gap-4 bg-white border border-gray-200 hover:border-amber-300 hover:shadow-md rounded-2xl p-5 md:p-6 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center shrink-0"><svg viewBox="0 0 24 24" className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg></div>
-              <div className="min-w-0"><p className="text-amber-600 text-xs font-bold uppercase tracking-wider mb-0.5">Email</p><p className="text-gray-900 font-display font-bold text-base leading-tight truncate">{client.email}</p><p className="text-gray-500 text-xs mt-0.5">Same-day reply during hours</p></div>
-            </a>
+            <EmailContactTile />
           </div>
         </div>
       </section>
