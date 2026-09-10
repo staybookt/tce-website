@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { client } from '@/data/client';
+import { deliverLead } from '@/lib/deliverLead';
 
 /**
  * Low-friction callback request — the "I don't want to call but I'd
@@ -51,6 +52,7 @@ export default function CallbackForm() {
     referrer: '',
     submitted_at: '',
   });
+  const [botField, setBotField] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -77,24 +79,15 @@ export default function CallbackForm() {
       form_type: 'callback_request',
       ...formData,
       ...source,
+      _gotcha: botField,
       submitted_at: new Date().toISOString(),
       _subject: `Callback request — ${formData.name} (${formData.timeWindow || 'anytime'})`,
     };
 
-    // Only report success if Formspree actually accepted the lead. Telling
-    // someone "Tim will call you back" when the request never arrived is
-    // worse than showing an error.
-    let delivered = false;
-    try {
-      const response = await fetch('https://formspree.io/f/xpwdqkbj', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      delivered = response.ok;
-    } catch {
-      delivered = false;
-    }
+    // Only report success if a delivery path actually accepted the lead.
+    // Telling someone "Tim will call you back" when the request never
+    // arrived is worse than showing an error.
+    const { delivered, channels } = await deliverLead(payload);
 
     setSubmitting(false);
 
@@ -105,6 +98,7 @@ export default function CallbackForm() {
           form_id: 'callback_form',
           time_window: formData.timeWindow || 'unspecified',
           page_path: source.page_path,
+          delivery_channels: channels.join(',') || 'none',
           utm_source: source.utm_source || '(direct)',
         });
       }
@@ -254,6 +248,20 @@ export default function CallbackForm() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 focus:bg-white transition-all resize-none"
+                  />
+                </div>
+
+                {/* Honeypot — hidden from people, tempting to bots. Any value
+                    here and the submission is discarded server-side. */}
+                <div aria-hidden="true" className="hidden">
+                  <label htmlFor="cb-company-website">Leave this field empty</label>
+                  <input
+                    id="cb-company-website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={botField}
+                    onChange={(e) => setBotField(e.target.value)}
                   />
                 </div>
 
