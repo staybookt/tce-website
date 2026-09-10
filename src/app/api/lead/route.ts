@@ -74,6 +74,18 @@ function toE164(raw: string): string {
   return raw.startsWith('+') ? raw : `+${digits}`;
 }
 
+function smsConfigured(): boolean {
+  return Boolean(
+    process.env.TWILIO_ACCOUNT_SID &&
+      process.env.TWILIO_AUTH_TOKEN &&
+      (process.env.TWILIO_FROM_NUMBER || process.env.TWILIO_MESSAGING_SERVICE_SID),
+  );
+}
+
+function emailConfigured(): boolean {
+  return Boolean(process.env.RESEND_API_KEY && process.env.LEAD_EMAIL_FROM);
+}
+
 type Channel = { sent: boolean; error?: string };
 
 async function sendSms(body: string): Promise<Channel> {
@@ -83,7 +95,7 @@ async function sendSms(body: string): Promise<Channel> {
   const service = process.env.TWILIO_MESSAGING_SERVICE_SID;
   const to = toE164(process.env.LEAD_SMS_TO || client.leadDelivery.smsNumber);
 
-  if (!sid || !token || (!from && !service)) {
+  if (!smsConfigured() || !sid || !token) {
     return { sent: false, error: 'sms_not_configured' };
   }
 
@@ -133,6 +145,28 @@ async function sendEmail(subject: string, text: string, replyTo: string): Promis
   } catch (err) {
     return { sent: false, error: `resend_network: ${String(err).slice(0, 200)}` };
   }
+}
+
+/**
+ * Config check. Booleans only — never the values — so this is safe to
+ * open in a browser. Answers "is lead delivery switched on?" without
+ * messaging anyone.
+ */
+export async function GET() {
+  const sms = smsConfigured();
+  const email = emailConfigured();
+  return NextResponse.json({
+    ok: true,
+    delivery: {
+      sms_configured: sms,
+      email_configured: email,
+      any_configured: sms || email,
+    },
+    note:
+      sms || email
+        ? 'Direct delivery is on. Submit a test lead to confirm it arrives.'
+        : 'Direct delivery is OFF. Leads reach Formspree only. Set the Twilio or Resend environment variables and redeploy.',
+  });
 }
 
 export async function POST(req: Request) {
