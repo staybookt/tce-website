@@ -12,24 +12,28 @@ export const dynamic = 'force-dynamic';
  * can see, on a plan that discards submissions after 30 days. That
  * failed silently and the leads are unrecoverable.
  *
- * This route removes the dependency. It texts Tim and emails him
- * directly. Both channels are optional and independent: configure
- * either, both, or neither. The response always states which
- * channels actually delivered, so a future failure is visible in
- * the browser console and in GA4 rather than invisible for months.
+ * This route removes the dependency. It emails Tim directly, and can
+ * also text him. Both channels are optional and independent. The
+ * response always states which channels actually delivered, so a
+ * future failure is visible in the browser console and in GA4 rather
+ * than invisible for months.
  *
  * The forms still post to Formspree in parallel, so this changes
  * nothing about existing behaviour — it only adds paths.
  *
+ * Email needs exactly one environment variable, RESEND_API_KEY, which
+ * the Vercel Resend integration sets automatically. Everything else
+ * has a sensible default.
+ *
  * Environment variables (all optional):
+ *   RESEND_API_KEY                Set by the Vercel Resend integration
+ *   LEAD_EMAIL_FROM               Override sender (default below)
+ *   LEAD_EMAIL_TO                 Override recipient (default: Tim)
  *   TWILIO_ACCOUNT_SID            Twilio account SID (AC...)
  *   TWILIO_AUTH_TOKEN             Twilio auth token
  *   TWILIO_FROM_NUMBER            Sending number, E.164 (+1...)
  *   TWILIO_MESSAGING_SERVICE_SID  Preferred over FROM_NUMBER if set
  *   LEAD_SMS_TO                   Override recipient, E.164
- *   RESEND_API_KEY                Resend API key (re_...)
- *   LEAD_EMAIL_FROM               Verified sender, e.g. leads@topchoiceelectrical.com
- *   LEAD_EMAIL_TO                 Override recipient
  */
 
 const MAX_FIELD = 2000;
@@ -38,9 +42,14 @@ const RATE_LIMIT_MAX = 5;
 const SPACE_CODE = 32;
 const DELETE_CODE = 127;
 
+// The address the domain is authenticated for in Resend. Kept in code
+// rather than an environment variable so that installing the Resend
+// integration is the whole of the setup.
+const DEFAULT_EMAIL_FROM = 'Top Choice Electrical <leads@topchoiceelectrical.com>';
+
 // Per-instance throttle. Serverless gives each instance its own map, so
 // this is a speed bump rather than a wall — enough to stop a script
-// dialling Tim's phone in a loop, which is what actually matters here.
+// hammering the endpoint, which is what actually matters here.
 const hits = new Map<string, number[]>();
 
 function rateLimited(ip: string): boolean {
@@ -83,7 +92,7 @@ function smsConfigured(): boolean {
 }
 
 function emailConfigured(): boolean {
-  return Boolean(process.env.RESEND_API_KEY && process.env.LEAD_EMAIL_FROM);
+  return Boolean(process.env.RESEND_API_KEY);
 }
 
 type Channel = { sent: boolean; error?: string };
@@ -122,10 +131,10 @@ async function sendSms(body: string): Promise<Channel> {
 
 async function sendEmail(subject: string, text: string, replyTo: string): Promise<Channel> {
   const key = process.env.RESEND_API_KEY;
-  const from = process.env.LEAD_EMAIL_FROM;
+  const from = process.env.LEAD_EMAIL_FROM || DEFAULT_EMAIL_FROM;
   const to = process.env.LEAD_EMAIL_TO || client.leadDelivery.email;
 
-  if (!key || !from) return { sent: false, error: 'email_not_configured' };
+  if (!key) return { sent: false, error: 'email_not_configured' };
 
   try {
     const res = await fetch('https://api.resend.com/emails', {
@@ -165,13 +174,13 @@ export async function GET() {
     note:
       sms || email
         ? 'Direct delivery is on. Submit a test lead to confirm it arrives.'
-        : 'Direct delivery is OFF. Leads reach Formspree only. Set the Twilio or Resend environment variables and redeploy.',
+        : 'Direct delivery is OFF. Leads reach Formspree only. Install the Vercel Resend integration and redeploy.',
   });
 }
 
 export async function POST(req: Request) {
-  // Same-origin only. This endpoint rings a real phone; it should not be
-  // callable from anywhere else.
+  // Same-origin only. This endpoint messages a real person; it should
+  // not be callable from anywhere else.
   const origin = req.headers.get('origin') ?? '';
   const host = req.headers.get('host') ?? '';
   if (origin && host && !origin.includes(host)) {
