@@ -6,20 +6,35 @@ import { client } from '@/data/client';
 /**
  * Email tile for the contact page.
  *
- * `mailto:` only works if the visitor's machine has a configured mail
- * client. Tested on two real machines: Windows with no handler did
- * nothing at all, and a Mac with Apple Mail but no account opened an
- * "Add Account" dialog. Both read as a broken website, and neither
- * leaves the visitor holding the address.
+ * This used to fire a `mailto:`. That only works if the visitor's
+ * machine has a configured mail client, and on both machines we
+ * tested it did not: Windows with no handler did nothing at all, and
+ * a Mac running Apple Mail with no account opened an "Add Account"
+ * dialog. Both read as a broken website.
  *
- * So the tile copies by default — that works everywhere and confirms
- * itself on screen. The mailto survives as a labelled secondary link
- * for people whose mail app is set up.
+ * The quote form is immediately below on the same page, it delivers
+ * through a path we control and have verified end to end, and it
+ * captures job type and urgency that a raw email would not. So the
+ * tile sends people there. Copying the address stays available for
+ * anyone who actually wants to write an email.
  */
 export default function EmailContactTile() {
   const [copied, setCopied] = useState(false);
 
-  const copy = async () => {
+  const goToForm = () => {
+    const form = document.getElementById('quote-form');
+    if (!form) return;
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Focus after the smooth scroll settles, and without yanking the
+    // viewport back — preventScroll keeps the animation intact.
+    window.setTimeout(() => {
+      const firstField = document.getElementById('name');
+      if (firstField instanceof HTMLInputElement) firstField.focus({ preventScroll: true });
+    }, 700);
+  };
+
+  const copy = async (event: React.MouseEvent) => {
+    event.stopPropagation();
     try {
       await navigator.clipboard.writeText(client.email);
     } catch {
@@ -44,11 +59,11 @@ export default function EmailContactTile() {
 
   return (
     <div className="group relative flex items-center gap-4 bg-white border border-gray-200 hover:border-amber-300 hover:shadow-md rounded-2xl p-5 md:p-6 transition-all">
-      {/* The whole tile copies. This is the action that cannot fail. */}
+      {/* The whole tile jumps to the form. This is the action that cannot fail. */}
       <button
         type="button"
-        onClick={copy}
-        aria-label={`Copy email address ${client.email}`}
+        onClick={goToForm}
+        aria-label="Go to the quote request form"
         className="absolute inset-0 rounded-2xl cursor-pointer"
       />
       <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center shrink-0">
@@ -60,29 +75,23 @@ export default function EmailContactTile() {
         <p className="text-amber-600 text-xs font-bold uppercase tracking-wider mb-0.5">Email</p>
         <p className="text-gray-900 font-display font-bold text-base leading-tight truncate">{client.email}</p>
         {copied ? (
-          <p className="text-green-600 text-xs mt-0.5 font-semibold">Copied to clipboard</p>
+          <p className="text-green-600 text-xs mt-0.5 font-semibold">Address copied to clipboard</p>
         ) : (
-          <p className="text-gray-500 text-xs mt-0.5">
-            Tap to copy &middot;{' '}
-            <a
-              href={`mailto:${client.email}`}
-              className="relative z-10 underline decoration-gray-300 underline-offset-2 hover:text-amber-700 hover:decoration-amber-400"
-            >
-              open mail app
-            </a>
-          </p>
+          <p className="text-gray-500 text-xs mt-0.5">Use the form below &mdash; goes straight to Tim</p>
         )}
       </div>
-      <span
-        aria-hidden="true"
-        className={`shrink-0 text-xs font-bold px-3 py-2 rounded-lg border transition-colors ${
+      <button
+        type="button"
+        onClick={copy}
+        aria-label={copied ? 'Email address copied' : 'Copy email address'}
+        className={`relative z-10 shrink-0 min-h-[44px] px-3 rounded-lg border text-xs font-bold transition-colors ${
           copied
             ? 'border-green-200 bg-green-50 text-green-700'
-            : 'border-gray-200 text-gray-500 group-hover:border-amber-300 group-hover:text-amber-700'
+            : 'border-gray-200 text-gray-500 hover:border-amber-300 hover:bg-amber-50 hover:text-amber-700'
         }`}
       >
         {copied ? 'Copied' : 'Copy'}
-      </span>
+      </button>
       <span aria-live="polite" className="sr-only">
         {copied ? 'Email address copied to clipboard' : ''}
       </span>
