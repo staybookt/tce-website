@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { client } from '@/data/client';
 import { deliverLead } from '@/lib/deliverLead';
 
@@ -18,8 +19,6 @@ interface SourceMeta {
   submitted_at: string;
 }
 
-// GA4 dataLayer typing (loose) — fires the `form_submit` conversion event
-// when the form succeeds, and `form_error` when the send fails.
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
@@ -49,9 +48,8 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [timelineError, setTimelineError] = useState(false);
 
-  // On mount, capture UTM params, page path, and referrer. Stored in state so
-  // they survive even if the user navigates within the SPA before submitting.
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
@@ -69,6 +67,14 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Timeline is a button group, so the browser cannot enforce it for us.
+    if (!formData.urgency) {
+      setTimelineError(true);
+      document.getElementById('timeline-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
     setSubmitting(true);
     setFailed(false);
 
@@ -82,9 +88,7 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
     };
 
     // A lead is only "sent" if at least one delivery path accepted it.
-    // Never report success on a failed request — the visitor would wait
-    // for a call that isn't coming, and TCE would never know the lead
-    // existed. See src/lib/deliverLead.ts for the two paths.
+    // See src/lib/deliverLead.ts for the two paths.
     const { delivered, channels } = await deliverLead(payload);
 
     setSubmitting(false);
@@ -94,8 +98,8 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
       if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
         window.gtag('event', 'form_submit', {
           form_id: 'quote_form',
-          service: formData.service || 'unspecified',
-          urgency: formData.urgency || 'unspecified',
+          service: formData.service,
+          urgency: formData.urgency,
           page_path: source.page_path,
           delivery_channels: channels.join(',') || 'none',
           utm_source: source.utm_source || '(direct)',
@@ -105,8 +109,6 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
       }
     } else {
       setFailed(true);
-      // Surfaces silent delivery failures (quota, outage, blocked form) in GA4
-      // instead of letting them disappear.
       if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
         window.gtag('event', 'form_error', {
           form_id: 'quote_form',
@@ -125,21 +127,18 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
           </svg>
         </div>
         <h3 className="text-lg font-bold text-gray-900 mb-2">Thanks, {formData.name}!</h3>
-        <p className="text-gray-500 text-sm mb-4">We got your request and will be in touch within 2 hours during business hours.</p>
+        <p className="text-gray-500 text-sm mb-4">
+          We got your request and sent a confirmation to {formData.email}. Tim will be in touch within 2 hours during
+          business hours.
+        </p>
         <div className="bg-gray-50 rounded-xl p-4">
-          <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">What happens next</p>
-          <div className="space-y-3">
-            {[
-              { step: '1', text: 'We review your request and prepare questions' },
-              { step: '2', text: 'We call you to discuss the job and schedule a visit' },
-              { step: '3', text: 'We provide a clear, written quote on-site' },
-            ].map((item) => (
-              <div key={item.step} className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-gold/10 text-gold text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">{item.step}</span>
-                <p className="text-gray-600 text-sm">{item.text}</p>
-              </div>
-            ))}
-          </div>
+          <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Need it sooner?</p>
+          <a
+            href={`tel:${client.phone}`}
+            className="inline-flex items-center gap-2 text-gold-dark font-bold text-sm hover:underline"
+          >
+            Call or text Tim directly &mdash; {client.phone}
+          </a>
         </div>
       </div>
     );
@@ -192,10 +191,11 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">Email</label>
+          <label htmlFor="email" className="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">Email *</label>
           <input
             id="email"
             type="email"
+            required
             placeholder="you@email.com"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -204,9 +204,10 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
         </div>
       </div>
       <div>
-        <label htmlFor="service" className="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">Service Needed</label>
+        <label htmlFor="service" className="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">Service Needed *</label>
         <select
           id="service"
+          required
           value={formData.service}
           onChange={(e) => setFormData({ ...formData, service: e.target.value })}
           className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold focus:bg-white transition-all duration-200 appearance-none"
@@ -219,8 +220,8 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
           <option value="Other">Other / Not Sure</option>
         </select>
       </div>
-      <div>
-        <label htmlFor="urgency" className="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">Timeline</label>
+      <div id="timeline-group" className="scroll-mt-32">
+        <label className="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">Timeline *</label>
         <div className="grid grid-cols-3 gap-2">
           {[
             { value: 'no-rush', label: 'No rush' },
@@ -230,22 +231,34 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
             <button
               key={option.value}
               type="button"
-              onClick={() => setFormData({ ...formData, urgency: option.value })}
+              onClick={() => {
+                setFormData({ ...formData, urgency: option.value });
+                setTimelineError(false);
+              }}
               className={`min-h-[44px] py-3 px-3 rounded-xl text-xs font-medium border transition-all duration-200 ${
                 formData.urgency === option.value
                   ? option.value === 'emergency'
                     ? 'bg-red/10 border-red/30 text-red'
                     : 'bg-gold/10 border-gold/30 text-gold-dark'
-                  : 'bg-gray-50 border-gray-200 text-gray-500 hover:border-gray-300'
+                  : timelineError
+                    ? 'bg-red-50 border-red-300 text-red-700'
+                    : 'bg-gray-50 border-gray-200 text-gray-500 hover:border-gray-300'
               }`}
             >
               {option.label}
             </button>
           ))}
         </div>
+        {timelineError && (
+          <p role="alert" className="text-red-600 text-xs mt-2 font-medium">
+            Pick a timeline so Tim knows how fast to move.
+          </p>
+        )}
       </div>
       <div>
-        <label htmlFor="message" className="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">Tell us about the job</label>
+        <label htmlFor="message" className="block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5">
+          Tell us about the job <span className="text-gray-400 normal-case font-normal">(optional)</span>
+        </label>
         <textarea
           id="message"
           placeholder="What do you need done? Any details help us prepare a more accurate quote."
@@ -256,8 +269,7 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
         />
       </div>
 
-      {/* Honeypot — hidden from people, tempting to bots. Any value here and
-          the submission is discarded server-side. */}
+      {/* Honeypot — hidden from people, tempting to bots. */}
       <div aria-hidden="true" className="hidden">
         <label htmlFor="company-website">Leave this field empty</label>
         <input
@@ -270,8 +282,7 @@ export default function QuoteForm({ preselectedService }: { preselectedService?:
         />
       </div>
 
-      {/* Hidden source-tracking fields — also included in JSON payload, but
-          duplicated as form inputs so Formspree dashboards surface them. */}
+      {/* Hidden source-tracking fields, duplicated so Formspree surfaces them. */}
       <input type="hidden" name="utm_source" value={source.utm_source} />
       <input type="hidden" name="utm_medium" value={source.utm_medium} />
       <input type="hidden" name="utm_campaign" value={source.utm_campaign} />
