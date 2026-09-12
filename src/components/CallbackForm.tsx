@@ -6,13 +6,9 @@ import { deliverLead } from '@/lib/deliverLead';
 
 /**
  * Low-friction callback request — the "I don't want to call but I'd
- * like Tim to call me" form. Three fields: name, phone, best time
- * window. Optional message. Goal: capture leads from visitors who
- * won't tap-to-call but also won't fill a long form.
- *
- * Separate from QuoteForm on the contact page. Lives on the homepage
- * so we have two distinct lead surfaces: callback request (here) and
- * full quote request (contact page).
+ * like Tim to call me" form. Lives on the homepage so we have two
+ * distinct lead surfaces: callback request (here) and full quote
+ * request (contact page).
  */
 
 declare global {
@@ -41,6 +37,7 @@ export default function CallbackForm() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    email: '',
     timeWindow: '',
     message: '',
   });
@@ -56,6 +53,7 @@ export default function CallbackForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [windowError, setWindowError] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -72,6 +70,13 @@ export default function CallbackForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Button group, so the browser cannot enforce it for us.
+    if (!formData.timeWindow) {
+      setWindowError(true);
+      return;
+    }
+
     setSubmitting(true);
     setFailed(false);
 
@@ -81,12 +86,9 @@ export default function CallbackForm() {
       ...source,
       _gotcha: botField,
       submitted_at: new Date().toISOString(),
-      _subject: `Callback request — ${formData.name} (${formData.timeWindow || 'anytime'})`,
+      _subject: `Callback request — ${formData.name} (${formData.timeWindow})`,
     };
 
-    // Only report success if a delivery path actually accepted the lead.
-    // Telling someone "Tim will call you back" when the request never
-    // arrived is worse than showing an error.
     const { delivered, channels } = await deliverLead(payload);
 
     setSubmitting(false);
@@ -96,7 +98,7 @@ export default function CallbackForm() {
       if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
         window.gtag('event', 'form_submit', {
           form_id: 'callback_form',
-          time_window: formData.timeWindow || 'unspecified',
+          time_window: formData.timeWindow,
           page_path: source.page_path,
           delivery_channels: channels.join(',') || 'none',
           utm_source: source.utm_source || '(direct)',
@@ -112,6 +114,9 @@ export default function CallbackForm() {
       }
     }
   };
+
+  const fieldClass =
+    'w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-base sm:text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 focus:bg-white transition-all';
 
   return (
     <section className="py-16 md:py-20 bg-gradient-to-br from-amber-50/60 via-white to-amber-50/30 border-y border-amber-100">
@@ -164,9 +169,12 @@ export default function CallbackForm() {
                 <h3 className="font-display text-xl font-bold text-gray-900 mb-2 tracking-tight">
                   Got it, {formData.name.split(' ')[0] || 'thanks'}.
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Tim will call you back during the time window you picked. If it&apos;s outside business hours, he&apos;ll catch you first thing tomorrow morning.
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  Confirmation sent to {formData.email}. Tim will call you back during the window you picked.
                 </p>
+                <a href={`tel:${client.phone}`} className="text-amber-700 font-bold text-sm hover:underline">
+                  Need him sooner? Call or text {client.phone}
+                </a>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -199,7 +207,7 @@ export default function CallbackForm() {
                     placeholder="Jane Smith"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-base sm:text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 focus:bg-white transition-all"
+                    className={fieldClass}
                   />
                 </div>
                 <div>
@@ -213,29 +221,53 @@ export default function CallbackForm() {
                     placeholder="(905) 555-1234"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-base sm:text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 focus:bg-white transition-all"
+                    className={fieldClass}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="cb-email" className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                    Email *
+                  </label>
+                  <input
+                    id="cb-email"
+                    type="email"
+                    required
+                    placeholder="you@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className={fieldClass}
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
-                    Best time to call
+                    Best time to call *
                   </label>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {TIME_WINDOWS.map((tw) => (
                       <button
                         key={tw.value}
                         type="button"
-                        onClick={() => setFormData({ ...formData, timeWindow: tw.value })}
+                        onClick={() => {
+                          setFormData({ ...formData, timeWindow: tw.value });
+                          setWindowError(false);
+                        }}
                         className={`min-h-[44px] py-3 px-2 rounded-xl text-sm sm:text-xs font-semibold border transition-all ${
                           formData.timeWindow === tw.value
                             ? 'bg-amber-500 border-amber-500 text-white shadow-sm'
-                            : 'bg-gray-50 border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-100'
+                            : windowError
+                              ? 'bg-red-50 border-red-300 text-red-700'
+                              : 'bg-gray-50 border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-100'
                         }`}
                       >
                         {tw.label}
                       </button>
                     ))}
                   </div>
+                  {windowError && (
+                    <p role="alert" className="text-red-600 text-xs mt-2 font-medium">
+                      Pick a time so Tim knows when to ring.
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="cb-msg" className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
@@ -251,8 +283,7 @@ export default function CallbackForm() {
                   />
                 </div>
 
-                {/* Honeypot — hidden from people, tempting to bots. Any value
-                    here and the submission is discarded server-side. */}
+                {/* Honeypot — hidden from people, tempting to bots. */}
                 <div aria-hidden="true" className="hidden">
                   <label htmlFor="cb-company-website">Leave this field empty</label>
                   <input
@@ -265,7 +296,7 @@ export default function CallbackForm() {
                   />
                 </div>
 
-                {/* Hidden source-tracking fields for Formspree dashboard */}
+                {/* Hidden source-tracking fields for the Formspree dashboard */}
                 <input type="hidden" name="utm_source" value={source.utm_source} />
                 <input type="hidden" name="utm_medium" value={source.utm_medium} />
                 <input type="hidden" name="utm_campaign" value={source.utm_campaign} />
@@ -292,7 +323,7 @@ export default function CallbackForm() {
                   )}
                 </button>
                 <p className="text-[11px] text-gray-400 text-center">
-                  We never share your number. One call back, no spam.
+                  We never share your details. One call back, no spam.
                 </p>
               </form>
             )}
