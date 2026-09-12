@@ -25,11 +25,13 @@ export default function EmailContactTile() {
     const form = document.getElementById('quote-form');
     if (!form) return;
     form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // Focus after the smooth scroll settles, and without yanking the
-    // viewport back — preventScroll keeps the animation intact.
+    // Focus once the smooth scroll has settled. Deliberately NOT using
+    // preventScroll: if scrollIntoView ever fails to fire, focusing the
+    // field is what still brings the form on screen. When the scroll did
+    // work, the field is already in view and focus moves nothing.
     window.setTimeout(() => {
       const firstField = document.getElementById('name');
-      if (firstField instanceof HTMLInputElement) firstField.focus({ preventScroll: true });
+      if (firstField instanceof HTMLInputElement) firstField.focus();
     }, 700);
   };
 
