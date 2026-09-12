@@ -101,7 +101,7 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-            <div>
+            <div id="quote-form" className="scroll-mt-28 md:scroll-mt-32">
               <div className="bg-white rounded-3xl shadow-xl shadow-amber-100/40 border border-amber-100 p-7 md:p-10 relative overflow-hidden lg:sticky lg:top-28">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500" />
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-gray-900 mb-2 tracking-tight">Request a quote</h3>
