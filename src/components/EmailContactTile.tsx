@@ -6,11 +6,15 @@ import { client } from '@/data/client';
 /**
  * Email tile for the contact page.
  *
- * A plain `mailto:` link is silent on any machine with no mail client
- * registered — common on desktop, and indistinguishable from a broken
- * link to the visitor. The mailto stays (it is the right behaviour on
- * mobile and for anyone with a handler), but the tile also offers a
- * Copy control so the address is always obtainable.
+ * `mailto:` only works if the visitor's machine has a configured mail
+ * client. Tested on two real machines: Windows with no handler did
+ * nothing at all, and a Mac with Apple Mail but no account opened an
+ * "Add Account" dialog. Both read as a broken website, and neither
+ * leaves the visitor holding the address.
+ *
+ * So the tile copies by default — that works everywhere and confirms
+ * itself on screen. The mailto survives as a labelled secondary link
+ * for people whose mail app is set up.
  */
 export default function EmailContactTile() {
   const [copied, setCopied] = useState(false);
@@ -35,16 +39,17 @@ export default function EmailContactTile() {
       document.body.removeChild(field);
     }
     setCopied(true);
-    window.setTimeout(() => setCopied(false), 2000);
+    window.setTimeout(() => setCopied(false), 2500);
   };
 
   return (
     <div className="group relative flex items-center gap-4 bg-white border border-gray-200 hover:border-amber-300 hover:shadow-md rounded-2xl p-5 md:p-6 transition-all">
-      {/* Covers the tile so the whole card opens the visitor's mail client. */}
-      <a
-        href={`mailto:${client.email}`}
-        className="absolute inset-0 rounded-2xl"
-        aria-label={`Email ${client.email}`}
+      {/* The whole tile copies. This is the action that cannot fail. */}
+      <button
+        type="button"
+        onClick={copy}
+        aria-label={`Copy email address ${client.email}`}
+        className="absolute inset-0 rounded-2xl cursor-pointer"
       />
       <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center shrink-0">
         <svg viewBox="0 0 24 24" className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" strokeWidth="2">
@@ -54,16 +59,30 @@ export default function EmailContactTile() {
       <div className="min-w-0 flex-1">
         <p className="text-amber-600 text-xs font-bold uppercase tracking-wider mb-0.5">Email</p>
         <p className="text-gray-900 font-display font-bold text-base leading-tight truncate">{client.email}</p>
-        <p className="text-gray-500 text-xs mt-0.5">Same-day reply during hours</p>
+        {copied ? (
+          <p className="text-green-600 text-xs mt-0.5 font-semibold">Copied to clipboard</p>
+        ) : (
+          <p className="text-gray-500 text-xs mt-0.5">
+            Tap to copy &middot;{' '}
+            <a
+              href={`mailto:${client.email}`}
+              className="relative z-10 underline decoration-gray-300 underline-offset-2 hover:text-amber-700 hover:decoration-amber-400"
+            >
+              open mail app
+            </a>
+          </p>
+        )}
       </div>
-      <button
-        type="button"
-        onClick={copy}
-        aria-label={copied ? 'Email address copied' : 'Copy email address'}
-        className="relative z-10 shrink-0 min-h-[44px] px-3 rounded-lg border border-gray-200 hover:border-amber-300 hover:bg-amber-50 text-gray-600 hover:text-amber-700 text-xs font-bold transition-colors"
+      <span
+        aria-hidden="true"
+        className={`shrink-0 text-xs font-bold px-3 py-2 rounded-lg border transition-colors ${
+          copied
+            ? 'border-green-200 bg-green-50 text-green-700'
+            : 'border-gray-200 text-gray-500 group-hover:border-amber-300 group-hover:text-amber-700'
+        }`}
       >
         {copied ? 'Copied' : 'Copy'}
-      </button>
+      </span>
       <span aria-live="polite" className="sr-only">
         {copied ? 'Email address copied to clipboard' : ''}
       </span>
