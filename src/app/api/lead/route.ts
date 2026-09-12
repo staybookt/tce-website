@@ -12,23 +12,22 @@ export const dynamic = 'force-dynamic';
  * can see, on a plan that discards submissions after 30 days. That
  * failed silently and the leads are unrecoverable.
  *
- * This route removes the dependency. It emails Tim directly, and can
- * also text him. Both channels are optional and independent. The
- * response always states which channels actually delivered, so a
- * future failure is visible in the browser console and in GA4 rather
- * than invisible for months.
+ * This route removes the dependency. It emails Tim directly, can also
+ * text him, and sends the customer a confirmation. The response always
+ * states which channels delivered, so a future failure is visible in
+ * the browser console and in GA4 rather than invisible for months.
  *
  * The forms still post to Formspree in parallel, so this changes
  * nothing about existing behaviour — it only adds paths.
  *
- * Email needs exactly one environment variable, RESEND_API_KEY, which
- * the Vercel Resend integration sets automatically. Everything else
- * has a sensible default.
+ * Email needs exactly one environment variable, RESEND_API_KEY.
+ * Everything else has a sensible default.
  *
  * Environment variables (all optional):
- *   RESEND_API_KEY                Set by the Vercel Resend integration
+ *   RESEND_API_KEY                Resend API key
  *   LEAD_EMAIL_FROM               Override sender (default below)
  *   LEAD_EMAIL_TO                 Override recipient (default: Tim)
+ *   LEAD_AUTORESPONDER            Set to "off" to disable customer confirmations
  *   TWILIO_ACCOUNT_SID            Twilio account SID (AC...)
  *   TWILIO_AUTH_TOKEN             Twilio auth token
  *   TWILIO_FROM_NUMBER            Sending number, E.164 (+1...)
@@ -42,9 +41,7 @@ const RATE_LIMIT_MAX = 5;
 const SPACE_CODE = 32;
 const DELETE_CODE = 127;
 
-// The address the domain is authenticated for in Resend. Kept in code
-// rather than an environment variable so that installing the Resend
-// integration is the whole of the setup.
+// The address the domain is authenticated for in Resend.
 const DEFAULT_EMAIL_FROM = 'Top Choice Electrical <leads@topchoiceelectrical.com>';
 
 // Per-instance throttle. Serverless gives each instance its own map, so
@@ -76,6 +73,23 @@ function clean(value: unknown): string {
   return out.trim().slice(0, MAX_FIELD);
 }
 
+/** Deliberately loose. We are avoiding obvious junk, not policing addresses. */
+function looksLikeEmail(value: string): boolean {
+  if (value.length < 6 || value.length > 254) return false;
+  const at = value.indexOf('@');
+  if (at < 1) return false;
+  const domain = value.slice(at + 1);
+  return domain.includes('.') && !domain.startsWith('.') && !domain.endsWith('.') && !value.includes(' ');
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 function toE164(raw: string): string {
   const digits = raw.replace(/[^0-9]/g, '');
   if (digits.length === 10) return `+1${digits}`;
@@ -95,7 +109,45 @@ function emailConfigured(): boolean {
   return Boolean(process.env.RESEND_API_KEY);
 }
 
+function autoresponderEnabled(): boolean {
+  return emailConfigured() && process.env.LEAD_AUTORESPONDER !== 'off';
+}
+
 type Channel = { sent: boolean; error?: string };
+
+interface ResendMessage {
+  to: string;
+  subject: string;
+  text: string;
+  html?: string;
+  replyTo?: string;
+}
+
+async function sendViaResend(message: ResendMessage): Promise<Channel> {
+  const key = process.env.RESEND_API_KEY;
+  const from = process.env.LEAD_EMAIL_FROM || DEFAULT_EMAIL_FROM;
+  if (!key) return { sent: false, error: 'email_not_configured' };
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from,
+        to: [message.to],
+        subject: message.subject,
+        text: message.text,
+        ...(message.html ? { html: message.html } : {}),
+        ...(message.replyTo ? { reply_to: message.replyTo } : {}),
+      }),
+    });
+    if (res.ok) return { sent: true };
+    const detail = await res.text();
+    return { sent: false, error: `resend_${res.status}: ${detail.slice(0, 300)}` };
+  } catch (err) {
+    return { sent: false, error: `resend_network: ${String(err).slice(0, 200)}` };
+  }
+}
 
 async function sendSms(body: string): Promise<Channel> {
   const sid = process.env.TWILIO_ACCOUNT_SID;
@@ -129,37 +181,55 @@ async function sendSms(body: string): Promise<Channel> {
   }
 }
 
-async function sendEmail(subject: string, text: string, replyTo: string): Promise<Channel> {
-  const key = process.env.RESEND_API_KEY;
-  const from = process.env.LEAD_EMAIL_FROM || DEFAULT_EMAIL_FROM;
-  const to = process.env.LEAD_EMAIL_TO || client.leadDelivery.email;
+/**
+ * Confirmation to the customer. Written as Tim, because as far as the
+ * customer is concerned it is from Tim. Reply-to is his inbox so a
+ * reply reaches him rather than a no-reply void.
+ */
+function buildConfirmation(firstName: string, service: string): { subject: string; text: string; html: string } {
+  const greeting = firstName ? `Hi ${firstName},` : 'Hi,';
+  const jobLine = service
+    ? `I've got your request about ${service.toLowerCase()}.`
+    : `I've got your request.`;
 
-  if (!key) return { sent: false, error: 'email_not_configured' };
+  const text = [
+    greeting,
+    '',
+    `Thanks for getting in touch. ${jobLine} I'll get back to you within 2 hours during business hours. If you sent this in the evening or on a weekend, you'll hear from me first thing.`,
+    '',
+    'What happens next:',
+    '1. I call or text to ask a few questions about the job',
+    '2. I come out and look at it, free and with no obligation',
+    '3. You get a fixed quote in writing. The price I quote is the price you pay.',
+    '',
+    `If it turns out to be urgent - sparking, a burning smell, no power - call me directly at ${client.phone}. I answer nights and weekends.`,
+    '',
+    'Tim Ciszkowski',
+    'Top Choice Electrical',
+    `ESA certified, fully insured. ${client.phone}`,
+  ].join('\n');
 
-  try {
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from,
-        to: [to],
-        subject,
-        text,
-        ...(replyTo ? { reply_to: replyTo } : {}),
-      }),
-    });
-    if (res.ok) return { sent: true };
-    const detail = await res.text();
-    return { sent: false, error: `resend_${res.status}: ${detail.slice(0, 300)}` };
-  } catch (err) {
-    return { sent: false, error: `resend_network: ${String(err).slice(0, 200)}` };
-  }
+  const html = `<div style="font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#111827;max-width:520px">
+<p>${escapeHtml(greeting)}</p>
+<p>Thanks for getting in touch. ${escapeHtml(jobLine)} I&rsquo;ll get back to you within 2 hours during business hours. If you sent this in the evening or on a weekend, you&rsquo;ll hear from me first thing.</p>
+<p style="margin-bottom:6px"><strong>What happens next:</strong></p>
+<ol style="margin-top:0;padding-left:20px">
+<li>I call or text to ask a few questions about the job</li>
+<li>I come out and look at it, free and with no obligation</li>
+<li>You get a fixed quote in writing. The price I quote is the price you pay.</li>
+</ol>
+<p>If it turns out to be urgent &mdash; sparking, a burning smell, no power &mdash; call me directly at <a href="tel:${escapeHtml(client.phone)}" style="color:#b45309;font-weight:600">${escapeHtml(client.phone)}</a>. I answer nights and weekends.</p>
+<p style="margin-bottom:0">Tim Ciszkowski<br>
+<strong>Top Choice Electrical</strong><br>
+<span style="color:#6b7280;font-size:13px">ESA certified, fully insured &middot; ${escapeHtml(client.phone)}</span></p>
+</div>`;
+
+  return { subject: `Got your request - Tim at Top Choice Electrical`, text, html };
 }
 
 /**
  * Config check. Booleans only — never the values — so this is safe to
- * open in a browser. Answers "is lead delivery switched on?" without
- * messaging anyone.
+ * open in a browser.
  */
 export async function GET() {
   const sms = smsConfigured();
@@ -169,18 +239,19 @@ export async function GET() {
     delivery: {
       sms_configured: sms,
       email_configured: email,
+      autoresponder_enabled: autoresponderEnabled(),
       any_configured: sms || email,
     },
     note:
       sms || email
         ? 'Direct delivery is on. Submit a test lead to confirm it arrives.'
-        : 'Direct delivery is OFF. Leads reach Formspree only. Install the Vercel Resend integration and redeploy.',
+        : 'Direct delivery is OFF. Leads reach Formspree only. Set RESEND_API_KEY and redeploy.',
   });
 }
 
 export async function POST(req: Request) {
-  // Same-origin only. This endpoint messages a real person; it should
-  // not be callable from anywhere else.
+  // Same-origin only. This endpoint messages real people; it should not
+  // be callable from anywhere else.
   const origin = req.headers.get('origin') ?? '';
   const host = req.headers.get('host') ?? '';
   if (origin && host && !origin.includes(host)) {
@@ -243,10 +314,17 @@ export async function POST(req: Request) {
   mailLines.push(`Received: ${new Date().toISOString()}`);
 
   const subject = `${label}: ${name}${service ? ` - ${service}` : ''}`;
+  const notifyTo = process.env.LEAD_EMAIL_TO || client.leadDelivery.email;
 
+  // Tim's notification is the job. Everything else is secondary.
   const [sms, mail] = await Promise.all([
     sendSms(smsLines.join('\n')),
-    sendEmail(subject, mailLines.join('\n'), email),
+    sendViaResend({
+      to: notifyTo,
+      subject,
+      text: mailLines.join('\n'),
+      replyTo: email && looksLikeEmail(email) ? email : undefined,
+    }),
   ]);
 
   const delivered: string[] = [];
@@ -257,13 +335,29 @@ export async function POST(req: Request) {
   if (sms.error) errors.push(sms.error);
   if (mail.error) errors.push(mail.error);
 
+  // Customer confirmation. Sent only when they gave us a usable address,
+  // and its result is kept out of `delivered` on purpose: a confirmation
+  // that fails must never make a real lead look like it failed.
+  let confirmationSent = false;
+  if (autoresponderEnabled() && email && looksLikeEmail(email)) {
+    const firstName = name.split(' ')[0] ?? '';
+    const body = buildConfirmation(firstName, service);
+    const confirmation = await sendViaResend({
+      to: email,
+      subject: body.subject,
+      text: body.text,
+      html: body.html,
+      replyTo: notifyTo,
+    });
+    confirmationSent = confirmation.sent;
+    if (confirmation.error) console.warn('[lead] confirmation failed', { error: confirmation.error });
+  }
+
   if (delivered.length === 0) {
-    // Logged so a broken channel shows up in Vercel logs immediately
-    // instead of going unnoticed the way the last failure did.
     console.error('[lead] no channel delivered', { errors });
     return NextResponse.json({ ok: false, delivered, errors }, { status: 502 });
   }
 
   if (errors.length > 0) console.warn('[lead] partial delivery', { delivered, errors });
-  return NextResponse.json({ ok: true, delivered });
+  return NextResponse.json({ ok: true, delivered, confirmation: confirmationSent });
 }
