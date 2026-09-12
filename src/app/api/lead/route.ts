@@ -20,9 +20,6 @@ export const dynamic = 'force-dynamic';
  * The forms still post to Formspree in parallel, so this changes
  * nothing about existing behaviour — it only adds paths.
  *
- * Email needs exactly one environment variable, RESEND_API_KEY.
- * Everything else has a sensible default.
- *
  * Environment variables (all optional):
  *   RESEND_API_KEY                Resend API key
  *   LEAD_EMAIL_FROM               Override sender (default below)
@@ -41,12 +38,8 @@ const RATE_LIMIT_MAX = 5;
 const SPACE_CODE = 32;
 const DELETE_CODE = 127;
 
-// The address the domain is authenticated for in Resend.
 const DEFAULT_EMAIL_FROM = 'Top Choice Electrical <leads@topchoiceelectrical.com>';
 
-// Per-instance throttle. Serverless gives each instance its own map, so
-// this is a speed bump rather than a wall — enough to stop a script
-// hammering the endpoint, which is what actually matters here.
 const hits = new Map<string, number[]>();
 
 function rateLimited(ip: string): boolean {
@@ -61,7 +54,7 @@ function rateLimited(ip: string): boolean {
 /**
  * Trim, cap length, and replace control characters with a space.
  * Done by codepoint rather than a regex character class so the source
- * file stays plain ASCII. Ordinary punctuation and accents are kept.
+ * file stays plain ASCII.
  */
 function clean(value: unknown): string {
   if (typeof value !== 'string') return '';
@@ -80,6 +73,20 @@ function looksLikeEmail(value: string): boolean {
   if (at < 1) return false;
   const domain = value.slice(at + 1);
   return domain.includes('.') && !domain.startsWith('.') && !domain.endsWith('.') && !value.includes(' ');
+}
+
+/** Form values are slugs. Customers should not be shown "this-week". */
+function readableTiming(value: string): string {
+  const map: Record<string, string> = {
+    'no-rush': 'no rush',
+    'this-week': 'this week',
+    emergency: 'emergency',
+    morning: 'a morning callback',
+    afternoon: 'an afternoon callback',
+    evening: 'an evening callback',
+    anytime: 'a callback anytime',
+  };
+  return map[value] ?? value;
 }
 
 function escapeHtml(value: string): string {
@@ -182,55 +189,47 @@ async function sendSms(body: string): Promise<Channel> {
 }
 
 /**
- * Confirmation to the customer. Written as Tim, because as far as the
- * customer is concerned it is from Tim. Reply-to is his inbox so a
- * reply reaches him rather than a no-reply void.
+ * Confirmation to the customer.
+ *
+ * Short on purpose. Someone with a tripping breaker wants two things:
+ * proof it was received, and the fastest way to reach a human. Their
+ * own form answers are echoed back so it reads as a real reply rather
+ * than an autoresponder, and the only call to action is the phone.
  */
-function buildConfirmation(firstName: string, service: string): { subject: string; text: string; html: string } {
+function buildConfirmation(
+  firstName: string,
+  service: string,
+  timing: string,
+): { subject: string; text: string; html: string } {
   const greeting = firstName ? `Hi ${firstName},` : 'Hi,';
-  const jobLine = service
-    ? `I've got your request about ${service.toLowerCase()}.`
-    : `I've got your request.`;
+
+  const recap = [service, timing ? readableTiming(timing) : ''].filter(Boolean).join(' — ');
 
   const text = [
     greeting,
     '',
-    `Thanks for getting in touch. ${jobLine} I'll get back to you within 2 hours during business hours. If you sent this in the evening or on a weekend, you'll hear from me first thing.`,
+    recap ? `Thanks for reaching out. Got your request: ${recap}.` : 'Thanks for reaching out. Got your request.',
     '',
-    'What happens next:',
-    '1. I call or text to ask a few questions about the job',
-    '2. I come out and look at it, free and with no obligation',
-    '3. You get a fixed quote in writing. The price I quote is the price you pay.',
+    "I'm likely on a job at the moment, but I'll get back to you as soon as I'm free.",
     '',
-    `If it turns out to be urgent - sparking, a burning smell, no power - call me directly at ${client.phone}. I answer nights and weekends.`,
+    `For the fastest response, call or text me directly: ${client.phone}`,
     '',
-    'Tim Ciszkowski',
+    'Tim',
     'Top Choice Electrical',
-    `ESA certified, fully insured. ${client.phone}`,
   ].join('\n');
 
-  const html = `<div style="font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#111827;max-width:520px">
+  const html = `<div style="font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#111827;max-width:480px">
 <p>${escapeHtml(greeting)}</p>
-<p>Thanks for getting in touch. ${escapeHtml(jobLine)} I&rsquo;ll get back to you within 2 hours during business hours. If you sent this in the evening or on a weekend, you&rsquo;ll hear from me first thing.</p>
-<p style="margin-bottom:6px"><strong>What happens next:</strong></p>
-<ol style="margin-top:0;padding-left:20px">
-<li>I call or text to ask a few questions about the job</li>
-<li>I come out and look at it, free and with no obligation</li>
-<li>You get a fixed quote in writing. The price I quote is the price you pay.</li>
-</ol>
-<p>If it turns out to be urgent &mdash; sparking, a burning smell, no power &mdash; call me directly at <a href="tel:${escapeHtml(client.phone)}" style="color:#b45309;font-weight:600">${escapeHtml(client.phone)}</a>. I answer nights and weekends.</p>
-<p style="margin-bottom:0">Tim Ciszkowski<br>
-<strong>Top Choice Electrical</strong><br>
-<span style="color:#6b7280;font-size:13px">ESA certified, fully insured &middot; ${escapeHtml(client.phone)}</span></p>
+<p>Thanks for reaching out.${recap ? ` Got your request: <strong>${escapeHtml(recap)}</strong>.` : ' Got your request.'}</p>
+<p>I&rsquo;m likely on a job at the moment, but I&rsquo;ll get back to you as soon as I&rsquo;m free.</p>
+<p>For the fastest response, call or text me directly: <a href="tel:${escapeHtml(client.phone)}" style="color:#b45309;font-weight:700;text-decoration:none">${escapeHtml(client.phone)}</a></p>
+<p style="margin-bottom:0">Tim<br><strong>Top Choice Electrical</strong></p>
 </div>`;
 
-  return { subject: `Got your request - Tim at Top Choice Electrical`, text, html };
+  return { subject: 'Got your request - Tim, Top Choice Electrical', text, html };
 }
 
-/**
- * Config check. Booleans only — never the values — so this is safe to
- * open in a browser.
- */
+/** Config check. Booleans only — safe to open in a browser. */
 export async function GET() {
   const sms = smsConfigured();
   const email = emailConfigured();
@@ -250,8 +249,6 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  // Same-origin only. This endpoint messages real people; it should not
-  // be callable from anywhere else.
   const origin = req.headers.get('origin') ?? '';
   const host = req.headers.get('host') ?? '';
   if (origin && host && !origin.includes(host)) {
@@ -271,7 +268,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: 'bad_json' }, { status: 400 });
   }
 
-  // Honeypot — real visitors never fill this.
   if (clean(raw._gotcha)) {
     return NextResponse.json({ ok: true, delivered: [], note: 'discarded' });
   }
@@ -294,7 +290,7 @@ export async function POST(req: Request) {
 
   const smsLines: string[] = [`${label} - ${name}`, phone];
   if (service) smsLines.push(`Job: ${service}`);
-  if (urgency) smsLines.push(`When: ${urgency}`);
+  if (urgency) smsLines.push(`When: ${readableTiming(urgency)}`);
   if (message) smsLines.push(`"${message.slice(0, 300)}"`);
   if (email) smsLines.push(email);
 
@@ -306,7 +302,7 @@ export async function POST(req: Request) {
   ];
   if (email) mailLines.push(`Email:    ${email}`);
   if (service) mailLines.push(`Service:  ${service}`);
-  if (urgency) mailLines.push(`Timeline: ${urgency}`);
+  if (urgency) mailLines.push(`Timeline: ${readableTiming(urgency)}`);
   if (message) mailLines.push('', 'Message:', message);
   mailLines.push('', '---');
   if (pagePath) mailLines.push(`Page: ${pagePath}`);
@@ -335,13 +331,12 @@ export async function POST(req: Request) {
   if (sms.error) errors.push(sms.error);
   if (mail.error) errors.push(mail.error);
 
-  // Customer confirmation. Sent only when they gave us a usable address,
-  // and its result is kept out of `delivered` on purpose: a confirmation
-  // that fails must never make a real lead look like it failed.
+  // Customer confirmation. Result deliberately kept out of `delivered`:
+  // a failed confirmation must never make a real lead look failed.
   let confirmationSent = false;
   if (autoresponderEnabled() && email && looksLikeEmail(email)) {
     const firstName = name.split(' ')[0] ?? '';
-    const body = buildConfirmation(firstName, service);
+    const body = buildConfirmation(firstName, service, urgency);
     const confirmation = await sendViaResend({
       to: email,
       subject: body.subject,
