@@ -239,8 +239,9 @@ export const client = {
    * been added or reworded. `service` is only set where the customer named
    * the work themselves.
    *
-   * Profile total is 14 reviews at 5.0. The six not listed here are
-   * star-only ratings with no written text.
+   * Profile total is 19 reviews at 5.0 (verified 5 Oct 2026). The ones not
+   * listed here are star-only ratings, plus newer written reviews not yet
+   * transcribed.
    */
   reviews: [
     {
@@ -323,7 +324,7 @@ export const client = {
   ],
   googleBusinessUrl: "https://g.page/r/CTAyTXHzOdZgEBM/review" as string | null,
   googleRating: 5.0 as number | null,
-  reviewCount: 14,
+  reviewCount: 19,
 
   social: {
     facebook: null as string | null,
