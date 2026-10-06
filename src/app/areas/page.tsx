@@ -7,12 +7,13 @@ import { areaNeighbourhoods } from '@/data/area-neighbourhoods';
 import { areaImage } from '@/data/area-images';
 
 export const metadata: Metadata = {
-  title: 'Service Areas | York Region & Simcoe County',
-  description: `${client.name} serves Newmarket, Aurora, Richmond Hill, Markham, Vaughan, and all of York Region. Licensed electrician, same-day service.`,
+  // Absolute: with the brand template appended this ran to 66 characters.
+  title: { absolute: 'Electrician Service Areas | York Region & Simcoe' },
+  description: `Tim covers ${client.areas.length} cities across York Region and Simcoe County from his Newmarket base — Aurora, Richmond Hill, Markham, Vaughan, Keswick and more.`,
   alternates: { canonical: 'https://www.topchoiceelectrical.com/areas' },
   openGraph: {
-    title: 'Service Areas | York Region & Simcoe County',
-    description: 'Licensed electrician serving Newmarket, Aurora, Richmond Hill, Markham, Vaughan & all of York Region. Same-day service.',
+    title: 'Electrician Service Areas | York Region & Simcoe',
+    description: `Licensed electrician covering ${client.areas.length} cities across York Region and Simcoe County. Same-day service, fixed price in writing.`,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Top Choice Electrical Service Areas' }],
   },
 };
@@ -40,7 +41,7 @@ export default function AreasPage() {
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
             <div className="flex items-center gap-3 mb-5">
               <div className="h-px w-12 bg-amber-400" />
-              <span className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em]">12 cities · One number</span>
+              <span className="text-amber-400 text-xs font-bold uppercase tracking-[0.25em]">{client.areas.length} cities · One number</span>
             </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[0.95] max-w-4xl">
               York Region &amp;{' '}
