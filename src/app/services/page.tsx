@@ -9,13 +9,16 @@ import SectionCTA from '@/components/SectionCTA';
 
 const isExt = (src: string) => src.startsWith('http://') || src.startsWith('https://');
 
+const serviceCount = client.services.length;
+
 export const metadata: Metadata = {
-  title: 'Electrical Services | Newmarket & York Region',
-  description: 'Panel upgrades, EV chargers, landscape lighting, full rewires, knob-and-tube removal, generators, smart home installs, ESA inspections. 18 services across York Region. Same-day quotes.',
+  // Absolute: with the brand template appended this ran to 68 characters.
+  title: { absolute: 'Electrical Services | Newmarket & York Region' },
+  description: `Panel upgrades, EV chargers, rewiring, knob-and-tube removal, generators, ESA inspections. ${serviceCount} services across York Region, same-day quotes.`,
   alternates: { canonical: 'https://www.topchoiceelectrical.com/services' },
   openGraph: {
     title: 'Electrical Services | Newmarket & York Region',
-    description: '18 electrical services, ESA-licensed, fully insured, same-day quotes across York Region.',
+    description: `${serviceCount} electrical services, ESA-licensed, fully insured, same-day quotes across York Region.`,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Top Choice Electrical Services' }],
   },
 };
@@ -47,7 +50,7 @@ export default function ServicesPage() {
           <div style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
             <p className="text-gold font-semibold text-sm uppercase tracking-[0.2em] mb-4">Services</p>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-              18 electrical services.{' '}
+              {serviceCount} electrical services.{' '}
               <span className="gradient-text">One number to call.</span>
             </h1>
             <p className="text-white/60 max-w-xl text-lg leading-relaxed">
@@ -64,7 +67,7 @@ export default function ServicesPage() {
               Most requested
             </a>
             <a href="#explorer" className="flex-shrink-0 text-xs md:text-sm font-semibold text-gray-700 hover:text-amber-600 hover:bg-amber-50 px-3 md:px-4 py-2 rounded-lg transition-colors whitespace-nowrap">
-              Browse all 18 services
+              Browse all {serviceCount} services
             </a>
             <Link
               href="/emergency-electrician"
