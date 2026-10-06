@@ -37,7 +37,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const area = client.areas.find((a) => a.slug === slug) as any;
   if (!area) return {};
   return {
-    title: areaTitle(area.name),
+    // Absolute: the layout's " | Top Choice Electrical" suffix made the
+    // Newmarket page identical to the homepage and pushed East
+    // Gwillimbury past the truncation point.
+    title: { absolute: areaTitle(area.name) },
     description: areaDescription(area.name),
     alternates: { canonical: `https://www.topchoiceelectrical.com/areas/${slug}` },
     openGraph: {
