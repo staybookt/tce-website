@@ -19,6 +19,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      // Highest-intent page on the site. Someone searching "emergency
+      // electrician" at 11pm is not comparing quotes.
+      url: `${baseUrl}/emergency-electrician`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/areas`,
       lastModified: now,
       changeFrequency: 'monthly',
@@ -35,6 +43,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/why-esa-licensed`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
     {
       url: `${baseUrl}/contact`,
