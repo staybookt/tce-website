@@ -5,16 +5,17 @@ import { client } from '@/data/client';
 import SectionCTA from '@/components/SectionCTA';
 
 export const metadata: Metadata = {
-  title: 'Why hire an ESA-licensed electrician (vs a handyman)',
+  // Absolute: with the brand template appended this ran to 75 characters.
+  title: { absolute: 'ESA-Licensed Electrician vs Handyman | Ontario' },
   description:
-    'ESA-certified electricians are licensed by the Electrical Safety Authority of Ontario. Permits, inspections, insurance, code compliance. Here is what you get with an ESA contractor that a handyman cannot give you.',
+    'Permits, inspections, $5M insurance and an ESA certificate your insurer will accept. What a licensed Ontario electrician gives you that a handyman cannot.',
   alternates: {
     canonical: 'https://www.topchoiceelectrical.com/why-esa-licensed',
   },
   openGraph: {
-    title: 'Why hire an ESA-licensed electrician in Ontario',
+    title: 'ESA-Licensed Electrician vs Handyman | Ontario',
     description:
-      'Permits, inspections, $5M insurance, code compliance, and a paper trail your insurer will accept. The real differences between an ESA-certified electrician and a handyman doing electrical work.',
+      'Permits, inspections, $5M insurance and a paper trail your insurer will accept. The real differences between an ESA-certified electrician and a handyman.',
     images: [
       {
         url: '/og-image.jpg',
@@ -51,7 +52,7 @@ const COMPARISON_ROWS = [
   {
     label: 'Insurance & protection',
     licensed: 'Licensed contractors carry required liability coverage',
-    unlicensed: 'Coverage can vary \u2014 verify before hiring',
+    unlicensed: 'Coverage can vary — verify before hiring',
   },
   {
     label: 'Ontario Electrical Safety Code',
