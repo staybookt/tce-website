@@ -34,14 +34,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = client.services.find((s) => s.slug === slug);
   const content = serviceContent[slug];
   if (!service) return {};
+  // Absolute: with the layout's brand suffix these ran to 87 characters
+  // and Google cut the locality off the end.
+  const title = `${service.name} | Newmarket & York Region`;
   return {
-    title: `${service.name} | Newmarket & York Region`,
+    title: { absolute: title },
     description: content?.metaDescription || service.shortDescription,
     alternates: {
       canonical: `https://www.topchoiceelectrical.com/services/${slug}`,
     },
     openGraph: {
-      title: `${service.name} | Newmarket & York Region`,
+      title,
       description: content?.metaDescription || service.shortDescription,
       images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: `${service.name} - Top Choice Electrical` }],
     },
