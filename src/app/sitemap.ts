@@ -58,6 +58,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  /**
+   * Research pages. Each one targets a query we verified returns no map
+   * pack, which is the point: on "electrician <city>" the 3-pack owns the
+   * fold and an organic result at position 4 gets almost nothing. On these
+   * there is no pack to lose to.
+   */
+  const guidePages: MetadataRoute.Sitemap = [
+    `${baseUrl}/federal-pioneer-stab-lok-panels`,
+    `${baseUrl}/knob-and-tube-wiring-insurance`,
+    `${baseUrl}/electrical-permits-ontario`,
+  ].map((url) => ({
+    url,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
   const servicePages: MetadataRoute.Sitemap = client.services.map((service) => ({
     url: `${baseUrl}/services/${service.slug}`,
     lastModified: now,
@@ -72,5 +89,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...areaPages];
+  return [...staticPages, ...guidePages, ...servicePages, ...areaPages];
 }
