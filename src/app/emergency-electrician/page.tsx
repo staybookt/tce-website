@@ -6,12 +6,13 @@ import QuoteForm from '@/components/QuoteForm';
 import PageSchema from '@/components/PageSchema';
 
 export const metadata: Metadata = {
-  title: `Emergency Electrician in Newmarket & York Region | ${client.name}`,
-  description: `24/7 emergency electrician serving Newmarket, Aurora, Richmond Hill, and all of York Region. Sparking outlets, burning smells, power loss, tripped breakers that won't reset. Call Tim at ${client.phone}.`,
+  // Absolute and short: with the brand suffix this ran to 100 characters.
+  title: { absolute: '24/7 Emergency Electrician | Newmarket & York Region' },
+  description: `Sparking outlet, burning smell, breaker that won't reset? Tim picks up day or night across York Region. ESA certified, on site in under an hour.`,
   alternates: { canonical: 'https://www.topchoiceelectrical.com/emergency-electrician' },
   openGraph: {
-    title: `Emergency Electrician in Newmarket & York Region | ${client.name}`,
-    description: `24/7 emergency electrician serving York Region. Sparking outlets, burning smells, power loss. Call Tim at ${client.phone}.`,
+    title: '24/7 Emergency Electrician | Newmarket & York Region',
+    description: `24/7 emergency electrician across York Region. Sparking outlets, burning smells, power loss. Call Tim at ${client.phone}.`,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Emergency Electrician — Top Choice Electrical' }],
   },
 };
