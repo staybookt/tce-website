@@ -5,14 +5,16 @@ import { client } from '@/data/client';
 import ReviewCard from '@/components/ReviewCard';
 
 export const metadata: Metadata = {
-  title: 'Reviews | York Region Customer Testimonials',
-  description: `Read what homeowners across York Region say about ${client.name}. Real reviews from real customers in Newmarket, Aurora, Richmond Hill, and more.`,
+  // Absolute: with the brand template appended this ran to 67 characters.
+  // Brand-first because the query this page wins is "top choice electrical reviews".
+  title: { absolute: `${client.name} Reviews | York Region` },
+  description: `Every one of ${client.reviewCount} Google reviews is 5 stars. Read what homeowners in Newmarket, Aurora, Richmond Hill and across York Region say about Tim.`,
   alternates: {
     canonical: 'https://www.topchoiceelectrical.com/reviews',
   },
   openGraph: {
-    title: 'Reviews | York Region Customer Testimonials',
-    description: `Real reviews from York Region homeowners about ${client.name}. See why customers trust us for their electrical needs.`,
+    title: `${client.name} Reviews | York Region`,
+    description: `Every one of ${client.reviewCount} Google reviews is 5 stars. See why York Region homeowners keep calling Tim back.`,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Top Choice Electrical Customer Reviews' }],
   },
 };
@@ -89,7 +91,7 @@ export default function ReviewsPage() {
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Had a good experience?</h2>
               <p className="text-gray-500 text-lg mb-8 max-w-md mx-auto">
-                If you're a past customer, a Google review helps other homeowners in York Region find a licensed electrician they can trust.
+                If you're a past customer, a Google review helps other homeowners in York Region find a licensed electrician they can trust. A photo of the finished work helps even more.
               </p>
               {client.googleBusinessUrl ? (
                 <a
