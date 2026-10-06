@@ -2,6 +2,19 @@ import Link from 'next/link';
 import { client } from '@/data/client';
 import Logo from './Logo';
 
+/**
+ * Research pages, linked sitewide. These target queries that return no
+ * map pack, so they are the one route to an organic click that the
+ * 3-pack cannot take. Linking them from every page is what gets them
+ * crawled — reachable only from the sitemap is close to orphaned.
+ */
+const GUIDES = [
+  { href: '/why-esa-licensed', label: 'ESA-licensed vs handyman' },
+  { href: '/electrical-permits-ontario', label: 'Electrical permits in Ontario' },
+  { href: '/federal-pioneer-stab-lok-panels', label: 'Federal Pioneer Stab-Lok panels' },
+  { href: '/knob-and-tube-wiring-insurance', label: 'Knob & tube and your insurer' },
+];
+
 export default function Footer() {
   return (
     <footer className="relative bg-navy-dark text-white overflow-hidden">
@@ -87,8 +100,27 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Homeowner guides — sitewide links so these pages are not orphans */}
+        <div className="border-t border-white/[0.05] mt-16 pt-8">
+          <h3 className="text-white/50 text-xs uppercase tracking-[0.2em] font-semibold mb-5">
+            Before you hire anyone
+          </h3>
+          <ul className="flex flex-wrap gap-x-7 gap-y-3">
+            {GUIDES.map((guide) => (
+              <li key={guide.href}>
+                <Link
+                  href={guide.href}
+                  className="text-white/30 hover:text-white text-sm transition-colors duration-300"
+                >
+                  {guide.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.05] mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/[0.05] mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
             <p className="text-white/20 text-xs tracking-wide">
               &copy; {new Date().getFullYear()} {client.name}. All rights reserved.
