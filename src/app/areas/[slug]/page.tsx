@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/data/client';
+import { areaTitle, areaDescription, areaSocialDescription } from '@/lib/snippets';
 import QuoteForm from '@/components/QuoteForm';
 import ServiceCard from '@/components/ServiceCard';
 import PageSchema from '@/components/PageSchema';
@@ -36,12 +37,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const area = client.areas.find((a) => a.slug === slug) as any;
   if (!area) return {};
   return {
-    title: `Electrician in ${area.name} | Licensed & Insured`,
-    description: `Licensed electrician in ${area.name}, ON. ${area.topServices ? area.topServices.slice(0, 3).join(', ') + ' & more.' : 'Panel upgrades, EV chargers, wiring, lighting.'} ESA certified. Call ${client.phone}.`,
+    title: areaTitle(area.name),
+    description: areaDescription(area.name),
     alternates: { canonical: `https://www.topchoiceelectrical.com/areas/${slug}` },
     openGraph: {
-      title: `Electrician in ${area.name} | Licensed & Insured`,
-      description: `Licensed electrical services in ${area.name}, Ontario. ESA certified, fully insured. Call ${client.phone}.`,
+      title: areaTitle(area.name),
+      description: areaSocialDescription(area.name),
       images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: `Electrician in ${area.name} - Top Choice Electrical` }],
     },
   };
