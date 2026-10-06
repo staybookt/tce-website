@@ -8,6 +8,7 @@ import CallTracker from '@/components/CallTracker';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import ScrollAnimator from '@/components/ScrollAnimator';
 import { client } from '@/data/client';
+import { homeTitle, homeDescription } from '@/lib/snippets';
 
 const GA4_ID = 'G-VMJ6LFNBLY';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.topchoiceelectrical.com';
@@ -15,17 +16,17 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.topchoiceelect
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${client.name} | Electrician in Newmarket`,
+    default: homeTitle,
     template: `%s | ${client.name}`,
   },
-  description: `Licensed electrician serving York Region & Simcoe County. Panel upgrades, EV chargers, lighting & more. ESA certified, fully insured. Call ${client.phone}.`,
+  description: homeDescription,
   keywords: [client.primaryKeyword, ...client.secondaryKeywords],
   openGraph: {
     type: 'website',
     locale: 'en_CA',
     siteName: client.name,
-    title: `${client.name} | Electrician in Newmarket`,
-    description: `Licensed electrician serving York Region & Simcoe County. Panel upgrades, EV chargers, lighting & more. ESA certified, fully insured. Call ${client.phone}.`,
+    title: homeTitle,
+    description: homeDescription,
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: `${client.name} - Licensed Electrician in York Region` }],
   },
   robots: {
