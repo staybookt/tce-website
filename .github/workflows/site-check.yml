@@ -8,8 +8,26 @@
 # each one, and fails if any 404. A route in main that is missing live means
 # the deployment is behind.
 #
-# Where it checks: monitor/site.conf. If that file is missing the job skips
-# rather than fails, so a repo without a live URL does not nag.
+# Where it checks: monitor/site.conf. If no URL is set the job skips rather
+# than fails, so a repo without a live URL does not nag.
+#
+# WHO HEARS ABOUT IT. This matters more than it looks. GitHub sends its own
+# scheduled-workflow failure emails to whichever account last edited the cron
+# line, and nowhere else. That is useless for a team, because it silently
+# follows one person and leaves with them. So this workflow does not rely on
+# it. On failure it does two things:
+#
+#   1. Opens a GitHub issue in this repo, or comments on the existing one.
+#      Works immediately, needs no accounts or keys, and leaves a dated record
+#      of how long a site was broken. The stale deployment had no such record.
+#   2. Emails info@staybookt.com, but only once a RESEND_API_KEY secret exists
+#      on this repo. Until then it says so in the log and carries on. Same
+#      pattern the P10 contact form uses: a feature that needs a credential is
+#      visibly off rather than quietly broken.
+#
+# To add the email: create the Resend account, verify a staybookt.com sending
+# domain, then add RESEND_API_KEY under Settings, Secrets and variables,
+# Actions. Nothing else changes.
 #
 # To run it by hand: Actions tab, "site check", Run workflow.
 
@@ -20,10 +38,90 @@ on:
     - cron: "0 13 * * 1"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   live-matches-main:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: check every route in main loads on the live site
-        run: bash scripts/site-check.sh
+        id: check
+        run: |
+          set +e
+          bash scripts/site-check.sh > check-output.txt 2>&1
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          cat check-output.txt
+          exit 0
+
+      - name: open or update an issue
+        if: steps.check.outputs.exit_code != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TITLE="Site check failed: the live site is behind main"
+          {
+            echo "The weekly site check found routes in \`main\` that do not load on the live site."
+            echo
+            echo "This usually means the deployment is behind \`main\`, not that the code is broken."
+            echo "Check when the hosting last deployed before debugging anything. That has been the"
+            echo "cause both times this happened."
+            echo
+            echo '```'
+            cat check-output.txt
+            echo '```'
+            echo
+            echo "Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          } > issue-body.md
+
+          EXISTING=$(gh issue list --state open --limit 50 --json number,title \
+            --jq "[.[] | select(.title == \"$TITLE\")] | .[0].number // empty")
+
+          if [ -n "$EXISTING" ]; then
+            echo "Commenting on existing issue #$EXISTING"
+            gh issue comment "$EXISTING" --body-file issue-body.md
+          else
+            echo "Opening a new issue"
+            gh issue create --title "$TITLE" --body-file issue-body.md
+          fi
+
+      - name: email info@staybookt.com
+        if: steps.check.outputs.exit_code != '0'
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          if [ -z "${RESEND_API_KEY:-}" ]; then
+            echo "No RESEND_API_KEY secret is set, so no email was sent."
+            echo "The GitHub issue is the alert until that secret exists."
+            echo "See the comments at the top of this workflow for how to add it."
+            exit 0
+          fi
+
+          PAYLOAD=$(jq -n \
+            --arg from "alerts@staybookt.com" \
+            --arg to "info@staybookt.com" \
+            --arg subject "Site check failed: ${GITHUB_REPOSITORY}" \
+            --arg text "$(cat check-output.txt)
+          
+          Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            '{from: $from, to: [$to], subject: $subject, text: $text}')
+
+          CODE=$(curl -s -o resend-response.txt -w '%{http_code}' \
+            -X POST https://api.resend.com/emails \
+            -H "Authorization: Bearer ${RESEND_API_KEY}" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD")
+
+          echo "Resend responded $CODE"
+          cat resend-response.txt
+          if [ "$CODE" != "200" ]; then
+            echo "The email did not send. The GitHub issue above is still the record."
+          fi
+
+      - name: fail the run so it shows red
+        if: steps.check.outputs.exit_code != '0'
+        run: exit 1
