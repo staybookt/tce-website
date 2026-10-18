@@ -1,0 +1,29 @@
+# Checks every Monday that the live site is serving what is in main.
+#
+# Why this exists: in September 2026 a StayBookt client site served a build
+# from six weeks earlier and nobody noticed. A page that existed in main
+# returned 404 on the live site the whole time. Nothing was watching.
+#
+# What it does: lists every page route in this repo, asks the live site for
+# each one, and fails if any 404. A route in main that is missing live means
+# the deployment is behind.
+#
+# Where it checks: monitor/site.conf. If that file is missing the job skips
+# rather than fails, so a repo without a live URL does not nag.
+#
+# To run it by hand: Actions tab, "site check", Run workflow.
+
+name: site check
+
+on:
+  schedule:
+    - cron: "0 13 * * 1"
+  workflow_dispatch:
+
+jobs:
+  live-matches-main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: check every route in main loads on the live site
+        run: bash scripts/site-check.sh
