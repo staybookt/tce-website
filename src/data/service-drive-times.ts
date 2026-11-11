@@ -14,4 +14,6 @@ export const driveTimes: Record<string, number> = {
   'markham': 30,
   'uxbridge': 35,
   'vaughan': 35,
+  'barrie': 40,
+  'orangeville': 55,
 };

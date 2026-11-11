@@ -17,5 +17,7 @@ export const areaNeighbourhoods: Record<string, string[]> = {
   'vaughan': ['Woodbridge', 'Maple', 'Thornhill', 'Kleinburg', 'Concord', 'Vaughan Metropolitan Centre'],
   'stouffville': ['Old Stouffville', "Wheler's Mill", 'Glad Park', 'Ballantrae'],
   'innisfil': ['Alcona', 'Lefroy', 'Stroud', 'Cookstown', 'Big Bay Point'],
+  'barrie': ['Allandale', 'Painswick', 'Innis-Shore', 'Holly', 'Ardagh', 'East End'],
+  'orangeville': ['Downtown Broadway', 'Montgomery Village', 'Rolling Hills', 'Island Lake', 'Mono'],
   'uxbridge': ['Uxbridge town centre', 'Goodwood', "Coppin's Corners", 'Sandford'],
 };
