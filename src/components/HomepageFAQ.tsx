@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     q: 'What cities does Top Choice Electrical serve?',
-    a: 'Newmarket (the home base), Aurora, Richmond Hill, Markham, Vaughan, King City, East Gwillimbury, Bradford, Innisfil, Stouffville, and the rest of York Region and Simcoe County. Most jobs are within a 30-minute drive of Newmarket.',
+    a: 'Newmarket (the home base), Aurora, Richmond Hill, Markham, Vaughan, King City, East Gwillimbury, Bradford, Innisfil, Barrie, Stouffville, Orangeville, and the rest of York Region and Simcoe County. Most jobs are within a 30-minute drive of Newmarket.',
   },
   {
     q: 'Why does my electrical work need to be done by an ESA-licensed electrician?',

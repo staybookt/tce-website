@@ -13,5 +13,7 @@ export const areaImage: Record<string, string> = {
   'vaughan': '/images/work/IMG_5695.webp',                    // generator (large homes)
   'stouffville': '/images/richard-generator-primary.webp',    // Richard Generac on brick pad
   'innisfil': '/images/work/IMG_3258.webp',                   // panel install (general residential)
+  'barrie': '/images/work/IMG_5017.webp',                     // clean panel (mixed housing stock)
+  'orangeville': '/images/richard-generator-primary.webp',    // generator (rural lots)
   'uxbridge': '/images/work/IMG_5017.webp',                   // panel (historic homes)
 };

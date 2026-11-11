@@ -212,7 +212,7 @@ export default function AboutPage() {
                 <span className="gradient-text">York and Simcoe covered.</span>
               </h2>
               <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6">
-                Twelve cities across York Region, Simcoe County, and Durham Region. Same-day quotes everywhere on the map. Click through to see the neighbourhoods we serve in each city.
+                {client.areas.length} cities across York Region, Simcoe County, Durham Region and Dufferin County. Same-day quotes everywhere on the map. Click through to see the neighbourhoods we serve in each city.
               </p>
               <Link
                 href="/areas"
