@@ -57,7 +57,9 @@ export default function Logo({
     <span className={`inline-flex items-center gap-3 ${className}`}>
       <Image
         src="/logo/tce-logo.png"
-        alt={client.name}
+        // Decorative here: the sr-only span below (and the link's aria-label)
+        // already name it, and repeating the name in alt is announced twice.
+        alt=""
         width={s.dim}
         height={s.dim}
         priority

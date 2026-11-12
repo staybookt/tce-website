@@ -27,7 +27,6 @@ export default function Header() {
         className={`block bg-gradient-to-r from-red-700 via-red-600 to-red-700 hover:from-red-600 hover:via-red-500 hover:to-red-600 text-white transition-all duration-500 overflow-hidden ${
           scrolled ? 'max-h-0 py-0' : 'max-h-12 py-2'
         }`}
-        aria-label="24/7 emergency electrician — tap to call"
       >
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-4 text-xs">
           <div className="flex items-center gap-3 min-w-0">

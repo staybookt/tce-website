@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/data/client';
 
+const fadeIn = { animation: 'fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1)' };
+
 export default function HeroBanner() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -21,8 +23,11 @@ export default function HeroBanner() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 py-24 md:py-40 w-full">
-        <div className="max-w-4xl" style={{ animation: 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-          <div className="inline-flex items-center gap-2.5 bg-white/[0.08] backdrop-blur-md border border-white/[0.12] rounded-full px-5 py-2.5 mb-10">
+        {/* The block rises in as one; everything except the headline also fades.
+            The headline is the mobile LCP element, so it is visible from the
+            first frame (see riseIn in globals.css). */}
+        <div className="max-w-4xl" style={{ animation: 'riseIn 1s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+          <div className="inline-flex items-center gap-2.5 bg-white/[0.08] backdrop-blur-md border border-white/[0.12] rounded-full px-5 py-2.5 mb-10" style={fadeIn}>
             <div className="w-2 h-2 rounded-full bg-green animate-pulse" />
             <span className="text-white/80 text-sm font-medium tracking-wide">
               Newmarket, ON &middot; Serving York Region &amp; Simcoe County
@@ -37,7 +42,7 @@ export default function HeroBanner() {
             <span className="gradient-text">York Region &amp; Simcoe County.</span>
           </h1>
 
-          <div className="mb-12 max-w-2xl space-y-3">
+          <div className="mb-12 max-w-2xl space-y-3" style={fadeIn}>
             <p className="text-white text-lg md:text-xl lg:text-2xl leading-relaxed font-medium">
               Panel upgrades, EV chargers, emergency repairs, full rewires.
             </p>
@@ -51,7 +56,7 @@ export default function HeroBanner() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4" style={fadeIn}>
             <a
               href={`tel:${client.phone}`}
               className="btn-premium bg-amber-500 hover:bg-amber-400 ring-1 ring-amber-700/50 text-gray-900 font-bold text-base px-6 sm:px-10 py-4 rounded-xl transition-all duration-300 text-center shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 hover:scale-[1.02]"

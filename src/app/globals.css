@@ -96,7 +96,7 @@ body {
 
 /* Premium display font for headlines */
 .font-display {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: var(--font-space-grotesk), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 html {
@@ -123,6 +123,15 @@ a[href^="tel:"] {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* fadeInUp without the fade. For headlines that are the page's LCP element:
+   Chrome does not count a paint at opacity 0, and an opacity animation runs on
+   the compositor, so a headline that fades in is only reported when the
+   animation ends, a full second after it could have been. */
+@keyframes riseIn {
+  from { transform: translateY(40px); }
+  to { transform: translateY(0); }
 }
 
 @keyframes slideInLeft {
