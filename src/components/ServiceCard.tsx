@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import RemoteImage from './RemoteImage';
 import ServiceIcon from './ServiceIcon';
 
 interface ServiceCardProps {
@@ -9,11 +9,11 @@ interface ServiceCardProps {
   icon?: string;
   image?: string;
   featured?: boolean;
+  /** Override the grid card's `sizes` when the grid it sits in is not one column on mobile. */
+  sizes?: string;
 }
 
-const isExt = (src: string) => src.startsWith('http://') || src.startsWith('https://');
-
-export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap', image, featured = false }: ServiceCardProps) {
+export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap', image, featured = false, sizes }: ServiceCardProps) {
   if (featured) {
     return (
       <Link
@@ -22,12 +22,11 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
       >
         <div className="absolute inset-0">
           {image && (
-            <Image
+            <RemoteImage
               src={image}
               alt={name}
               fill
               sizes="(max-width: 1024px) 100vw, 66vw"
-              unoptimized={isExt(image)}
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
           )}
@@ -59,12 +58,11 @@ export default function ServiceCard({ slug, name, shortDescription, icon = 'Zap'
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         {image ? (
-          <Image
+          <RemoteImage
             src={image}
             alt={name}
             fill
-            sizes="(max-width: 768px) 100vw, 33vw"
-            unoptimized={isExt(image)}
+            sizes={sizes ?? '(max-width: 768px) 100vw, 33vw'}
             className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : (
