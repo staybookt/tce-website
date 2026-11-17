@@ -47,7 +47,7 @@ export default function Home() {
           {/* Grid of remaining services */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {client.services.slice(1, 7).map((service) => (
-              <ServiceCard key={service.slug} {...service} />
+              <ServiceCard key={service.slug} {...service} sizes="(max-width: 1023px) 50vw, 33vw" />
             ))}
           </div>
 

@@ -20,7 +20,6 @@ export default function ClickToCall() {
       <a
         href={`tel:${client.phone}`}
         className="fixed bottom-0 inset-x-0 z-40 md:hidden bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-gray-900 shadow-2xl shadow-amber-500/40 transition-colors"
-        aria-label={`Call ${client.ownerName} at ${client.name}`}
       >
         <div className="flex items-center justify-between px-5 py-4 max-w-md mx-auto">
           <div className="flex items-center gap-3">

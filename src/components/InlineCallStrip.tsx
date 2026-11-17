@@ -56,7 +56,6 @@ export default function InlineCallStrip({
     <a
       href={`tel:${client.phone}`}
       className={`${base} ${bg}`}
-      aria-label={`Call ${client.ownerName} at ${client.phone}`}
     >
       <div className="max-w-7xl mx-auto px-4 py-4 md:py-5 flex items-center justify-between gap-4 md:gap-6">
         {/* Left: headline + tagline */}

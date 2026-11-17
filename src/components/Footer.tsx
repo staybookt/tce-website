@@ -131,7 +131,6 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 text-white/30 hover:text-white/60 transition-colors text-xs"
-              aria-label="Powered by Staybookt"
             >
               <span className="tracking-wide">Powered by</span>
               <span className="inline-flex items-center gap-1.5">
