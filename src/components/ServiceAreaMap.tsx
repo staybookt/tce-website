@@ -22,6 +22,8 @@ const SPOKES: Spoke[] = [
   { slug: 'markham',          angle: 145, radius: 36 },
   { slug: 'stouffville',      angle: 115, radius: 30 },
   { slug: 'uxbridge',         angle:  85, radius: 36 },
+  { slug: 'barrie',           angle: 315, radius: 42 },
+  { slug: 'orangeville',      angle: 255, radius: 40 },
 ];
 
 const polar = (angleDeg: number, r: number) => {
@@ -35,7 +37,7 @@ const polar = (angleDeg: number, r: number) => {
 export default function ServiceAreaMap() {
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
 
-  const REGION_ORDER = ['York Region', 'Simcoe County', 'Durham Region'];
+  const REGION_ORDER = ['York Region', 'Simcoe County', 'Durham Region', 'Dufferin County'];
 
   // Areas grouped by region so the list can collapse to one region at a time
   // (Aug 2026 UX review: keeps the map the main visual focus and cuts scrolling).
@@ -56,7 +58,7 @@ export default function ServiceAreaMap() {
             <span className="gradient-text">and all areas in between.</span>
           </h2>
           <p className="text-gray-600 text-base md:text-lg leading-relaxed mt-5 max-w-xl">
-            Headquartered in Newmarket. Same-day quotes and same-day visits for most calls across all 12 cities below.
+            Headquartered in Newmarket. Same-day quotes and same-day visits for most calls across all {client.areas.length} cities below.
           </p>
         </div>
 

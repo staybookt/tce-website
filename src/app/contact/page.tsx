@@ -88,7 +88,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-[1fr_auto] gap-4 items-center">
                     <div>
                       <p className="font-display font-bold text-gray-900 text-base mb-1">{client.address}</p>
-                      <p className="text-gray-600 text-sm leading-relaxed">12 cities across York Region, Simcoe County, and Durham Region.</p>
+                      <p className="text-gray-600 text-sm leading-relaxed">{client.areas.length} cities across York Region, Simcoe County, Durham Region and Dufferin County.</p>
                       <Link href="/areas" className="inline-flex items-center gap-1.5 mt-3 text-amber-600 hover:text-amber-700 font-bold text-xs">See all areas<svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg></Link>
                     </div>
                   </div>
