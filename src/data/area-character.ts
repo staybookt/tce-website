@@ -56,6 +56,14 @@ export const areaCharacter: Record<string, AreaCharacter> = {
     icon: 'anchor',
     knownFor: 'Friday Harbour, Lake Simcoe shoreline, Alcona, Big Bay Point',
   },
+  'barrie': {
+    icon: 'waves',
+    knownFor: 'Kempenfelt Bay waterfront, Centennial Beach, Allandale Station, Dunlop Street downtown',
+  },
+  'orangeville': {
+    icon: 'landmark',
+    knownFor: 'Town Hall Opera House, Broadway main street, Island Lake Conservation Area',
+  },
   'uxbridge': {
     icon: 'footprints',
     knownFor: "Trail Capital of Canada, historic downtown, Goodwood, Coppin's Corners",

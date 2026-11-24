@@ -3,7 +3,7 @@ import { client } from '@/data/client';
 import { areaCharacter } from '@/data/area-character';
 import { areaNeighbourhoods } from '@/data/area-neighbourhoods';
 
-const REGION_ORDER = ['York Region', 'Simcoe County', 'Durham Region'];
+const REGION_ORDER = ['York Region', 'Simcoe County', 'Durham Region', 'Dufferin County'];
 
 interface IconProps { name: string; className?: string }
 
@@ -56,7 +56,7 @@ export default function AreasByRegion() {
             Cities and neighbourhoods we cover.
           </h2>
           <p className="text-gray-600 text-base md:text-lg leading-relaxed mt-4">
-            Same-day service across York Region, Simcoe County, and parts of Durham Region. Click any city for the full local page.
+            Same-day service across York Region, Simcoe County, and parts of Durham Region and Dufferin County. Click any city for the full local page.
           </p>
         </div>
 

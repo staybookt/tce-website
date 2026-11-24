@@ -7,7 +7,7 @@ import { client } from '@/data/client';
 /**
  * Service search — "Know what you're looking for?" Lets a visitor type
  * a free-form description of their issue and matches against our 18
- * electrical services (and the 12 service areas as a fallback).
+ * electrical services (and the service areas as a fallback).
  *
  * Cuts navigation cost on the homepage: someone with a specific need
  * (FPE panel replacement, EV charger, hot tub wiring) lands on the
